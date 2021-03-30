@@ -1,5 +1,5 @@
 <pre>
-Cesium, a C-like memory- and thread-safe systems programming language with zero-cost object-orientation.
+Caesium, a C-like memory- and thread-safe systems programming language with zero-cost object-orientation.
 Copyright (C) 2021  Natan Junges
 
 This program is free software: you can redistribute it and/or modify
