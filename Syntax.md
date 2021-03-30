@@ -124,7 +124,7 @@ CompilationUnit:
 
 <pre>
 <a name="CompoundType">CompoundType</a>:
-    <i><a href="#TypeName">TypeName</a></i> <i>[</i><i><a href="#TypeAtomicity">TypeAtomicity</a></i><i>]</i>
+    <i><a href="#TypeName">TypeName</a></i>
     <i><a href="#ArrayType">ArrayType</a></i>
 </pre>
 
