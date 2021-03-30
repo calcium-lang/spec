@@ -54,7 +54,7 @@ CompilationUnit:
 <pre>
 <a name="ImportList">ImportList</a>:
     <i>Identifier</i> <i>[</i><b>as</b> <i>Identifier</i><i>]</i>
-    <i><a href="#ImportList">ImportList</a></i> <b>,</b> <i>Identifier</i> <i>[</i><b>as</b> <i>Identifier</i><i>]</i>
+    <i>ImportList</i> <b>,</b> <i>Identifier</i> <i>[</i><b>as</b> <i>Identifier</i><i>]</i>
 </pre>
 
 <pre>
@@ -149,7 +149,7 @@ CompilationUnit:
 <pre>
 <a name="ReferenceType">ReferenceType</a>:
     <b>unsafe</b> <b>void</b> <b>&</b> <i>[</i><i><a href="#TypeAtomicity">TypeAtomicity</a></i><i>]</i>
-    <i><a href="#Type">Type</a></i> <i>[</i><i><a href="#TypeConstancy">TypeConstancy</a></i><i>]</i> <i>[</i><i><a href="#TypeVolatility">TypeVolatility</a></i><i>]</i> <b>&</b> <i>[</i><i><a href="#ReferenceAliasability">ReferenceAliasability</a></i><i>]</i> <i>[</i><i><a href="#TypeAtomicity">TypeAtomicity</a></i><i>]</i>
+    <i><a href="#Type">Type</a></i> <i>[</i><i><a href="#TypeConstancy">TypeConstancy</a></i><i>]</i> <i>[</i><i><a href="#TypeVolatility">TypeVolatility</a></i><i>]</i> <i>[</i><i><a href="#ValueInitialization">ValueInitialization</a></i><i>]</i> <b>&</b> <i>[</i><i><a href="#ReferenceAliasability">ReferenceAliasability</a></i><i>]</i> <i>[</i><i><a href="#TypeAtomicity">TypeAtomicity</a></i><i>]</i>
     <i><a href="#FunctionType">FunctionType</a></i>
 </pre>
 
@@ -212,6 +212,11 @@ CompilationUnit:
 </pre>
 
 <pre>
+<a name="ValueInitialization">ValueInitialization</a>:
+    <b>init</b>
+</pre>
+
+<pre>
 <a name="ReferenceAliasability">ReferenceAliasability</a>:
     <b>aliased</b>
 </pre>
@@ -258,8 +263,9 @@ CompilationUnit:
 
 <pre>
 <a name="ArgumentTypes">ArgumentTypes</a>:
-    <i><a href="#VariadicArgumentType">VariadicArgumentType</a></i>
+    <i><a href="#ThisArgument">ThisArgument</a></i> <i>[</i><b>,</b> <i><a href="#FixedArgumentTypes">FixedArgumentTypes</a></i><i>]</i> <i>[</i><b>,</b> <i><a href="#VariadicArgumentType">VariadicArgumentType</a></i><i>]</i>
     <i><a href="#FixedArgumentTypes">FixedArgumentTypes</a></i> <i>[</i><b>,</b> <i><a href="#VariadicArgumentType">VariadicArgumentType</a></i><i>]</i>
+    <i><a href="#VariadicArgumentType">VariadicArgumentType</a></i>
 </pre>
 
 <pre>
@@ -292,8 +298,9 @@ CompilationUnit:
 
 <pre>
 <a name="Arguments">Arguments</a>:
-    <i><a href="#VariadicArgument">VariadicArgument</a></i>
+    <i><a href="#ThisArgument">ThisArgument</a></i> <i>[</i><b>,</b> <i><a href="#FixedArguments">FixedArguments</a></i><i>]</i> <i>[</i><b>,</b> <i><a href="#VariadicArgument">VariadicArgument</a></i><i>]</i>
     <i><a href="#FixedArguments">FixedArguments</a></i> <i>[</i><b>,</b> <i><a href="#VariadicArgument">VariadicArgument</a></i><i>]</i>
+    <i><a href="#VariadicArgument">VariadicArgument</a></i>
 </pre>
 
 <pre>
@@ -304,8 +311,10 @@ CompilationUnit:
 ---
 
 <pre>
-<a name="VariadicArgumentType">VariadicArgumentType</a>:
-    <b>...</b> <b>:</b> <i><a href="#Type">Type</a></i>
+<a name="ThisArgument">ThisArgument</a>:
+    <b>this</b> <b>:</b> <i><a href="#TypeConstancy">TypeConstancy</a></i> <i>[</i><i><a href="#ValueInitialization">ValueInitialization</a></i><i>]</i> <i>[</i><b>&</b> <i><a href="#ReferenceAliasability">ReferenceAliasability</a></i><i>]</i>
+    <b>this</b> <b>:</b> <i><a href="#ValueInitialization">ValueInitialization</a></i> <i>[</i><b>&</b> <i><a href="#ReferenceAliasability">ReferenceAliasability</a></i><i>]</i>
+    <b>this</b> <b>:</b> <b>&</b> <i><a href="#ReferenceAliasability">ReferenceAliasability</a></i>
 </pre>
 
 <pre>
@@ -314,13 +323,18 @@ CompilationUnit:
 </pre>
 
 <pre>
-<a name="VariadicArgument">VariadicArgument</a>:
-    <b>...</b> <i>Identifier</i> <b>:</b> <i><a href="#Type">Type</a></i>
+<a name="VariadicArgumentType">VariadicArgumentType</a>:
+    <b>...</b> <b>:</b> <i><a href="#Type">Type</a></i>
 </pre>
 
 <pre>
 <a name="FixedArguments">FixedArguments</a>:
     <i><a href="#FixedArgument">FixedArgument</a></i> <i>{</i><b>,</b> <i><a href="#FixedArgument">FixedArgument</a></i><i>}</i>
+</pre>
+
+<pre>
+<a name="VariadicArgument">VariadicArgument</a>:
+    <b>...</b> <i>Identifier</i> <b>:</b> <i><a href="#Type">Type</a></i>
 </pre>
 
 ---
