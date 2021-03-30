@@ -1,7 +1,7 @@
 # Syntax
 
 <pre>
-<a name="CompilationUnit">CompilationUnit</a>:
+CompilationUnit:
     <i>[</i><i><a href="#PackageDeclaration">PackageDeclaration</a></i><i>]</i> <i>{</i><i><a href="#ImportDeclaration">ImportDeclaration</a></i><i>}</i> <i><a href="#TypeDeclaration">TypeDeclaration</a></i>
 </pre>
 
