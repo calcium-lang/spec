@@ -79,7 +79,7 @@ CompilationUnit:
 
 <pre>
 <a name="UnionDeclaration">UnionDeclaration</a>:
-    <b>union</b> <i>Identifier</i> <b>{</b> <i><a href="#UnionTypes">UnionTypes</a></i> <i>[</i><i><a href="#UnionElements">UnionElements</a></i><i>]</i> <b>}</b>
+    <b>union</b> <i>Identifier</i> <i>[</i><b>:</b> <i><a href="#TypeName">TypeName</a></i><i>]</i> <b>{</b> <i><a href="#UnionTypes">UnionTypes</a></i> <i>[</i><i><a href="#UnionElements">UnionElements</a></i><i>]</i> <b>}</b>
 </pre>
 
 <pre>
