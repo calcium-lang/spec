@@ -38,7 +38,7 @@ CompilationUnit:
 
 <pre>
 <a name="TypeDeclaration">TypeDeclaration</a>:
-    <i>[</i><i><a href="#TypeAccessibility">TypeAccessibility</a></i><i>]</i> <i><a href="#AliasDeclaration">AliasDeclaration</a></i>
+    <i>[</i><i><a href="#TypeAccessibility">TypeAccessibility</a></i><i>]</i> <i><a href="#AliasDeclaration">AliasDeclaration</a></i> <b>;</b>
     <i>[</i><i><a href="#TypeAccessibility">TypeAccessibility</a></i><i>]</i> <i><a href="#EnumDeclaration">EnumDeclaration</a></i>
     <i>[</i><i><a href="#TypeAccessibility">TypeAccessibility</a></i><i>]</i> <i><a href="#UnionDeclaration">UnionDeclaration</a></i>
     <i>[</i><i><a href="#TypeAccessibility">TypeAccessibility</a></i><i>]</i> <i><a href="#StructDeclaration">StructDeclaration</a></i>
@@ -69,7 +69,7 @@ CompilationUnit:
 
 <pre>
 <a name="AliasDeclaration">AliasDeclaration</a>:
-    <b>alias</b> <i>Identifier</i> <b>:</b> <i><a href="#Type">Type</a></i> <b>;</b>
+    <b>alias</b> <i>Identifier</i> <b>:</b> <i><a href="#Type">Type</a></i>
 </pre>
 
 <pre>
@@ -138,6 +138,10 @@ CompilationUnit:
 <a name="PrimitiveType">PrimitiveType</a>:
     <i><a href="#NumericType">NumericType</a></i> <i>[</i><i><a href="#TypeAtomicity">TypeAtomicity</a></i><i>]</i>
     <b>_bool</b> <i>[</i><i><a href="#TypeAtomicity">TypeAtomicity</a></i><i>]</i>
+    <b>_char1</b> <i>[</i><i><a href="#TypeAtomicity">TypeAtomicity</a></i><i>]</i>
+    <b>_char2</b> <i>[</i><i><a href="#TypeAtomicity">TypeAtomicity</a></i><i>]</i>
+    <b>_char3</b> <i>[</i><i><a href="#TypeAtomicity">TypeAtomicity</a></i><i>]</i>
+    <b>_char4</b> <i>[</i><i><a href="#TypeAtomicity">TypeAtomicity</a></i><i>]</i>
 </pre>
 
 <pre>
@@ -170,7 +174,7 @@ CompilationUnit:
 <a name="StructElement">StructElement</a>:
     <i>[</i><i><a href="#ElementAccessibility">ElementAccessibility</a></i><i>]</i> <i><a href="#FieldDeclaration">FieldDeclaration</a></i>
     <i>[</i><i><a href="#ElementAccessibility">ElementAccessibility</a></i><i>]</i> <i><a href="#MethodDeclaration">MethodDeclaration</a></i>
-    <i>[</i><i><a href="#ElementAccessibility">ElementAccessibility</a></i><i>]</i> <i><a href="#AliasDeclaration">AliasDeclaration</a></i>
+    <i>[</i><i><a href="#ElementAccessibility">ElementAccessibility</a></i><i>]</i> <i><a href="#AliasDeclaration">AliasDeclaration</a></i> <b>;</b>
     <i>[</i><i><a href="#ElementAccessibility">ElementAccessibility</a></i><i>]</i> <i><a href="#EnumDeclaration">EnumDeclaration</a></i>
     <i>[</i><i><a href="#ElementAccessibility">ElementAccessibility</a></i><i>]</i> <i><a href="#UnionDeclaration">UnionDeclaration</a></i>
     <i>[</i><i><a href="#ElementAccessibility">ElementAccessibility</a></i><i>]</i> <i><a href="#StructDeclaration">StructDeclaration</a></i>
