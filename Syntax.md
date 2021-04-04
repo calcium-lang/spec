@@ -314,13 +314,6 @@ CompilationUnit:
 ---
 
 <pre>
-<a name="ThisArgument">ThisArgument</a>:
-    <b>this</b> <b>:</b> <i><a href="#TypeConstancy">TypeConstancy</a></i> <i>[</i><i><a href="#ValueInitialization">ValueInitialization</a></i><i>]</i> <i>[</i><b>&</b> <i><a href="#ReferenceAliasability">ReferenceAliasability</a></i><i>]</i>
-    <b>this</b> <b>:</b> <i><a href="#ValueInitialization">ValueInitialization</a></i> <i>[</i><b>&</b> <i><a href="#ReferenceAliasability">ReferenceAliasability</a></i><i>]</i>
-    <b>this</b> <b>:</b> <b>&</b> <i><a href="#ReferenceAliasability">ReferenceAliasability</a></i>
-</pre>
-
-<pre>
 <a name="FixedArgumentTypes">FixedArgumentTypes</a>:
     <i><a href="#FixedArgumentType">FixedArgumentType</a></i> <i>{</i><b>,</b> <i><a href="#FixedArgumentType">FixedArgumentType</a></i><i>}</i>
 </pre>
@@ -328,6 +321,13 @@ CompilationUnit:
 <pre>
 <a name="VariadicArgumentType">VariadicArgumentType</a>:
     <b>...</b> <b>:</b> <i><a href="#Type">Type</a></i>
+</pre>
+
+<pre>
+<a name="ThisArgument">ThisArgument</a>:
+    <b>this</b> <b>:</b> <i><a href="#TypeConstancy">TypeConstancy</a></i> <i>[</i><i><a href="#ValueInitialization">ValueInitialization</a></i><i>]</i> <i>[</i><b>&</b> <i><a href="#ReferenceAliasability">ReferenceAliasability</a></i><i>]</i>
+    <b>this</b> <b>:</b> <i><a href="#ValueInitialization">ValueInitialization</a></i> <i>[</i><b>&</b> <i><a href="#ReferenceAliasability">ReferenceAliasability</a></i><i>]</i>
+    <b>this</b> <b>:</b> <b>&</b> <i><a href="#ReferenceAliasability">ReferenceAliasability</a></i>
 </pre>
 
 <pre>
