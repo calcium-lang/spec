@@ -267,7 +267,6 @@ CompilationUnit:
 
 <pre>
 <a name="ArgumentTypes">ArgumentTypes</a>:
-    <i><a href="#ThisArgument">ThisArgument</a></i> <i>[</i><b>,</b> <i><a href="#FixedArgumentTypes">FixedArgumentTypes</a></i><i>]</i> <i>[</i><b>,</b> <i><a href="#VariadicArgumentType">VariadicArgumentType</a></i><i>]</i>
     <i><a href="#FixedArgumentTypes">FixedArgumentTypes</a></i> <i>[</i><b>,</b> <i><a href="#VariadicArgumentType">VariadicArgumentType</a></i><i>]</i>
     <i><a href="#VariadicArgumentType">VariadicArgumentType</a></i>
 </pre>
