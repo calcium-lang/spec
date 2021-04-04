@@ -152,8 +152,7 @@ CompilationUnit:
 
 <pre>
 <a name="ReferenceType">ReferenceType</a>:
-    <b>unsafe</b> <b>void</b> <b>&</b> <i>[</i><i><a href="#TypeAtomicity">TypeAtomicity</a></i><i>]</i>
-    <i><a href="#Type">Type</a></i> <i>[</i><i><a href="#TypeConstancy">TypeConstancy</a></i><i>]</i> <i>[</i><i><a href="#TypeVolatility">TypeVolatility</a></i><i>]</i> <i>[</i><i><a href="#ValueInitialization">ValueInitialization</a></i><i>]</i> <b>&</b> <i>[</i><i><a href="#ReferenceAliasability">ReferenceAliasability</a></i><i>]</i> <i>[</i><i><a href="#TypeAtomicity">TypeAtomicity</a></i><i>]</i>
+    <i><a href="#PointerType">PointerType</a></i>
     <i><a href="#FunctionType">FunctionType</a></i>
 </pre>
 
@@ -202,27 +201,17 @@ CompilationUnit:
 <a name="ArrayType">ArrayType</a>:
     <i><a href="#PrimitiveType">PrimitiveType</a></i> <i><a href="#Dims">Dims</a></i>
     <i><a href="#TypeName">TypeName</a></i> <i><a href="#Dims">Dims</a></i>
-    <i><a href="#ReferenceType">ReferenceType</a></i> <i><a href="#Dims">Dims</a></i>
+    <i><a href="#PointerType">PointerType</a></i> <i><a href="#Dims">Dims</a></i>
+    <b>(</b> <i><a href="#FunctionType">FunctionType</a></i> <b>)</b> <i><a href="#Dims">Dims</a></i>
 </pre>
 
 <pre>
-<a name="TypeConstancy">TypeConstancy</a>:
-    <b>const</b>
-</pre>
-
-<pre>
-<a name="TypeVolatility">TypeVolatility</a>:
-    <b>volatile</b>
-</pre>
-
-<pre>
-<a name="ValueInitialization">ValueInitialization</a>:
-    <b>init</b>
-</pre>
-
-<pre>
-<a name="ReferenceAliasability">ReferenceAliasability</a>:
-    <b>aliased</b>
+<a name="PointerType">PointerType</a>:
+    <b>unsafe</b> <b>void</b> <b>&</b> <i>[</i><i><a href="#TypeAtomicity">TypeAtomicity</a></i><i>]</i>
+    <i><a href="#PrimitiveType">PrimitiveType</a></i> <i>[</i><i><a href="#TypeConstancy">TypeConstancy</a></i><i>]</i> <i>[</i><i><a href="#TypeVolatility">TypeVolatility</a></i><i>]</i> <i>[</i><i><a href="#ValueInitialization">ValueInitialization</a></i><i>]</i> <b>&</b> <i>[</i><i><a href="#ReferenceAliasability">ReferenceAliasability</a></i><i>]</i> <i>[</i><i><a href="#TypeAtomicity">TypeAtomicity</a></i><i>]</i>
+    <i><a href="#CompoundType">CompoundType</a></i> <i>[</i><i><a href="#TypeConstancy">TypeConstancy</a></i><i>]</i> <i>[</i><i><a href="#TypeVolatility">TypeVolatility</a></i><i>]</i> <i>[</i><i><a href="#ValueInitialization">ValueInitialization</a></i><i>]</i> <b>&</b> <i>[</i><i><a href="#ReferenceAliasability">ReferenceAliasability</a></i><i>]</i> <i>[</i><i><a href="#TypeAtomicity">TypeAtomicity</a></i><i>]</i>
+    <i><a href="#PointerType">PointerType</a></i> <i>[</i><i><a href="#TypeConstancy">TypeConstancy</a></i><i>]</i> <i>[</i><i><a href="#TypeVolatility">TypeVolatility</a></i><i>]</i> <i>[</i><i><a href="#ValueInitialization">ValueInitialization</a></i><i>]</i> <b>&</b> <i>[</i><i><a href="#ReferenceAliasability">ReferenceAliasability</a></i><i>]</i> <i>[</i><i><a href="#TypeAtomicity">TypeAtomicity</a></i><i>]</i>
+    <b>(</b> <i><a href="#FunctionType">FunctionType</a></i> <b>)</b> <i>[</i><i><a href="#TypeConstancy">TypeConstancy</a></i><i>]</i> <i>[</i><i><a href="#TypeVolatility">TypeVolatility</a></i><i>]</i> <i>[</i><i><a href="#ValueInitialization">ValueInitialization</a></i><i>]</i> <b>&</b> <i>[</i><i><a href="#ReferenceAliasability">ReferenceAliasability</a></i><i>]</i> <i>[</i><i><a href="#TypeAtomicity">TypeAtomicity</a></i><i>]</i>
 </pre>
 
 <pre>
@@ -266,6 +255,26 @@ CompilationUnit:
 </pre>
 
 <pre>
+<a name="TypeConstancy">TypeConstancy</a>:
+    <b>const</b>
+</pre>
+
+<pre>
+<a name="TypeVolatility">TypeVolatility</a>:
+    <b>volatile</b>
+</pre>
+
+<pre>
+<a name="ValueInitialization">ValueInitialization</a>:
+    <b>init</b>
+</pre>
+
+<pre>
+<a name="ReferenceAliasability">ReferenceAliasability</a>:
+    <b>aliased</b>
+</pre>
+
+<pre>
 <a name="ArgumentTypes">ArgumentTypes</a>:
     <i><a href="#FixedArgumentTypes">FixedArgumentTypes</a></i> <i>[</i><b>,</b> <i><a href="#VariadicArgumentType">VariadicArgumentType</a></i><i>]</i>
     <i><a href="#VariadicArgumentType">VariadicArgumentType</a></i>
@@ -275,12 +284,7 @@ CompilationUnit:
 <a name="Return">Return</a>:
     <b>noreturn</b>
     <b>void</b>
-    <i><a href="#PrimitiveType">PrimitiveType</a></i>
-    <i><a href="#TypeName">TypeName</a></i>
-    <i><a href="#FunctionType">FunctionType</a></i>
-    <b>(</b> <b>noreturn</b> <b>)</b>
-    <b>(</b> <b>void</b> <b>)</b>
-    <b>(</b> <i><a href="#Type">Type</a></i> <b>)</b>
+    <i><a href="#Type">Type</a></i>
 </pre>
 
 <pre>
