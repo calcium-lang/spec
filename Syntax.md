@@ -107,6 +107,11 @@ CompilationUnit:
 </pre>
 
 <pre>
+<a name="TypeName">TypeName</a>:
+    <i>Identifier</i> <i>{</i><b>.</b> <i>Identifier</i><i>}</i>
+</pre>
+
+<pre>
 <a name="UnionTypes">UnionTypes</a>:
     <i><a href="#UnionType">UnionType</a></i> <i>{</i><b>,</b> <i><a href="#UnionType">UnionType</a></i><i>}</i>
 </pre>
@@ -191,11 +196,6 @@ CompilationUnit:
 <pre>
 <a name="TypeAtomicity">TypeAtomicity</a>:
     <b>atomic</b>
-</pre>
-
-<pre>
-<a name="TypeName">TypeName</a>:
-    <i>Identifier</i> <i>{</i><b>.</b> <i>Identifier</i><i>}</i>
 </pre>
 
 <pre>
