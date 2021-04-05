@@ -74,17 +74,17 @@ CompilationUnit:
 
 <pre>
 <a name="EnumDeclaration">EnumDeclaration</a>:
-    <b>enum</b> <i>Identifier</i> <b>:</b> <i><a href="#Type">Type</a></i> <b>{</b> <i><a href="#EnumConstants">EnumConstants</a></i> <i>[</i><i><a href="#EnumElements">EnumElements</a></i><i>]</i> <b>}</b>
+    <b>enum</b> <i>Identifier</i> <b>:</b> <i><a href="#Type">Type</a></i> <b>{</b> <i><a href="#EnumConstants">EnumConstants</a></i> <i>[</i><i><a href="#EnumMembers">EnumMembers</a></i><i>]</i> <b>}</b>
 </pre>
 
 <pre>
 <a name="UnionDeclaration">UnionDeclaration</a>:
-    <b>union</b> <i>Identifier</i> <b>{</b> <i><a href="#UnionTypes">UnionTypes</a></i> <i>[</i><i><a href="#UnionElements">UnionElements</a></i><i>]</i> <b>}</b>
+    <b>union</b> <i>Identifier</i> <b>{</b> <i><a href="#UnionTypes">UnionTypes</a></i> <i>[</i><i><a href="#UnionMembers">UnionMembers</a></i><i>]</i> <b>}</b>
 </pre>
 
 <pre>
 <a name="StructDeclaration">StructDeclaration</a>:
-    <i>[</i><i><a href="#StructOpenness">StructOpenness</a></i><i>]</i> <i>[</i><i><a href="#StructLayout">StructLayout</a></i><i>]</i> <b>struct</b> <i>Identifier</i> <i>[</i><b>:</b> <i><a href="#Type">Type</a></i><i>]</i> <b>{</b> <i>[</i><i><a href="#StructElements">StructElements</a></i><i>]</i> <b>}</b>
+    <i>[</i><i><a href="#StructOpenness">StructOpenness</a></i><i>]</i> <i>[</i><i><a href="#StructLayout">StructLayout</a></i><i>]</i> <b>struct</b> <i>Identifier</i> <i>[</i><b>:</b> <i><a href="#Type">Type</a></i><i>]</i> <b>{</b> <i>[</i><i><a href="#StructMembers">StructMembers</a></i><i>]</i> <b>}</b>
 </pre>
 
 ---
@@ -102,8 +102,8 @@ CompilationUnit:
 </pre>
 
 <pre>
-<a name="EnumElements">EnumElements</a>:
-    <b>;</b> <i><a href="#StructElements">StructElements</a></i>
+<a name="EnumMembers">EnumMembers</a>:
+    <b>;</b> <i><a href="#StructMembers">StructMembers</a></i>
 </pre>
 
 <pre>
@@ -112,8 +112,8 @@ CompilationUnit:
 </pre>
 
 <pre>
-<a name="UnionElements">UnionElements</a>:
-    <b>;</b> <i><a href="#StructElements">StructElements</a></i>
+<a name="UnionMembers">UnionMembers</a>:
+    <b>;</b> <i><a href="#StructMembers">StructMembers</a></i>
 </pre>
 
 <pre>
@@ -128,8 +128,8 @@ CompilationUnit:
 </pre>
 
 <pre>
-<a name="StructElements">StructElements</a>:
-    <i><a href="#StructElement">StructElement</a></i> <i>{</i><i><a href="#StructElement">StructElement</a></i><i>}</i>
+<a name="StructMembers">StructMembers</a>:
+    <i><a href="#StructMember">StructMember</a></i> <i>{</i><i><a href="#StructMember">StructMember</a></i><i>}</i>
 </pre>
 
 ---
@@ -170,13 +170,13 @@ CompilationUnit:
 </pre>
 
 <pre>
-<a name="StructElement">StructElement</a>:
-    <i>[</i><i><a href="#ElementAccessibility">ElementAccessibility</a></i><i>]</i> <i><a href="#FieldDeclaration">FieldDeclaration</a></i>
-    <i>[</i><i><a href="#ElementAccessibility">ElementAccessibility</a></i><i>]</i> <i><a href="#MethodDeclaration">MethodDeclaration</a></i>
-    <i>[</i><i><a href="#ElementAccessibility">ElementAccessibility</a></i><i>]</i> <i><a href="#AliasDeclaration">AliasDeclaration</a></i> <b>;</b>
-    <i>[</i><i><a href="#ElementAccessibility">ElementAccessibility</a></i><i>]</i> <i><a href="#EnumDeclaration">EnumDeclaration</a></i>
-    <i>[</i><i><a href="#ElementAccessibility">ElementAccessibility</a></i><i>]</i> <i><a href="#UnionDeclaration">UnionDeclaration</a></i>
-    <i>[</i><i><a href="#ElementAccessibility">ElementAccessibility</a></i><i>]</i> <i><a href="#StructDeclaration">StructDeclaration</a></i>
+<a name="StructMember">StructMember</a>:
+    <i>[</i><i><a href="#MemberAccessibility">MemberAccessibility</a></i><i>]</i> <i><a href="#FieldDeclaration">FieldDeclaration</a></i>
+    <i>[</i><i><a href="#MemberAccessibility">MemberAccessibility</a></i><i>]</i> <i><a href="#MethodDeclaration">MethodDeclaration</a></i>
+    <i>[</i><i><a href="#MemberAccessibility">MemberAccessibility</a></i><i>]</i> <i><a href="#AliasDeclaration">AliasDeclaration</a></i> <b>;</b>
+    <i>[</i><i><a href="#MemberAccessibility">MemberAccessibility</a></i><i>]</i> <i><a href="#EnumDeclaration">EnumDeclaration</a></i>
+    <i>[</i><i><a href="#MemberAccessibility">MemberAccessibility</a></i><i>]</i> <i><a href="#UnionDeclaration">UnionDeclaration</a></i>
+    <i>[</i><i><a href="#MemberAccessibility">MemberAccessibility</a></i><i>]</i> <i><a href="#StructDeclaration">StructDeclaration</a></i>
 </pre>
 
 ---
@@ -208,10 +208,10 @@ CompilationUnit:
 <pre>
 <a name="PointerType">PointerType</a>:
     <b>unsafe</b> <b>void</b> <b>&</b> <i>[</i><i><a href="#TypeAtomicity">TypeAtomicity</a></i><i>]</i>
-    <i><a href="#PrimitiveType">PrimitiveType</a></i> <i>[</i><i><a href="#TypeConstancy">TypeConstancy</a></i><i>]</i> <i>[</i><i><a href="#TypeVolatility">TypeVolatility</a></i><i>]</i> <i>[</i><i><a href="#ValueInitialization">ValueInitialization</a></i><i>]</i> <b>&</b> <i>[</i><i><a href="#ReferenceAliasability">ReferenceAliasability</a></i><i>]</i> <i>[</i><i><a href="#TypeAtomicity">TypeAtomicity</a></i><i>]</i>
-    <i><a href="#CompoundType">CompoundType</a></i> <i>[</i><i><a href="#TypeConstancy">TypeConstancy</a></i><i>]</i> <i>[</i><i><a href="#TypeVolatility">TypeVolatility</a></i><i>]</i> <i>[</i><i><a href="#ValueInitialization">ValueInitialization</a></i><i>]</i> <b>&</b> <i>[</i><i><a href="#ReferenceAliasability">ReferenceAliasability</a></i><i>]</i> <i>[</i><i><a href="#TypeAtomicity">TypeAtomicity</a></i><i>]</i>
-    <i><a href="#PointerType">PointerType</a></i> <i>[</i><i><a href="#TypeConstancy">TypeConstancy</a></i><i>]</i> <i>[</i><i><a href="#TypeVolatility">TypeVolatility</a></i><i>]</i> <i>[</i><i><a href="#ValueInitialization">ValueInitialization</a></i><i>]</i> <b>&</b> <i>[</i><i><a href="#ReferenceAliasability">ReferenceAliasability</a></i><i>]</i> <i>[</i><i><a href="#TypeAtomicity">TypeAtomicity</a></i><i>]</i>
-    <b>(</b> <i><a href="#FunctionType">FunctionType</a></i> <b>)</b> <i>[</i><i><a href="#TypeConstancy">TypeConstancy</a></i><i>]</i> <i>[</i><i><a href="#TypeVolatility">TypeVolatility</a></i><i>]</i> <i>[</i><i><a href="#ValueInitialization">ValueInitialization</a></i><i>]</i> <b>&</b> <i>[</i><i><a href="#ReferenceAliasability">ReferenceAliasability</a></i><i>]</i> <i>[</i><i><a href="#TypeAtomicity">TypeAtomicity</a></i><i>]</i>
+    <i><a href="#PrimitiveType">PrimitiveType</a></i> <i><a href="#PointerSuffix">PointerSuffix</a></i>
+    <i><a href="#CompoundType">CompoundType</a></i> <i><a href="#PointerSuffix">PointerSuffix</a></i>
+    <i>PointerType</i> <i><a href="#PointerSuffix">PointerSuffix</a></i>
+    <b>(</b> <i><a href="#FunctionType">FunctionType</a></i> <b>)</b> <i><a href="#PointerSuffix">PointerSuffix</a></i>
 </pre>
 
 <pre>
@@ -220,19 +220,19 @@ CompilationUnit:
 </pre>
 
 <pre>
-<a name="ElementAccessibility">ElementAccessibility</a>:
+<a name="MemberAccessibility">MemberAccessibility</a>:
     <i>(one of)</i>
     <b>public</b> <b>protected</b> <b>private</b>
 </pre>
 
 <pre>
 <a name="FieldDeclaration">FieldDeclaration</a>:
-    <i>[</i><i><a href="#ElementStaticity">ElementStaticity</a></i><i>]</i> <i><a href="#FieldConstancy">FieldConstancy</a></i> <i>[</i><i><a href="#FieldVolatility">FieldVolatility</a></i><i>]</i> <i>Identifier</i> <b>:</b> <i><a href="#Type">Type</a></i> <i>[</i><b>=</b> <i>ConstantExpression</i><i>]</i> <b>;</b>
+    <i>[</i><i><a href="#MemberStaticity">MemberStaticity</a></i><i>]</i> <i><a href="#FieldConstancy">FieldConstancy</a></i> <i>[</i><i><a href="#ValueVolatility">ValueVolatility</a></i><i>]</i> <i>Identifier</i> <b>:</b> <i><a href="#Type">Type</a></i> <i>[</i><b>=</b> <i>ConstantExpression</i><i>]</i> <b>;</b>
 </pre>
 
 <pre>
 <a name="MethodDeclaration">MethodDeclaration</a>:
-    <i>[</i><i><a href="#ElementStaticity">ElementStaticity</a></i><i>]</i> <b>func</b> <i>Identifier</i> <b>(</b> <i>[</i><i><a href="#Arguments">Arguments</a></i><i>]</i> <b>)</b> <b>-></b> <i><a href="#Return">Return</a></i> <i><a href="#Block">Block</a></i>
+    <i>[</i><i><a href="#MemberStaticity">MemberStaticity</a></i><i>]</i> <b>func</b> <i>Identifier</i> <b>(</b> <i>[</i><i><a href="#Arguments">Arguments</a></i><i>]</i> <b>)</b> <b>-></b> <i><a href="#Return">Return</a></i> <i><a href="#Block">Block</a></i>
 </pre>
 
 ---
@@ -255,23 +255,8 @@ CompilationUnit:
 </pre>
 
 <pre>
-<a name="TypeConstancy">TypeConstancy</a>:
-    <b>const</b>
-</pre>
-
-<pre>
-<a name="TypeVolatility">TypeVolatility</a>:
-    <b>volatile</b>
-</pre>
-
-<pre>
-<a name="ValueInitialization">ValueInitialization</a>:
-    <b>init</b>
-</pre>
-
-<pre>
-<a name="ReferenceAliasability">ReferenceAliasability</a>:
-    <b>aliased</b>
+<a name="PointerSuffix">PointerSuffix</a>:
+    <i>[</i><i><a href="#ValueConstancy">ValueConstancy</a></i><i>]</i> <i>[</i><i><a href="#ValueVolatility">ValueVolatility</a></i><i>]</i> <i>[</i><i><a href="#ValueInitialization">ValueInitialization</a></i><i>]</i> <b>&</b> <i>[</i><i><a href="#ReferenceAliasability">ReferenceAliasability</a></i><i>]</i> <i>[</i><i><a href="#TypeAtomicity">TypeAtomicity</a></i><i>]</i>
 </pre>
 
 <pre>
@@ -288,7 +273,7 @@ CompilationUnit:
 </pre>
 
 <pre>
-<a name="ElementStaticity">ElementStaticity</a>:
+<a name="MemberStaticity">MemberStaticity</a>:
     <b>static</b>
 </pre>
 
@@ -299,7 +284,7 @@ CompilationUnit:
 </pre>
 
 <pre>
-<a name="FieldVolatility">FieldVolatility</a>:
+<a name="ValueVolatility">ValueVolatility</a>:
     <b>volatile</b>
 </pre>
 
@@ -318,6 +303,21 @@ CompilationUnit:
 ---
 
 <pre>
+<a name="ValueConstancy">ValueConstancy</a>:
+    <b>const</b>
+</pre>
+
+<pre>
+<a name="ValueInitialization">ValueInitialization</a>:
+    <b>init</b>
+</pre>
+
+<pre>
+<a name="ReferenceAliasability">ReferenceAliasability</a>:
+    <b>aliased</b>
+</pre>
+
+<pre>
 <a name="FixedArgumentTypes">FixedArgumentTypes</a>:
     <i><a href="#FixedArgumentType">FixedArgumentType</a></i> <i>{</i><b>,</b> <i><a href="#FixedArgumentType">FixedArgumentType</a></i><i>}</i>
 </pre>
@@ -329,7 +329,7 @@ CompilationUnit:
 
 <pre>
 <a name="ThisArgument">ThisArgument</a>:
-    <b>this</b> <b>:</b> <i><a href="#TypeConstancy">TypeConstancy</a></i> <i>[</i><i><a href="#ValueInitialization">ValueInitialization</a></i><i>]</i> <i>[</i><b>&</b> <i><a href="#ReferenceAliasability">ReferenceAliasability</a></i><i>]</i>
+    <b>this</b> <b>:</b> <i><a href="#ValueConstancy">ValueConstancy</a></i> <i>[</i><i><a href="#ValueInitialization">ValueInitialization</a></i><i>]</i> <i>[</i><b>&</b> <i><a href="#ReferenceAliasability">ReferenceAliasability</a></i><i>]</i>
     <b>this</b> <b>:</b> <i><a href="#ValueInitialization">ValueInitialization</a></i> <i>[</i><b>&</b> <i><a href="#ReferenceAliasability">ReferenceAliasability</a></i><i>]</i>
     <b>this</b> <b>:</b> <b>&</b> <i><a href="#ReferenceAliasability">ReferenceAliasability</a></i>
 </pre>
