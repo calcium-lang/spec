@@ -53,8 +53,7 @@ CompilationUnit:
 
 <pre>
 <a name="ImportList">ImportList</a>:
-    <i>Identifier</i> <i>[</i><b>as</b> <i>Identifier</i><i>]</i>
-    <i>ImportList</i> <b>,</b> <i>Identifier</i> <i>[</i><b>as</b> <i>Identifier</i><i>]</i>
+    <i>Identifier</i> <i>[</i><b>as</b> <i>Identifier</i><i>]</i> <i>{</i><b>,</b> <i>Identifier</i> <i>[</i><b>as</b> <i>Identifier</i><i>]</i><i>}</i>
 </pre>
 
 <pre>
@@ -91,9 +90,11 @@ CompilationUnit:
 
 <pre>
 <a name="Type">Type</a>:
-    <i><a href="#PrimitiveType">PrimitiveType</a></i>
-    <i><a href="#CompoundType">CompoundType</a></i>
-    <i><a href="#ReferenceType">ReferenceType</a></i>
+    <i><a href="#PrimitiveType">PrimitiveType</a></i> <i>[</i><i><a href="#PointerOrArraySuffix">PointerOrArraySuffix</a></i><i>]</i>
+    <i><a href="#TypeName">TypeName</a></i> <i>[</i><i><a href="#PointerOrArraySuffix">PointerOrArraySuffix</a></i><i>]</i>
+    <i><a href="#VoidPointer">VoidPointer</a></i> <i>[</i><i><a href="#PointerOrArraySuffix">PointerOrArraySuffix</a></i><i>]</i>
+    <i><a href="#FunctionType">FunctionType</a></i>
+    <b>(</b> <i><a href="#FunctionType">FunctionType</a></i> <b>)</b> <i><a href="#PointerOrArraySuffix">PointerOrArraySuffix</a></i>
 </pre>
 
 <pre>
@@ -145,15 +146,24 @@ CompilationUnit:
 </pre>
 
 <pre>
-<a name="CompoundType">CompoundType</a>:
-    <i><a href="#TypeName">TypeName</a></i>
-    <i><a href="#ArrayType">ArrayType</a></i>
+<a name="PointerOrArraySuffix">PointerOrArraySuffix</a>:
+    <i><a href="#PointerSuffix">PointerSuffix</a></i> <i>[</i><i>PointerOrArraySuffix</i><i>]</i>
+    <i><a href="#Dims">Dims</a></i> <i>[</i><i><a href="#PointerSuffix">PointerSuffix</a></i> <i>[</i><i>PointerOrArraySuffix</i><i>]</i><i>]</i>
 </pre>
 
 <pre>
-<a name="ReferenceType">ReferenceType</a>:
-    <i><a href="#PointerType">PointerType</a></i>
-    <i><a href="#FunctionType">FunctionType</a></i>
+<a name="TypeName">TypeName</a>:
+    <i>Identifier</i> <i>{</i><b>.</b> <i>Identifier</i><i>}</i>
+</pre>
+
+<pre>
+<a name="VoidPointer">VoidPointer</a>:
+    <b>unsafe</b> <b>void</b> <b>&</b> <i>[</i><i><a href="#TypeAtomicity">TypeAtomicity</a></i><i>]</i>
+</pre>
+
+<pre>
+<a name="FunctionType">FunctionType</a>:
+    <b>(</b> <i>[</i><i><a href="#ArgumentTypes">ArgumentTypes</a></i><i>]</i> <b>)</b> <b>-></b> <i><a href="#Return">Return</a></i>
 </pre>
 
 <pre>
@@ -193,30 +203,26 @@ CompilationUnit:
 </pre>
 
 <pre>
-<a name="TypeName">TypeName</a>:
-    <i>Identifier</i> <i>{</i><b>.</b> <i>Identifier</i><i>}</i>
+<a name="PointerSuffix">PointerSuffix</a>:
+    <i>[</i><i><a href="#ValueConstancy">ValueConstancy</a></i><i>]</i> <i>[</i><i><a href="#ValueVolatility">ValueVolatility</a></i><i>]</i> <i>[</i><i><a href="#ValueInitialization">ValueInitialization</a></i><i>]</i> <b>&</b> <i>[</i><i><a href="#ReferenceAliasability">ReferenceAliasability</a></i><i>]</i> <i>[</i><i><a href="#TypeAtomicity">TypeAtomicity</a></i><i>]</i>
 </pre>
 
 <pre>
-<a name="ArrayType">ArrayType</a>:
-    <i><a href="#PrimitiveType">PrimitiveType</a></i> <i><a href="#Dims">Dims</a></i>
-    <i><a href="#TypeName">TypeName</a></i> <i><a href="#Dims">Dims</a></i>
-    <i><a href="#PointerType">PointerType</a></i> <i><a href="#Dims">Dims</a></i>
-    <b>(</b> <i><a href="#FunctionType">FunctionType</a></i> <b>)</b> <i><a href="#Dims">Dims</a></i>
+<a name="Dims">Dims</a>:
+    <b>[</b> <i>[</i><i>ConstantExpression</i><i>]</i> <b>]</b> <i>{</i><b>[</b> <i>ConstantExpression</i> <b>]</b><i>}</i>
 </pre>
 
 <pre>
-<a name="PointerType">PointerType</a>:
-    <b>unsafe</b> <b>void</b> <b>&</b> <i>[</i><i><a href="#TypeAtomicity">TypeAtomicity</a></i><i>]</i>
-    <i><a href="#PrimitiveType">PrimitiveType</a></i> <i><a href="#PointerSuffix">PointerSuffix</a></i>
-    <i><a href="#CompoundType">CompoundType</a></i> <i><a href="#PointerSuffix">PointerSuffix</a></i>
-    <i>PointerType</i> <i><a href="#PointerSuffix">PointerSuffix</a></i>
-    <b>(</b> <i><a href="#FunctionType">FunctionType</a></i> <b>)</b> <i><a href="#PointerSuffix">PointerSuffix</a></i>
+<a name="ArgumentTypes">ArgumentTypes</a>:
+    <i><a href="#FixedArgumentTypes">FixedArgumentTypes</a></i> <i>[</i><b>,</b> <i><a href="#VariadicArgumentType">VariadicArgumentType</a></i><i>]</i>
+    <i><a href="#VariadicArgumentType">VariadicArgumentType</a></i>
 </pre>
 
 <pre>
-<a name="FunctionType">FunctionType</a>:
-    <b>(</b> <i>[</i><i><a href="#ArgumentTypes">ArgumentTypes</a></i><i>]</i> <b>)</b> <b>-></b> <i><a href="#Return">Return</a></i>
+<a name="Return">Return</a>:
+    <b>noreturn</b>
+    <b>void</b>
+    <i><a href="#Type">Type</a></i>
 </pre>
 
 <pre>
@@ -250,61 +256,13 @@ CompilationUnit:
 </pre>
 
 <pre>
-<a name="Dims">Dims</a>:
-    <b>[</b> <i>[</i><i>ConstantExpression</i><i>]</i> <b>]</b> <i>{</i><b>[</b> <i>ConstantExpression</i> <b>]</b><i>}</i>
-</pre>
-
-<pre>
-<a name="PointerSuffix">PointerSuffix</a>:
-    <i>[</i><i><a href="#ValueConstancy">ValueConstancy</a></i><i>]</i> <i>[</i><i><a href="#ValueVolatility">ValueVolatility</a></i><i>]</i> <i>[</i><i><a href="#ValueInitialization">ValueInitialization</a></i><i>]</i> <b>&</b> <i>[</i><i><a href="#ReferenceAliasability">ReferenceAliasability</a></i><i>]</i> <i>[</i><i><a href="#TypeAtomicity">TypeAtomicity</a></i><i>]</i>
-</pre>
-
-<pre>
-<a name="ArgumentTypes">ArgumentTypes</a>:
-    <i><a href="#FixedArgumentTypes">FixedArgumentTypes</a></i> <i>[</i><b>,</b> <i><a href="#VariadicArgumentType">VariadicArgumentType</a></i><i>]</i>
-    <i><a href="#VariadicArgumentType">VariadicArgumentType</a></i>
-</pre>
-
-<pre>
-<a name="Return">Return</a>:
-    <b>noreturn</b>
-    <b>void</b>
-    <i><a href="#Type">Type</a></i>
-</pre>
-
-<pre>
-<a name="MemberStaticity">MemberStaticity</a>:
-    <b>static</b>
-</pre>
-
-<pre>
-<a name="FieldConstancy">FieldConstancy</a>:
-    <i>(one of)</i>
-    <b>var</b> <b>const</b>
+<a name="ValueConstancy">ValueConstancy</a>:
+    <b>const</b>
 </pre>
 
 <pre>
 <a name="ValueVolatility">ValueVolatility</a>:
     <b>volatile</b>
-</pre>
-
-<pre>
-<a name="Arguments">Arguments</a>:
-    <i><a href="#ThisArgument">ThisArgument</a></i> <i>[</i><b>,</b> <i><a href="#FixedArguments">FixedArguments</a></i><i>]</i> <i>[</i><b>,</b> <i><a href="#VariadicArgument">VariadicArgument</a></i><i>]</i>
-    <i><a href="#FixedArguments">FixedArguments</a></i> <i>[</i><b>,</b> <i><a href="#VariadicArgument">VariadicArgument</a></i><i>]</i>
-    <i><a href="#VariadicArgument">VariadicArgument</a></i>
-</pre>
-
-<pre>
-<a name="Block">Block</a>:
-    <b>{</b> <i>{</i><i>Statement</i><i>}</i> <b>}</b>
-</pre>
-
----
-
-<pre>
-<a name="ValueConstancy">ValueConstancy</a>:
-    <b>const</b>
 </pre>
 
 <pre>
@@ -328,6 +286,36 @@ CompilationUnit:
 </pre>
 
 <pre>
+<a name="MemberStaticity">MemberStaticity</a>:
+    <b>static</b>
+</pre>
+
+<pre>
+<a name="FieldConstancy">FieldConstancy</a>:
+    <i>(one of)</i>
+    <b>var</b> <b>const</b>
+</pre>
+
+<pre>
+<a name="Arguments">Arguments</a>:
+    <i><a href="#ThisArgument">ThisArgument</a></i> <i>[</i><b>,</b> <i><a href="#FixedArguments">FixedArguments</a></i><i>]</i> <i>[</i><b>,</b> <i><a href="#VariadicArgument">VariadicArgument</a></i><i>]</i>
+    <i><a href="#FixedArguments">FixedArguments</a></i> <i>[</i><b>,</b> <i><a href="#VariadicArgument">VariadicArgument</a></i><i>]</i>
+    <i><a href="#VariadicArgument">VariadicArgument</a></i>
+</pre>
+
+<pre>
+<a name="Block">Block</a>:
+    <b>{</b> <i>{</i><i>Statement</i><i>}</i> <b>}</b>
+</pre>
+
+---
+
+<pre>
+<a name="FixedArgumentType">FixedArgumentType</a>:
+    <b>:</b> <i><a href="#Type">Type</a></i>
+</pre>
+
+<pre>
 <a name="ThisArgument">ThisArgument</a>:
     <b>this</b> <b>:</b> <i><a href="#ValueConstancy">ValueConstancy</a></i> <i>[</i><i><a href="#ValueInitialization">ValueInitialization</a></i><i>]</i> <i>[</i><b>&</b> <i><a href="#ReferenceAliasability">ReferenceAliasability</a></i><i>]</i>
     <b>this</b> <b>:</b> <i><a href="#ValueInitialization">ValueInitialization</a></i> <i>[</i><b>&</b> <i><a href="#ReferenceAliasability">ReferenceAliasability</a></i><i>]</i>
@@ -345,11 +333,6 @@ CompilationUnit:
 </pre>
 
 ---
-
-<pre>
-<a name="FixedArgumentType">FixedArgumentType</a>:
-    <b>:</b> <i><a href="#Type">Type</a></i>
-</pre>
 
 <pre>
 <a name="FixedArgument">FixedArgument</a>:
