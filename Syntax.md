@@ -38,7 +38,7 @@ CompilationUnit:
 
 <pre>
 <a id="TypeDeclaration">TypeDeclaration</a>:
-    <i>[</i><i><a href="#TypeAccessibility">TypeAccessibility</a></i><i>]</i> <i><a href="#AliasDeclaration">AliasDeclaration</a></i> <b>;</b>
+    <i>[</i><i><a href="#TypeAccessibility">TypeAccessibility</a></i><i>]</i> <i><a href="#TypedefDeclaration">TypedefDeclaration</a></i> <b>;</b>
     <i>[</i><i><a href="#TypeAccessibility">TypeAccessibility</a></i><i>]</i> <i><a href="#EnumDeclaration">EnumDeclaration</a></i>
     <i>[</i><i><a href="#TypeAccessibility">TypeAccessibility</a></i><i>]</i> <i><a href="#UnionDeclaration">UnionDeclaration</a></i>
     <i>[</i><i><a href="#TypeAccessibility">TypeAccessibility</a></i><i>]</i> <i><a href="#StructDeclaration">StructDeclaration</a></i>
@@ -67,8 +67,8 @@ CompilationUnit:
 </pre>
 
 <pre>
-<a id="AliasDeclaration">AliasDeclaration</a>:
-    <b>alias</b> <i>Identifier</i> <b>:</b> <i><a href="#Type">Type</a></i>
+<a id="TypedefDeclaration">TypedefDeclaration</a>:
+    <b>typedef</b> <i>Identifier</i> <b>:</b> <i><a href="#Type">Type</a></i>
 </pre>
 
 <pre>
@@ -173,7 +173,7 @@ CompilationUnit:
 
 <pre>
 <a id="UnionType">UnionType</a>:
-    <i><a href="#AliasDeclaration">AliasDeclaration</a></i>
+    <i><a href="#TypedefDeclaration">TypedefDeclaration</a></i>
     <i><a href="#EnumDeclaration">EnumDeclaration</a></i>
     <i><a href="#UnionDeclaration">UnionDeclaration</a></i>
     <i><a href="#StructDeclaration">StructDeclaration</a></i>
@@ -183,7 +183,7 @@ CompilationUnit:
 <a id="StructMember">StructMember</a>:
     <i>[</i><i><a href="#MemberAccessibility">MemberAccessibility</a></i><i>]</i> <i><a href="#FieldDeclaration">FieldDeclaration</a></i>
     <i>[</i><i><a href="#MemberAccessibility">MemberAccessibility</a></i><i>]</i> <i><a href="#MethodDeclaration">MethodDeclaration</a></i>
-    <i>[</i><i><a href="#MemberAccessibility">MemberAccessibility</a></i><i>]</i> <i><a href="#AliasDeclaration">AliasDeclaration</a></i> <b>;</b>
+    <i>[</i><i><a href="#MemberAccessibility">MemberAccessibility</a></i><i>]</i> <i><a href="#TypedefDeclaration">TypedefDeclaration</a></i> <b>;</b>
     <i>[</i><i><a href="#MemberAccessibility">MemberAccessibility</a></i><i>]</i> <i><a href="#EnumDeclaration">EnumDeclaration</a></i>
     <i>[</i><i><a href="#MemberAccessibility">MemberAccessibility</a></i><i>]</i> <i><a href="#UnionDeclaration">UnionDeclaration</a></i>
     <i>[</i><i><a href="#MemberAccessibility">MemberAccessibility</a></i><i>]</i> <i><a href="#StructDeclaration">StructDeclaration</a></i>
@@ -204,7 +204,7 @@ CompilationUnit:
 
 <pre>
 <a id="PointerSuffix">PointerSuffix</a>:
-    <i>[</i><i><a href="#ValueConstancy">ValueConstancy</a></i><i>]</i> <i>[</i><i><a href="#ValueVolatility">ValueVolatility</a></i><i>]</i> <i>[</i><i><a href="#ValueInitialization">ValueInitialization</a></i><i>]</i> <b>&</b> <i>[</i><i><a href="#ReferenceAliasability">ReferenceAliasability</a></i><i>]</i> <i>[</i><i><a href="#TypeAtomicity">TypeAtomicity</a></i><i>]</i>
+    <i>[</i><i><a href="#ValueMutability">ValueMutability</a></i><i>]</i> <i>[</i><i><a href="#ValueVolatility">ValueVolatility</a></i><i>]</i> <b>&</b> <i>[</i><i><a href="#ReferenceAliasability">ReferenceAliasability</a></i><i>]</i> <i>[</i><i><a href="#TypeAtomicity">TypeAtomicity</a></i><i>]</i>
 </pre>
 
 <pre>
@@ -233,7 +233,7 @@ CompilationUnit:
 
 <pre>
 <a id="FieldDeclaration">FieldDeclaration</a>:
-    <i>[</i><i><a href="#MemberStaticity">MemberStaticity</a></i><i>]</i> <i><a href="#FieldConstancy">FieldConstancy</a></i> <i>[</i><i><a href="#ValueVolatility">ValueVolatility</a></i><i>]</i> <i>Identifier</i> <b>:</b> <i><a href="#Type">Type</a></i> <i>[</i><b>=</b> <i>ConstantExpression</i><i>]</i> <b>;</b>
+    <i>[</i><i><a href="#MemberStaticity">MemberStaticity</a></i><i>]</i> <i><a href="#FieldMutability">FieldMutability</a></i> <i>[</i><i><a href="#ValueVolatility">ValueVolatility</a></i><i>]</i> <i>Identifier</i> <b>:</b> <i><a href="#Type">Type</a></i> <i>[</i><b>=</b> <i>ConstantExpression</i><i>]</i> <b>;</b>
 </pre>
 
 <pre>
@@ -256,18 +256,13 @@ CompilationUnit:
 </pre>
 
 <pre>
-<a id="ValueConstancy">ValueConstancy</a>:
-    <b>const</b>
+<a id="ValueMutability">ValueMutability</a>:
+    <b>mut</b>
 </pre>
 
 <pre>
 <a id="ValueVolatility">ValueVolatility</a>:
     <b>volatile</b>
-</pre>
-
-<pre>
-<a id="ValueInitialization">ValueInitialization</a>:
-    <b>init</b>
 </pre>
 
 <pre>
@@ -291,9 +286,9 @@ CompilationUnit:
 </pre>
 
 <pre>
-<a id="FieldConstancy">FieldConstancy</a>:
+<a id="FieldMutability">FieldMutability</a>:
     <i>(one of)</i>
-    <b>var</b> <b>const</b>
+    <b>mut</b> <b>const</b>
 </pre>
 
 <pre>
@@ -317,8 +312,7 @@ CompilationUnit:
 
 <pre>
 <a id="ThisArgument">ThisArgument</a>:
-    <b>this</b> <b>:</b> <i><a href="#ValueConstancy">ValueConstancy</a></i> <i>[</i><i><a href="#ValueInitialization">ValueInitialization</a></i><i>]</i> <i>[</i><b>&</b> <i><a href="#ReferenceAliasability">ReferenceAliasability</a></i><i>]</i>
-    <b>this</b> <b>:</b> <i><a href="#ValueInitialization">ValueInitialization</a></i> <i>[</i><b>&</b> <i><a href="#ReferenceAliasability">ReferenceAliasability</a></i><i>]</i>
+    <b>this</b> <b>:</b> <i><a href="#ValueMutability">ValueMutability</a></i> <i>[</i><b>&</b> <i><a href="#ReferenceAliasability">ReferenceAliasability</a></i><i>]</i>
     <b>this</b> <b>:</b> <b>&</b> <i><a href="#ReferenceAliasability">ReferenceAliasability</a></i>
 </pre>
 
