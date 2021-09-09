@@ -1,5 +1,5 @@
 # Cesium
-A C-like memory- and thread-safe systems programming language with zero-cost object-orientation.
+A C-like memory- and thread-safe systems programming language with near-zero-cost object-orientation.
 
 Its name is after the chemical element Cesium(Cs).
 
