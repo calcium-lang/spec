@@ -236,8 +236,8 @@ CompilationUnit:
 
 <pre>
 <a id="MethodDeclaration">MethodDeclaration</a>:
-    <i>[</i><i><a href="#MethodOpenness">MethodOpenness</a></i><i>]</i> <i>[</i><i><a href="#MethodOverride">MethodOverride</a></i><i>]</i> <b>func</b> <i>Identifier</i> <b>(</b> <i>[</i><i><a href="#Arguments">Arguments</a></i><i>]</i> <b>)</b> <b>-&gt;</b> <i><a href="#Return">Return</a></i> <i><a href="#Block">Block</a></i>
-    <i><a href="#MemberStaticity">MemberStaticity</a></i> <b>func</b> <i>Identifier</i> <b>(</b> <i>[</i><i><a href="#Arguments">Arguments</a></i><i>]</i> <b>)</b> <b>-&gt;</b> <i><a href="#Return">Return</a></i> <i><a href="#Block">Block</a></i>
+    <i>[</i><i><a href="#MethodOpenness">MethodOpenness</a></i><i>]</i> <i>[</i><i><a href="#MethodOverride">MethodOverride</a></i><i>]</i> <b>func</b> <i><a href="#MethodDeclarator">MethodDeclarator</a></i>
+    <i><a href="#MemberStaticity">MemberStaticity</a></i> <b>func</b> <i><a href="#MethodDeclarator">MethodDeclarator</a></i>
 </pre>
 
 ---
@@ -302,6 +302,18 @@ CompilationUnit:
 </pre>
 
 <pre>
+<a id="MethodDeclarator">MethodDeclarator</a>:
+    <i>Identifier</i> <b>(</b> <i>[</i><i><a href="#Arguments">Arguments</a></i><i>]</i> <b>)</b> <b>-&gt;</b> <i><a href="#Return">Return</a></i> <i><a href="#Block">Block</a></i>
+</pre>
+
+---
+
+<pre>
+<a id="FixedArgumentType">FixedArgumentType</a>:
+    <b>:</b> <i><a href="#Type">Type</a></i>
+</pre>
+
+<pre>
 <a id="Arguments">Arguments</a>:
     <i><a href="#ThisArgument">ThisArgument</a></i> <i>[</i><b>,</b> <i><a href="#FixedArguments">FixedArguments</a></i><i>]</i> <i>[</i><b>,</b> <i><a href="#VariadicArgument">VariadicArgument</a></i><i>]</i>
     <i><a href="#FixedArguments">FixedArguments</a></i> <i>[</i><b>,</b> <i><a href="#VariadicArgument">VariadicArgument</a></i><i>]</i>
@@ -315,11 +327,6 @@ CompilationUnit:
 </pre>
 
 ---
-
-<pre>
-<a id="FixedArgumentType">FixedArgumentType</a>:
-    <b>:</b> <i><a href="#Type">Type</a></i>
-</pre>
 
 <pre>
 <a id="ThisArgument">ThisArgument</a>:
