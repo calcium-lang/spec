@@ -119,7 +119,8 @@ CompilationUnit:
 
 <pre>
 <a id="StructOpenness">StructOpenness</a>:
-    <b>open</b>
+    <i>(one of)</i>
+    <b>open</b> <b>abstract</b>
 </pre>
 
 <pre>
@@ -235,7 +236,8 @@ CompilationUnit:
 
 <pre>
 <a id="MethodDeclaration">MethodDeclaration</a>:
-    <i>[</i><i><a href="#MemberStaticity">MemberStaticity</a></i><i>]</i> <i>[</i><i><a href="#MethodOpenness">MethodOpenness</a></i><i>]</i> <i>[</i><i><a href="#MethodOverride">MethodOverride</a></i><i>]</i> <b>func</b> <i>Identifier</i> <b>(</b> <i>[</i><i><a href="#Arguments">Arguments</a></i><i>]</i> <b>)</b> <b>-&gt;</b> <i><a href="#Return">Return</a></i> <i><a href="#Block">Block</a></i>
+    <i>[</i><i><a href="#MethodOpenness">MethodOpenness</a></i><i>]</i> <i>[</i><i><a href="#MethodOverride">MethodOverride</a></i><i>]</i> <b>func</b> <i>Identifier</i> <b>(</b> <i>[</i><i><a href="#Arguments">Arguments</a></i><i>]</i> <b>)</b> <b>-&gt;</b> <i><a href="#Return">Return</a></i> <i><a href="#Block">Block</a></i>
+    <i><a href="#MemberStaticity">MemberStaticity</a></i> <b>func</b> <i>Identifier</i> <b>(</b> <i>[</i><i><a href="#Arguments">Arguments</a></i><i>]</i> <b>)</b> <b>-&gt;</b> <i><a href="#Return">Return</a></i> <i><a href="#Block">Block</a></i>
 </pre>
 
 ---
@@ -290,7 +292,8 @@ CompilationUnit:
 
 <pre>
 <a id="MethodOpenness">MethodOpenness</a>:
-    <b>open</b>
+    <i>(one of)</i>
+    <b>open</b> <b>abstract</b>
 </pre>
 
 <pre>
@@ -308,6 +311,7 @@ CompilationUnit:
 <pre>
 <a id="Block">Block</a>:
     <b>{</b> <i>{</i><i>Statement</i><i>}</i> <b>}</b>
+    <b>;</b>
 </pre>
 
 ---
