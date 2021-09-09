@@ -18,16 +18,18 @@ along with this program.  If not, see &lt;<a href="https://www.gnu.org/licenses/
 
 # Semantics
 ## CompilationUnit
-This is the start symbol of the grammar. It is equivalent to an entire source file. It always has a single type declaration/definition, inside of which all other declarations/definitions are put. This type always belongs to a package, that may or may not be named. The required types from external sources are imported through import declarations, although the types from the same package are always imported automatically.
+This is the start symbol of the grammar. It is equivalent to an entire source file. It always has a single top level type declaration/definition, inside of which all other declarations/definitions are put. This type always belongs to a package, that may or may not be named. The required types from external sources are imported through import declarations, although the top level types from the same package are always imported automatically.
 
 ---
 
 ## PackageDeclaration
-This declaration names the package the declared type belongs to. When ommited, the package is left unnamed. There can be only one unnamed package per project. As it does not have a name, its types cannot be imported by other packages.
+This declaration names the package the declared top level type belongs to. When ommited, the package is left unnamed. There can be only one unnamed package per project. As it does not have a name, its types cannot be imported by other packages.
 
 ## ImportDeclaration
+This declaration imports the types required for the proper function of the declared top level type and its eventual internal types. When a type is imported, it becomes available to the entire compilation unit, being referenced by its simple name (or an alias for it). The types can be explicitly imported, or imported on demand. When the origin of the imported types is ommited, they are assumed from the current package, making it possible to explicitly import them for clarity.
 
 ## TypeDeclaration
+This declaration defines the top level type of the compilation unit. Its name must be the same as the source file's (minus the extension). The type has an accessibility level that will determine its visibility outside of the compilation unit.
 
 ---
 
