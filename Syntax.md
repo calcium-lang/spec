@@ -139,16 +139,13 @@ CompilationUnit:
 <a id="PrimitiveType">PrimitiveType</a>:
     <i><a href="#NumericType">NumericType</a></i> <i>[</i><i><a href="#TypeAtomicity">TypeAtomicity</a></i><i>]</i>
     <b>_bool</b> <i>[</i><i><a href="#TypeAtomicity">TypeAtomicity</a></i><i>]</i>
-    <b>_char1</b> <i>[</i><i><a href="#TypeAtomicity">TypeAtomicity</a></i><i>]</i>
-    <b>_char2</b> <i>[</i><i><a href="#TypeAtomicity">TypeAtomicity</a></i><i>]</i>
-    <b>_char3</b> <i>[</i><i><a href="#TypeAtomicity">TypeAtomicity</a></i><i>]</i>
-    <b>_char4</b> <i>[</i><i><a href="#TypeAtomicity">TypeAtomicity</a></i><i>]</i>
+    <b>_char</b> <i>[</i><i><a href="#TypeAtomicity">TypeAtomicity</a></i><i>]</i>
 </pre>
 
 <pre>
 <a id="PointerOrArraySuffix">PointerOrArraySuffix</a>:
     <i><a href="#PointerSuffix">PointerSuffix</a></i> <i>[</i><i>PointerOrArraySuffix</i><i>]</i>
-    <i><a href="#Dims">Dims</a></i> <i>[</i><i><a href="#PointerSuffix">PointerSuffix</a></i> <i>[</i><i>PointerOrArraySuffix</i><i>]</i><i>]</i>
+    <i><a href="#Dim">Dim</a></i> <i>[</i><i>PointerOrArraySuffix</i><i>]</i>
 </pre>
 
 <pre>
@@ -163,7 +160,7 @@ CompilationUnit:
 
 <pre>
 <a id="FunctionType">FunctionType</a>:
-    <b>(</b> <i>[</i><i><a href="#ArgumentTypes">ArgumentTypes</a></i><i>]</i> <b>)</b> <b>-></b> <i><a href="#Return">Return</a></i>
+    <b>(</b> <i>[</i><i><a href="#ArgumentTypes">ArgumentTypes</a></i><i>]</i> <b>)</b> <b>-&gt;</b> <i><a href="#Return">Return</a></i>
 </pre>
 
 <pre>
@@ -208,8 +205,8 @@ CompilationUnit:
 </pre>
 
 <pre>
-<a id="Dims">Dims</a>:
-    <b>[</b> <i>[</i><i>ConstantExpression</i><i>]</i> <b>]</b> <i>{</i><b>[</b> <i>ConstantExpression</i> <b>]</b><i>}</i>
+<a id="Dim">Dim</a>:
+    <b>[</b> <i>[</i><i>ConstantExpression</i><i>]</i> <b>]</b>
 </pre>
 
 <pre>
@@ -238,7 +235,7 @@ CompilationUnit:
 
 <pre>
 <a id="MethodDeclaration">MethodDeclaration</a>:
-    <i>[</i><i><a href="#MemberStaticity">MemberStaticity</a></i><i>]</i> <b>func</b> <i>Identifier</i> <b>(</b> <i>[</i><i><a href="#Arguments">Arguments</a></i><i>]</i> <b>)</b> <b>-></b> <i><a href="#Return">Return</a></i> <i><a href="#Block">Block</a></i>
+    <i>[</i><i><a href="#MemberStaticity">MemberStaticity</a></i><i>]</i> <b>func</b> <i>Identifier</i> <b>(</b> <i>[</i><i><a href="#Arguments">Arguments</a></i><i>]</i> <b>)</b> <b>-&gt;</b> <i><a href="#Return">Return</a></i> <i><a href="#Block">Block</a></i>
 </pre>
 
 ---
@@ -312,7 +309,7 @@ CompilationUnit:
 
 <pre>
 <a id="ThisArgument">ThisArgument</a>:
-    <b>this</b> <b>:</b> <i><a href="#ValueMutability">ValueMutability</a></i> <i>[</i><b>&</b> <i><a href="#ReferenceAliasability">ReferenceAliasability</a></i><i>]</i>
+    <b>this</b> <i>[</i><b>:</b> <i><a href="#ValueMutability">ValueMutability</a></i> <i>[</i><b>&</b> <i><a href="#ReferenceAliasability">ReferenceAliasability</a></i><i>]</i><i>]</i>
     <b>this</b> <b>:</b> <b>&</b> <i><a href="#ReferenceAliasability">ReferenceAliasability</a></i>
 </pre>
 
