@@ -26,20 +26,28 @@ This is the start symbol of the grammar. It is equivalent to an entire source fi
 This declaration names the package the declared top level type belongs to. When ommited, the package is left unnamed. There can be only one unnamed package per project. As it does not have a name, its types cannot be imported by other packages.
 
 ## ImportDeclaration
-This declaration imports the types required for the proper function of the declared top level type and its eventual internal types. When a type is imported, it becomes available to the entire compilation unit, being referenced by its simple name (or an alias for it). The types can be explicitly imported, or imported on demand. When the origin of the imported types is ommited, they are assumed from the current package, making it possible to explicitly import them for clarity.
+This declaration imports the types required for the proper function of the declared top level type and its eventual internal types. When a type is imported, it becomes available to the entire compilation unit, being referenced by its simple name (or an alias for it). The types can be explicitly imported, or imported on demand.
 
-## TypeDeclaration
-This declaration defines the top level type of the compilation unit. Its name must be the same as the source file's (minus the extension). The type has an accessibility level that will determine its visibility outside of the compilation unit.
+## TopLevelTypeDeclaration
+This declaration defines the top level type of the compilation unit. Its name must be the same as the source file's (minus the extension). The type has an encapsulation level that will determine its visibility outside the compilation unit.
 
 ---
 
 ## PackageName
 
-## ImportList
+## ExplicitImport
+
+## ImportOnDemand
+
+## TopLevelEncapsulation
+
+## TypeDeclaration
+
+---
+
+## ImportNames
 
 ## PackageOrTypeName
-
-## TypeAccessibility
 
 ## TypedefDeclaration
 
@@ -53,19 +61,15 @@ This declaration defines the top level type of the compilation unit. Its name mu
 
 ## Type
 
-## EnumConstants
+## EnumBody
 
-## EnumMembers
+## UnionBody
 
-## UnionTypes
-
-## UnionMembers
-
-## StructOpenness
+## StructExtensibility
 
 ## StructLayout
 
-## StructMembers
+## StructBody
 
 ---
 
@@ -79,11 +83,15 @@ This declaration defines the top level type of the compilation unit. Its name mu
 
 ## FunctionType
 
-## EnumConstant
+## EnumConstants
 
-## UnionType
+## EnumBodyDeclarations
 
-## StructMember
+## UnionTypes
+
+## UnionBodyDeclarations
+
+## StructBodyDeclarations
 
 ---
 
@@ -95,15 +103,15 @@ This declaration defines the top level type of the compilation unit. Its name mu
 
 ## Dim
 
-## ArgumentTypes
+## ParameterTypes
 
-## Return
+## Result
 
-## MemberAccessibility
+## EnumConstant
 
-## FieldDeclaration
+## UnionType
 
-## MethodDeclaration
+## StructBodyDeclaration
 
 ---
 
@@ -117,36 +125,50 @@ This declaration defines the top level type of the compilation unit. Its name mu
 
 ## ReferenceAliasability
 
-## FixedArgumentTypes
+## FixedParameterTypes
 
-## VariadicArgumentType
+## VariableArityParameterType
 
-## MemberStaticity
+## NestedEncapsulation
 
-## FieldMutability
-
-## MethodOpenness
-
-## MethodOverride
-
-## MethodDeclarator
+## StructMemberDeclaration
 
 ---
 
-## FixedArgumentType
+## FixedParameterType
 
-## Arguments
+## MemberStaticity
+
+## FieldDeclaration
+
+## MethodDeclaration
+
+---
+
+## FieldMutability
+
+## MethodExtensibility
+
+## MethodOverride
+
+## MethodHeader
+
+## MethodBody
+
+---
+
+## Parameters
 
 ## Block
 
 ---
 
-## ThisArgument
+## ThisParameter
 
-## FixedArguments
+## FixedParameters
 
-## VariadicArgument
+## VariableArityParameter
 
 ---
 
-## FixedArgument
+## FixedParameter

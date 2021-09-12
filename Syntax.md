@@ -20,7 +20,7 @@ along with this program.  If not, see &lt;<a href="https://www.gnu.org/licenses/
 
 <pre>
 <a href="Semantics.md#CompilationUnit">CompilationUnit</a>:
-    <i>[</i><i><a href="#PackageDeclaration">PackageDeclaration</a></i><i>]</i> <i>{</i><i><a href="#ImportDeclaration">ImportDeclaration</a></i><i>}</i> <i><a href="#TypeDeclaration">TypeDeclaration</a></i>
+    <i>[</i><i><a href="#PackageDeclaration">PackageDeclaration</a></i><i>]</i> <i>{</i><i><a href="#ImportDeclaration">ImportDeclaration</a></i><i>}</i> <i><a href="#TopLevelTypeDeclaration">TopLevelTypeDeclaration</a></i>
 </pre>
 
 ---
@@ -32,16 +32,13 @@ along with this program.  If not, see &lt;<a href="https://www.gnu.org/licenses/
 
 <pre>
 <a id="ImportDeclaration" href="Semantics.md#ImportDeclaration">ImportDeclaration</a>:
-    <b>import</b> <i><a href="#ImportList">ImportList</a></i> <i>[</i><b>from</b> <i><a href="#PackageOrTypeName">PackageOrTypeName</a></i><i>]</i> <b>;</b>
-    <b>import</b> <b>*</b> <b>from</b> <i><a href="#PackageOrTypeName">PackageOrTypeName</a></i> <b>;</b>
+    <b>import</b> <i><a href="#ExplicitImport">ExplicitImport</a></i>
+    <b>import</b> <i><a href="#ImportOnDemand">ImportOnDemand</a></i>
 </pre>
 
 <pre>
-<a id="TypeDeclaration" href="Semantics.md#TypeDeclaration">TypeDeclaration</a>:
-    <i>[</i><i><a href="#TypeAccessibility">TypeAccessibility</a></i><i>]</i> <i><a href="#TypedefDeclaration">TypedefDeclaration</a></i> <b>;</b>
-    <i>[</i><i><a href="#TypeAccessibility">TypeAccessibility</a></i><i>]</i> <i><a href="#EnumDeclaration">EnumDeclaration</a></i>
-    <i>[</i><i><a href="#TypeAccessibility">TypeAccessibility</a></i><i>]</i> <i><a href="#UnionDeclaration">UnionDeclaration</a></i>
-    <i>[</i><i><a href="#TypeAccessibility">TypeAccessibility</a></i><i>]</i> <i><a href="#StructDeclaration">StructDeclaration</a></i>
+<a id="TopLevelTypeDeclaration" href="Semantics.md#TopLevelTypeDeclaration">TopLevelTypeDeclaration</a>:
+    <i>[</i><i><a href="#TopLevelEncapsulation">TopLevelEncapsulation</a></i><i>]</i> <i><a href="#TypeDeclaration">TypeDeclaration</a></i>
 </pre>
 
 ---
@@ -52,7 +49,32 @@ along with this program.  If not, see &lt;<a href="https://www.gnu.org/licenses/
 </pre>
 
 <pre>
-<a id="ImportList" href="Semantics.md#ImportList">ImportList</a>:
+<a id="ExplicitImport" href="Semantics.md#ExplicitImport">ExplicitImport</a>:
+    <i><a href="#ImportNames">ImportNames</a></i> <i>[</i><b>from</b> <i><a href="#PackageOrTypeName">PackageOrTypeName</a></i><i>]</i> <b>;</b>
+</pre>
+
+<pre>
+<a id="ImportOnDemand" href="Semantics.md#ImportOnDemand">ImportOnDemand</a>:
+    <b>*</b> <b>from</b> <i><a href="#PackageOrTypeName">PackageOrTypeName</a></i> <b>;</b>
+</pre>
+
+<pre>
+<a id="TopLevelEncapsulation" href="Semantics.md#TopLevelEncapsulation">TopLevelEncapsulation</a>:
+    <b>public</b>
+</pre>
+
+<pre>
+<a id="TypeDeclaration" href="Semantics.md#TypeDeclaration">TypeDeclaration</a>:
+    <i><a href="#TypedefDeclaration">TypedefDeclaration</a></i> <b>;</b>
+    <i><a href="#EnumDeclaration">EnumDeclaration</a></i>
+    <i><a href="#UnionDeclaration">UnionDeclaration</a></i>
+    <i><a href="#StructDeclaration">StructDeclaration</a></i>
+</pre>
+
+---
+
+<pre>
+<a id="ImportNames" href="Semantics.md#ImportNames">ImportNames</a>:
     <i>Identifier</i> <i>[</i><b>as</b> <i>Identifier</i><i>]</i> <i>{</i><b>,</b> <i>Identifier</i> <i>[</i><b>as</b> <i>Identifier</i><i>]</i><i>}</i>
 </pre>
 
@@ -62,28 +84,23 @@ along with this program.  If not, see &lt;<a href="https://www.gnu.org/licenses/
 </pre>
 
 <pre>
-<a id="TypeAccessibility" href="Semantics.md#TypeAccessibility">TypeAccessibility</a>:
-    <b>public</b>
-</pre>
-
-<pre>
 <a id="TypedefDeclaration" href="Semantics.md#TypedefDeclaration">TypedefDeclaration</a>:
     <b>typedef</b> <i>Identifier</i> <b>:</b> <i><a href="#Type">Type</a></i>
 </pre>
 
 <pre>
 <a id="EnumDeclaration" href="Semantics.md#EnumDeclaration">EnumDeclaration</a>:
-    <b>enum</b> <i>Identifier</i> <b>:</b> <i><a href="#Type">Type</a></i> <b>{</b> <i><a href="#EnumConstants">EnumConstants</a></i> <i>[</i><i><a href="#EnumMembers">EnumMembers</a></i><i>]</i> <b>}</b>
+    <b>enum</b> <i>Identifier</i> <b>:</b> <i><a href="#Type">Type</a></i> <i><a href="#EnumBody">EnumBody</a></i>
 </pre>
 
 <pre>
 <a id="UnionDeclaration" href="Semantics.md#UnionDeclaration">UnionDeclaration</a>:
-    <b>union</b> <i>Identifier</i> <b>{</b> <i><a href="#UnionTypes">UnionTypes</a></i> <i>[</i><i><a href="#UnionMembers">UnionMembers</a></i><i>]</i> <b>}</b>
+    <b>union</b> <i>Identifier</i> <i><a href="#UnionBody">UnionBody</a></i>
 </pre>
 
 <pre>
 <a id="StructDeclaration" href="Semantics.md#StructDeclaration">StructDeclaration</a>:
-    <i>[</i><i><a href="#StructOpenness">StructOpenness</a></i><i>]</i> <i>[</i><i><a href="#StructLayout">StructLayout</a></i><i>]</i> <b>struct</b> <i>Identifier</i> <i>[</i><b>:</b> <i><a href="#Type">Type</a></i><i>]</i> <b>{</b> <i>[</i><i><a href="#StructMembers">StructMembers</a></i><i>]</i> <b>}</b>
+    <i>[</i><i><a href="#StructExtensibility">StructExtensibility</a></i><i>]</i> <i>[</i><i><a href="#StructLayout">StructLayout</a></i><i>]</i> <b>struct</b> <i>Identifier</i> <i>[</i><b>:</b> <i><a href="#Type">Type</a></i><i>]</i> <i><a href="#StructBody">StructBody</a></i>
 </pre>
 
 ---
@@ -98,40 +115,29 @@ along with this program.  If not, see &lt;<a href="https://www.gnu.org/licenses/
 </pre>
 
 <pre>
-<a id="EnumConstants" href="Semantics.md#EnumConstants">EnumConstants</a>:
-    <i><a href="#EnumConstant">EnumConstant</a></i> <i>{</i><b>,</b> <i><a href="#EnumConstant">EnumConstant</a></i><i>}</i>
+<a id="EnumBody" href="Semantics.md#EnumBody">EnumBody</a>:
+    <b>{</b> <i><a href="#EnumConstants">EnumConstants</a></i> <i>[</i><i><a href="#EnumBodyDeclarations">EnumBodyDeclarations</a></i><i>]</i> <b>}</b>
 </pre>
 
 <pre>
-<a id="EnumMembers" href="Semantics.md#EnumMembers">EnumMembers</a>:
-    <b>;</b> <i><a href="#StructMembers">StructMembers</a></i>
+<a id="UnionBody" href="Semantics.md#UnionBody">UnionBody</a>:
+    <b>{</b> <i><a href="#UnionTypes">UnionTypes</a></i> <i>[</i><i><a href="#UnionBodyDeclarations">UnionBodyDeclarations</a></i><i>]</i> <b>}</b>
 </pre>
 
 <pre>
-<a id="UnionTypes" href="Semantics.md#UnionTypes">UnionTypes</a>:
-    <i><a href="#UnionType">UnionType</a></i> <i>{</i><b>,</b> <i><a href="#UnionType">UnionType</a></i><i>}</i>
-</pre>
-
-<pre>
-<a id="UnionMembers" href="Semantics.md#UnionMembers">UnionMembers</a>:
-    <b>;</b> <i><a href="#StructMembers">StructMembers</a></i>
-</pre>
-
-<pre>
-<a id="StructOpenness" href="Semantics.md#StructOpenness">StructOpenness</a>:
+<a id="StructExtensibility" href="Semantics.md#StructExtensibility">StructExtensibility</a>:
     <i>(one of)</i>
     <b>open</b> <b>abstract</b>
 </pre>
 
 <pre>
 <a id="StructLayout" href="Semantics.md#StructLayout">StructLayout</a>:
-    <i>(one of)</i>
-    <b>packed</b> <b>ordered</b>
+    <b>raw</b>
 </pre>
 
 <pre>
-<a id="StructMembers" href="Semantics.md#StructMembers">StructMembers</a>:
-    <i><a href="#StructMember">StructMember</a></i> <i>{</i><i><a href="#StructMember">StructMember</a></i><i>}</i>
+<a id="StructBody" href="Semantics.md#StructBody">StructBody</a>:
+    <b>{</b> <i>[</i><i><a href="#StructBodyDeclarations">StructBodyDeclarations</a></i><i>]</i> <b>}</b>
 </pre>
 
 ---
@@ -139,7 +145,7 @@ along with this program.  If not, see &lt;<a href="https://www.gnu.org/licenses/
 <pre>
 <a id="PrimitiveType" href="Semantics.md#PrimitiveType">PrimitiveType</a>:
     <i><a href="#NumericType">NumericType</a></i> <i>[</i><i><a href="#TypeAtomicity">TypeAtomicity</a></i><i>]</i>
-    <b>_bool</b> <i>[</i><i><a href="#TypeAtomicity">TypeAtomicity</a></i><i>]</i>
+    <b>bool</b> <i>[</i><i><a href="#TypeAtomicity">TypeAtomicity</a></i><i>]</i>
     <b>_char</b> <i>[</i><i><a href="#TypeAtomicity">TypeAtomicity</a></i><i>]</i>
 </pre>
 
@@ -161,30 +167,32 @@ along with this program.  If not, see &lt;<a href="https://www.gnu.org/licenses/
 
 <pre>
 <a id="FunctionType" href="Semantics.md#FunctionType">FunctionType</a>:
-    <b>(</b> <i>[</i><i><a href="#ArgumentTypes">ArgumentTypes</a></i><i>]</i> <b>)</b> <b>-&gt;</b> <i><a href="#Return">Return</a></i>
+    <b>(</b> <i>[</i><i><a href="#ParameterTypes">ParameterTypes</a></i><i>]</i> <b>)</b> <b>-&gt;</b> <i><a href="#Result">Result</a></i>
 </pre>
 
 <pre>
-<a id="EnumConstant" href="Semantics.md#EnumConstant">EnumConstant</a>:
-    <i>Identifier</i> <i>[</i><b>=</b> <i>ConstantExpression</i><i>]</i>
+<a id="EnumConstants" href="Semantics.md#EnumConstants">EnumConstants</a>:
+    <i><a href="#EnumConstant">EnumConstant</a></i> <i>{</i><b>,</b> <i><a href="#EnumConstant">EnumConstant</a></i><i>}</i>
 </pre>
 
 <pre>
-<a id="UnionType" href="Semantics.md#UnionType">UnionType</a>:
-    <i><a href="#TypedefDeclaration">TypedefDeclaration</a></i>
-    <i><a href="#EnumDeclaration">EnumDeclaration</a></i>
-    <i><a href="#UnionDeclaration">UnionDeclaration</a></i>
-    <i><a href="#StructDeclaration">StructDeclaration</a></i>
+<a id="EnumBodyDeclarations" href="Semantics.md#EnumBodyDeclarations">EnumBodyDeclarations</a>:
+    <b>;</b> <i><a href="#StructBodyDeclarations">StructBodyDeclarations</a></i>
 </pre>
 
 <pre>
-<a id="StructMember" href="Semantics.md#StructMember">StructMember</a>:
-    <i>[</i><i><a href="#MemberAccessibility">MemberAccessibility</a></i><i>]</i> <i><a href="#FieldDeclaration">FieldDeclaration</a></i>
-    <i>[</i><i><a href="#MemberAccessibility">MemberAccessibility</a></i><i>]</i> <i><a href="#MethodDeclaration">MethodDeclaration</a></i>
-    <i>[</i><i><a href="#MemberAccessibility">MemberAccessibility</a></i><i>]</i> <i><a href="#TypedefDeclaration">TypedefDeclaration</a></i> <b>;</b>
-    <i>[</i><i><a href="#MemberAccessibility">MemberAccessibility</a></i><i>]</i> <i><a href="#EnumDeclaration">EnumDeclaration</a></i>
-    <i>[</i><i><a href="#MemberAccessibility">MemberAccessibility</a></i><i>]</i> <i><a href="#UnionDeclaration">UnionDeclaration</a></i>
-    <i>[</i><i><a href="#MemberAccessibility">MemberAccessibility</a></i><i>]</i> <i><a href="#StructDeclaration">StructDeclaration</a></i>
+<a id="UnionTypes" href="Semantics.md#UnionTypes">UnionTypes</a>:
+    <i><a href="#UnionType">UnionType</a></i> <i>{</i><b>,</b> <i><a href="#UnionType">UnionType</a></i><i>}</i>
+</pre>
+
+<pre>
+<a id="UnionBodyDeclarations" href="Semantics.md#UnionBodyDeclarations">UnionBodyDeclarations</a>:
+    <b>;</b> <i><a href="#StructBodyDeclarations">StructBodyDeclarations</a></i>
+</pre>
+
+<pre>
+<a id="StructBodyDeclarations" href="Semantics.md#StructBodyDeclarations">StructBodyDeclarations</a>:
+    <i><a href="#StructBodyDeclaration">StructBodyDeclaration</a></i> <i>{</i><i><a href="#StructBodyDeclaration">StructBodyDeclaration</a></i><i>}</i>
 </pre>
 
 ---
@@ -211,33 +219,35 @@ along with this program.  If not, see &lt;<a href="https://www.gnu.org/licenses/
 </pre>
 
 <pre>
-<a id="ArgumentTypes" href="Semantics.md#ArgumentTypes">ArgumentTypes</a>:
-    <i><a href="#FixedArgumentTypes">FixedArgumentTypes</a></i> <i>[</i><b>,</b> <i><a href="#VariadicArgumentType">VariadicArgumentType</a></i><i>]</i>
-    <i><a href="#VariadicArgumentType">VariadicArgumentType</a></i>
+<a id="ParameterTypes" href="Semantics.md#ParameterTypes">ParameterTypes</a>:
+    <i><a href="#FixedParameterTypes">FixedParameterTypes</a></i> <i>[</i><b>,</b> <i><a href="#VariableArityParameterType">VariableArityParameterType</a></i><i>]</i>
+    <i><a href="#VariableArityParameterType">VariableArityParameterType</a></i>
 </pre>
 
 <pre>
-<a id="Return" href="Semantics.md#Return">Return</a>:
+<a id="Result" href="Semantics.md#Result">Result</a>:
     <b>noreturn</b>
     <b>void</b>
     <i><a href="#Type">Type</a></i>
 </pre>
 
 <pre>
-<a id="MemberAccessibility" href="Semantics.md#MemberAccessibility">MemberAccessibility</a>:
-    <i>(one of)</i>
-    <b>public</b> <b>protected</b> <b>private</b>
+<a id="EnumConstant" href="Semantics.md#EnumConstant">EnumConstant</a>:
+    <i>Identifier</i> <i>[</i><b>=</b> <i>ConstantExpression</i><i>]</i>
 </pre>
 
 <pre>
-<a id="FieldDeclaration" href="Semantics.md#FieldDeclaration">FieldDeclaration</a>:
-    <i>[</i><i><a href="#MemberStaticity">MemberStaticity</a></i><i>]</i> <i><a href="#FieldMutability">FieldMutability</a></i> <i>[</i><i><a href="#ValueVolatility">ValueVolatility</a></i><i>]</i> <i>Identifier</i> <b>:</b> <i><a href="#Type">Type</a></i> <i>[</i><b>=</b> <i>ConstantExpression</i><i>]</i> <b>;</b>
+<a id="UnionType" href="Semantics.md#UnionType">UnionType</a>:
+    <i><a href="#TypedefDeclaration">TypedefDeclaration</a></i>
+    <i><a href="#EnumDeclaration">EnumDeclaration</a></i>
+    <i><a href="#UnionDeclaration">UnionDeclaration</a></i>
+    <i><a href="#StructDeclaration">StructDeclaration</a></i>
 </pre>
 
 <pre>
-<a id="MethodDeclaration" href="Semantics.md#MethodDeclaration">MethodDeclaration</a>:
-    <i>[</i><i><a href="#MethodOpenness">MethodOpenness</a></i><i>]</i> <i>[</i><i><a href="#MethodOverride">MethodOverride</a></i><i>]</i> <b>func</b> <i><a href="#MethodDeclarator">MethodDeclarator</a></i>
-    <i><a href="#MemberStaticity">MemberStaticity</a></i> <b>func</b> <i><a href="#MethodDeclarator">MethodDeclarator</a></i>
+<a id="StructBodyDeclaration" href="Semantics.md#StructBodyDeclaration">StructBodyDeclaration</a>:
+    <i>[</i><i><a href="#NestedEncapsulation">NestedEncapsulation</a></i><i>]</i> <i><a href="#StructMemberDeclaration">StructMemberDeclaration</a></i>
+    <i>[</i><i><a href="#NestedEncapsulation">NestedEncapsulation</a></i><i>]</i> <i><a href="#TypeDeclaration">TypeDeclaration</a></i>
 </pre>
 
 ---
@@ -266,17 +276,36 @@ along with this program.  If not, see &lt;<a href="https://www.gnu.org/licenses/
 
 <pre>
 <a id="ReferenceAliasability" href="Semantics.md#ReferenceAliasability">ReferenceAliasability</a>:
-    <b>aliased</b>
+    <b>aliasable</b>
 </pre>
 
 <pre>
-<a id="FixedArgumentTypes" href="Semantics.md#FixedArgumentTypes">FixedArgumentTypes</a>:
-    <i><a href="#FixedArgumentType">FixedArgumentType</a></i> <i>{</i><b>,</b> <i><a href="#FixedArgumentType">FixedArgumentType</a></i><i>}</i>
+<a id="FixedParameterTypes" href="Semantics.md#FixedParameterTypes">FixedParameterTypes</a>:
+    <i><a href="#FixedParameterType">FixedParameterType</a></i> <i>{</i><b>,</b> <i><a href="#FixedParameterType">FixedParameterType</a></i><i>}</i>
 </pre>
 
 <pre>
-<a id="VariadicArgumentType" href="Semantics.md#VariadicArgumentType">VariadicArgumentType</a>:
+<a id="VariableArityParameterType" href="Semantics.md#VariableArityParameterType">VariableArityParameterType</a>:
     <b>...</b> <b>:</b> <i><a href="#Type">Type</a></i>
+</pre>
+
+<pre>
+<a id="NestedEncapsulation" href="Semantics.md#NestedEncapsulation">NestedEncapsulation</a>:
+    <i>(one of)</i>
+    <b>public</b> <b>protected</b> <b>private</b>
+</pre>
+
+<pre>
+<a id="StructMemberDeclaration" href="Semantics.md#StructMemberDeclaration">StructMemberDeclaration</a>:
+    <i>[</i><i><a href="#MemberStaticity">MemberStaticity</a></i><i>]</i> <i><a href="#FieldDeclaration">FieldDeclaration</a></i>
+    <i>[</i><i><a href="#MemberStaticity">MemberStaticity</a></i><i>]</i> <i><a href="#MethodDeclaration">MethodDeclaration</a></i>
+</pre>
+
+---
+
+<pre>
+<a id="FixedParameterType" href="Semantics.md#FixedParameterType">FixedParameterType</a>:
+    <b>:</b> <i><a href="#Type">Type</a></i>
 </pre>
 
 <pre>
@@ -285,13 +314,25 @@ along with this program.  If not, see &lt;<a href="https://www.gnu.org/licenses/
 </pre>
 
 <pre>
+<a id="FieldDeclaration" href="Semantics.md#FieldDeclaration">FieldDeclaration</a>:
+    <i><a href="#FieldMutability">FieldMutability</a></i> <i>[</i><i><a href="#ValueVolatility">ValueVolatility</a></i><i>]</i> <i>Identifier</i> <b>:</b> <i><a href="#Type">Type</a></i> <i>[</i><b>=</b> <i>ConstantExpression</i><i>]</i> <b>;</b>
+</pre>
+
+<pre>
+<a id="MethodDeclaration" href="Semantics.md#MethodDeclaration">MethodDeclaration</a>:
+    <i>[</i><i><a href="#MethodExtensibility">MethodExtensibility</a></i><i>]</i> <i>[</i><i><a href="#MethodOverride">MethodOverride</a></i><i>]</i> <b>func</b> <i><a href="#MethodHeader">MethodHeader</a></i> <i><a href="#MethodBody">MethodBody</a></i>
+</pre>
+
+---
+
+<pre>
 <a id="FieldMutability" href="Semantics.md#FieldMutability">FieldMutability</a>:
     <i>(one of)</i>
     <b>mut</b> <b>const</b>
 </pre>
 
 <pre>
-<a id="MethodOpenness" href="Semantics.md#MethodOpenness">MethodOpenness</a>:
+<a id="MethodExtensibility" href="Semantics.md#MethodExtensibility">MethodExtensibility</a>:
     <i>(one of)</i>
     <b>open</b> <b>abstract</b>
 </pre>
@@ -302,51 +343,51 @@ along with this program.  If not, see &lt;<a href="https://www.gnu.org/licenses/
 </pre>
 
 <pre>
-<a id="MethodDeclarator" href="Semantics.md#MethodDeclarator">MethodDeclarator</a>:
-    <i>Identifier</i> <b>(</b> <i>[</i><i><a href="#Arguments">Arguments</a></i><i>]</i> <b>)</b> <b>-&gt;</b> <i><a href="#Return">Return</a></i> <i><a href="#Block">Block</a></i>
-</pre>
-
----
-
-<pre>
-<a id="FixedArgumentType" href="Semantics.md#FixedArgumentType">FixedArgumentType</a>:
-    <b>:</b> <i><a href="#Type">Type</a></i>
+<a id="MethodHeader" href="Semantics.md#MethodHeader">MethodHeader</a>:
+    <i>Identifier</i> <b>(</b> <i>[</i><i><a href="#Parameters">Parameters</a></i><i>]</i> <b>)</b> <b>-&gt;</b> <i><a href="#Result">Result</a></i>
 </pre>
 
 <pre>
-<a id="Arguments" href="Semantics.md#Arguments">Arguments</a>:
-    <i><a href="#ThisArgument">ThisArgument</a></i> <i>[</i><b>,</b> <i><a href="#FixedArguments">FixedArguments</a></i><i>]</i> <i>[</i><b>,</b> <i><a href="#VariadicArgument">VariadicArgument</a></i><i>]</i>
-    <i><a href="#FixedArguments">FixedArguments</a></i> <i>[</i><b>,</b> <i><a href="#VariadicArgument">VariadicArgument</a></i><i>]</i>
-    <i><a href="#VariadicArgument">VariadicArgument</a></i>
-</pre>
-
-<pre>
-<a id="Block" href="Semantics.md#Block">Block</a>:
-    <b>{</b> <i>{</i><i>Statement</i><i>}</i> <b>}</b>
+<a id="MethodBody" href="Semantics.md#MethodBody">MethodBody</a>:
+    <i><a href="#Block">Block</a></i>
     <b>;</b>
 </pre>
 
 ---
 
 <pre>
-<a id="ThisArgument" href="Semantics.md#ThisArgument">ThisArgument</a>:
+<a id="Parameters" href="Semantics.md#Parameters">Parameters</a>:
+    <i><a href="#ThisParameter">ThisParameter</a></i> <i>[</i><b>,</b> <i><a href="#FixedParameters">FixedParameters</a></i><i>]</i> <i>[</i><b>,</b> <i><a href="#VariableArityParameter">VariableArityParameter</a></i><i>]</i>
+    <i><a href="#FixedParameters">FixedParameters</a></i> <i>[</i><b>,</b> <i><a href="#VariableArityParameter">VariableArityParameter</a></i><i>]</i>
+    <i><a href="#VariableArityParameter">VariableArityParameter</a></i>
+</pre>
+
+<pre>
+<a id="Block" href="Semantics.md#Block">Block</a>:
+    <b>{</b> <i>{</i><i>Statement</i><i>}</i> <b>}</b>
+</pre>
+
+---
+
+<pre>
+<a id="ThisParameter" href="Semantics.md#ThisParameter">ThisParameter</a>:
     <b>this</b> <i>[</i><b>:</b> <i><a href="#ValueMutability">ValueMutability</a></i> <i>[</i><b>&</b> <i><a href="#ReferenceAliasability">ReferenceAliasability</a></i><i>]</i><i>]</i>
     <b>this</b> <b>:</b> <b>&</b> <i><a href="#ReferenceAliasability">ReferenceAliasability</a></i>
 </pre>
 
 <pre>
-<a id="FixedArguments" href="Semantics.md#FixedArguments">FixedArguments</a>:
-    <i><a href="#FixedArgument">FixedArgument</a></i> <i>{</i><b>,</b> <i><a href="#FixedArgument">FixedArgument</a></i><i>}</i>
+<a id="FixedParameters" href="Semantics.md#FixedParameters">FixedParameters</a>:
+    <i><a href="#FixedParameter">FixedParameter</a></i> <i>{</i><b>,</b> <i><a href="#FixedParameter">FixedParameter</a></i><i>}</i>
 </pre>
 
 <pre>
-<a id="VariadicArgument" href="Semantics.md#VariadicArgument">VariadicArgument</a>:
+<a id="VariableArityParameter" href="Semantics.md#VariableArityParameter">VariableArityParameter</a>:
     <b>...</b> <i>Identifier</i> <b>:</b> <i><a href="#Type">Type</a></i>
 </pre>
 
 ---
 
 <pre>
-<a id="FixedArgument" href="Semantics.md#FixedArgument">FixedArgument</a>:
+<a id="FixedParameter" href="Semantics.md#FixedParameter">FixedParameter</a>:
     <i>Identifier</i> <b>:</b> <i><a href="#Type">Type</a></i>
 </pre>
