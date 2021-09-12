@@ -20,7 +20,7 @@ along with this program.  If not, see &lt;<a href="https://www.gnu.org/licenses/
 
 <pre>
 <a href="Semantics.md#CompilationUnit">CompilationUnit</a>:
-    <i>[</i><i><a href="#PackageDeclaration">PackageDeclaration</a></i><i>]</i> <i>{</i><i><a href="#ImportDeclaration">ImportDeclaration</a></i><i>}</i> <i><a href="#TopLevelTypeDeclaration">TopLevelTypeDeclaration</a></i>
+    <i>[</i><i><a href="#PackageDeclaration">PackageDeclaration</a></i><i>]</i> <i>[</i><i><a href="#ImportDeclaration">ImportDeclarations</a></i><i>]</i> <i><a href="#TopLevelTypeDeclaration">TopLevelTypeDeclaration</a></i>
 </pre>
 
 ---
@@ -31,9 +31,8 @@ along with this program.  If not, see &lt;<a href="https://www.gnu.org/licenses/
 </pre>
 
 <pre>
-<a id="ImportDeclaration" href="Semantics.md#ImportDeclaration">ImportDeclaration</a>:
-    <b>import</b> <i><a href="#ExplicitImport">ExplicitImport</a></i>
-    <b>import</b> <i><a href="#ImportOnDemand">ImportOnDemand</a></i>
+<a id="ImportDeclarations" href="Semantics.md#ImportDeclarations">ImportDeclarations</a>:
+    <i><a href="#ImportDeclaration">ImportDeclaration</a></i> <i>{</i><i><a href="#ImportDeclaration">ImportDeclaration</a></i><i>}</i>
 </pre>
 
 <pre>
@@ -49,13 +48,9 @@ along with this program.  If not, see &lt;<a href="https://www.gnu.org/licenses/
 </pre>
 
 <pre>
-<a id="ExplicitImport" href="Semantics.md#ExplicitImport">ExplicitImport</a>:
-    <i><a href="#ImportNames">ImportNames</a></i> <i>[</i><b>from</b> <i><a href="#PackageOrTypeName">PackageOrTypeName</a></i><i>]</i> <b>;</b>
-</pre>
-
-<pre>
-<a id="ImportOnDemand" href="Semantics.md#ImportOnDemand">ImportOnDemand</a>:
-    <b>*</b> <b>from</b> <i><a href="#PackageOrTypeName">PackageOrTypeName</a></i> <b>;</b>
+<a id="ImportDeclaration" href="Semantics.md#ImportDeclaration">ImportDeclaration</a>:
+    <b>import</b> <i><a href="#ExplicitImport">ExplicitImport</a></i>
+    <b>import</b> <i><a href="#ImportOnDemand">ImportOnDemand</a></i>
 </pre>
 
 <pre>
@@ -74,13 +69,13 @@ along with this program.  If not, see &lt;<a href="https://www.gnu.org/licenses/
 ---
 
 <pre>
-<a id="ImportNames" href="Semantics.md#ImportNames">ImportNames</a>:
-    <i>Identifier</i> <i>[</i><b>as</b> <i>Identifier</i><i>]</i> <i>{</i><b>,</b> <i>Identifier</i> <i>[</i><b>as</b> <i>Identifier</i><i>]</i><i>}</i>
+<a id="ExplicitImport" href="Semantics.md#ExplicitImport">ExplicitImport</a>:
+    <i><a href="#ImportNames">ImportNames</a></i> <i>[</i><b>from</b> <i><a href="#PackageOrTypeName">PackageOrTypeName</a></i><i>]</i> <b>;</b>
 </pre>
 
 <pre>
-<a id="PackageOrTypeName" href="Semantics.md#PackageOrTypeName">PackageOrTypeName</a>:
-    <i>Identifier</i> <i>{</i><b>.</b> <i>Identifier</i><i>}</i>
+<a id="ImportOnDemand" href="Semantics.md#ImportOnDemand">ImportOnDemand</a>:
+    <b>*</b> <b>from</b> <i><a href="#PackageOrTypeName">PackageOrTypeName</a></i> <b>;</b>
 </pre>
 
 <pre>
@@ -104,6 +99,16 @@ along with this program.  If not, see &lt;<a href="https://www.gnu.org/licenses/
 </pre>
 
 ---
+
+<pre>
+<a id="ImportNames" href="Semantics.md#ImportNames">ImportNames</a>:
+    <i><a href="#ImportName">ImportName</a></i> <i>{</i><b>,</b> <i><a href="#ImportName">ImportName</a></i><i>}</i>
+</pre>
+
+<pre>
+<a id="PackageOrTypeName" href="Semantics.md#PackageOrTypeName">PackageOrTypeName</a>:
+    <i>Identifier</i> <i>{</i><b>.</b> <i>Identifier</i><i>}</i>
+</pre>
 
 <pre>
 <a id="Type" href="Semantics.md#Type">Type</a>:
@@ -141,6 +146,11 @@ along with this program.  If not, see &lt;<a href="https://www.gnu.org/licenses/
 </pre>
 
 ---
+
+<pre>
+<a id="ImportName" href="Semantics.md#ImportName">ImportName</a>:
+    <i>Identifier</i> <i>[</i><b>as</b> <i>Identifier</i><i>]</i>
+</pre>
 
 <pre>
 <a id="PrimitiveType" href="Semantics.md#PrimitiveType">PrimitiveType</a>:
@@ -364,7 +374,7 @@ along with this program.  If not, see &lt;<a href="https://www.gnu.org/licenses/
 
 <pre>
 <a id="Block" href="Semantics.md#Block">Block</a>:
-    <b>{</b> <i>{</i><i>Statement</i><i>}</i> <b>}</b>
+    <b>{</b> <i>[</i><i><a href="#Statements">Statements</a></i><i>]</i> <b>}</b>
 </pre>
 
 ---
@@ -383,6 +393,11 @@ along with this program.  If not, see &lt;<a href="https://www.gnu.org/licenses/
 <pre>
 <a id="VariableArityParameter" href="Semantics.md#VariableArityParameter">VariableArityParameter</a>:
     <b>...</b> <i>Identifier</i> <b>:</b> <i><a href="#Type">Type</a></i>
+</pre>
+
+<pre>
+<a id="Statements" href="Semantics.md#Statements">Statements</a>:
+    <i>Statement</i> <i>{</i><i>Statement</i><i>}</i>
 </pre>
 
 ---
