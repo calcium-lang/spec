@@ -133,6 +133,8 @@ This declaration imports the types required for the proper function of the decla
 
 ## VariableArityParameterType
 
+## Block
+
 ## NestedEncapsulation
 
 ## StructMemberDeclaration
@@ -140,6 +142,8 @@ This declaration imports the types required for the proper function of the decla
 ---
 
 ## FixedParameterType
+
+## BlockStatements
 
 ## MemberStaticity
 
@@ -163,8 +167,6 @@ This declaration imports the types required for the proper function of the decla
 
 ## Parameters
 
-## Block
-
 ---
 
 ## ThisParameter
@@ -172,8 +174,6 @@ This declaration imports the types required for the proper function of the decla
 ## FixedParameters
 
 ## VariableArityParameter
-
-## Statements
 
 ---
 

@@ -244,6 +244,7 @@ along with this program.  If not, see &lt;<a href="https://www.gnu.org/licenses/
 <pre>
 <a id="EnumConstant" href="Semantics.md#EnumConstant">EnumConstant</a>:
     <i>Identifier</i> <i>[</i><b>=</b> <i>ConstantExpression</i><i>]</i>
+    <i>Identifier</i> <b>=</b> <i><a href="#Block">Block</a></i>
 </pre>
 
 <pre>
@@ -300,6 +301,11 @@ along with this program.  If not, see &lt;<a href="https://www.gnu.org/licenses/
 </pre>
 
 <pre>
+<a id="Block" href="Semantics.md#Block">Block</a>:
+    <b>{</b> <i>[</i><i><a href="#BlockStatements">BlockStatements</a></i><i>]</i> <b>}</b>
+</pre>
+
+<pre>
 <a id="NestedEncapsulation" href="Semantics.md#NestedEncapsulation">NestedEncapsulation</a>:
     <i>(one of)</i>
     <b>public</b> <b>protected</b> <b>private</b>
@@ -309,6 +315,7 @@ along with this program.  If not, see &lt;<a href="https://www.gnu.org/licenses/
 <a id="StructMemberDeclaration" href="Semantics.md#StructMemberDeclaration">StructMemberDeclaration</a>:
     <i>[</i><i><a href="#MemberStaticity">MemberStaticity</a></i><i>]</i> <i><a href="#FieldDeclaration">FieldDeclaration</a></i>
     <i>[</i><i><a href="#MemberStaticity">MemberStaticity</a></i><i>]</i> <i><a href="#MethodDeclaration">MethodDeclaration</a></i>
+    <i><a href="#MemberStaticity">MemberStaticity</a></i> <i><a href="#Block">Block</a></i>
 </pre>
 
 ---
@@ -316,6 +323,11 @@ along with this program.  If not, see &lt;<a href="https://www.gnu.org/licenses/
 <pre>
 <a id="FixedParameterType" href="Semantics.md#FixedParameterType">FixedParameterType</a>:
     <b>:</b> <i><a href="#Type">Type</a></i>
+</pre>
+
+<pre>
+<a id="BlockStatements" href="Semantics.md#BlockStatements">BlockStatements</a>:
+    <i>BlockStatement</i> <i>{</i><i>BlockStatement</i><i>}</i>
 </pre>
 
 <pre>
@@ -372,11 +384,6 @@ along with this program.  If not, see &lt;<a href="https://www.gnu.org/licenses/
     <i><a href="#VariableArityParameter">VariableArityParameter</a></i>
 </pre>
 
-<pre>
-<a id="Block" href="Semantics.md#Block">Block</a>:
-    <b>{</b> <i>[</i><i><a href="#Statements">Statements</a></i><i>]</i> <b>}</b>
-</pre>
-
 ---
 
 <pre>
@@ -393,11 +400,6 @@ along with this program.  If not, see &lt;<a href="https://www.gnu.org/licenses/
 <pre>
 <a id="VariableArityParameter" href="Semantics.md#VariableArityParameter">VariableArityParameter</a>:
     <b>...</b> <i>Identifier</i> <b>:</b> <i><a href="#Type">Type</a></i>
-</pre>
-
-<pre>
-<a id="Statements" href="Semantics.md#Statements">Statements</a>:
-    <i>Statement</i> <i>{</i><i>Statement</i><i>}</i>
 </pre>
 
 ---
