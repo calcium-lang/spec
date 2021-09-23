@@ -49,8 +49,8 @@ along with this program.  If not, see &lt;<a href="https://www.gnu.org/licenses/
 
 <pre>
 <a id="ImportDeclaration" href="Semantics.md#ImportDeclaration">ImportDeclaration</a>:
-    <b>import</b> <i><a href="#ExplicitImport">ExplicitImport</a></i>
-    <b>import</b> <i><a href="#ImportOnDemand">ImportOnDemand</a></i>
+    <i><a href="#ExplicitImport">ExplicitImport</a></i>
+    <i><a href="#ImportOnDemand">ImportOnDemand</a></i>
 </pre>
 
 <pre>
@@ -70,12 +70,12 @@ along with this program.  If not, see &lt;<a href="https://www.gnu.org/licenses/
 
 <pre>
 <a id="ExplicitImport" href="Semantics.md#ExplicitImport">ExplicitImport</a>:
-    <i><a href="#ImportNames">ImportNames</a></i> <i>[</i><b>from</b> <i><a href="#PackageOrTypeName">PackageOrTypeName</a></i><i>]</i> <b>;</b>
+    <b>import</b> <i><a href="#ImportNames">ImportNames</a></i> <i>[</i><b>from</b> <i><a href="#PackageOrTypeName">PackageOrTypeName</a></i><i>]</i> <b>;</b>
 </pre>
 
 <pre>
 <a id="ImportOnDemand" href="Semantics.md#ImportOnDemand">ImportOnDemand</a>:
-    <b>*</b> <b>from</b> <i><a href="#PackageOrTypeName">PackageOrTypeName</a></i> <b>;</b>
+    <b>import</b> <b>*</b> <b>from</b> <i><a href="#PackageOrTypeName">PackageOrTypeName</a></i> <b>;</b>
 </pre>
 
 <pre>
@@ -90,7 +90,7 @@ along with this program.  If not, see &lt;<a href="https://www.gnu.org/licenses/
 
 <pre>
 <a id="UnionDeclaration" href="Semantics.md#UnionDeclaration">UnionDeclaration</a>:
-    <b>union</b> <i>Identifier</i> <i><a href="#UnionBody">UnionBody</a></i>
+    <i>[</i><i><a href="#UnionLayout">UnionLayout</a></i><i>]</i> <b>union</b> <i>Identifier</i> <i><a href="#UnionBody">UnionBody</a></i>
 </pre>
 
 <pre>
@@ -122,6 +122,11 @@ along with this program.  If not, see &lt;<a href="https://www.gnu.org/licenses/
 <pre>
 <a id="EnumBody" href="Semantics.md#EnumBody">EnumBody</a>:
     <b>{</b> <i><a href="#EnumConstants">EnumConstants</a></i> <i>[</i><i><a href="#EnumBodyDeclarations">EnumBodyDeclarations</a></i><i>]</i> <b>}</b>
+</pre>
+
+<pre>
+<a id="UnionLayout" href="Semantics.md#UnionLayout">UnionLayout</a>:
+    <b>unsafe</b> <b>raw</b>
 </pre>
 
 <pre>
@@ -220,12 +225,13 @@ along with this program.  If not, see &lt;<a href="https://www.gnu.org/licenses/
 
 <pre>
 <a id="PointerSuffix" href="Semantics.md#PointerSuffix">PointerSuffix</a>:
-    <i>[</i><i><a href="#ValueMutability">ValueMutability</a></i><i>]</i> <i>[</i><i><a href="#ValueVolatility">ValueVolatility</a></i><i>]</i> <b>&</b> <i>[</i><i><a href="#ReferenceAliasability">ReferenceAliasability</a></i><i>]</i> <i>[</i><i><a href="#TypeAtomicity">TypeAtomicity</a></i><i>]</i>
+    <i>[</i><i><a href="#ValueMutability">ValueMutability</a></i><i>]</i> <i>[</i><i><a href="#ValueVolatility">ValueVolatility</a></i><i>]</i> <b>&</b> <i>[</i><i><a href="#ReferenceAliasability">ReferenceAliasability</a></i><i>]</i> <i>[</i><i><a href="#PointerSize">PointerSize</a></i><i>]</i> <i>[</i><i><a href="#TypeAtomicity">TypeAtomicity</a></i><i>]</i>
 </pre>
 
 <pre>
 <a id="Dim" href="Semantics.md#Dim">Dim</a>:
-    <b>[</b> <i>[</i><i>ConstantExpression</i><i>]</i> <b>]</b>
+    <b>[</b> <i>[</i><i>IntegerLiteral</i><i>]</i> <b>]</b>
+    <b>[</b> <i>Identifier</i> <b>]</b>
 </pre>
 
 <pre>
@@ -277,7 +283,7 @@ along with this program.  If not, see &lt;<a href="https://www.gnu.org/licenses/
 
 <pre>
 <a id="ValueMutability" href="Semantics.md#ValueMutability">ValueMutability</a>:
-    <b>mut</b>
+    <b>var</b>
 </pre>
 
 <pre>
@@ -288,6 +294,11 @@ along with this program.  If not, see &lt;<a href="https://www.gnu.org/licenses/
 <pre>
 <a id="ReferenceAliasability" href="Semantics.md#ReferenceAliasability">ReferenceAliasability</a>:
     <b>aliasable</b>
+</pre>
+
+<pre>
+<a id="PointerSize" href="Semantics.md#PointerSize">PointerSize</a>:
+    <b>fat</b>
 </pre>
 
 <pre>
@@ -350,7 +361,7 @@ along with this program.  If not, see &lt;<a href="https://www.gnu.org/licenses/
 <pre>
 <a id="FieldMutability" href="Semantics.md#FieldMutability">FieldMutability</a>:
     <i>(one of)</i>
-    <b>mut</b> <b>const</b>
+    <b>var</b> <b>const</b>
 </pre>
 
 <pre>
@@ -388,8 +399,9 @@ along with this program.  If not, see &lt;<a href="https://www.gnu.org/licenses/
 
 <pre>
 <a id="ThisParameter" href="Semantics.md#ThisParameter">ThisParameter</a>:
-    <b>this</b> <i>[</i><b>:</b> <i><a href="#ValueMutability">ValueMutability</a></i> <i>[</i><b>&</b> <i><a href="#ReferenceAliasability">ReferenceAliasability</a></i><i>]</i><i>]</i>
-    <b>this</b> <b>:</b> <b>&</b> <i><a href="#ReferenceAliasability">ReferenceAliasability</a></i>
+    <b>this</b> <i>[</i><b>:</b> <i><a href="#ValueMutability">ValueMutability</a></i> <i>[</i><i><a href="#ValueVolatility">ValueVolatility</a></i><i>]</i> <i>[</i><b>&</b> <i>[</i><i><a href="#ReferenceAliasability">ReferenceAliasability</a></i><i>]</i> <i>[</i><i><a href="#PointerSize">PointerSize</a></i><i>]</i><i>]</i><i>]</i>
+    <b>this</b> <b>:</b> <i><a href="#ValueVolatility">ValueVolatility</a></i> <i>[</i><b>&</b> <i>[</i><i><a href="#ReferenceAliasability">ReferenceAliasability</a></i><i>]</i> <i>[</i><i><a href="#PointerSize">PointerSize</a></i><i>]</i><i>]</i>
+    <b>this</b> <b>:</b> <b>&</b> <i>[</i><i><a href="#ReferenceAliasability">ReferenceAliasability</a></i><i>]</i> <i>[</i><i><a href="#PointerSize">PointerSize</a></i><i>]</i>
 </pre>
 
 <pre>

@@ -65,6 +65,8 @@ This declaration imports the types required for the proper function of the decla
 
 ## EnumBody
 
+## UnionLayout
+
 ## UnionBody
 
 ## StructExtensibility
@@ -128,6 +130,8 @@ This declaration imports the types required for the proper function of the decla
 ## ValueVolatility
 
 ## ReferenceAliasability
+
+## PointerSize
 
 ## FixedParameterTypes
 
