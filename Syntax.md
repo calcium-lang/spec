@@ -291,8 +291,8 @@ along with this program.  If not, see &lt;<a href="https://www.gnu.org/licenses/
 
 <pre>
 <a id="InterfaceBodyDeclaration" href="Semantics.md#InterfaceBodyDeclaration">InterfaceBodyDeclaration</a>:
-    <i>[</i><i><a href="#NestedEncapsulation">NestedEncapsulation</a></i><i>]</i> <i><a href="#InterfaceMemberDeclaration">InterfaceMemberDeclaration</a></i>
-    <i>[</i><i><a href="#NestedEncapsulation">NestedEncapsulation</a></i><i>]</i> <i><a href="#TypeDeclaration">TypeDeclaration</a></i>
+    <i>[</i><i><a href="#InterfaceNestedEncapsulation">InterfaceNestedEncapsulation</a></i><i>]</i> <i><a href="#InterfaceMemberDeclaration">InterfaceMemberDeclaration</a></i>
+    <i>[</i><i><a href="#InterfaceNestedEncapsulation">InterfaceNestedEncapsulation</a></i><i>]</i> <i><a href="#TypeDeclaration">TypeDeclaration</a></i>
 </pre>
 
 ---
