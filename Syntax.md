@@ -358,6 +358,12 @@ along with this program.  If not, see &lt;<a href="https://www.gnu.org/licenses/
 </pre>
 
 <pre>
+<a id="InterfaceNestedEncapsulation" href="Semantics.md#InterfaceNestedEncapsulation">InterfaceNestedEncapsulation</a>:
+    <i>(one of)</i>
+    <b>public</b> <b>private</b>
+</pre>
+
+<pre>
 <a id="InterfaceMemberDeclaration" href="Semantics.md#InterfaceMemberDeclaration">InterfaceMemberDeclaration</a>:
     <i>[</i><i><a href="#MemberStaticity">MemberStaticity</a></i><i>]</i> <i><a href="#FieldDeclaration">FieldDeclaration</a></i>
     <i>[</i><i><a href="#MemberStaticity">MemberStaticity</a></i><i>]</i> <i><a href="#InterfaceMethodDeclaration">InterfaceMethodDeclaration</a></i>

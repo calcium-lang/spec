@@ -153,6 +153,8 @@ This declaration imports the types required for the proper function of the decla
 
 ## StructMemberDeclaration
 
+## InterfaceNestedEncapsulation
+
 ## InterfaceMemberDeclaration
 
 ---
