@@ -55,6 +55,8 @@ This declaration imports the types required for the proper function of the decla
 
 ## StructDeclaration
 
+## InterfaceDeclaration
+
 ---
 
 ## ImportNames
@@ -73,7 +75,11 @@ This declaration imports the types required for the proper function of the decla
 
 ## StructLayout
 
+## TypeNames
+
 ## StructBody
+
+## InterfaceBody
 
 ---
 
@@ -99,6 +105,8 @@ This declaration imports the types required for the proper function of the decla
 
 ## StructBodyDeclarations
 
+## InterfaceBodyDeclarations
+
 ---
 
 ## NumericType
@@ -118,6 +126,8 @@ This declaration imports the types required for the proper function of the decla
 ## UnionType
 
 ## StructBodyDeclaration
+
+## InterfaceBodyDeclaration
 
 ---
 
@@ -143,6 +153,8 @@ This declaration imports the types required for the proper function of the decla
 
 ## StructMemberDeclaration
 
+## InterfaceMemberDeclaration
+
 ---
 
 ## FixedParameterType
@@ -154,6 +166,8 @@ This declaration imports the types required for the proper function of the decla
 ## FieldDeclaration
 
 ## MethodDeclaration
+
+## InterfaceMethodDeclaration
 
 ---
 
