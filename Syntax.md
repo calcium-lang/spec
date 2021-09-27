@@ -127,7 +127,7 @@ along with this program.  If not, see &lt;<a href="https://www.gnu.org/licenses/
 
 <pre>
 <a id="EnumBody" href="Semantics.md#EnumBody">EnumBody</a>:
-    <b>{</b> <i><a href="#EnumConstants">EnumConstants</a></i> <i>[</i><i><a href="#EnumBodyDeclarations">EnumBodyDeclarations</a></i><i>]</i> <b>}</b>
+    <b>{</b> <i><a href="#EnumConstants">EnumConstants</a></i> <i>[</i><b>;</b> <i><a href="#BodyDeclarations">BodyDeclarations</a></i><i>]</i> <b>}</b>
 </pre>
 
 <pre>
@@ -137,7 +137,7 @@ along with this program.  If not, see &lt;<a href="https://www.gnu.org/licenses/
 
 <pre>
 <a id="UnionBody" href="Semantics.md#UnionBody">UnionBody</a>:
-    <b>{</b> <i><a href="#UnionTypes">UnionTypes</a></i> <i>[</i><i><a href="#UnionBodyDeclarations">UnionBodyDeclarations</a></i><i>]</i> <b>}</b>
+    <b>{</b> <i><a href="#UnionTypes">UnionTypes</a></i> <i>[</i><b>;</b> <i><a href="#BodyDeclarations">BodyDeclarations</a></i><i>]</i> <b>}</b>
 </pre>
 
 <pre>
@@ -207,18 +207,13 @@ along with this program.  If not, see &lt;<a href="https://www.gnu.org/licenses/
 </pre>
 
 <pre>
-<a id="EnumBodyDeclarations" href="Semantics.md#EnumBodyDeclarations">EnumBodyDeclarations</a>:
-    <b>;</b> <i><a href="#StructBodyDeclarations">StructBodyDeclarations</a></i>
+<a id="BodyDeclarations" href="Semantics.md#BodyDeclarations">BodyDeclarations</a>:
+    <i><a href="#BodyDeclaration">BodyDeclaration</a></i> <i>{</i><i><a href="#BodyDeclaration">BodyDeclaration</a></i><i>}</i>
 </pre>
 
 <pre>
 <a id="UnionTypes" href="Semantics.md#UnionTypes">UnionTypes</a>:
     <i><a href="#UnionType">UnionType</a></i> <i>{</i><b>,</b> <i><a href="#UnionType">UnionType</a></i><i>}</i>
-</pre>
-
-<pre>
-<a id="UnionBodyDeclarations" href="Semantics.md#UnionBodyDeclarations">UnionBodyDeclarations</a>:
-    <b>;</b> <i><a href="#StructBodyDeclarations">StructBodyDeclarations</a></i>
 </pre>
 
 <pre>
@@ -275,18 +270,23 @@ along with this program.  If not, see &lt;<a href="https://www.gnu.org/licenses/
 </pre>
 
 <pre>
+<a id="BodyDeclaration" href="Semantics.md#BodyDeclaration">BodyDeclaration</a>:
+    <i>[</i><i><a href="#NestedEncapsulation">NestedEncapsulation</a></i><i>]</i> <i><a href="#MemberDeclaration">MemberDeclaration</a></i>
+    <i>[</i><i><a href="#NestedEncapsulation">NestedEncapsulation</a></i><i>]</i> <i><a href="#TypeDeclaration">TypeDeclaration</a></i>
+</pre>
+
+<pre>
 <a id="UnionType" href="Semantics.md#UnionType">UnionType</a>:
     <i><a href="#TypedefDeclaration">TypedefDeclaration</a></i>
     <i><a href="#EnumDeclaration">EnumDeclaration</a></i>
     <i><a href="#UnionDeclaration">UnionDeclaration</a></i>
     <i><a href="#StructDeclaration">StructDeclaration</a></i>
-    <i><a href="#InterfaceDeclaration">InterfaceDeclaration</a></i>
 </pre>
 
 <pre>
 <a id="StructBodyDeclaration" href="Semantics.md#StructBodyDeclaration">StructBodyDeclaration</a>:
-    <i>[</i><i><a href="#NestedEncapsulation">NestedEncapsulation</a></i><i>]</i> <i><a href="#StructMemberDeclaration">StructMemberDeclaration</a></i>
-    <i>[</i><i><a href="#NestedEncapsulation">NestedEncapsulation</a></i><i>]</i> <i><a href="#TypeDeclaration">TypeDeclaration</a></i>
+    <i>[</i><i><a href="#StructNestedEncapsulation">StructNestedEncapsulation</a></i><i>]</i> <i><a href="#StructMemberDeclaration">StructMemberDeclaration</a></i>
+    <i>[</i><i><a href="#StructNestedEncapsulation">StructNestedEncapsulation</a></i><i>]</i> <i><a href="#TypeDeclaration">TypeDeclaration</a></i>
 </pre>
 
 <pre>
@@ -347,25 +347,37 @@ along with this program.  If not, see &lt;<a href="https://www.gnu.org/licenses/
 <pre>
 <a id="NestedEncapsulation" href="Semantics.md#NestedEncapsulation">NestedEncapsulation</a>:
     <i>(one of)</i>
+    <b>public</b> <b>private</b>
+</pre>
+
+<pre>
+<a id="MemberDeclaration" href="Semantics.md#MemberDeclaration">MemberDeclaration</a>:
+    <i><a href="#FieldDeclaration">FieldDeclaration</a></i>
+    <i><a href="#MethodDeclaration">MethodDeclaration</a></i>
+    <i><a href="#MemberStaticity">MemberStaticity</a></i> <i><a href="#Block">Block</a></i>
+</pre>
+
+<pre>
+<a id="StructNestedEncapsulation" href="Semantics.md#StructNestedEncapsulation">StructNestedEncapsulation</a>:
+    <i>(one of)</i>
     <b>public</b> <b>protected</b> <b>private</b>
 </pre>
 
 <pre>
 <a id="StructMemberDeclaration" href="Semantics.md#StructMemberDeclaration">StructMemberDeclaration</a>:
     <i>[</i><i><a href="#MemberStaticity">MemberStaticity</a></i><i>]</i> <i><a href="#FieldDeclaration">FieldDeclaration</a></i>
-    <i>[</i><i><a href="#MemberStaticity">MemberStaticity</a></i><i>]</i> <i><a href="#MethodDeclaration">MethodDeclaration</a></i>
+    <i>[</i><i><a href="#MemberStaticity">MemberStaticity</a></i><i>]</i> <i><a href="#StructMethodDeclaration">StructMethodDeclaration</a></i>
     <i><a href="#MemberStaticity">MemberStaticity</a></i> <i><a href="#Block">Block</a></i>
 </pre>
 
 <pre>
 <a id="InterfaceNestedEncapsulation" href="Semantics.md#InterfaceNestedEncapsulation">InterfaceNestedEncapsulation</a>:
-    <i>(one of)</i>
-    <b>public</b> <b>private</b>
+    <b>private</b>
 </pre>
 
 <pre>
 <a id="InterfaceMemberDeclaration" href="Semantics.md#InterfaceMemberDeclaration">InterfaceMemberDeclaration</a>:
-    <i>[</i><i><a href="#MemberStaticity">MemberStaticity</a></i><i>]</i> <i><a href="#FieldDeclaration">FieldDeclaration</a></i>
+    <i><a href="#FieldDeclaration">FieldDeclaration</a></i>
     <i>[</i><i><a href="#MemberStaticity">MemberStaticity</a></i><i>]</i> <i><a href="#InterfaceMethodDeclaration">InterfaceMethodDeclaration</a></i>
     <i><a href="#MemberStaticity">MemberStaticity</a></i> <i><a href="#Block">Block</a></i>
 </pre>
@@ -383,17 +395,22 @@ along with this program.  If not, see &lt;<a href="https://www.gnu.org/licenses/
 </pre>
 
 <pre>
-<a id="MemberStaticity" href="Semantics.md#MemberStaticity">MemberStaticity</a>:
-    <b>static</b>
-</pre>
-
-<pre>
 <a id="FieldDeclaration" href="Semantics.md#FieldDeclaration">FieldDeclaration</a>:
     <i><a href="#FieldMutability">FieldMutability</a></i> <i>[</i><i><a href="#ValueVolatility">ValueVolatility</a></i><i>]</i> <i>Identifier</i> <b>:</b> <i><a href="#Type">Type</a></i> <i>[</i><b>=</b> <i>ConstantExpression</i><i>]</i> <b>;</b>
 </pre>
 
 <pre>
 <a id="MethodDeclaration" href="Semantics.md#MethodDeclaration">MethodDeclaration</a>:
+    <b>func</b> <i><a href="#MethodHeader">MethodHeader</a></i> <i><a href="#Block">Block</a></i>
+</pre>
+
+<pre>
+<a id="MemberStaticity" href="Semantics.md#MemberStaticity">MemberStaticity</a>:
+    <b>static</b>
+</pre>
+
+<pre>
+<a id="StructMethodDeclaration" href="Semantics.md#StructMethodDeclaration">StructMethodDeclaration</a>:
     <i>[</i><i><a href="#MethodExtensibility">MethodExtensibility</a></i><i>]</i> <i>[</i><i><a href="#MethodOverride">MethodOverride</a></i><i>]</i> <b>func</b> <i><a href="#MethodHeader">MethodHeader</a></i> <i><a href="#MethodBody">MethodBody</a></i>
 </pre>
 
@@ -411,6 +428,11 @@ along with this program.  If not, see &lt;<a href="https://www.gnu.org/licenses/
 </pre>
 
 <pre>
+<a id="MethodHeader" href="Semantics.md#MethodHeader">MethodHeader</a>:
+    <i>Identifier</i> <b>(</b> <i>[</i><i><a href="#Parameters">Parameters</a></i><i>]</i> <b>)</b> <b>-&gt;</b> <i><a href="#Result">Result</a></i>
+</pre>
+
+<pre>
 <a id="MethodExtensibility" href="Semantics.md#MethodExtensibility">MethodExtensibility</a>:
     <i>(one of)</i>
     <b>open</b> <b>abstract</b>
@@ -419,11 +441,6 @@ along with this program.  If not, see &lt;<a href="https://www.gnu.org/licenses/
 <pre>
 <a id="MethodOverride" href="Semantics.md#MethodOverride">MethodOverride</a>:
     <b>override</b>
-</pre>
-
-<pre>
-<a id="MethodHeader" href="Semantics.md#MethodHeader">MethodHeader</a>:
-    <i>Identifier</i> <b>(</b> <i>[</i><i><a href="#Parameters">Parameters</a></i><i>]</i> <b>)</b> <b>-&gt;</b> <i><a href="#Result">Result</a></i>
 </pre>
 
 <pre>

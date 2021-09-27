@@ -128,11 +128,9 @@ This declaration defines a type, along with its members and subtypes. It always 
 
 ## EnumConstants
 
-## EnumBodyDeclarations
+## BodyDeclarations
 
 ## UnionTypes
-
-## UnionBodyDeclarations
 
 ## StructBodyDeclarations
 
@@ -153,6 +151,8 @@ This declaration defines a type, along with its members and subtypes. It always 
 ## Result
 
 ## EnumConstant
+
+## BodyDeclaration
 
 ## UnionType
 
@@ -182,6 +182,10 @@ This declaration defines a type, along with its members and subtypes. It always 
 
 ## NestedEncapsulation
 
+## MemberDeclaration
+
+## StructNestedEncapsulation
+
 ## StructMemberDeclaration
 
 ## InterfaceNestedEncapsulation
@@ -194,11 +198,13 @@ This declaration defines a type, along with its members and subtypes. It always 
 
 ## BlockStatements
 
-## MemberStaticity
-
 ## FieldDeclaration
 
 ## MethodDeclaration
+
+## MemberStaticity
+
+## StructMethodDeclaration
 
 ## InterfaceMethodDeclaration
 
@@ -206,11 +212,11 @@ This declaration defines a type, along with its members and subtypes. It always 
 
 ## FieldMutability
 
+## MethodHeader
+
 ## MethodExtensibility
 
 ## MethodOverride
-
-## MethodHeader
 
 ## MethodBody
 
