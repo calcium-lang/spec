@@ -75,8 +75,10 @@ This declaration defines a type, along with its members and subtypes. It always 
 ---
 
 ## ExplicitImport
+This import allows the programmer to explicitly list all the types it needs to import from a specific source (be it a package or a type inside a package). Each imported type may be aliased to avoid name conflict. If the source is ommited, it is assumed to be the current package, making it possible to explicitly import its types for clarity.
 
 ## ImportOnDemand
+This import allows the programmer to import needed types from a specific source (a package or a type inside a package) without having to list each one of them. None of the imported types can be aliased, which might lead to name conflicts. The source is never ommited.
 
 ## TypedefDeclaration
 
