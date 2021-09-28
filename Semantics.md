@@ -93,20 +93,91 @@ This import allows the programmer to import needed types from a specific source 
 ---
 
 ## ImportNames
+This is a comma-separated list of all the types it needs to import from a specific source.
 
 ## PackageOrTypeName
+This is a dot-separated sequence of identifiers that compose the name of the import source, that can be either a package or a type inside a package (top-level or nested).
 
 ## Type
 
 ## EnumBody
+This is the enum's body, where its constants are defined, along with optional extra declarations.
 
 ## UnionLayout
+This modifier determines whether (when ommited) or not (when present) the union's memory layout will have a prefix, which indicates the type of the current value. The prefix will be of the smallest unsigned integer type that can hold the number of types the union has minus one, and the types will be identified by their order of declaration (zero-indexed and increasing). As a reinterpret cast is possible when there is no such prefix, this modifier is considered unsafe.
 
 ## UnionBody
+This is the union's body, where its types are defined, along with optional extra declarations.
 
 ## StructExtensibility
+This modifier determines whether (when present) or not (when ommited) the struct can be extended. When "open" is present, extending is allowed. When "abstract" is present, extending is mandatory for the struct to be useful, as an object of an incomplete type cannot exist (although a pointer to one can). When a base struct is extended it becomes the prefix of the derived struct, and its original field layout cannot be changed.
 
 ## StructLayout
+This modifier determines how the struct's  own fields (not derived from a base struct) will be laid out in memory. When present, the fields will be laid out after the base struct's prefix (if any), in the order they were declared, with no padding to properly align them. When ommited, the fields will be sorted by size, from the largest to the smallest, making sure they are all properly aligned with little to no padding needed. Their positioning is done following this procedure, written in Python for convenience:
+
+```python
+from typing import Optional
+
+def FieldsToMemory(fields: list[tuple[str, int]], base: Optional[list[tuple[Optional[str], int]]] = None) -> list[tuple[Optional[str], int]]:
+    memory: list[tuple[Optional[str], int]] = base.copy() if base != None else []
+    ord_fields: list[tuple[str, int]] = sorted(fields, key = lambda field: -field[1])
+    base_size: int = 0
+    i: int = 0
+
+    while i < len(memory):
+        if memory[i][0] == None:
+            j: int = 0
+
+            while j < len(ord_fields):
+                if base_size % ord_fields[j][1] == 0:
+                    if ord_fields[j][1] < memory[i][1]:
+                        memory = memory[:i] + [ord_fields[j], (None, memory[i][1] - ord_fields[j][1])] + memory[i + 1:]
+                        ord_fields = ord_fields[:j] + ord_fields[j + 1:]
+                        break
+                    elif ord_fields[j][1] == memory[i][1]:
+                        memory = memory[:i] + [ord_fields[j]] + memory[i + 1:]
+                        ord_fields = ord_fields[:j] + ord_fields[j + 1:]
+                        break
+
+                j += 1
+
+            if memory[i][0] == None:
+                base_size += memory[i][1]
+                i += 1
+        else:
+            base_size += memory[i][1]
+            i += 1
+
+    if base_size % ord_fields[0][1] != 0:
+        memory.append((None, ord_fields[0][1] - base_size % ord_fields[0][1]))
+
+        while i < len(memory):
+            if memory[i][0] == None:
+                j: int = 1
+
+                while j < len(ord_fields):
+                    if base_size % ord_fields[j][1] == 0:
+                        if ord_fields[j][1] < memory[-1][1]:
+                            memory = memory[:-1] + [ord_fields[j], (None, memory[-1][1] - ord_fields[j][1])]
+                            ord_fields = ord_fields[:j] + ord_fields[j + 1:]
+                            break
+                        elif ord_fields[j][1] == memory[-1][1]:
+                            memory = memory[:-1] + [ord_fields[j]]
+                            ord_fields = ord_fields[:j] + ord_fields[j + 1:]
+                            break
+
+                    j += 1
+
+                if memory[i][0] == None:
+                    break
+            else:
+                base_size += memory[i][1]
+                i += 1
+
+    memory += ord_fields
+
+    return memory
+```
 
 ## TypeNames
 
