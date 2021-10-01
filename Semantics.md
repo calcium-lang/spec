@@ -1,21 +1,3 @@
-<pre>
-Cesium, a C-like memory- and thread-safe systems programming language with near-zero-cost object-orientation.
-Copyright (C) 2021  Natan Junges
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see &lt;<a href="https://www.gnu.org/licenses/">https://www.gnu.org/licenses/</a>&gt;.
-</pre>
-
 # Semantics
 ## CompilationUnit
 This is the start symbol of the grammar. It is equivalent to an entire source file. It always has a single top level type declaration/definition, inside of which all other declarations/definitions are put. This type always belongs to a package, that may or may not be named. The required types from external sources are imported through import declarations, although the top level types from the same package are always imported automatically.
@@ -37,6 +19,23 @@ This declaration defines the top level type of the compilation unit. Its name mu
 This is a dot-separated sequence of identifiers that compose the name of the top level type's package. In the file system, this name is translated into a hierarchy of folders, where the source files of the package are stored. This translation is done following this procedure, written in Python for convenience:
 
 ```python
+# This code snippet is part of Cesium.
+#
+# Copyright (C) 2021  Natan Junges
+#
+# This code snippet is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This code snippet is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this code snippet.  If not, see <https://www.gnu.org/licenses/>.
+
 import os
 import errno
 
@@ -123,6 +122,23 @@ This modifier determines whether (when present) or not (when ommited) the struct
 This modifier determines how the struct's  own fields (not derived from a base struct) will be laid out in memory. When present, the fields will be laid out after the base struct's prefix (if any), in the order they were declared, with no padding to properly align them. When ommited, the fields will be sorted by size, from the largest to the smallest, making sure they are all properly aligned with little to no padding needed. Their positioning is done following this procedure, written in Python for convenience:
 
 ```python
+# This code snippet is part of Cesium.
+#
+# Copyright (C) 2021  Natan Junges
+#
+# This code snippet is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This code snippet is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this code snippet.  If not, see <https://www.gnu.org/licenses/>.
+
 from typing import Optional
 
 def FieldsToMemory(fields: list[tuple[str, int]], base: Optional[list[tuple[Optional[str], int]]] = None) -> list[tuple[Optional[str], int]]:
