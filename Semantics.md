@@ -81,14 +81,21 @@ This import allows the programmer to explicitly list all the types it needs to i
 This import allows the programmer to import needed types from a specific source (a package or a type inside a package) without having to list each one of them. None of the imported types can be aliased, which might lead to name conflicts. The source is never ommited.
 
 ## TypedefDeclaration
+This declaration defines an alias for a base type. They cannot be used interchangeably, but explicit casts are required. Casts in both directions are allowed, but casting between two aliases of the same base type is not. As the defined alias is also a type, it can itself be aliased, behaving like any other type. To enforce encapsulation, the type alias cannot have a weaker encapsulation than that of the base type.
 
 ## EnumDeclaration
+This declaration defines an enumeration type. It is composed of constants, whose type is the enumeration's base type. It is implicitly casted to the base type when required, but casting the base type to the enumeration type is not allowed. To enforce encapsulation, the enumeration type cannot have a weaker encapsulation than that of the base type. Each constant must be different from all the other ones (of the same enumeration type), both in name and value. As this type is constant, only the methods from the base type that do not change its value can be invoked.
+
+If the base type's size is lesser than or equal to the simple pointer size in the target architecture, the enumeration value is the constant value. If it is greater than the pointer size, the enumeration value is a pointer to the actual constant, stored in a static location. It is done like so to ensure the enumeration value is never longer than a pointer, making comparison trivial and atomic. It is also very space efficient. But this difference in value must be mostly transparent to the programmer. The exception is when an enumeration of the second kind is referenced by a pointer and the pointer is casted to the base type, in which case the pointer value will be the address of the actual constant.
+
+When the base type is also an enumeration type, the derived enumeration aliases the base's constants, keeping the same memory layout and being even able to have fewer (never more) constants.
 
 ## UnionDeclaration
 
 ## StructDeclaration
 
 ## InterfaceDeclaration
+This declaration defines an interface type, which is an abstract type, since an object of such type is impossible, and only a pointer to this type can be used. This pointer must always be fat, storing the address of the actual object and its interface's implementation object. The only non-static members this type has are methods, and everything else is (implicitly) static. It supports multiple inheritance, and can only inherit from other interface types. Its implementation object is composed of pointers to its parents' implementation objects and pointers to its (non-static and non-private) methods' implementations. This object is only defined by the structs that implement this interface type.
 
 ---
 
