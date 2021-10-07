@@ -21,7 +21,7 @@ This is a dot-separated sequence of identifiers that compose the name of the top
 ```python
 # This code snippet is part of Cesium.
 #
-# Copyright (C) 2021  Natan Junges
+# Copyright (C) 2021  Natan Junges <natanajunges@gmail.com>
 #
 # This code snippet is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -124,7 +124,7 @@ This modifier determines how the struct's  own fields (not derived from a base s
 ```python
 # This code snippet is part of Cesium.
 #
-# Copyright (C) 2021  Natan Junges
+# Copyright (C) 2021  Natan Junges <natanajunges@gmail.com>
 #
 # This code snippet is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -242,6 +242,8 @@ def FieldsToMemory(fields: list[tuple[str, int]], base: Optional[list[tuple[Opti
 
 ## Dim
 
+## ValueMutability
+
 ## ParameterTypes
 
 ## Result
@@ -261,8 +263,6 @@ def FieldsToMemory(fields: list[tuple[str, int]], base: Optional[list[tuple[Opti
 ## IntegralType
 
 ## FloatingPointType
-
-## ValueMutability
 
 ## ValueVolatility
 

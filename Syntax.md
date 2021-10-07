@@ -175,7 +175,7 @@
 
 <pre>
 <a id="VoidPointer" href="Semantics.md#VoidPointer">VoidPointer</a>:
-    <b>unsafe</b> <b>void</b> <b>&</b> <i>[</i><i><a href="#TypeAtomicity">TypeAtomicity</a></i><i>]</i>
+    <b>unsafe</b> <b>void</b> <i>[</i><i><a href="#ValueMutability">ValueMutability</a></i><i>]</i> <b>&</b> <i>[</i><i><a href="#TypeAtomicity">TypeAtomicity</a></i><i>]</i>
 </pre>
 
 <pre>
@@ -228,8 +228,13 @@
 
 <pre>
 <a id="Dim" href="Semantics.md#Dim">Dim</a>:
-    <b>[</b> <i>[</i><i>IntegerLiteral</i><i>]</i> <b>]</b>
+    <b>[</b> <i>[</i><i>NumberLiteral</i><i>]</i> <b>]</b>
     <b>[</b> <i>Identifier</i> <b>]</b>
+</pre>
+
+<pre>
+<a id="ValueMutability" href="Semantics.md#ValueMutability">ValueMutability</a>:
+    <b>var</b>
 </pre>
 
 <pre>
@@ -292,11 +297,6 @@
 </pre>
 
 <pre>
-<a id="ValueMutability" href="Semantics.md#ValueMutability">ValueMutability</a>:
-    <b>var</b>
-</pre>
-
-<pre>
 <a id="ValueVolatility" href="Semantics.md#ValueVolatility">ValueVolatility</a>:
     <b>volatile</b>
 </pre>
@@ -308,7 +308,7 @@
 
 <pre>
 <a id="PointerSize" href="Semantics.md#PointerSize">PointerSize</a>:
-    <b>fat</b>
+    <b>wide</b>
 </pre>
 
 <pre>
