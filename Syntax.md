@@ -63,12 +63,12 @@
 
 <pre>
 <a id="TypedefDeclaration" href="Semantics.md#TypedefDeclaration">TypedefDeclaration</a>:
-    <b>typedef</b> <i>Identifier</i> <b>:</b> <i><a href="#Type">Type</a></i>
+    <b>typedef</b> <i>Identifier</i> <i><a href="#BaseType">BaseType</a></i>
 </pre>
 
 <pre>
 <a id="EnumDeclaration" href="Semantics.md#EnumDeclaration">EnumDeclaration</a>:
-    <b>enum</b> <i>Identifier</i> <b>:</b> <i><a href="#Type">Type</a></i> <i><a href="#EnumBody">EnumBody</a></i>
+    <b>enum</b> <i>Identifier</i> <i><a href="#BaseType">BaseType</a></i> <i><a href="#EnumBody">EnumBody</a></i>
 </pre>
 
 <pre>
@@ -78,12 +78,12 @@
 
 <pre>
 <a id="StructDeclaration" href="Semantics.md#StructDeclaration">StructDeclaration</a>:
-    <i>[</i><i><a href="#StructExtensibility">StructExtensibility</a></i><i>]</i> <i>[</i><i><a href="#StructLayout">StructLayout</a></i><i>]</i> <b>struct</b> <i>Identifier</i> <i>[</i><b>:</b> <i><a href="#Type">Type</a></i> <i>[</i><b>,</b> <i><a href="#TypeNames">TypeNames</a></i><i>]</i><i>]</i> <i><a href="#StructBody">StructBody</a></i>
+    <i>[</i><i><a href="#StructExtensibility">StructExtensibility</a></i><i>]</i> <i>[</i><i><a href="#StructLayout">StructLayout</a></i><i>]</i> <b>struct</b> <i>Identifier</i> <i>[</i><i><a href="#BaseTypes">BaseTypes</a></i><i>]</i> <i><a href="#StructBody">StructBody</a></i>
 </pre>
 
 <pre>
 <a id="InterfaceDeclaration" href="Semantics.md#InterfaceDeclaration">InterfaceDeclaration</a>:
-    <b>interface</b> <i>Identifier</i> <i>[</i><b>:</b> <i><a href="#TypeNames">TypeNames</a></i><i>]</i> <i><a href="#InterfaceBody">InterfaceBody</a></i>
+    <b>interface</b> <i>Identifier</i> <i>[</i><i><a href="#BaseInterfaces">BaseInterfaces</a></i><i>]</i> <i><a href="#InterfaceBody">InterfaceBody</a></i>
 </pre>
 
 ---
@@ -99,12 +99,8 @@
 </pre>
 
 <pre>
-<a id="Type" href="Semantics.md#Type">Type</a>:
-    <i><a href="#PrimitiveType">PrimitiveType</a></i> <i>[</i><i><a href="#PointerOrArraySuffix">PointerOrArraySuffix</a></i><i>]</i>
-    <i><a href="#TypeName">TypeName</a></i> <i>[</i><i><a href="#PointerOrArraySuffix">PointerOrArraySuffix</a></i><i>]</i>
-    <i><a href="#VoidPointer">VoidPointer</a></i> <i>[</i><i><a href="#PointerOrArraySuffix">PointerOrArraySuffix</a></i><i>]</i>
-    <i><a href="#FunctionType">FunctionType</a></i>
-    <b>(</b> <i><a href="#FunctionType">FunctionType</a></i> <b>)</b> <i><a href="#PointerOrArraySuffix">PointerOrArraySuffix</a></i>
+<a id="BaseType" href="Semantics.md#BaseType">BaseType</a>:
+    <b>:</b> <i><a href="#Type">Type</a></i>
 </pre>
 
 <pre>
@@ -134,13 +130,18 @@
 </pre>
 
 <pre>
-<a id="TypeNames" href="Semantics.md#TypeNames">TypeNames</a>:
-    <i><a href="#TypeName">TypeName</a></i> <i>{</i><b>,</b> <i><a href="#TypeName">TypeName</a></i><i>}</i>
+<a id="BaseTypes" href="Semantics.md#BaseTypes">BaseTypes</a>:
+    <b>:</b> <i><a href="#Type">Type</a></i> <i>[</i><b>,</b> <i><a href="#TypeNames">TypeNames</a></i><i>]</i>
 </pre>
 
 <pre>
 <a id="StructBody" href="Semantics.md#StructBody">StructBody</a>:
     <b>{</b> <i>[</i><i><a href="#StructBodyDeclarations">StructBodyDeclarations</a></i><i>]</i> <b>}</b>
+</pre>
+
+<pre>
+<a id="BaseInterfaces" href="Semantics.md#BaseInterfaces">BaseInterfaces</a>:
+    <b>:</b> <i><a href="#TypeNames">TypeNames</a></i>
 </pre>
 
 <pre>
@@ -154,6 +155,47 @@
 <a id="ImportName" href="Semantics.md#ImportName">ImportName</a>:
     <i>Identifier</i> <i>[</i><b>as</b> <i>Identifier</i><i>]</i>
 </pre>
+
+<pre>
+<a id="Type" href="Semantics.md#Type">Type</a>:
+    <i><a href="#PrimitiveType">PrimitiveType</a></i> <i>[</i><i><a href="#PointerOrArraySuffix">PointerOrArraySuffix</a></i><i>]</i>
+    <i><a href="#TypeName">TypeName</a></i> <i>[</i><i><a href="#PointerOrArraySuffix">PointerOrArraySuffix</a></i><i>]</i>
+    <i><a href="#VoidPointer">VoidPointer</a></i> <i>[</i><i><a href="#PointerOrArraySuffix">PointerOrArraySuffix</a></i><i>]</i>
+    <i><a href="#FunctionType">FunctionType</a></i>
+    <b>(</b> <i><a href="#FunctionType">FunctionType</a></i> <b>)</b> <i><a href="#PointerOrArraySuffix">PointerOrArraySuffix</a></i>
+</pre>
+
+<pre>
+<a id="EnumConstants" href="Semantics.md#EnumConstants">EnumConstants</a>:
+    <i><a href="#EnumConstant">EnumConstant</a></i> <i>{</i><b>,</b> <i><a href="#EnumConstant">EnumConstant</a></i><i>}</i>
+</pre>
+
+<pre>
+<a id="BodyDeclarations" href="Semantics.md#BodyDeclarations">BodyDeclarations</a>:
+    <i><a href="#BodyDeclaration">BodyDeclaration</a></i> <i>{</i><i><a href="#BodyDeclaration">BodyDeclaration</a></i><i>}</i>
+</pre>
+
+<pre>
+<a id="UnionTypes" href="Semantics.md#UnionTypes">UnionTypes</a>:
+    <i><a href="#UnionType">UnionType</a></i> <i>{</i><b>,</b> <i><a href="#UnionType">UnionType</a></i><i>}</i>
+</pre>
+
+<pre>
+<a id="TypeNames" href="Semantics.md#TypeNames">TypeNames</a>:
+    <i><a href="#TypeName">TypeName</a></i> <i>{</i><b>,</b> <i><a href="#TypeName">TypeName</a></i><i>}</i>
+</pre>
+
+<pre>
+<a id="StructBodyDeclarations" href="Semantics.md#StructBodyDeclarations">StructBodyDeclarations</a>:
+    <i><a href="#StructBodyDeclaration">StructBodyDeclaration</a></i> <i>{</i><i><a href="#StructBodyDeclaration">StructBodyDeclaration</a></i><i>}</i>
+</pre>
+
+<pre>
+<a id="InterfaceBodyDeclarations" href="Semantics.md#InterfaceBodyDeclarations">InterfaceBodyDeclarations</a>:
+    <i><a href="#InterfaceBodyDeclaration">InterfaceBodyDeclaration</a></i> <i>{</i><i><a href="#InterfaceBodyDeclaration">InterfaceBodyDeclaration</a></i><i>}</i>
+</pre>
+
+---
 
 <pre>
 <a id="PrimitiveType" href="Semantics.md#PrimitiveType">PrimitiveType</a>:
@@ -184,28 +226,35 @@
 </pre>
 
 <pre>
-<a id="EnumConstants" href="Semantics.md#EnumConstants">EnumConstants</a>:
-    <i><a href="#EnumConstant">EnumConstant</a></i> <i>{</i><b>,</b> <i><a href="#EnumConstant">EnumConstant</a></i><i>}</i>
+<a id="EnumConstant" href="Semantics.md#EnumConstant">EnumConstant</a>:
+    <i>Identifier</i> <i>[</i><b>=</b> <i>ConstantExpression</i><i>]</i>
+    <i>Identifier</i> <b>=</b> <i><a href="#Block">Block</a></i>
 </pre>
 
 <pre>
-<a id="BodyDeclarations" href="Semantics.md#BodyDeclarations">BodyDeclarations</a>:
-    <i><a href="#BodyDeclaration">BodyDeclaration</a></i> <i>{</i><i><a href="#BodyDeclaration">BodyDeclaration</a></i><i>}</i>
+<a id="BodyDeclaration" href="Semantics.md#BodyDeclaration">BodyDeclaration</a>:
+    <i>[</i><i><a href="#NestedEncapsulation">NestedEncapsulation</a></i><i>]</i> <i><a href="#MemberDeclaration">MemberDeclaration</a></i>
+    <i>[</i><i><a href="#NestedEncapsulation">NestedEncapsulation</a></i><i>]</i> <i><a href="#TypeDeclaration">TypeDeclaration</a></i>
 </pre>
 
 <pre>
-<a id="UnionTypes" href="Semantics.md#UnionTypes">UnionTypes</a>:
-    <i><a href="#UnionType">UnionType</a></i> <i>{</i><b>,</b> <i><a href="#UnionType">UnionType</a></i><i>}</i>
+<a id="UnionType" href="Semantics.md#UnionType">UnionType</a>:
+    <i><a href="#TypedefDeclaration">TypedefDeclaration</a></i>
+    <i><a href="#EnumDeclaration">EnumDeclaration</a></i>
+    <i><a href="#UnionDeclaration">UnionDeclaration</a></i>
+    <i><a href="#StructDeclaration">StructDeclaration</a></i>
 </pre>
 
 <pre>
-<a id="StructBodyDeclarations" href="Semantics.md#StructBodyDeclarations">StructBodyDeclarations</a>:
-    <i><a href="#StructBodyDeclaration">StructBodyDeclaration</a></i> <i>{</i><i><a href="#StructBodyDeclaration">StructBodyDeclaration</a></i><i>}</i>
+<a id="StructBodyDeclaration" href="Semantics.md#StructBodyDeclaration">StructBodyDeclaration</a>:
+    <i>[</i><i><a href="#StructNestedEncapsulation">StructNestedEncapsulation</a></i><i>]</i> <i><a href="#StructMemberDeclaration">StructMemberDeclaration</a></i>
+    <i>[</i><i><a href="#StructNestedEncapsulation">StructNestedEncapsulation</a></i><i>]</i> <i><a href="#TypeDeclaration">TypeDeclaration</a></i>
 </pre>
 
 <pre>
-<a id="InterfaceBodyDeclarations" href="Semantics.md#InterfaceBodyDeclarations">InterfaceBodyDeclarations</a>:
-    <i><a href="#InterfaceBodyDeclaration">InterfaceBodyDeclaration</a></i> <i>{</i><i><a href="#InterfaceBodyDeclaration">InterfaceBodyDeclaration</a></i><i>}</i>
+<a id="InterfaceBodyDeclaration" href="Semantics.md#InterfaceBodyDeclaration">InterfaceBodyDeclaration</a>:
+    <i>[</i><i><a href="#InterfaceNestedEncapsulation">InterfaceNestedEncapsulation</a></i><i>]</i> <i><a href="#InterfaceMemberDeclaration">InterfaceMemberDeclaration</a></i>
+    <i>[</i><i><a href="#InterfaceNestedEncapsulation">InterfaceNestedEncapsulation</a></i><i>]</i> <i><a href="#TypeDeclaration">TypeDeclaration</a></i>
 </pre>
 
 ---
@@ -251,35 +300,46 @@
 </pre>
 
 <pre>
-<a id="EnumConstant" href="Semantics.md#EnumConstant">EnumConstant</a>:
-    <i>Identifier</i> <i>[</i><b>=</b> <i>ConstantExpression</i><i>]</i>
-    <i>Identifier</i> <b>=</b> <i><a href="#Block">Block</a></i>
+<a id="Block" href="Semantics.md#Block">Block</a>:
+    <b>{</b> <i>[</i><i><a href="#BlockStatements">BlockStatements</a></i><i>]</i> <b>}</b>
 </pre>
 
 <pre>
-<a id="BodyDeclaration" href="Semantics.md#BodyDeclaration">BodyDeclaration</a>:
-    <i>[</i><i><a href="#NestedEncapsulation">NestedEncapsulation</a></i><i>]</i> <i><a href="#MemberDeclaration">MemberDeclaration</a></i>
-    <i>[</i><i><a href="#NestedEncapsulation">NestedEncapsulation</a></i><i>]</i> <i><a href="#TypeDeclaration">TypeDeclaration</a></i>
+<a id="NestedEncapsulation" href="Semantics.md#NestedEncapsulation">NestedEncapsulation</a>:
+    <i>(one of)</i>
+    <b>public</b> <b>private</b>
 </pre>
 
 <pre>
-<a id="UnionType" href="Semantics.md#UnionType">UnionType</a>:
-    <i><a href="#TypedefDeclaration">TypedefDeclaration</a></i>
-    <i><a href="#EnumDeclaration">EnumDeclaration</a></i>
-    <i><a href="#UnionDeclaration">UnionDeclaration</a></i>
-    <i><a href="#StructDeclaration">StructDeclaration</a></i>
+<a id="MemberDeclaration" href="Semantics.md#MemberDeclaration">MemberDeclaration</a>:
+    <i><a href="#FieldDeclaration">FieldDeclaration</a></i>
+    <i><a href="#MethodDeclaration">MethodDeclaration</a></i>
+    <i><a href="#StaticInitializer">StaticInitializer</a></i>
 </pre>
 
 <pre>
-<a id="StructBodyDeclaration" href="Semantics.md#StructBodyDeclaration">StructBodyDeclaration</a>:
-    <i>[</i><i><a href="#StructNestedEncapsulation">StructNestedEncapsulation</a></i><i>]</i> <i><a href="#StructMemberDeclaration">StructMemberDeclaration</a></i>
-    <i>[</i><i><a href="#StructNestedEncapsulation">StructNestedEncapsulation</a></i><i>]</i> <i><a href="#TypeDeclaration">TypeDeclaration</a></i>
+<a id="StructNestedEncapsulation" href="Semantics.md#StructNestedEncapsulation">StructNestedEncapsulation</a>:
+    <i>(one of)</i>
+    <b>public</b> <b>protected</b> <b>private</b>
 </pre>
 
 <pre>
-<a id="InterfaceBodyDeclaration" href="Semantics.md#InterfaceBodyDeclaration">InterfaceBodyDeclaration</a>:
-    <i>[</i><i><a href="#InterfaceNestedEncapsulation">InterfaceNestedEncapsulation</a></i><i>]</i> <i><a href="#InterfaceMemberDeclaration">InterfaceMemberDeclaration</a></i>
-    <i>[</i><i><a href="#InterfaceNestedEncapsulation">InterfaceNestedEncapsulation</a></i><i>]</i> <i><a href="#TypeDeclaration">TypeDeclaration</a></i>
+<a id="StructMemberDeclaration" href="Semantics.md#StructMemberDeclaration">StructMemberDeclaration</a>:
+    <i>[</i><i><a href="#MemberStaticity">MemberStaticity</a></i><i>]</i> <i><a href="#FieldDeclaration">FieldDeclaration</a></i>
+    <i>[</i><i><a href="#MemberStaticity">MemberStaticity</a></i><i>]</i> <i><a href="#StructMethodDeclaration">StructMethodDeclaration</a></i>
+    <i><a href="#StaticInitializer">StaticInitializer</a></i>
+</pre>
+
+<pre>
+<a id="InterfaceNestedEncapsulation" href="Semantics.md#InterfaceNestedEncapsulation">InterfaceNestedEncapsulation</a>:
+    <b>private</b>
+</pre>
+
+<pre>
+<a id="InterfaceMemberDeclaration" href="Semantics.md#InterfaceMemberDeclaration">InterfaceMemberDeclaration</a>:
+    <i><a href="#FieldDeclaration">FieldDeclaration</a></i>
+    <i>[</i><i><a href="#MemberStaticity">MemberStaticity</a></i><i>]</i> <i><a href="#InterfaceMethodDeclaration">InterfaceMethodDeclaration</a></i>
+    <i><a href="#StaticInitializer">StaticInitializer</a></i>
 </pre>
 
 ---
@@ -322,56 +382,6 @@
 </pre>
 
 <pre>
-<a id="Block" href="Semantics.md#Block">Block</a>:
-    <b>{</b> <i>[</i><i><a href="#BlockStatements">BlockStatements</a></i><i>]</i> <b>}</b>
-</pre>
-
-<pre>
-<a id="NestedEncapsulation" href="Semantics.md#NestedEncapsulation">NestedEncapsulation</a>:
-    <i>(one of)</i>
-    <b>public</b> <b>private</b>
-</pre>
-
-<pre>
-<a id="MemberDeclaration" href="Semantics.md#MemberDeclaration">MemberDeclaration</a>:
-    <i><a href="#FieldDeclaration">FieldDeclaration</a></i>
-    <i><a href="#MethodDeclaration">MethodDeclaration</a></i>
-    <i><a href="#MemberStaticity">MemberStaticity</a></i> <i><a href="#Block">Block</a></i>
-</pre>
-
-<pre>
-<a id="StructNestedEncapsulation" href="Semantics.md#StructNestedEncapsulation">StructNestedEncapsulation</a>:
-    <i>(one of)</i>
-    <b>public</b> <b>protected</b> <b>private</b>
-</pre>
-
-<pre>
-<a id="StructMemberDeclaration" href="Semantics.md#StructMemberDeclaration">StructMemberDeclaration</a>:
-    <i>[</i><i><a href="#MemberStaticity">MemberStaticity</a></i><i>]</i> <i><a href="#FieldDeclaration">FieldDeclaration</a></i>
-    <i>[</i><i><a href="#MemberStaticity">MemberStaticity</a></i><i>]</i> <i><a href="#StructMethodDeclaration">StructMethodDeclaration</a></i>
-    <i><a href="#MemberStaticity">MemberStaticity</a></i> <i><a href="#Block">Block</a></i>
-</pre>
-
-<pre>
-<a id="InterfaceNestedEncapsulation" href="Semantics.md#InterfaceNestedEncapsulation">InterfaceNestedEncapsulation</a>:
-    <b>private</b>
-</pre>
-
-<pre>
-<a id="InterfaceMemberDeclaration" href="Semantics.md#InterfaceMemberDeclaration">InterfaceMemberDeclaration</a>:
-    <i><a href="#FieldDeclaration">FieldDeclaration</a></i>
-    <i>[</i><i><a href="#MemberStaticity">MemberStaticity</a></i><i>]</i> <i><a href="#InterfaceMethodDeclaration">InterfaceMethodDeclaration</a></i>
-    <i><a href="#MemberStaticity">MemberStaticity</a></i> <i><a href="#Block">Block</a></i>
-</pre>
-
----
-
-<pre>
-<a id="FixedParameterType" href="Semantics.md#FixedParameterType">FixedParameterType</a>:
-    <b>:</b> <i><a href="#Type">Type</a></i>
-</pre>
-
-<pre>
 <a id="BlockStatements" href="Semantics.md#BlockStatements">BlockStatements</a>:
     <i>BlockStatement</i> <i>{</i><i>BlockStatement</i><i>}</i>
 </pre>
@@ -384,6 +394,11 @@
 <pre>
 <a id="MethodDeclaration" href="Semantics.md#MethodDeclaration">MethodDeclaration</a>:
     <b>func</b> <i><a href="#MethodHeader">MethodHeader</a></i> <i><a href="#Block">Block</a></i>
+</pre>
+
+<pre>
+<a id="StaticInitializer" href="Semantics.md#StaticInitializer">StaticInitializer</a>:
+    <i><a href="#MemberStaticity">MemberStaticity</a></i> <i><a href="#Block">Block</a></i>
 </pre>
 
 <pre>
@@ -402,6 +417,11 @@
 </pre>
 
 ---
+
+<pre>
+<a id="FixedParameterType" href="Semantics.md#FixedParameterType">FixedParameterType</a>:
+    <b>:</b> <i><a href="#Type">Type</a></i>
+</pre>
 
 <pre>
 <a id="FieldMutability" href="Semantics.md#FieldMutability">FieldMutability</a>:

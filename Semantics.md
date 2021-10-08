@@ -104,7 +104,7 @@ This is a comma-separated list of all the types it needs to import from a specif
 ## PackageOrTypeName
 This is a dot-separated sequence of identifiers that compose the name of the import source, that can be either a package or a type inside a package (top-level or nested).
 
-## Type
+## BaseType
 
 ## EnumBody
 This is the enum's body, where its constants are defined, along with optional extra declarations.
@@ -202,15 +202,33 @@ def FieldsToMemory(fields: list[tuple[str, int]], base: Optional[list[tuple[Opti
     return memory
 ```
 
-## TypeNames
+## BaseTypes
 
 ## StructBody
+
+## BaseInterfaces
 
 ## InterfaceBody
 
 ---
 
 ## ImportName
+
+## Type
+
+## EnumConstants
+
+## BodyDeclarations
+
+## UnionTypes
+
+## TypeNames
+
+## StructBodyDeclarations
+
+## InterfaceBodyDeclarations
+
+---
 
 ## PrimitiveType
 
@@ -222,15 +240,15 @@ def FieldsToMemory(fields: list[tuple[str, int]], base: Optional[list[tuple[Opti
 
 ## FunctionType
 
-## EnumConstants
+## EnumConstant
 
-## BodyDeclarations
+## BodyDeclaration
 
-## UnionTypes
+## UnionType
 
-## StructBodyDeclarations
+## StructBodyDeclaration
 
-## InterfaceBodyDeclarations
+## InterfaceBodyDeclaration
 
 ---
 
@@ -248,15 +266,19 @@ def FieldsToMemory(fields: list[tuple[str, int]], base: Optional[list[tuple[Opti
 
 ## Result
 
-## EnumConstant
+## Block
 
-## BodyDeclaration
+## NestedEncapsulation
 
-## UnionType
+## MemberDeclaration
 
-## StructBodyDeclaration
+## StructNestedEncapsulation
 
-## InterfaceBodyDeclaration
+## StructMemberDeclaration
+
+## InterfaceNestedEncapsulation
+
+## InterfaceMemberDeclaration
 
 ---
 
@@ -274,29 +296,13 @@ def FieldsToMemory(fields: list[tuple[str, int]], base: Optional[list[tuple[Opti
 
 ## VariableArityParameterType
 
-## Block
-
-## NestedEncapsulation
-
-## MemberDeclaration
-
-## StructNestedEncapsulation
-
-## StructMemberDeclaration
-
-## InterfaceNestedEncapsulation
-
-## InterfaceMemberDeclaration
-
----
-
-## FixedParameterType
-
 ## BlockStatements
 
 ## FieldDeclaration
 
 ## MethodDeclaration
+
+## StaticInitializer
 
 ## MemberStaticity
 
@@ -305,6 +311,8 @@ def FieldsToMemory(fields: list[tuple[str, int]], base: Optional[list[tuple[Opti
 ## InterfaceMethodDeclaration
 
 ---
+
+## FixedParameterType
 
 ## FieldMutability
 
