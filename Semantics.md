@@ -8,7 +8,7 @@ This is the start symbol of the grammar. It is equivalent to an entire source fi
 This declaration names the package the declared top level type belongs to. When ommited, the package is left unnamed. There can be only one unnamed package per project, and as it does not have a name, its types cannot be imported by other packages.
 
 ## ImportDeclarations
-This is a list of all the import declarations required for the proper function of the declared top level type and its eventual internal types. Those declarations are not separated by any symbol, as each import declaration already ends with a semicolon.
+This is a list of all the import declarations required for the proper function of the declared top level type and its eventual internal types. Those declarations are not separated by any symbol.
 
 ## TopLevelTypeDeclaration
 This declaration defines the top level type of the compilation unit. Its name must be the same as the source file's (minus the extension). The type has an encapsulation level that will determine its visibility outside the compilation unit.

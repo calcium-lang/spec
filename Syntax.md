@@ -9,7 +9,7 @@
 
 <pre>
 <a id="PackageDeclaration" href="Semantics.md#PackageDeclaration">PackageDeclaration</a>:
-    <b>package</b> <i><a href="#PackageName">PackageName</a></i> <b>;</b>
+    <b>package</b> <i><a href="#PackageName">PackageName</a></i> <i>[</i><b>;</b><i>]</i>
 </pre>
 
 <pre>
@@ -53,12 +53,12 @@
 
 <pre>
 <a id="ExplicitImport" href="Semantics.md#ExplicitImport">ExplicitImport</a>:
-    <b>import</b> <i><a href="#ImportNames">ImportNames</a></i> <i>[</i><b>from</b> <i><a href="#PackageOrTypeName">PackageOrTypeName</a></i><i>]</i> <b>;</b>
+    <b>import</b> <i><a href="#ImportNames">ImportNames</a></i> <i>[</i><b>from</b> <i><a href="#PackageOrTypeName">PackageOrTypeName</a></i><i>]</i> <i>[</i><b>;</b><i>]</i>
 </pre>
 
 <pre>
 <a id="ImportOnDemand" href="Semantics.md#ImportOnDemand">ImportOnDemand</a>:
-    <b>import</b> <b>*</b> <b>from</b> <i><a href="#PackageOrTypeName">PackageOrTypeName</a></i> <b>;</b>
+    <b>import</b> <b>*</b> <b>from</b> <i><a href="#PackageOrTypeName">PackageOrTypeName</a></i> <i>[</i><b>;</b><i>]</i>
 </pre>
 
 <pre>
