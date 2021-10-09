@@ -337,6 +337,7 @@
 <a id="StructMemberDeclaration" href="Semantics.md#StructMemberDeclaration">StructMemberDeclaration</a>:
     <i>[</i><i><a href="#MemberStaticity">MemberStaticity</a></i><i>]</i> <i><a href="#FieldDeclaration">FieldDeclaration</a></i>
     <i>[</i><i><a href="#MemberStaticity">MemberStaticity</a></i><i>]</i> <i><a href="#StructMethodDeclaration">StructMethodDeclaration</a></i>
+    <i><a href="#ConstructorDeclaration">ConstructorDeclaration</a></i>
     <i><a href="#StaticInitializer">StaticInitializer</a></i>
 </pre>
 
@@ -422,6 +423,11 @@
 </pre>
 
 <pre>
+<a id="ConstructorDeclaration" href="Semantics.md#ConstructorDeclaration">ConstructorDeclaration</a>:
+    <i><a href="#ConstructorHeader">ConstructorHeader</a></i> <i><a href="#Block">Block</a></i>
+</pre>
+
+<pre>
 <a id="InterfaceMethodDeclaration" href="Semantics.md#InterfaceMethodDeclaration">InterfaceMethodDeclaration</a>:
     <i>[</i><i><a href="#MethodOverride">MethodOverride</a></i><i>]</i> <b>func</b> <i><a href="#MethodHeader">MethodHeader</a></i> <i><a href="#MethodBody">MethodBody</a></i>
 </pre>
@@ -459,6 +465,11 @@
 <a id="MethodBody" href="Semantics.md#MethodBody">MethodBody</a>:
     <i><a href="#Block">Block</a></i>
     <b>;</b>
+</pre>
+
+<pre>
+<a id="ConstructorHeader" href="Semantics.md#ConstructorHeader">ConstructorHeader</a>:
+    <b>init</b> <b>(</b> <i>[</i><i><a href="#Parameters">Parameters</a></i><i>]</i> <b>)</b> <i>[</i><b>-&gt;</b> <i><a href="#Result">Result</a></i><i>]</i>
 </pre>
 
 ---

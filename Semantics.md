@@ -312,6 +312,8 @@ def FieldsToMemory(fields: list[tuple[str, int]], base: Optional[list[tuple[Opti
 
 ## StructMethodDeclaration
 
+## ConstructorDeclaration
+
 ## InterfaceMethodDeclaration
 
 ---
@@ -327,6 +329,8 @@ def FieldsToMemory(fields: list[tuple[str, int]], base: Optional[list[tuple[Opti
 ## MethodOverride
 
 ## MethodBody
+
+## ConstructorHeader
 
 ---
 
