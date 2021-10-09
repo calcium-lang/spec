@@ -73,7 +73,7 @@
 
 <pre>
 <a id="UnionDeclaration" href="Semantics.md#UnionDeclaration">UnionDeclaration</a>:
-    <i>[</i><i><a href="#UnionLayout">UnionLayout</a></i><i>]</i> <b>union</b> <i>Identifier</i> <i><a href="#UnionBody">UnionBody</a></i>
+    <i>[</i><i><a href="#UnionLayout">UnionLayout</a></i><i>]</i> <i>[</i><i><a href="#UnionRawness">UnionRawness</a></i><i>]</i> <b>union</b> <i>Identifier</i> <i><a href="#UnionBody">UnionBody</a></i>
 </pre>
 
 <pre>
@@ -110,6 +110,11 @@
 
 <pre>
 <a id="UnionLayout" href="Semantics.md#UnionLayout">UnionLayout</a>:
+    <b>packed</b>
+</pre>
+
+<pre>
+<a id="UnionRawness" href="Semantics.md#UnionRawness">UnionRawness</a>:
     <b>unsafe</b> <b>raw</b>
 </pre>
 
@@ -126,7 +131,7 @@
 
 <pre>
 <a id="StructLayout" href="Semantics.md#StructLayout">StructLayout</a>:
-    <b>raw</b>
+    <b>packed</b>
 </pre>
 
 <pre>
@@ -207,7 +212,7 @@
 <pre>
 <a id="PointerOrArraySuffix" href="Semantics.md#PointerOrArraySuffix">PointerOrArraySuffix</a>:
     <i><a href="#PointerSuffix">PointerSuffix</a></i> <i>[</i><i>PointerOrArraySuffix</i><i>]</i>
-    <i><a href="#Dim">Dim</a></i> <i>[</i><i>PointerOrArraySuffix</i><i>]</i>
+    <i><a href="#ArrayDim">ArrayDim</a></i> <i>[</i><i>PointerOrArraySuffix</i><i>]</i>
 </pre>
 
 <pre>
@@ -217,7 +222,7 @@
 
 <pre>
 <a id="VoidPointer" href="Semantics.md#VoidPointer">VoidPointer</a>:
-    <b>unsafe</b> <b>void</b> <i>[</i><i><a href="#ValueMutability">ValueMutability</a></i><i>]</i> <b>&</b> <i>[</i><i><a href="#TypeAtomicity">TypeAtomicity</a></i><i>]</i>
+    <b>unsafe</b> <b>void</b> <i>[</i><i><a href="#ValueMutability">ValueMutability</a></i><i>]</i> <i>[</i><i><a href="#ValueVolatility">ValueVolatility</a></i><i>]</i> <b>&</b> <i>[</i><i><a href="#TypeAtomicity">TypeAtomicity</a></i><i>]</i>
 </pre>
 
 <pre>
@@ -276,14 +281,19 @@
 </pre>
 
 <pre>
-<a id="Dim" href="Semantics.md#Dim">Dim</a>:
-    <b>[</b> <i>[</i><i>NumberLiteral</i><i>]</i> <b>]</b>
-    <b>[</b> <i>Identifier</i> <b>]</b>
+<a id="ArrayDim" href="Semantics.md#ArrayDim">ArrayDim</a>:
+    <b>[</b> <i>[</i><i>NumberLiteral</i><i>]</i> <b>]</b> <i>[</i><i><a href="#ArrayLayout">ArrayLayout</a></i><i>]</i>
+    <b>[</b> <i>Identifier</i> <b>]</b> <i>[</i><i><a href="#ArrayLayout">ArrayLayout</a></i><i>]</i>
 </pre>
 
 <pre>
 <a id="ValueMutability" href="Semantics.md#ValueMutability">ValueMutability</a>:
     <b>var</b>
+</pre>
+
+<pre>
+<a id="ValueVolatility" href="Semantics.md#ValueVolatility">ValueVolatility</a>:
+    <b>volatile</b>
 </pre>
 
 <pre>
@@ -357,11 +367,6 @@
 </pre>
 
 <pre>
-<a id="ValueVolatility" href="Semantics.md#ValueVolatility">ValueVolatility</a>:
-    <b>volatile</b>
-</pre>
-
-<pre>
 <a id="ReferenceAliasability" href="Semantics.md#ReferenceAliasability">ReferenceAliasability</a>:
     <b>aliasable</b>
 </pre>
@@ -369,6 +374,11 @@
 <pre>
 <a id="PointerSize" href="Semantics.md#PointerSize">PointerSize</a>:
     <b>wide</b>
+</pre>
+
+<pre>
+<a id="ArrayLayout" href="Semantics.md#ArrayLayout">ArrayLayout</a>:
+    <b>packed</b>
 </pre>
 
 <pre>
