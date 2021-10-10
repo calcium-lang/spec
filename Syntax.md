@@ -282,8 +282,8 @@
 
 <pre>
 <a id="ArrayDim" href="Semantics.md#ArrayDim">ArrayDim</a>:
-    <b>[</b> <i>[</i><i>NumberLiteral</i><i>]</i> <b>]</b> <i>[</i><i><a href="#ArrayLayout">ArrayLayout</a></i><i>]</i>
-    <b>[</b> <i>Identifier</i> <b>]</b> <i>[</i><i><a href="#ArrayLayout">ArrayLayout</a></i><i>]</i>
+    <b>[</b> <i>[</i><i>NumberLiteral</i><i>]</i> <b>]</b> <i>[</i><i><a href="#ArrayLayout">ArrayLayout</a></i><i>]</i> <i>[</i><i><a href="#ArrayRawness">ArrayRawness</a></i><i>]</i>
+    <b>[</b> <i>Identifier</i> <b>]</b> <i>[</i><i><a href="#ArrayLayout">ArrayLayout</a></i><i>]</i> <i>[</i><i><a href="#ArrayRawness">ArrayRawness</a></i><i>]</i>
 </pre>
 
 <pre>
@@ -380,6 +380,11 @@
 <pre>
 <a id="ArrayLayout" href="Semantics.md#ArrayLayout">ArrayLayout</a>:
     <b>packed</b>
+</pre>
+
+<pre>
+<a id="ArrayRawness" href="Semantics.md#ArrayRawness">ArrayRawness</a>:
+    <b>unsafe</b> <b>raw</b>
 </pre>
 
 <pre>

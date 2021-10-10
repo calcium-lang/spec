@@ -296,6 +296,8 @@ def FieldsToMemory(fields: list[tuple[str, int]], base: Optional[list[tuple[Opti
 
 ## ArrayLayout
 
+## ArrayRawness
+
 ## FixedParameterTypes
 
 ## VariableArityParameterType
