@@ -1,513 +1,335 @@
 # Syntax
 
-<pre>
-<a href="Semantics.md#CompilationUnit">CompilationUnit</a>:
-    <i>[</i><i><a href="#PackageDeclaration">PackageDeclaration</a></i><i>]</i> <i>[</i><i><a href="#ImportDeclaration">ImportDeclarations</a></i><i>]</i> <i><a href="#TopLevelTypeDeclaration">TopLevelTypeDeclaration</a></i>
-</pre>
+## [CompilationUnit](Semantics.md#CompilationUnit):
+_[_[_PackageDeclaration_](#PackageDeclaration)_]_ _[_[_ImportDeclarations_](#ImportDeclarations)_]_ [_TopLevelTypeDeclaration_](#TopLevelTypeDeclaration)
 
 ---
 
-<pre>
-<a id="PackageDeclaration" href="Semantics.md#PackageDeclaration">PackageDeclaration</a>:
-    <b>package</b> <i><a href="#PackageName">PackageName</a></i> <i>[</i><b>;</b><i>]</i>
-</pre>
+## [PackageDeclaration](Semantics.md#PackageDeclaration):
+**package** [_PackageName_](#PackageName) _[_**;**_]_
 
-<pre>
-<a id="ImportDeclarations" href="Semantics.md#ImportDeclarations">ImportDeclarations</a>:
-    <i><a href="#ImportDeclaration">ImportDeclaration</a></i> <i>{</i><i><a href="#ImportDeclaration">ImportDeclaration</a></i><i>}</i>
-</pre>
+## [ImportDeclarations](Semantics.md#ImportDeclarations):
+[_ImportDeclaration_](#ImportDeclaration) _{_[_ImportDeclaration_](#ImportDeclaration)_}_
 
-<pre>
-<a id="TopLevelTypeDeclaration" href="Semantics.md#TopLevelTypeDeclaration">TopLevelTypeDeclaration</a>:
-    <i>[</i><i><a href="#TopLevelEncapsulation">TopLevelEncapsulation</a></i><i>]</i> <i><a href="#TypeDeclaration">TypeDeclaration</a></i>
-</pre>
+## [TopLevelTypeDeclaration](Semantics.md#TopLevelTypeDeclaration):
+_[_[_TopLevelEncapsulation_](#TopLevelEncapsulation)_]_ [_TypeDeclaration_](#TypeDeclaration)
 
 ---
 
-<pre>
-<a id="PackageName" href="Semantics.md#PackageName">PackageName</a>:
-    <i>Identifier</i> <i>{</i><b>.</b> <i>Identifier</i><i>}</i>
-</pre>
+## [PackageName](Semantics.md#PackageName):
+_Identifier_ _{_**.** _Identifier_*}*
 
-<pre>
-<a id="ImportDeclaration" href="Semantics.md#ImportDeclaration">ImportDeclaration</a>:
-    <i><a href="#ExplicitImport">ExplicitImport</a></i>
-    <i><a href="#ImportOnDemand">ImportOnDemand</a></i>
-</pre>
+## [ImportDeclaration](Semantics.md#ImportDeclaration):
+[_ExplicitImport_](#ExplicitImport)  
+[_ImportOnDemand_](#ImportOnDemand)
 
-<pre>
-<a id="TopLevelEncapsulation" href="Semantics.md#TopLevelEncapsulation">TopLevelEncapsulation</a>:
-    <b>public</b>
-</pre>
+## [TopLevelEncapsulation](Semantics.md#TopLevelEncapsulation):
+**public**
 
-<pre>
-<a id="TypeDeclaration" href="Semantics.md#TypeDeclaration">TypeDeclaration</a>:
-    <i><a href="#TypedefDeclaration">TypedefDeclaration</a></i> <b>;</b>
-    <i><a href="#EnumDeclaration">EnumDeclaration</a></i>
-    <i><a href="#UnionDeclaration">UnionDeclaration</a></i>
-    <i><a href="#StructDeclaration">StructDeclaration</a></i>
-    <i><a href="#InterfaceDeclaration">InterfaceDeclaration</a></i>
-</pre>
+## [TypeDeclaration](Semantics.md#TypeDeclaration):
+[_TypedefDeclaration_](#TypedefDeclaration) **;**  
+[_EnumDeclaration_](#EnumDeclaration)  
+[_UnionDeclaration_](#UnionDeclaration)  
+[_StructDeclaration_](#StructDeclaration)  
+[_InterfaceDeclaration_](#InterfaceDeclaration)
 
 ---
 
-<pre>
-<a id="ExplicitImport" href="Semantics.md#ExplicitImport">ExplicitImport</a>:
-    <b>import</b> <i><a href="#ImportNames">ImportNames</a></i> <i>[</i><b>from</b> <i><a href="#PackageOrTypeName">PackageOrTypeName</a></i><i>]</i> <i>[</i><b>;</b><i>]</i>
-</pre>
+## [ExplicitImport](Semantics.md#ExplicitImport):
+**import** [_ImportNames_](#ImportNames) _[_**from** [_PackageOrTypeName_](#PackageOrTypeName)_]_ _[_**;**_]_
 
-<pre>
-<a id="ImportOnDemand" href="Semantics.md#ImportOnDemand">ImportOnDemand</a>:
-    <b>import</b> <b>*</b> <b>from</b> <i><a href="#PackageOrTypeName">PackageOrTypeName</a></i> <i>[</i><b>;</b><i>]</i>
-</pre>
+## [ImportOnDemand](Semantics.md#ImportOnDemand):
+**import** __*__ **from** [_PackageOrTypeName_](#PackageOrTypeName) _[_**;**_]_
 
-<pre>
-<a id="TypedefDeclaration" href="Semantics.md#TypedefDeclaration">TypedefDeclaration</a>:
-    <b>typedef</b> <i>Identifier</i> <i><a href="#BaseType">BaseType</a></i>
-</pre>
+## [TypedefDeclaration](Semantics.md#TypedefDeclaration):
+**typedef** _Identifier_ [_BaseType_](#BaseType)
 
-<pre>
-<a id="EnumDeclaration" href="Semantics.md#EnumDeclaration">EnumDeclaration</a>:
-    <b>enum</b> <i>Identifier</i> <i><a href="#BaseType">BaseType</a></i> <i><a href="#EnumBody">EnumBody</a></i>
-</pre>
+## [EnumDeclaration](Semantics.md#EnumDeclaration):
+**enum** _Identifier_ [_BaseType_](#BaseType) [_EnumBody_](#EnumBody)
 
-<pre>
-<a id="UnionDeclaration" href="Semantics.md#UnionDeclaration">UnionDeclaration</a>:
-    <i>[</i><i><a href="#UnionLayout">UnionLayout</a></i><i>]</i> <i>[</i><i><a href="#UnionRawness">UnionRawness</a></i><i>]</i> <b>union</b> <i>Identifier</i> <i><a href="#UnionBody">UnionBody</a></i>
-</pre>
+## [UnionDeclaration](Semantics.md#UnionDeclaration):
+_[_[_UnionLayout_](#UnionLayout)_]_ _[_[_UnionRawness_](#UnionRawness)_]_ **union** _Identifier_ [_UnionBody_](#UnionBody)
 
-<pre>
-<a id="StructDeclaration" href="Semantics.md#StructDeclaration">StructDeclaration</a>:
-    <i>[</i><i><a href="#StructExtensibility">StructExtensibility</a></i><i>]</i> <i>[</i><i><a href="#StructLayout">StructLayout</a></i><i>]</i> <b>struct</b> <i>Identifier</i> <i>[</i><i><a href="#BaseTypes">BaseTypes</a></i><i>]</i> <i><a href="#StructBody">StructBody</a></i>
-</pre>
+## [StructDeclaration](Semantics.md#StructDeclaration):
+_[_[_StructExtensibility_](#StructExtensibility)_]_ _[_[_StructLayout_](#StructLayout)_]_ **struct** _Identifier_ _[_[_BaseTypes_](#BaseTypes)_]_ [_StructBody_](#StructBody)
 
-<pre>
-<a id="InterfaceDeclaration" href="Semantics.md#InterfaceDeclaration">InterfaceDeclaration</a>:
-    <b>interface</b> <i>Identifier</i> <i>[</i><i><a href="#BaseInterfaces">BaseInterfaces</a></i><i>]</i> <i><a href="#InterfaceBody">InterfaceBody</a></i>
-</pre>
+## [InterfaceDeclaration](Semantics.md#InterfaceDeclaration):
+**interface** _Identifier_ _[_[_BaseInterfaces_](#BaseInterfaces)_]_ [_InterfaceBody_](#InterfaceBody)
 
 ---
 
-<pre>
-<a id="ImportNames" href="Semantics.md#ImportNames">ImportNames</a>:
-    <i><a href="#ImportName">ImportName</a></i> <i>{</i><b>,</b> <i><a href="#ImportName">ImportName</a></i><i>}</i>
-</pre>
+## [ImportNames](Semantics.md#ImportNames):
+[_ImportName_](#ImportName) _{_**,** [_ImportName_](#ImportName)_}_
 
-<pre>
-<a id="PackageOrTypeName" href="Semantics.md#PackageOrTypeName">PackageOrTypeName</a>:
-    <i>Identifier</i> <i>{</i><b>.</b> <i>Identifier</i><i>}</i>
-</pre>
+## [PackageOrTypeName](Semantics.md#PackageOrTypeName):
+_Identifier_ _{_**.** _Identifier_*}*
 
-<pre>
-<a id="BaseType" href="Semantics.md#BaseType">BaseType</a>:
-    <b>:</b> <i><a href="#Type">Type</a></i>
-</pre>
+## [BaseType](Semantics.md#BaseType):
+**:** [_Type_](#Type)
 
-<pre>
-<a id="EnumBody" href="Semantics.md#EnumBody">EnumBody</a>:
-    <b>{</b> <i><a href="#EnumConstants">EnumConstants</a></i> <i>[</i><b>;</b> <i><a href="#BodyDeclarations">BodyDeclarations</a></i><i>]</i> <b>}</b>
-</pre>
+## [EnumBody](Semantics.md#EnumBody):
+**{** [_EnumConstants_](#EnumConstants) _[_**;** [_BodyDeclarations_](#BodyDeclarations)_]_ **}**
 
-<pre>
-<a id="UnionLayout" href="Semantics.md#UnionLayout">UnionLayout</a>:
-    <b>packed</b>
-</pre>
+## [UnionLayout](Semantics.md#UnionLayout):
+**packed**
 
-<pre>
-<a id="UnionRawness" href="Semantics.md#UnionRawness">UnionRawness</a>:
-    <b>unsafe</b> <b>raw</b>
-</pre>
+## [UnionRawness](Semantics.md#UnionRawness):
+**unsafe** **raw**
 
-<pre>
-<a id="UnionBody" href="Semantics.md#UnionBody">UnionBody</a>:
-    <b>{</b> <i><a href="#UnionTypes">UnionTypes</a></i> <i>[</i><b>;</b> <i><a href="#BodyDeclarations">BodyDeclarations</a></i><i>]</i> <b>}</b>
-</pre>
+## [UnionBody](Semantics.md#UnionBody):
+**{** [_UnionTypes_](#UnionTypes) _[_**;** [_BodyDeclarations_](#BodyDeclarations)_]_ **}**
 
-<pre>
-<a id="StructExtensibility" href="Semantics.md#StructExtensibility">StructExtensibility</a>:
-    <i>(one of)</i>
-    <b>open</b> <b>abstract</b>
-</pre>
+## [StructExtensibility](Semantics.md#StructExtensibility):
+_(one of)_  
+**open** **abstract**
 
-<pre>
-<a id="StructLayout" href="Semantics.md#StructLayout">StructLayout</a>:
-    <b>packed</b>
-</pre>
+## [StructLayout](Semantics.md#StructLayout):
+**packed**
 
-<pre>
-<a id="BaseTypes" href="Semantics.md#BaseTypes">BaseTypes</a>:
-    <b>:</b> <i><a href="#Type">Type</a></i> <i>[</i><b>,</b> <i><a href="#TypeNames">TypeNames</a></i><i>]</i>
-</pre>
+## [BaseTypes](Semantics.md#BaseTypes):
+**:** [_Type_](#Type) _[_**,** [_TypeNames_](#TypeNames)_]_
 
-<pre>
-<a id="StructBody" href="Semantics.md#StructBody">StructBody</a>:
-    <b>{</b> <i>[</i><i><a href="#StructBodyDeclarations">StructBodyDeclarations</a></i><i>]</i> <b>}</b>
-</pre>
+## [StructBody](Semantics.md#StructBody):
+**{** _[_[_StructBodyDeclarations_](#StructBodyDeclarations)_]_ **}**
 
-<pre>
-<a id="BaseInterfaces" href="Semantics.md#BaseInterfaces">BaseInterfaces</a>:
-    <b>:</b> <i><a href="#TypeNames">TypeNames</a></i>
-</pre>
+## [BaseInterfaces](Semantics.md#BaseInterfaces):
+**:** [_TypeNames_](#TypeNames)
 
-<pre>
-<a id="InterfaceBody" href="Semantics.md#InterfaceBody">InterfaceBody</a>:
-    <b>{</b> <i><a href="#InterfaceBodyDeclarations">InterfaceBodyDeclarations</a></i> <b>}</b>
-</pre>
+## [InterfaceBody](Semantics.md#InterfaceBody):
+**{** [_InterfaceBodyDeclarations_](#InterfaceBodyDeclarations) **}**
 
 ---
 
-<pre>
-<a id="ImportName" href="Semantics.md#ImportName">ImportName</a>:
-    <i>Identifier</i> <i>[</i><b>as</b> <i>Identifier</i><i>]</i>
-</pre>
+## [ImportName](Semantics.md#ImportName):
+_Identifier_ _[_**as** _Identifier_*]*
 
-<pre>
-<a id="Type" href="Semantics.md#Type">Type</a>:
-    <i><a href="#PrimitiveType">PrimitiveType</a></i> <i>[</i><i><a href="#PointerOrArraySuffix">PointerOrArraySuffix</a></i><i>]</i>
-    <i><a href="#TypeName">TypeName</a></i> <i>[</i><i><a href="#PointerOrArraySuffix">PointerOrArraySuffix</a></i><i>]</i>
-    <i><a href="#VoidPointer">VoidPointer</a></i> <i>[</i><i><a href="#PointerOrArraySuffix">PointerOrArraySuffix</a></i><i>]</i>
-    <i><a href="#FunctionType">FunctionType</a></i>
-    <b>(</b> <i><a href="#FunctionType">FunctionType</a></i> <b>)</b> <i><a href="#PointerOrArraySuffix">PointerOrArraySuffix</a></i>
-</pre>
+## [Type](Semantics.md#Type):
+[_PrimitiveType_](#PrimitiveType) _[_[_PointerOrArraySuffix_](#PointerOrArraySuffix)_]_  
+[_TypeName_](#TypeName) _[_[_PointerOrArraySuffix_](#PointerOrArraySuffix)_]_  
+[_VoidPointer_](#VoidPointer) _[_[_PointerOrArraySuffix_](#PointerOrArraySuffix)_]_  
+[_FunctionType_](#FunctionType)  
+**(** [_FunctionType_](#FunctionType) **)** [_PointerOrArraySuffix_](#PointerOrArraySuffix)
 
-<pre>
-<a id="EnumConstants" href="Semantics.md#EnumConstants">EnumConstants</a>:
-    <i><a href="#EnumConstant">EnumConstant</a></i> <i>{</i><b>,</b> <i><a href="#EnumConstant">EnumConstant</a></i><i>}</i>
-</pre>
+## [EnumConstants](Semantics.md#EnumConstants):
+[_EnumConstant_](#EnumConstant) _{_**,** [_EnumConstant_](#EnumConstant)_}_
 
-<pre>
-<a id="BodyDeclarations" href="Semantics.md#BodyDeclarations">BodyDeclarations</a>:
-    <i><a href="#BodyDeclaration">BodyDeclaration</a></i> <i>{</i><i><a href="#BodyDeclaration">BodyDeclaration</a></i><i>}</i>
-</pre>
+## [BodyDeclarations](Semantics.md#BodyDeclarations):
+[_BodyDeclaration_](#BodyDeclaration) _{_[_BodyDeclaration_](#BodyDeclaration)_}_
 
-<pre>
-<a id="UnionTypes" href="Semantics.md#UnionTypes">UnionTypes</a>:
-    <i><a href="#UnionType">UnionType</a></i> <i>{</i><b>,</b> <i><a href="#UnionType">UnionType</a></i><i>}</i>
-</pre>
+## [UnionTypes](Semantics.md#UnionTypes):
+[_UnionType_](#UnionType) _{_**,** [_UnionType_](#UnionType)_}_
 
-<pre>
-<a id="TypeNames" href="Semantics.md#TypeNames">TypeNames</a>:
-    <i><a href="#TypeName">TypeName</a></i> <i>{</i><b>,</b> <i><a href="#TypeName">TypeName</a></i><i>}</i>
-</pre>
+## [TypeNames](Semantics.md#TypeNames):
+[_TypeName_](#TypeName) _{_**,** [_TypeName_](#TypeName)_}_
 
-<pre>
-<a id="StructBodyDeclarations" href="Semantics.md#StructBodyDeclarations">StructBodyDeclarations</a>:
-    <i><a href="#StructBodyDeclaration">StructBodyDeclaration</a></i> <i>{</i><i><a href="#StructBodyDeclaration">StructBodyDeclaration</a></i><i>}</i>
-</pre>
+## [StructBodyDeclarations](Semantics.md#StructBodyDeclarations):
+[_StructBodyDeclaration_](#StructBodyDeclaration) _{_[_StructBodyDeclaration_](#StructBodyDeclaration)_}_
 
-<pre>
-<a id="InterfaceBodyDeclarations" href="Semantics.md#InterfaceBodyDeclarations">InterfaceBodyDeclarations</a>:
-    <i><a href="#InterfaceBodyDeclaration">InterfaceBodyDeclaration</a></i> <i>{</i><i><a href="#InterfaceBodyDeclaration">InterfaceBodyDeclaration</a></i><i>}</i>
-</pre>
+## [InterfaceBodyDeclarations](Semantics.md#InterfaceBodyDeclarations):
+[_InterfaceBodyDeclaration_](#InterfaceBodyDeclaration) _{_[_InterfaceBodyDeclaration_](#InterfaceBodyDeclaration)_}_
 
 ---
 
-<pre>
-<a id="PrimitiveType" href="Semantics.md#PrimitiveType">PrimitiveType</a>:
-    <i><a href="#NumericType">NumericType</a></i> <i>[</i><i><a href="#TypeAtomicity">TypeAtomicity</a></i><i>]</i>
-    <b>bool</b> <i>[</i><i><a href="#TypeAtomicity">TypeAtomicity</a></i><i>]</i>
-    <b>_char</b> <i>[</i><i><a href="#TypeAtomicity">TypeAtomicity</a></i><i>]</i>
-</pre>
+## [PrimitiveType](Semantics.md#PrimitiveType):
+[_NumericType_](#NumericType) _[_[_TypeAtomicity_](#TypeAtomicity)_]_  
+**bool** _[_[_TypeAtomicity_](#TypeAtomicity)_]_  
+**_char** _[_[_TypeAtomicity_](#TypeAtomicity)_]_
 
-<pre>
-<a id="PointerOrArraySuffix" href="Semantics.md#PointerOrArraySuffix">PointerOrArraySuffix</a>:
-    <i><a href="#PointerSuffix">PointerSuffix</a></i> <i>[</i><i>PointerOrArraySuffix</i><i>]</i>
-    <i><a href="#ArrayDim">ArrayDim</a></i> <i>[</i><i>PointerOrArraySuffix</i><i>]</i>
-</pre>
+## [PointerOrArraySuffix](Semantics.md#PointerOrArraySuffix):
+[_PointerSuffix_](#PointerSuffix) *[*_PointerOrArraySuffix_*]*  
+[_ArrayDim_](#ArrayDim) *[*_PointerOrArraySuffix_*]*
 
-<pre>
-<a id="TypeName" href="Semantics.md#TypeName">TypeName</a>:
-    <i>Identifier</i> <i>{</i><b>.</b> <i>Identifier</i><i>}</i>
-</pre>
+## [TypeName](Semantics.md#TypeName):
+_Identifier_ _{_**.** _Identifier_*}*
 
-<pre>
-<a id="VoidPointer" href="Semantics.md#VoidPointer">VoidPointer</a>:
-    <b>unsafe</b> <b>void</b> <i>[</i><i><a href="#ValueMutability">ValueMutability</a></i><i>]</i> <i>[</i><i><a href="#ValueVolatility">ValueVolatility</a></i><i>]</i> <b>&</b> <i>[</i><i><a href="#TypeAtomicity">TypeAtomicity</a></i><i>]</i>
-</pre>
+## [VoidPointer](Semantics.md#VoidPointer):
+**unsafe** **void** _[_[_ValueMutability_](#ValueMutability)_]_ _[_[_ValueVolatility_](#ValueVolatility)_]_ **&** _[_[_TypeAtomicity_](#TypeAtomicity)_]_
 
-<pre>
-<a id="FunctionType" href="Semantics.md#FunctionType">FunctionType</a>:
-    <b>(</b> <i>[</i><i><a href="#ParameterTypes">ParameterTypes</a></i><i>]</i> <b>)</b> <b>-&gt;</b> <i><a href="#Result">Result</a></i>
-</pre>
+## [FunctionType](Semantics.md#FunctionType):
+**(** _[_[_ParameterTypes_](#ParameterTypes)_]_ **)** **->** [_Result_](#Result)
 
-<pre>
-<a id="EnumConstant" href="Semantics.md#EnumConstant">EnumConstant</a>:
-    <i>Identifier</i> <i>[</i><b>=</b> <i>ConstantExpression</i><i>]</i>
-    <i>Identifier</i> <b>=</b> <i><a href="#Block">Block</a></i>
-</pre>
+## [EnumConstant](Semantics.md#EnumConstant):
+_Identifier_ _[_**=** _ConstantExpression_*]*  
+_Identifier_ **=** [_Block_](#Block)
 
-<pre>
-<a id="BodyDeclaration" href="Semantics.md#BodyDeclaration">BodyDeclaration</a>:
-    <i>[</i><i><a href="#NestedEncapsulation">NestedEncapsulation</a></i><i>]</i> <i><a href="#MemberDeclaration">MemberDeclaration</a></i>
-    <i>[</i><i><a href="#NestedEncapsulation">NestedEncapsulation</a></i><i>]</i> <i><a href="#TypeDeclaration">TypeDeclaration</a></i>
-</pre>
+## [BodyDeclaration](Semantics.md#BodyDeclaration):
+_[_[_NestedEncapsulation_](#NestedEncapsulation)_]_ [_MemberDeclaration_](#MemberDeclaration)  
+_[_[_NestedEncapsulation_](#NestedEncapsulation)_]_ [_TypeDeclaration_](#TypeDeclaration)
 
-<pre>
-<a id="UnionType" href="Semantics.md#UnionType">UnionType</a>:
-    <i><a href="#TypedefDeclaration">TypedefDeclaration</a></i>
-    <i><a href="#EnumDeclaration">EnumDeclaration</a></i>
-    <i><a href="#UnionDeclaration">UnionDeclaration</a></i>
-    <i><a href="#StructDeclaration">StructDeclaration</a></i>
-</pre>
+## [UnionType](Semantics.md#UnionType):
+[_TypedefDeclaration_](#TypedefDeclaration)  
+[_EnumDeclaration_](#EnumDeclaration)  
+[_UnionDeclaration_](#UnionDeclaration)  
+[_StructDeclaration_](#StructDeclaration)
 
-<pre>
-<a id="StructBodyDeclaration" href="Semantics.md#StructBodyDeclaration">StructBodyDeclaration</a>:
-    <i>[</i><i><a href="#StructNestedEncapsulation">StructNestedEncapsulation</a></i><i>]</i> <i><a href="#StructMemberDeclaration">StructMemberDeclaration</a></i>
-    <i>[</i><i><a href="#StructNestedEncapsulation">StructNestedEncapsulation</a></i><i>]</i> <i><a href="#TypeDeclaration">TypeDeclaration</a></i>
-</pre>
+## [StructBodyDeclaration](Semantics.md#StructBodyDeclaration):
+_[_[_StructNestedEncapsulation_](#StructNestedEncapsulation)_]_ [_StructMemberDeclaration_](#StructMemberDeclaration)  
+_[_[_StructNestedEncapsulation_](#StructNestedEncapsulation)_]_ [_TypeDeclaration_](#TypeDeclaration)
 
-<pre>
-<a id="InterfaceBodyDeclaration" href="Semantics.md#InterfaceBodyDeclaration">InterfaceBodyDeclaration</a>:
-    <i>[</i><i><a href="#InterfaceNestedEncapsulation">InterfaceNestedEncapsulation</a></i><i>]</i> <i><a href="#InterfaceMemberDeclaration">InterfaceMemberDeclaration</a></i>
-    <i>[</i><i><a href="#InterfaceNestedEncapsulation">InterfaceNestedEncapsulation</a></i><i>]</i> <i><a href="#TypeDeclaration">TypeDeclaration</a></i>
-</pre>
+## [InterfaceBodyDeclaration](Semantics.md#InterfaceBodyDeclaration):
+_[_[_InterfaceNestedEncapsulation_](#InterfaceNestedEncapsulation)_]_ [_InterfaceMemberDeclaration_](#InterfaceMemberDeclaration)  
+_[_[_InterfaceNestedEncapsulation_](#InterfaceNestedEncapsulation)_]_ [_TypeDeclaration_](#TypeDeclaration)
 
 ---
 
-<pre>
-<a id="NumericType" href="Semantics.md#NumericType">NumericType</a>:
-    <i><a href="#IntegralType">IntegralType</a></i>
-    <i><a href="#FloatingPointType">FloatingPointType</a></i>
-</pre>
+## [NumericType](Semantics.md#NumericType):
+[_IntegralType_](#IntegralType)  
+[_FloatingPointType_](#FloatingPointType)
 
-<pre>
-<a id="TypeAtomicity" href="Semantics.md#TypeAtomicity">TypeAtomicity</a>:
-    <b>atomic</b>
-</pre>
+## [TypeAtomicity](Semantics.md#TypeAtomicity):
+**atomic**
 
-<pre>
-<a id="PointerSuffix" href="Semantics.md#PointerSuffix">PointerSuffix</a>:
-    <i>[</i><i><a href="#ValueMutability">ValueMutability</a></i><i>]</i> <i>[</i><i><a href="#ValueVolatility">ValueVolatility</a></i><i>]</i> <b>&</b> <i>[</i><i><a href="#ReferenceAliasability">ReferenceAliasability</a></i><i>]</i> <i>[</i><i><a href="#PointerSize">PointerSize</a></i><i>]</i> <i>[</i><i><a href="#TypeAtomicity">TypeAtomicity</a></i><i>]</i>
-</pre>
+## [PointerSuffix](Semantics.md#PointerSuffix):
+_[_[_ValueMutability_](#ValueMutability)_]_ _[_[_ValueVolatility_](#ValueVolatility)_]_ **&** _[_[_ReferenceAliasability_](#ReferenceAliasability)_]_ _[_[_PointerSize_](#PointerSize)_]_ _[_[_TypeAtomicity_](#TypeAtomicity)_]_
 
-<pre>
-<a id="ArrayDim" href="Semantics.md#ArrayDim">ArrayDim</a>:
-    <b>[</b> <i>[</i><i>NumberLiteral</i><i>]</i> <b>]</b> <i>[</i><i><a href="#ArrayLayout">ArrayLayout</a></i><i>]</i> <i>[</i><i><a href="#ArrayRawness">ArrayRawness</a></i><i>]</i>
-    <b>[</b> <i>Identifier</i> <b>]</b> <i>[</i><i><a href="#ArrayLayout">ArrayLayout</a></i><i>]</i> <i>[</i><i><a href="#ArrayRawness">ArrayRawness</a></i><i>]</i>
-</pre>
+## [ArrayDim](Semantics.md#ArrayDim):
+**[** *[*_NumberLiteral_*]* **]** _[_[_ArrayLayout_](#ArrayLayout)_]_ _[_[_ArrayRawness_](#ArrayRawness)_]_  
+**[** _Identifier_ **]** _[_[_ArrayLayout_](#ArrayLayout)_]_ _[_[_ArrayRawness_](#ArrayRawness)_]_
 
-<pre>
-<a id="ValueMutability" href="Semantics.md#ValueMutability">ValueMutability</a>:
-    <b>var</b>
-</pre>
+## [ValueMutability](Semantics.md#ValueMutability):
+**var**
 
-<pre>
-<a id="ValueVolatility" href="Semantics.md#ValueVolatility">ValueVolatility</a>:
-    <b>volatile</b>
-</pre>
+## [ValueVolatility](Semantics.md#ValueVolatility):
+**volatile**
 
-<pre>
-<a id="ParameterTypes" href="Semantics.md#ParameterTypes">ParameterTypes</a>:
-    <i><a href="#FixedParameterTypes">FixedParameterTypes</a></i> <i>[</i><b>,</b> <i><a href="#VariableArityParameterType">VariableArityParameterType</a></i><i>]</i>
-    <i><a href="#VariableArityParameterType">VariableArityParameterType</a></i>
-</pre>
+## [ParameterTypes](Semantics.md#ParameterTypes):
+[_FixedParameterTypes_](#FixedParameterTypes) _[_**,** [_VariableArityParameterType_](#VariableArityParameterType)_]_  
+[_VariableArityParameterType_](#VariableArityParameterType)
 
-<pre>
-<a id="Result" href="Semantics.md#Result">Result</a>:
-    <b>noreturn</b>
-    <b>void</b>
-    <i><a href="#Type">Type</a></i>
-</pre>
+## [Result](Semantics.md#Result):
+**noreturn**  
+**void**  
+[_Type_](#Type)
 
-<pre>
-<a id="Block" href="Semantics.md#Block">Block</a>:
-    <b>{</b> <i>[</i><i><a href="#BlockStatements">BlockStatements</a></i><i>]</i> <b>}</b>
-</pre>
+## [Block](Semantics.md#Block):
+**{** _[_[_BlockStatements_](#BlockStatements)_]_ **}**
 
-<pre>
-<a id="NestedEncapsulation" href="Semantics.md#NestedEncapsulation">NestedEncapsulation</a>:
-    <i>(one of)</i>
-    <b>public</b> <b>private</b>
-</pre>
+## [NestedEncapsulation](Semantics.md#NestedEncapsulation):
+_(one of)_  
+**public** **private**
 
-<pre>
-<a id="MemberDeclaration" href="Semantics.md#MemberDeclaration">MemberDeclaration</a>:
-    <i><a href="#FieldDeclaration">FieldDeclaration</a></i>
-    <i><a href="#MethodDeclaration">MethodDeclaration</a></i>
-    <i><a href="#StaticInitializer">StaticInitializer</a></i>
-</pre>
+## [MemberDeclaration](Semantics.md#MemberDeclaration):
+[_FieldDeclaration_](#FieldDeclaration)  
+[_MethodDeclaration_](#MethodDeclaration)  
+[_StaticInitializer_](#StaticInitializer)
 
-<pre>
-<a id="StructNestedEncapsulation" href="Semantics.md#StructNestedEncapsulation">StructNestedEncapsulation</a>:
-    <i>(one of)</i>
-    <b>public</b> <b>protected</b> <b>private</b>
-</pre>
+## [StructNestedEncapsulation](Semantics.md#StructNestedEncapsulation):
+_(one of)_  
+**public** **protected** **private**
 
-<pre>
-<a id="StructMemberDeclaration" href="Semantics.md#StructMemberDeclaration">StructMemberDeclaration</a>:
-    <i>[</i><i><a href="#MemberStaticity">MemberStaticity</a></i><i>]</i> <i><a href="#FieldDeclaration">FieldDeclaration</a></i>
-    <i>[</i><i><a href="#MemberStaticity">MemberStaticity</a></i><i>]</i> <i><a href="#StructMethodDeclaration">StructMethodDeclaration</a></i>
-    <i><a href="#ConstructorDeclaration">ConstructorDeclaration</a></i>
-    <i><a href="#StaticInitializer">StaticInitializer</a></i>
-</pre>
+## [StructMemberDeclaration](Semantics.md#StructMemberDeclaration):
+_[_[_MemberStaticity_](#MemberStaticity)_]_ [_FieldDeclaration_](#FieldDeclaration)  
+_[_[_MemberStaticity_](#MemberStaticity)_]_ [_StructMethodDeclaration_](#StructMethodDeclaration)  
+[_ConstructorDeclaration_](#ConstructorDeclaration)  
+[_StaticInitializer_](#StaticInitializer)
 
-<pre>
-<a id="InterfaceNestedEncapsulation" href="Semantics.md#InterfaceNestedEncapsulation">InterfaceNestedEncapsulation</a>:
-    <b>private</b>
-</pre>
+## [InterfaceNestedEncapsulation](Semantics.md#InterfaceNestedEncapsulation):
+**private**
 
-<pre>
-<a id="InterfaceMemberDeclaration" href="Semantics.md#InterfaceMemberDeclaration">InterfaceMemberDeclaration</a>:
-    <i><a href="#FieldDeclaration">FieldDeclaration</a></i>
-    <i>[</i><i><a href="#MemberStaticity">MemberStaticity</a></i><i>]</i> <i><a href="#InterfaceMethodDeclaration">InterfaceMethodDeclaration</a></i>
-    <i><a href="#StaticInitializer">StaticInitializer</a></i>
-</pre>
+## [InterfaceMemberDeclaration](Semantics.md#InterfaceMemberDeclaration):
+[_FieldDeclaration_](#FieldDeclaration)  
+_[_[_MemberStaticity_](#MemberStaticity)_]_ [_InterfaceMethodDeclaration_](#InterfaceMethodDeclaration)  
+[_StaticInitializer_](#StaticInitializer)
 
 ---
 
-<pre>
-<a id="IntegralType" href="Semantics.md#IntegralType">IntegralType</a>:
-    <i>(one of)</i>
-    <b>_ubyte</b> <b>_byte</b> <b>_ushort</b> <b>_short</b> <b>_uint</b> <b>_int</b> <b>_ulong</b> <b>_long</b>
-</pre>
+## [IntegralType](Semantics.md#IntegralType):
+_(one of)_  
+**_ubyte** **_byte** **_ushort** **_short** **_uint** **_int** **_ulong** **_long**
 
-<pre>
-<a id="FloatingPointType" href="Semantics.md#FloatingPointType">FloatingPointType</a>:
-    <i>(one of)</i>
-    <b>_float</b> <b>_double</b>
-</pre>
+## [FloatingPointType](Semantics.md#FloatingPointType):
+_(one of)_  
+**_float** **_double**
 
-<pre>
-<a id="ReferenceAliasability" href="Semantics.md#ReferenceAliasability">ReferenceAliasability</a>:
-    <b>aliasable</b>
-</pre>
+## [ReferenceAliasability](Semantics.md#ReferenceAliasability):
+**aliasable**
 
-<pre>
-<a id="PointerSize" href="Semantics.md#PointerSize">PointerSize</a>:
-    <b>wide</b>
-</pre>
+## [PointerSize](Semantics.md#PointerSize):
+**wide**
 
-<pre>
-<a id="ArrayLayout" href="Semantics.md#ArrayLayout">ArrayLayout</a>:
-    <b>packed</b>
-</pre>
+## [ArrayLayout](Semantics.md#ArrayLayout):
+**packed**
 
-<pre>
-<a id="ArrayRawness" href="Semantics.md#ArrayRawness">ArrayRawness</a>:
-    <b>unsafe</b> <b>raw</b>
-</pre>
+## [ArrayRawness](Semantics.md#ArrayRawness):
+**unsafe** **raw**
 
-<pre>
-<a id="FixedParameterTypes" href="Semantics.md#FixedParameterTypes">FixedParameterTypes</a>:
-    <i><a href="#FixedParameterType">FixedParameterType</a></i> <i>{</i><b>,</b> <i><a href="#FixedParameterType">FixedParameterType</a></i><i>}</i>
-</pre>
+## [FixedParameterTypes](Semantics.md#FixedParameterTypes):
+[_FixedParameterType_](#FixedParameterType) _{_**,** [_FixedParameterType_](#FixedParameterType)_}_
 
-<pre>
-<a id="VariableArityParameterType" href="Semantics.md#VariableArityParameterType">VariableArityParameterType</a>:
-    <b>...</b> <b>:</b> <i><a href="#Type">Type</a></i>
-</pre>
+## [VariableArityParameterType](Semantics.md#VariableArityParameterType):
+**...** **:** [_Type_](#Type)
 
-<pre>
-<a id="BlockStatements" href="Semantics.md#BlockStatements">BlockStatements</a>:
-    <i>BlockStatement</i> <i>{</i><i>BlockStatement</i><i>}</i>
-</pre>
+## [BlockStatements](Semantics.md#BlockStatements):
+_BlockStatement_ *{*_BlockStatement_*}*
 
-<pre>
-<a id="FieldDeclaration" href="Semantics.md#FieldDeclaration">FieldDeclaration</a>:
-    <i><a href="#FieldMutability">FieldMutability</a></i> <i>[</i><i><a href="#ValueVolatility">ValueVolatility</a></i><i>]</i> <i>Identifier</i> <b>:</b> <i><a href="#Type">Type</a></i> <i>[</i><b>=</b> <i>ConstantExpression</i><i>]</i> <b>;</b>
-</pre>
+## [FieldDeclaration](Semantics.md#FieldDeclaration):
+[_FieldMutability_](#FieldMutability) _[_[_ValueVolatility_](#ValueVolatility)_]_ _Identifier_ **:** [_Type_](#Type) _[_**=** _ConstantExpression_*]* **;**
 
-<pre>
-<a id="MethodDeclaration" href="Semantics.md#MethodDeclaration">MethodDeclaration</a>:
-    <b>func</b> <i><a href="#MethodHeader">MethodHeader</a></i> <i><a href="#Block">Block</a></i>
-</pre>
+## [MethodDeclaration](Semantics.md#MethodDeclaration):
+**func** [_MethodHeader_](#MethodHeader) [_Block_](#Block)
 
-<pre>
-<a id="StaticInitializer" href="Semantics.md#StaticInitializer">StaticInitializer</a>:
-    <i><a href="#MemberStaticity">MemberStaticity</a></i> <i><a href="#Block">Block</a></i>
-</pre>
+## [StaticInitializer](Semantics.md#StaticInitializer):
+[_MemberStaticity_](#MemberStaticity) [_Block_](#Block)
 
-<pre>
-<a id="MemberStaticity" href="Semantics.md#MemberStaticity">MemberStaticity</a>:
-    <b>static</b>
-</pre>
+## [MemberStaticity](Semantics.md#MemberStaticity):
+**static**
 
-<pre>
-<a id="StructMethodDeclaration" href="Semantics.md#StructMethodDeclaration">StructMethodDeclaration</a>:
-    <i>[</i><i><a href="#MethodExtensibility">MethodExtensibility</a></i><i>]</i> <i>[</i><i><a href="#MethodOverride">MethodOverride</a></i><i>]</i> <b>func</b> <i><a href="#MethodHeader">MethodHeader</a></i> <i><a href="#MethodBody">MethodBody</a></i>
-</pre>
+## [StructMethodDeclaration](Semantics.md#StructMethodDeclaration):
+_[_[_MethodExtensibility_](#MethodExtensibility)_]_ _[_[_MethodOverride_](#MethodOverride)_]_ **func** [_MethodHeader_](#MethodHeader) [_MethodBody_](#MethodBody)
 
-<pre>
-<a id="ConstructorDeclaration" href="Semantics.md#ConstructorDeclaration">ConstructorDeclaration</a>:
-    <i><a href="#ConstructorHeader">ConstructorHeader</a></i> <i><a href="#Block">Block</a></i>
-</pre>
+## [ConstructorDeclaration](Semantics.md#ConstructorDeclaration):
+[_ConstructorHeader_](#ConstructorHeader) [_Block_](#Block)
 
-<pre>
-<a id="InterfaceMethodDeclaration" href="Semantics.md#InterfaceMethodDeclaration">InterfaceMethodDeclaration</a>:
-    <i>[</i><i><a href="#MethodOverride">MethodOverride</a></i><i>]</i> <b>func</b> <i><a href="#MethodHeader">MethodHeader</a></i> <i><a href="#MethodBody">MethodBody</a></i>
-</pre>
+## [InterfaceMethodDeclaration](Semantics.md#InterfaceMethodDeclaration):
+_[_[_MethodOverride_](#MethodOverride)_]_ **func** [_MethodHeader_](#MethodHeader) [_MethodBody_](#MethodBody)
 
 ---
 
-<pre>
-<a id="FixedParameterType" href="Semantics.md#FixedParameterType">FixedParameterType</a>:
-    <b>:</b> <i><a href="#Type">Type</a></i>
-</pre>
+## [FixedParameterType](Semantics.md#FixedParameterType):
+**:** [_Type_](#Type)
 
-<pre>
-<a id="FieldMutability" href="Semantics.md#FieldMutability">FieldMutability</a>:
-    <i>(one of)</i>
-    <b>var</b> <b>const</b>
-</pre>
+## [FieldMutability](Semantics.md#FieldMutability):
+_(one of)_  
+**var** **const**
 
-<pre>
-<a id="MethodHeader" href="Semantics.md#MethodHeader">MethodHeader</a>:
-    <i>Identifier</i> <b>(</b> <i>[</i><i><a href="#Parameters">Parameters</a></i><i>]</i> <b>)</b> <b>-&gt;</b> <i><a href="#Result">Result</a></i>
-</pre>
+## [MethodHeader](Semantics.md#MethodHeader):
+_Identifier_ **(** _[_[_Parameters_](#Parameters)_]_ **)** **->** [_Result_](#Result)
 
-<pre>
-<a id="MethodExtensibility" href="Semantics.md#MethodExtensibility">MethodExtensibility</a>:
-    <i>(one of)</i>
-    <b>open</b> <b>abstract</b>
-</pre>
+## [MethodExtensibility](Semantics.md#MethodExtensibility):
+_(one of)_  
+**open** **abstract**
 
-<pre>
-<a id="MethodOverride" href="Semantics.md#MethodOverride">MethodOverride</a>:
-    <b>override</b>
-</pre>
+## [MethodOverride](Semantics.md#MethodOverride):
+**override**
 
-<pre>
-<a id="MethodBody" href="Semantics.md#MethodBody">MethodBody</a>:
-    <i><a href="#Block">Block</a></i>
-    <b>;</b>
-</pre>
+## [MethodBody](Semantics.md#MethodBody):
+[_Block_](#Block)  
+**;**
 
-<pre>
-<a id="ConstructorHeader" href="Semantics.md#ConstructorHeader">ConstructorHeader</a>:
-    <b>init</b> <b>(</b> <i>[</i><i><a href="#Parameters">Parameters</a></i><i>]</i> <b>)</b> <i>[</i><b>-&gt;</b> <i><a href="#Result">Result</a></i><i>]</i>
-</pre>
+## [ConstructorHeader](Semantics.md#ConstructorHeader):
+**init** **(** _[_[_Parameters_](#Parameters)_]_ **)** _[_**->** [_Result_](#Result)_]_
 
 ---
 
-<pre>
-<a id="Parameters" href="Semantics.md#Parameters">Parameters</a>:
-    <i><a href="#ThisParameter">ThisParameter</a></i> <i>[</i><b>,</b> <i><a href="#FixedParameters">FixedParameters</a></i><i>]</i> <i>[</i><b>,</b> <i><a href="#VariableArityParameter">VariableArityParameter</a></i><i>]</i>
-    <i><a href="#FixedParameters">FixedParameters</a></i> <i>[</i><b>,</b> <i><a href="#VariableArityParameter">VariableArityParameter</a></i><i>]</i>
-    <i><a href="#VariableArityParameter">VariableArityParameter</a></i>
-</pre>
+## [Parameters](Semantics.md#Parameters):
+[_ThisParameter_](#ThisParameter) _[_**,** [_FixedParameters_](#FixedParameters)_]_ _[_**,** [_VariableArityParameter_](#VariableArityParameter)_]_  
+[_FixedParameters_](#FixedParameters) _[_**,** [_VariableArityParameter_](#VariableArityParameter)_]_  
+[_VariableArityParameter_](#VariableArityParameter)
 
 ---
 
-<pre>
-<a id="ThisParameter" href="Semantics.md#ThisParameter">ThisParameter</a>:
-    <b>this</b> <i>[</i><b>:</b> <i><a href="#ValueMutability">ValueMutability</a></i> <i>[</i><i><a href="#ValueVolatility">ValueVolatility</a></i><i>]</i> <i>[</i><b>&</b> <i>[</i><i><a href="#ReferenceAliasability">ReferenceAliasability</a></i><i>]</i> <i>[</i><i><a href="#PointerSize">PointerSize</a></i><i>]</i><i>]</i><i>]</i>
-    <b>this</b> <b>:</b> <i><a href="#ValueVolatility">ValueVolatility</a></i> <i>[</i><b>&</b> <i>[</i><i><a href="#ReferenceAliasability">ReferenceAliasability</a></i><i>]</i> <i>[</i><i><a href="#PointerSize">PointerSize</a></i><i>]</i><i>]</i>
-    <b>this</b> <b>:</b> <b>&</b> <i>[</i><i><a href="#ReferenceAliasability">ReferenceAliasability</a></i><i>]</i> <i>[</i><i><a href="#PointerSize">PointerSize</a></i><i>]</i>
-</pre>
+## [ThisParameter](Semantics.md#ThisParameter):
+**this** _[_**:** [_ValueMutability_](#ValueMutability) _[_[_ValueVolatility_](#ValueVolatility)_]_ _[_**&** _[_[_ReferenceAliasability_](#ReferenceAliasability)_]_ _[_[_PointerSize_](#PointerSize)_]_*]*_]_  
+**this** **:** [_ValueVolatility_](#ValueVolatility) _[_**&** _[_[_ReferenceAliasability_](#ReferenceAliasability)_]_ _[_[_PointerSize_](#PointerSize)_]_*]*  
+**this** **:** **&** _[_[_ReferenceAliasability_](#ReferenceAliasability)_]_ _[_[_PointerSize_](#PointerSize)_]_
 
-<pre>
-<a id="FixedParameters" href="Semantics.md#FixedParameters">FixedParameters</a>:
-    <i><a href="#FixedParameter">FixedParameter</a></i> <i>{</i><b>,</b> <i><a href="#FixedParameter">FixedParameter</a></i><i>}</i>
-</pre>
+## [FixedParameters](Semantics.md#FixedParameters):
+[_FixedParameter_](#FixedParameter) _{_**,** [_FixedParameter_](#FixedParameter)_}_
 
-<pre>
-<a id="VariableArityParameter" href="Semantics.md#VariableArityParameter">VariableArityParameter</a>:
-    <b>...</b> <i>Identifier</i> <b>:</b> <i><a href="#Type">Type</a></i>
-</pre>
+## [VariableArityParameter](Semantics.md#VariableArityParameter):
+**...** _Identifier_ **:** [_Type_](#Type)
 
 ---
 
-<pre>
-<a id="FixedParameter" href="Semantics.md#FixedParameter">FixedParameter</a>:
-    <i>Identifier</i> <b>:</b> <i><a href="#Type">Type</a></i>
-</pre>
+## [FixedParameter](Semantics.md#FixedParameter):
+_Identifier_ **:** [_Type_](#Type)
