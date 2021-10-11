@@ -1,0 +1,333 @@
+CompilationUnit:
+    [PackageDeclaration] [ImportDeclarations] TopLevelTypeDeclaration
+
+--
+
+PackageDeclaration:
+    "package" PackageName [";"]
+
+ImportDeclarations:
+    ImportDeclaration {ImportDeclaration}
+
+TopLevelTypeDeclaration:
+    [TopLevelEncapsulation] TypeDeclaration
+
+--
+
+PackageName:
+    Identifier {"." Identifier}
+
+ImportDeclaration:
+    ExplicitImport
+    ImportOnDemand
+
+TopLevelEncapsulation:
+    "public"
+
+TypeDeclaration:
+    TypedefDeclaration ";"
+    EnumDeclaration
+    UnionDeclaration
+    StructDeclaration
+    InterfaceDeclaration
+
+--
+
+ExplicitImport:
+    "import" ImportNames ["from" PackageOrTypeName] [";"]
+
+ImportOnDemand:
+    "import" "*" "from" PackageOrTypeName [";"]
+
+TypedefDeclaration:
+    "typedef" Identifier BaseType
+
+EnumDeclaration:
+    "enum" Identifier BaseType EnumBody
+
+UnionDeclaration:
+    [UnionLayout] [UnionRawness] "union" Identifier UnionBody
+
+StructDeclaration:
+    [StructExtensibility] [StructLayout] "struct" Identifier [BaseTypes] StructBody
+
+InterfaceDeclaration:
+    "interface" Identifier [BaseInterfaces] InterfaceBody
+
+--
+
+ImportNames:
+    ImportName {"," ImportName}
+
+PackageOrTypeName:
+    Identifier {"." Identifier}
+
+BaseType:
+    ":" Type
+
+EnumBody:
+    "{" EnumConstants [";" BodyDeclarations] "}"
+
+UnionLayout:
+    "packed"
+
+UnionRawness:
+    "unsafe" "raw"
+
+UnionBody:
+    "{" UnionTypes [";" BodyDeclarations] "}"
+
+StructExtensibility:
+    (one of)
+    "open" "abstract"
+
+StructLayout:
+    "packed"
+
+BaseTypes:
+    ":" Type ["," TypeNames]
+
+StructBody:
+    "{" [StructBodyDeclarations] "}"
+
+BaseInterfaces:
+    ":" TypeNames
+
+InterfaceBody:
+    "{" InterfaceBodyDeclarations "}"
+
+--
+
+ImportName:
+    Identifier ["as" Identifier]
+
+Type:
+    PrimitiveType [PointerOrArraySuffix]
+    TypeName [PointerOrArraySuffix]
+    VoidPointer [PointerOrArraySuffix]
+    FunctionType
+    "(" FunctionType ")" PointerOrArraySuffix
+
+EnumConstants:
+    EnumConstant {"," EnumConstant}
+
+BodyDeclarations:
+    BodyDeclaration {BodyDeclaration}
+
+UnionTypes:
+    UnionType {"," UnionType}
+
+TypeNames:
+    TypeName {"," TypeName}
+
+StructBodyDeclarations:
+    StructBodyDeclaration {StructBodyDeclaration}
+
+InterfaceBodyDeclarations:
+    InterfaceBodyDeclaration {InterfaceBodyDeclaration}
+
+--
+
+PrimitiveType:
+    NumericType [TypeAtomicity]
+    "bool" [TypeAtomicity]
+    "_char" [TypeAtomicity]
+
+PointerOrArraySuffix:
+    PointerSuffix [PointerOrArraySuffix]
+    ArrayDim [PointerOrArraySuffix]
+
+TypeName:
+    Identifier {"." Identifier}
+
+VoidPointer:
+    "unsafe" "void" [ValueMutability] [ValueVolatility] "&" [TypeAtomicity]
+
+FunctionType:
+    "(" [ParameterTypes] ")" "->" Result
+
+EnumConstant:
+    Identifier ["=" ConstantExpression]
+    Identifier "=" Block
+
+BodyDeclaration:
+    [NestedEncapsulation] MemberDeclaration
+    [NestedEncapsulation] TypeDeclaration
+
+UnionType:
+    TypedefDeclaration
+    EnumDeclaration
+    UnionDeclaration
+    StructDeclaration
+
+StructBodyDeclaration:
+    [StructNestedEncapsulation] StructMemberDeclaration
+    [StructNestedEncapsulation] TypeDeclaration
+
+InterfaceBodyDeclaration:
+    [InterfaceNestedEncapsulation] InterfaceMemberDeclaration
+    [InterfaceNestedEncapsulation] TypeDeclaration
+
+--
+
+NumericType:
+    IntegralType
+    FloatingPointType
+
+TypeAtomicity:
+    "atomic"
+
+PointerSuffix:
+    [ValueMutability] [ValueVolatility] "&" [ReferenceAliasability] [PointerSize] [TypeAtomicity]
+
+ArrayDim:
+    "[" [NumberLiteral] "]" [ArrayLayout] [ArrayRawness]
+    "[" Identifier "]" [ArrayLayout] [ArrayRawness]
+
+ValueMutability:
+    "var"
+
+ValueVolatility:
+    "volatile"
+
+ParameterTypes:
+    FixedParameterTypes ["," VariableArityParameterType]
+    VariableArityParameterType
+
+Result:
+    "noreturn"
+    "void"
+    Type
+
+Block:
+    "{" [BlockStatements] "}"
+
+NestedEncapsulation:
+    (one of)
+    "public" "private"
+
+MemberDeclaration:
+    FieldDeclaration
+    MethodDeclaration
+    StaticInitializer
+
+StructNestedEncapsulation:
+    (one of)
+    "public" "protected" "private"
+
+StructMemberDeclaration:
+    [MemberStaticity] FieldDeclaration
+    [MemberStaticity] StructMethodDeclaration
+    ConstructorDeclaration
+    StaticInitializer
+
+InterfaceNestedEncapsulation:
+    "private"
+
+InterfaceMemberDeclaration:
+    FieldDeclaration
+    [MemberStaticity] InterfaceMethodDeclaration
+    StaticInitializer
+
+--
+
+IntegralType:
+    (one of)
+    "_ubyte" "_byte" "_ushort" "_short" "_uint" "_int" "_ulong" "_long"
+
+FloatingPointType:
+    (one of)
+    "_float" "_double"
+
+ReferenceAliasability:
+    "aliasable"
+
+PointerSize:
+    "wide"
+
+ArrayLayout:
+    "packed"
+
+ArrayRawness:
+    "unsafe" "raw"
+
+FixedParameterTypes:
+    FixedParameterType {"," FixedParameterType}
+
+VariableArityParameterType:
+    "..." ":" Type
+
+BlockStatements:
+    BlockStatement {BlockStatement}
+
+FieldDeclaration:
+    FieldMutability [ValueVolatility] Identifier ":" Type ["=" ConstantExpression] ";"
+
+MethodDeclaration:
+    "func" MethodHeader Block
+
+StaticInitializer:
+    MemberStaticity Block
+
+MemberStaticity:
+    "static"
+
+StructMethodDeclaration:
+    [MethodExtensibility] [MethodOverride] "func" MethodHeader MethodBody
+
+ConstructorDeclaration:
+    ConstructorHeader Block
+
+InterfaceMethodDeclaration:
+    [MethodOverride] "func" MethodHeader MethodBody
+
+--
+
+FixedParameterType:
+    ":" Type
+
+FieldMutability:
+    (one of)
+    "var" "const"
+
+MethodHeader:
+    Identifier "(" [Parameters] ")" "->" Result
+
+MethodExtensibility:
+    (one of)
+    "open" "abstract"
+
+MethodOverride:
+    "override"
+
+MethodBody:
+    Block
+    ";"
+
+ConstructorHeader:
+    "init" "(" [Parameters] ")" ["->" Result]
+
+--
+
+Parameters:
+    ThisParameter ["," FixedParameters] ["," VariableArityParameter]
+    FixedParameters ["," VariableArityParameter]
+    VariableArityParameter
+
+--
+
+ThisParameter:
+    "this" [":" ValueMutability [ValueVolatility] ["&" [ReferenceAliasability] [PointerSize]]]
+    "this" ":" ValueVolatility ["&" [ReferenceAliasability] [PointerSize]]
+    "this" ":" "&" [ReferenceAliasability] [PointerSize]
+
+FixedParameters:
+    FixedParameter {"," FixedParameter}
+
+VariableArityParameter:
+    "..." Identifier ":" Type
+
+--
+
+FixedParameter:
+    Identifier ":" Type
