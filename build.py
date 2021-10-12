@@ -17,7 +17,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this script.  If not, see <https://www.gnu.org/licenses/>.
 
-from grammar2md.grammar2md import Syntax
+from grammar2md.alchemist.grammar2md import Syntax
 import re
 
 def main():
