@@ -6,7 +6,7 @@ Its name is after the chemical element Cesium(Cs).
 It is heavily inspired by C, and tries to support all its features. It is also inspired by Java, and implements a subset of its object-orientation model, while trying to remove the space- and time-costs of such abstractions. Some of its syntax is inspired by Kotlin, Python, JavaScript/TypeScript and Rust.
 
 # Building
-To build the most recent Syntax.md file, first make sure you have the grammar2md submodule initialized properly. You can use the `--recursive` flag when cloning the project to do this:
+To build the most recent Syntax.md file, first make sure you have the Alchemist grammar2md submodule initialized properly. You can use the `--recursive` flag when cloning the project to do this:
 
 ```shell
 git clone --recursive https://github.com/natanjunges/cesium-lang.git
@@ -18,7 +18,7 @@ Alternatively, if you already have the project checked out, you can initialize t
 git submodule update --init
 ```
 
-Once you have the most recent grammar2md submodule, run the build script:
+Once you have the most recent Alchemist grammar2md submodule, run the build script:
 
 ```shell
 ./build.py
