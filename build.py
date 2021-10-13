@@ -18,14 +18,12 @@
 # along with this script.  If not, see <https://www.gnu.org/licenses/>.
 
 from grammar2md.alchemist.grammar2md import Syntax
-import re
 from typing import TextIO
 
 def main() -> None:
     input: TextIO = open("Syntax.grammar")
-    md: str = Syntax.generate(input.read(), {"Identifier", "ConstantExpression", "NumberLiteral", "BlockStatement"}, "Syntax")
+    md: str = Syntax.generate(input.read(), {"Identifier", "ConstantExpression", "NumberLiteral", "BlockStatement"}, "Semantics.md")
     input.close()
-    md = re.sub(r"## ([a-zA-Z]+):", r"## [\1](Semantics.md#\1):", md)
     output: TextIO = open("Syntax.md", "w")
     output.write(md)
     output.close()
