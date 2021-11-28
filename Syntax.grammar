@@ -45,7 +45,7 @@ TypedefDeclaration:
     "typedef" Identifier BaseType
 
 EnumDeclaration:
-    "enum" Identifier BaseType EnumBody
+    "enum" Identifier [BaseType] EnumBody
 
 UnionDeclaration:
     [UnionLayout] [UnionRawness] "union" Identifier UnionBody
@@ -219,7 +219,7 @@ StructNestedEncapsulation:
 
 StructMemberDeclaration:
     [MemberStaticity] FieldDeclaration
-    [MemberStaticity] StructMethodDeclaration
+    [MemberStaticity] MethodDeclaration
     ConstructorDeclaration
     StaticInitializer
 
@@ -228,7 +228,7 @@ InterfaceNestedEncapsulation:
 
 InterfaceMemberDeclaration:
     FieldDeclaration
-    [MemberStaticity] InterfaceMethodDeclaration
+    [MemberStaticity] MethodDeclaration
     StaticInitializer
 
 --
@@ -266,7 +266,7 @@ FieldDeclaration:
     FieldMutability [ValueVolatility] Identifier ":" Type ["=" ConstantExpression] ";"
 
 MethodDeclaration:
-    "func" MethodHeader Block
+    [MethodExtensibility] [MethodOverride] "func" MethodHeader MethodBody
 
 StaticInitializer:
     MemberStaticity Block
@@ -274,14 +274,8 @@ StaticInitializer:
 MemberStaticity:
     "static"
 
-StructMethodDeclaration:
-    [MethodExtensibility] [MethodOverride] "func" MethodHeader MethodBody
-
 ConstructorDeclaration:
     ConstructorHeader Block
-
-InterfaceMethodDeclaration:
-    [MethodOverride] "func" MethodHeader MethodBody
 
 --
 
@@ -292,15 +286,15 @@ FieldMutability:
     (one of)
     "var" "const"
 
-MethodHeader:
-    Identifier "(" [Parameters] ")" "->" Result
-
 MethodExtensibility:
     (one of)
     "open" "abstract"
 
 MethodOverride:
     "override"
+
+MethodHeader:
+    Identifier "(" [Parameters] ")" "->" Result
 
 MethodBody:
     Block

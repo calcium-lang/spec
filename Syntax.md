@@ -45,7 +45,7 @@ _Identifier_ _{_**.** _Identifier_*}*
 **typedef** _Identifier_ [_BaseType_](#BaseType)  
 
 ## [EnumDeclaration](Semantics.md#EnumDeclaration):
-**enum** _Identifier_ [_BaseType_](#BaseType) [_EnumBody_](#EnumBody)  
+**enum** _Identifier_ _[_[_BaseType_](#BaseType)_]_ [_EnumBody_](#EnumBody)  
 
 ## [UnionDeclaration](Semantics.md#UnionDeclaration):
 _[_[_UnionLayout_](#UnionLayout)_]_ _[_[_UnionRawness_](#UnionRawness)_]_ **union** _Identifier_ [_UnionBody_](#UnionBody)  
@@ -219,7 +219,7 @@ _(one of)_
 
 ## [StructMemberDeclaration](Semantics.md#StructMemberDeclaration):
 _[_[_MemberStaticity_](#MemberStaticity)_]_ [_FieldDeclaration_](#FieldDeclaration)  
-_[_[_MemberStaticity_](#MemberStaticity)_]_ [_StructMethodDeclaration_](#StructMethodDeclaration)  
+_[_[_MemberStaticity_](#MemberStaticity)_]_ [_MethodDeclaration_](#MethodDeclaration)  
 [_ConstructorDeclaration_](#ConstructorDeclaration)  
 [_StaticInitializer_](#StaticInitializer)  
 
@@ -228,7 +228,7 @@ _[_[_MemberStaticity_](#MemberStaticity)_]_ [_StructMethodDeclaration_](#StructM
 
 ## [InterfaceMemberDeclaration](Semantics.md#InterfaceMemberDeclaration):
 [_FieldDeclaration_](#FieldDeclaration)  
-_[_[_MemberStaticity_](#MemberStaticity)_]_ [_InterfaceMethodDeclaration_](#InterfaceMethodDeclaration)  
+_[_[_MemberStaticity_](#MemberStaticity)_]_ [_MethodDeclaration_](#MethodDeclaration)  
 [_StaticInitializer_](#StaticInitializer)  
 
 ---
@@ -266,7 +266,7 @@ _BlockStatement_ *{*_BlockStatement_*}*
 [_FieldMutability_](#FieldMutability) _[_[_ValueVolatility_](#ValueVolatility)_]_ _Identifier_ **:** [_Type_](#Type) _[_**=** _ConstantExpression_*]* **;**  
 
 ## [MethodDeclaration](Semantics.md#MethodDeclaration):
-**func** [_MethodHeader_](#MethodHeader) [_Block_](#Block)  
+_[_[_MethodExtensibility_](#MethodExtensibility)_]_ _[_[_MethodOverride_](#MethodOverride)_]_ **func** [_MethodHeader_](#MethodHeader) [_MethodBody_](#MethodBody)  
 
 ## [StaticInitializer](Semantics.md#StaticInitializer):
 [_MemberStaticity_](#MemberStaticity) [_Block_](#Block)  
@@ -274,14 +274,8 @@ _BlockStatement_ *{*_BlockStatement_*}*
 ## [MemberStaticity](Semantics.md#MemberStaticity):
 **static**  
 
-## [StructMethodDeclaration](Semantics.md#StructMethodDeclaration):
-_[_[_MethodExtensibility_](#MethodExtensibility)_]_ _[_[_MethodOverride_](#MethodOverride)_]_ **func** [_MethodHeader_](#MethodHeader) [_MethodBody_](#MethodBody)  
-
 ## [ConstructorDeclaration](Semantics.md#ConstructorDeclaration):
 [_ConstructorHeader_](#ConstructorHeader) [_Block_](#Block)  
-
-## [InterfaceMethodDeclaration](Semantics.md#InterfaceMethodDeclaration):
-_[_[_MethodOverride_](#MethodOverride)_]_ **func** [_MethodHeader_](#MethodHeader) [_MethodBody_](#MethodBody)  
 
 ---
 
@@ -292,15 +286,15 @@ _[_[_MethodOverride_](#MethodOverride)_]_ **func** [_MethodHeader_](#MethodHeade
 _(one of)_  
 **var** **const**  
 
-## [MethodHeader](Semantics.md#MethodHeader):
-_Identifier_ **(** _[_[_Parameters_](#Parameters)_]_ **)** **->** [_Result_](#Result)  
-
 ## [MethodExtensibility](Semantics.md#MethodExtensibility):
 _(one of)_  
 **open** **abstract**  
 
 ## [MethodOverride](Semantics.md#MethodOverride):
 **override**  
+
+## [MethodHeader](Semantics.md#MethodHeader):
+_Identifier_ **(** _[_[_Parameters_](#Parameters)_]_ **)** **->** [_Result_](#Result)  
 
 ## [MethodBody](Semantics.md#MethodBody):
 [_Block_](#Block)  
