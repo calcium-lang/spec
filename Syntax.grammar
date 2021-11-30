@@ -48,7 +48,7 @@ EnumDeclaration:
     "enum" Identifier [BaseType] EnumBody
 
 UnionDeclaration:
-    [UnionLayout] [UnionRawness] "union" Identifier UnionBody
+    [UnionRawness] [UnionLayout] "union" Identifier UnionBody
 
 StructDeclaration:
     [StructExtensibility] [StructLayout] "struct" Identifier [BaseTypes] StructBody
@@ -70,11 +70,11 @@ BaseType:
 EnumBody:
     "{" EnumConstants [";" BodyDeclarations] "}"
 
-UnionLayout:
-    "packed"
-
 UnionRawness:
     "unsafe" "raw"
+
+UnionLayout:
+    "packed"
 
 UnionBody:
     "{" UnionTypes [";" BodyDeclarations] "}"
@@ -84,7 +84,7 @@ StructExtensibility:
     "open" "abstract"
 
 StructLayout:
-    "packed"
+    "raw"
 
 BaseTypes:
     ":" Type ["," TypeNames]
@@ -108,7 +108,7 @@ Type:
     TypeName [PointerOrArraySuffix]
     VoidPointer [PointerOrArraySuffix]
     FunctionType
-    "(" FunctionType ")" PointerOrArraySuffix
+    "(" FunctionType ")" [TypeAtomicity] [PointerOrArraySuffix]
 
 EnumConstants:
     EnumConstant {"," EnumConstant}
@@ -148,6 +148,9 @@ VoidPointer:
 FunctionType:
     "(" [ParameterTypes] ")" "->" Result
 
+TypeAtomicity:
+    "atomic"
+
 EnumConstant:
     Identifier ["=" ConstantExpression]
     Identifier "=" Block
@@ -176,15 +179,12 @@ NumericType:
     IntegralType
     FloatingPointType
 
-TypeAtomicity:
-    "atomic"
-
 PointerSuffix:
     [ValueMutability] [ValueVolatility] "&" [ReferenceAliasability] [PointerSize] [TypeAtomicity]
 
 ArrayDim:
-    "[" [NumberLiteral] "]" [ArrayLayout] [ArrayRawness]
-    "[" Identifier "]" [ArrayLayout] [ArrayRawness]
+    "[" [NumberLiteral] "]" [ArrayRawness] [ArrayLayout]
+    "[" Identifier "]" [ArrayRawness] [ArrayLayout]
 
 ValueMutability:
     "var"
@@ -193,6 +193,7 @@ ValueVolatility:
     "volatile"
 
 ParameterTypes:
+    ThisParameter ["," FixedParameterTypes] ["," VariableArityParameterType]
     FixedParameterTypes ["," VariableArityParameterType]
     VariableArityParameterType
 
@@ -221,6 +222,7 @@ StructMemberDeclaration:
     [MemberStaticity] FieldDeclaration
     [MemberStaticity] MethodDeclaration
     ConstructorDeclaration
+    DestructorDeclaration
     StaticInitializer
 
 InterfaceNestedEncapsulation:
@@ -247,11 +249,16 @@ ReferenceAliasability:
 PointerSize:
     "wide"
 
+ArrayRawness:
+    "unsafe" "raw"
+
 ArrayLayout:
     "packed"
 
-ArrayRawness:
-    "unsafe" "raw"
+ThisParameter:
+    "this" [":" ValueMutability [ValueVolatility] ["&" [ReferenceAliasability] [PointerSize]]]
+    "this" ":" ValueVolatility ["&" [ReferenceAliasability] [PointerSize]]
+    "this" ":" "&" [ReferenceAliasability] [PointerSize]
 
 FixedParameterTypes:
     FixedParameterType {"," FixedParameterType}
@@ -276,6 +283,9 @@ MemberStaticity:
 
 ConstructorDeclaration:
     ConstructorHeader Block
+
+DestructorDeclaration:
+    DestructorHeader Block
 
 --
 
@@ -303,6 +313,9 @@ MethodBody:
 ConstructorHeader:
     "init" "(" [Parameters] ")" ["->" Result]
 
+DestructorHeader:
+    "deinit" "(" [Parameters] ")" ["->" Result]
+
 --
 
 Parameters:
@@ -311,11 +324,6 @@ Parameters:
     VariableArityParameter
 
 --
-
-ThisParameter:
-    "this" [":" ValueMutability [ValueVolatility] ["&" [ReferenceAliasability] [PointerSize]]]
-    "this" ":" ValueVolatility ["&" [ReferenceAliasability] [PointerSize]]
-    "this" ":" "&" [ReferenceAliasability] [PointerSize]
 
 FixedParameters:
     FixedParameter {"," FixedParameter}
