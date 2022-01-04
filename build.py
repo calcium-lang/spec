@@ -22,7 +22,7 @@ from typing import TextIO
 
 def main() -> None:
     input: TextIO = open("Syntax.grammar")
-    md: str = Syntax.generate(input.read(), {"Identifier", "ConstantExpression", "NumberLiteral", "BlockStatement"}, "Semantics.md")
+    md: str = Syntax.generate(input.read(), {"Identifier", "ConstantExpression", "NumberLiteral", "StringLiteral", "BlockStatement"}, "Semantics.md")
     input.close()
     output: TextIO = open("Syntax.md", "w")
     output.write(md)

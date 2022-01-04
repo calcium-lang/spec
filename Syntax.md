@@ -48,7 +48,7 @@ _Identifier_ _{_**.** _Identifier_*}*
 **enum** _Identifier_ _[_[_BaseType_](#BaseType)_]_ [_EnumBody_](#EnumBody)  
 
 ## [UnionDeclaration](Semantics.md#UnionDeclaration):
-_[_[_UnionRawness_](#UnionRawness)_]_ _[_[_UnionLayout_](#UnionLayout)_]_ **union** _Identifier_ [_UnionBody_](#UnionBody)  
+_[_[_UnionRawness_](#UnionRawness)_]_ **union** _Identifier_ [_UnionBody_](#UnionBody)  
 
 ## [StructDeclaration](Semantics.md#StructDeclaration):
 _[_[_StructExtensibility_](#StructExtensibility)_]_ _[_[_StructLayout_](#StructLayout)_]_ **struct** _Identifier_ _[_[_BaseTypes_](#BaseTypes)_]_ [_StructBody_](#StructBody)  
@@ -73,9 +73,6 @@ _Identifier_ _{_**.** _Identifier_*}*
 ## [UnionRawness](Semantics.md#UnionRawness):
 **unsafe** **raw**  
 
-## [UnionLayout](Semantics.md#UnionLayout):
-**packed**  
-
 ## [UnionBody](Semantics.md#UnionBody):
 **{** [_UnionTypes_](#UnionTypes) _[_**;** [_BodyDeclarations_](#BodyDeclarations)_]_ **}**  
 
@@ -96,7 +93,7 @@ _(one of)_
 **:** [_TypeNames_](#TypeNames)  
 
 ## [InterfaceBody](Semantics.md#InterfaceBody):
-**{** [_InterfaceBodyDeclarations_](#InterfaceBodyDeclarations) **}**  
+**{** _[_[_InterfaceBodyDeclarations_](#InterfaceBodyDeclarations)_]_ **}**  
 
 ---
 
@@ -156,6 +153,7 @@ _Identifier_ _[_**=** _ConstantExpression_*]*
 _Identifier_ **=** [_Block_](#Block)  
 
 ## [BodyDeclaration](Semantics.md#BodyDeclaration):
+[_StaticInitializer_](#StaticInitializer)  
 _[_[_NestedEncapsulation_](#NestedEncapsulation)_]_ [_MemberDeclaration_](#MemberDeclaration)  
 _[_[_NestedEncapsulation_](#NestedEncapsulation)_]_ [_TypeDeclaration_](#TypeDeclaration)  
 
@@ -166,12 +164,14 @@ _[_[_NestedEncapsulation_](#NestedEncapsulation)_]_ [_TypeDeclaration_](#TypeDec
 [_StructDeclaration_](#StructDeclaration)  
 
 ## [StructBodyDeclaration](Semantics.md#StructBodyDeclaration):
+[_StaticInitializer_](#StaticInitializer)  
 _[_[_StructNestedEncapsulation_](#StructNestedEncapsulation)_]_ [_StructMemberDeclaration_](#StructMemberDeclaration)  
 _[_[_StructNestedEncapsulation_](#StructNestedEncapsulation)_]_ [_TypeDeclaration_](#TypeDeclaration)  
 
 ## [InterfaceBodyDeclaration](Semantics.md#InterfaceBodyDeclaration):
+[_StaticInitializer_](#StaticInitializer)  
 _[_[_InterfaceNestedEncapsulation_](#InterfaceNestedEncapsulation)_]_ [_InterfaceMemberDeclaration_](#InterfaceMemberDeclaration)  
-_[_[_InterfaceNestedEncapsulation_](#InterfaceNestedEncapsulation)_]_ [_TypeDeclaration_](#TypeDeclaration)  
+_[_[_NestedEncapsulation_](#NestedEncapsulation)_]_ [_TypeDeclaration_](#TypeDeclaration)  
 
 ---
 
@@ -205,6 +205,9 @@ _[_[_ValueMutability_](#ValueMutability)_]_ _[_[_ValueVolatility_](#ValueVolatil
 ## [Block](Semantics.md#Block):
 **{** _[_[_BlockStatements_](#BlockStatements)_]_ **}**  
 
+## [StaticInitializer](Semantics.md#StaticInitializer):
+[_MemberStaticity_](#MemberStaticity) *[*_StringLiteral_*]* [_Block_](#Block)  
+
 ## [NestedEncapsulation](Semantics.md#NestedEncapsulation):
 _(one of)_  
 **public** **private**  
@@ -212,7 +215,6 @@ _(one of)_
 ## [MemberDeclaration](Semantics.md#MemberDeclaration):
 [_FieldDeclaration_](#FieldDeclaration)  
 [_MethodDeclaration_](#MethodDeclaration)  
-[_StaticInitializer_](#StaticInitializer)  
 
 ## [StructNestedEncapsulation](Semantics.md#StructNestedEncapsulation):
 _(one of)_  
@@ -223,7 +225,6 @@ _[_[_MemberStaticity_](#MemberStaticity)_]_ [_FieldDeclaration_](#FieldDeclarati
 _[_[_MemberStaticity_](#MemberStaticity)_]_ [_MethodDeclaration_](#MethodDeclaration)  
 [_ConstructorDeclaration_](#ConstructorDeclaration)  
 [_DestructorDeclaration_](#DestructorDeclaration)  
-[_StaticInitializer_](#StaticInitializer)  
 
 ## [InterfaceNestedEncapsulation](Semantics.md#InterfaceNestedEncapsulation):
 **private**  
@@ -231,7 +232,6 @@ _[_[_MemberStaticity_](#MemberStaticity)_]_ [_MethodDeclaration_](#MethodDeclara
 ## [InterfaceMemberDeclaration](Semantics.md#InterfaceMemberDeclaration):
 [_FieldDeclaration_](#FieldDeclaration)  
 _[_[_MemberStaticity_](#MemberStaticity)_]_ [_MethodDeclaration_](#MethodDeclaration)  
-[_StaticInitializer_](#StaticInitializer)  
 
 ---
 
@@ -269,17 +269,14 @@ _(one of)_
 ## [BlockStatements](Semantics.md#BlockStatements):
 _BlockStatement_ *{*_BlockStatement_*}*  
 
+## [MemberStaticity](Semantics.md#MemberStaticity):
+**static**  
+
 ## [FieldDeclaration](Semantics.md#FieldDeclaration):
-[_FieldMutability_](#FieldMutability) _[_[_ValueVolatility_](#ValueVolatility)_]_ _Identifier_ **:** [_Type_](#Type) _[_**=** _ConstantExpression_*]* **;**  
+[_FieldMutability_](#FieldMutability) _[_[_ValueVolatility_](#ValueVolatility)_]_ _Identifier_ *[*_StringLiteral_*]* **:** [_Type_](#Type) _[_**=** _ConstantExpression_*]* **;**  
 
 ## [MethodDeclaration](Semantics.md#MethodDeclaration):
 _[_[_MethodExtensibility_](#MethodExtensibility)_]_ _[_[_MethodOverride_](#MethodOverride)_]_ **func** [_MethodHeader_](#MethodHeader) [_MethodBody_](#MethodBody)  
-
-## [StaticInitializer](Semantics.md#StaticInitializer):
-[_MemberStaticity_](#MemberStaticity) [_Block_](#Block)  
-
-## [MemberStaticity](Semantics.md#MemberStaticity):
-**static**  
 
 ## [ConstructorDeclaration](Semantics.md#ConstructorDeclaration):
 [_ConstructorHeader_](#ConstructorHeader) [_Block_](#Block)  
@@ -304,17 +301,17 @@ _(one of)_
 **override**  
 
 ## [MethodHeader](Semantics.md#MethodHeader):
-_Identifier_ **(** _[_[_Parameters_](#Parameters)_]_ **)** **->** [_Result_](#Result)  
+_Identifier_ *[*_StringLiteral_*]* **(** _[_[_Parameters_](#Parameters)_]_ **)** **->** [_Result_](#Result)  
 
 ## [MethodBody](Semantics.md#MethodBody):
 [_Block_](#Block)  
 **;**  
 
 ## [ConstructorHeader](Semantics.md#ConstructorHeader):
-**init** **(** _[_[_Parameters_](#Parameters)_]_ **)** _[_**->** [_Result_](#Result)_]_  
+**init** *[*_StringLiteral_*]* **(** _[_[_Parameters_](#Parameters)_]_ **)** _[_**->** [_Result_](#Result)_]_  
 
 ## [DestructorHeader](Semantics.md#DestructorHeader):
-**deinit** **(** _[_[_Parameters_](#Parameters)_]_ **)** _[_**->** [_Result_](#Result)_]_  
+**deinit** *[*_StringLiteral_*]* **(** _[_[_Parameters_](#Parameters)_]_ **)** _[_**->** [_Result_](#Result)_]_  
 
 ---
 

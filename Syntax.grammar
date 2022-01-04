@@ -48,7 +48,7 @@ EnumDeclaration:
     "enum" Identifier [BaseType] EnumBody
 
 UnionDeclaration:
-    [UnionRawness] [UnionLayout] "union" Identifier UnionBody
+    [UnionRawness] "union" Identifier UnionBody
 
 StructDeclaration:
     [StructExtensibility] [StructLayout] "struct" Identifier [BaseTypes] StructBody
@@ -73,9 +73,6 @@ EnumBody:
 UnionRawness:
     "unsafe" "raw"
 
-UnionLayout:
-    "packed"
-
 UnionBody:
     "{" UnionTypes [";" BodyDeclarations] "}"
 
@@ -96,7 +93,7 @@ BaseInterfaces:
     ":" TypeNames
 
 InterfaceBody:
-    "{" InterfaceBodyDeclarations "}"
+    "{" [InterfaceBodyDeclarations] "}"
 
 --
 
@@ -156,6 +153,7 @@ EnumConstant:
     Identifier "=" Block
 
 BodyDeclaration:
+    StaticInitializer
     [NestedEncapsulation] MemberDeclaration
     [NestedEncapsulation] TypeDeclaration
 
@@ -166,12 +164,14 @@ UnionType:
     StructDeclaration
 
 StructBodyDeclaration:
+    StaticInitializer
     [StructNestedEncapsulation] StructMemberDeclaration
     [StructNestedEncapsulation] TypeDeclaration
 
 InterfaceBodyDeclaration:
+    StaticInitializer
     [InterfaceNestedEncapsulation] InterfaceMemberDeclaration
-    [InterfaceNestedEncapsulation] TypeDeclaration
+    [NestedEncapsulation] TypeDeclaration
 
 --
 
@@ -205,6 +205,9 @@ Result:
 Block:
     "{" [BlockStatements] "}"
 
+StaticInitializer:
+    MemberStaticity [StringLiteral] Block
+
 NestedEncapsulation:
     (one of)
     "public" "private"
@@ -212,7 +215,6 @@ NestedEncapsulation:
 MemberDeclaration:
     FieldDeclaration
     MethodDeclaration
-    StaticInitializer
 
 StructNestedEncapsulation:
     (one of)
@@ -223,7 +225,6 @@ StructMemberDeclaration:
     [MemberStaticity] MethodDeclaration
     ConstructorDeclaration
     DestructorDeclaration
-    StaticInitializer
 
 InterfaceNestedEncapsulation:
     "private"
@@ -231,7 +232,6 @@ InterfaceNestedEncapsulation:
 InterfaceMemberDeclaration:
     FieldDeclaration
     [MemberStaticity] MethodDeclaration
-    StaticInitializer
 
 --
 
@@ -269,17 +269,14 @@ VariableArityParameterType:
 BlockStatements:
     BlockStatement {BlockStatement}
 
+MemberStaticity:
+    "static"
+
 FieldDeclaration:
-    FieldMutability [ValueVolatility] Identifier ":" Type ["=" ConstantExpression] ";"
+    FieldMutability [ValueVolatility] Identifier [StringLiteral] ":" Type ["=" ConstantExpression] ";"
 
 MethodDeclaration:
     [MethodExtensibility] [MethodOverride] "func" MethodHeader MethodBody
-
-StaticInitializer:
-    MemberStaticity Block
-
-MemberStaticity:
-    "static"
 
 ConstructorDeclaration:
     ConstructorHeader Block
@@ -304,17 +301,17 @@ MethodOverride:
     "override"
 
 MethodHeader:
-    Identifier "(" [Parameters] ")" "->" Result
+    Identifier [StringLiteral] "(" [Parameters] ")" "->" Result
 
 MethodBody:
     Block
     ";"
 
 ConstructorHeader:
-    "init" "(" [Parameters] ")" ["->" Result]
+    "init" [StringLiteral] "(" [Parameters] ")" ["->" Result]
 
 DestructorHeader:
-    "deinit" "(" [Parameters] ")" ["->" Result]
+    "deinit" [StringLiteral] "(" [Parameters] ")" ["->" Result]
 
 --
 

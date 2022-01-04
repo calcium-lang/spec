@@ -109,8 +109,6 @@ This is a dot-separated sequence of identifiers that compose the name of the imp
 ## EnumBody
 This is the enum's body, where its constants are defined, along with optional extra declarations.
 
-## UnionLayout
-
 ## UnionRawness
 This modifier determines whether (when ommited) or not (when present) the union's memory layout will have a suffix, which indicates the type of the current value. The suffix will be of the smallest unsigned integer type that can hold the number of types the union has minus one, and the types will be identified by their order of declaration (zero-indexed and increasing). As a reinterpret cast is possible when there is no such suffix, this modifier is considered unsafe.
 
@@ -242,6 +240,8 @@ def FieldsToMemory(fields: list[tuple[str, int]], base: Optional[list[tuple[Opti
 
 ## FunctionType
 
+## TypeAtomicity
+
 ## EnumConstant
 
 ## BodyDeclaration
@@ -256,8 +256,6 @@ def FieldsToMemory(fields: list[tuple[str, int]], base: Optional[list[tuple[Opti
 
 ## NumericType
 
-## TypeAtomicity
-
 ## PointerSuffix
 
 ## ArrayDim
@@ -271,6 +269,8 @@ def FieldsToMemory(fields: list[tuple[str, int]], base: Optional[list[tuple[Opti
 ## Result
 
 ## Block
+
+## StaticInitializer
 
 ## NestedEncapsulation
 
@@ -294,9 +294,11 @@ def FieldsToMemory(fields: list[tuple[str, int]], base: Optional[list[tuple[Opti
 
 ## PointerSize
 
+## ArrayRawness
+
 ## ArrayLayout
 
-## ArrayRawness
+## ThisParameter
 
 ## FixedParameterTypes
 
@@ -304,15 +306,15 @@ def FieldsToMemory(fields: list[tuple[str, int]], base: Optional[list[tuple[Opti
 
 ## BlockStatements
 
+## MemberStaticity
+
 ## FieldDeclaration
 
 ## MethodDeclaration
 
-## StaticInitializer
-
-## MemberStaticity
-
 ## ConstructorDeclaration
+
+## DestructorDeclaration
 
 ---
 
@@ -330,13 +332,13 @@ def FieldsToMemory(fields: list[tuple[str, int]], base: Optional[list[tuple[Opti
 
 ## ConstructorHeader
 
+## DestructorHeader
+
 ---
 
 ## Parameters
 
 ---
-
-## ThisParameter
 
 ## FixedParameters
 
