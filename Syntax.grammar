@@ -20,41 +20,39 @@ PackageName:
     Identifier {"." Identifier}
 
 ImportDeclaration:
-    ExplicitImport
-    ImportOnDemand
+    ExplicitTypeImportDeclaration
+    TypeImportOnDemandDeclaration
 
 TopLevelEncapsulation:
     "public"
 
 TypeDeclaration:
-    TypedefDeclaration ";"
+    TypedefDeclaration [";"]
     EnumDeclaration
     UnionDeclaration
     StructDeclaration
-    InterfaceDeclaration
+
+> TypedefBody and the semicolon after TypedefDeclaration are mutually exclusive, and exactly one of them must always be found in rule 1.
 
 --
 
-ExplicitImport:
+ExplicitTypeImportDeclaration:
     "import" ImportNames ["from" PackageOrTypeName] [";"]
 
-ImportOnDemand:
+TypeImportOnDemandDeclaration:
     "import" "*" "from" PackageOrTypeName [";"]
 
 TypedefDeclaration:
-    "typedef" Identifier BaseType
+    "typedef" Identifier BaseType [TypedefBody]
 
 EnumDeclaration:
     "enum" Identifier [BaseType] EnumBody
 
 UnionDeclaration:
-    [UnionRawness] "union" Identifier UnionBody
+    "union" Identifier UnionBody
 
 StructDeclaration:
-    [StructExtensibility] [StructLayout] "struct" Identifier [BaseTypes] StructBody
-
-InterfaceDeclaration:
-    "interface" Identifier [BaseInterfaces] InterfaceBody
+    [StructExtensibility] [StructLayout] "struct" Identifier [BaseType] StructBody
 
 --
 
@@ -67,11 +65,11 @@ PackageOrTypeName:
 BaseType:
     ":" Type
 
+TypedefBody:
+    "{" BodyDeclarations "}"
+
 EnumBody:
     "{" EnumConstants [";" BodyDeclarations] "}"
-
-UnionRawness:
-    "unsafe" "raw"
 
 UnionBody:
     "{" UnionTypes [";" BodyDeclarations] "}"
@@ -81,19 +79,11 @@ StructExtensibility:
     "open" "abstract"
 
 StructLayout:
-    "raw"
-
-BaseTypes:
-    ":" Type ["," TypeNames]
+    (one of)
+    "ordered" "packed"
 
 StructBody:
     "{" [StructBodyDeclarations] "}"
-
-BaseInterfaces:
-    ":" TypeNames
-
-InterfaceBody:
-    "{" [InterfaceBodyDeclarations] "}"
 
 --
 
@@ -103,59 +93,49 @@ ImportName:
 Type:
     PrimitiveType [PointerOrArraySuffix]
     TypeName [PointerOrArraySuffix]
-    VoidPointer [PointerOrArraySuffix]
+    VoidPointerType [PointerOrArraySuffix]
     FunctionType
-    "(" FunctionType ")" [TypeAtomicity] [PointerOrArraySuffix]
-
-EnumConstants:
-    EnumConstant {"," EnumConstant}
+    "(" FunctionType ")" PointerOrArraySuffix
 
 BodyDeclarations:
     BodyDeclaration {BodyDeclaration}
 
+EnumConstants:
+    EnumConstant {"," EnumConstant}
+
 UnionTypes:
     UnionType {"," UnionType}
-
-TypeNames:
-    TypeName {"," TypeName}
 
 StructBodyDeclarations:
     StructBodyDeclaration {StructBodyDeclaration}
 
-InterfaceBodyDeclarations:
-    InterfaceBodyDeclaration {InterfaceBodyDeclaration}
-
 --
 
 PrimitiveType:
-    NumericType [TypeAtomicity]
-    "bool" [TypeAtomicity]
-    "_char" [TypeAtomicity]
+    [TypeAtomicity] NumericType
+    [TypeAtomicity] "bool"
+    [TypeAtomicity] "_char"
 
 PointerOrArraySuffix:
     PointerSuffix [PointerOrArraySuffix]
     ArrayDim [PointerOrArraySuffix]
 
 TypeName:
-    Identifier {"." Identifier}
+    ["unsafe" "bare"] Identifier {"." Identifier}
 
-VoidPointer:
-    "unsafe" "void" [ValueMutability] [ValueVolatility] "&" [TypeAtomicity]
+VoidPointerType:
+    "unsafe" "void" "&" [TypeAtomicity]
 
 FunctionType:
-    "(" [ParameterTypes] ")" "->" Result
-
-TypeAtomicity:
-    "atomic"
-
-EnumConstant:
-    Identifier ["=" ConstantExpression]
-    Identifier "=" Block
+    [TypeAtomicity] "(" [ParameterTypes] ")" "->" Result
 
 BodyDeclaration:
     StaticInitializer
     [NestedEncapsulation] MemberDeclaration
     [NestedEncapsulation] TypeDeclaration
+
+EnumConstant:
+    Identifier ["=" VariableInitializer]
 
 UnionType:
     TypedefDeclaration
@@ -168,29 +148,23 @@ StructBodyDeclaration:
     [StructNestedEncapsulation] StructMemberDeclaration
     [StructNestedEncapsulation] TypeDeclaration
 
-InterfaceBodyDeclaration:
-    StaticInitializer
-    [InterfaceNestedEncapsulation] InterfaceMemberDeclaration
-    [NestedEncapsulation] TypeDeclaration
-
 --
+
+TypeAtomicity:
+    "atomic"
 
 NumericType:
     IntegralType
     FloatingPointType
 
 PointerSuffix:
-    [ValueMutability] [ValueVolatility] "&" [ReferenceAliasability] [PointerSize] [TypeAtomicity]
+    [ValueMutability] [ValueVolatility] "&" [PointerWidth] [ReferenceAliasability]
+    [ValueMutability] [ValueVolatility] "&" TypeAtomicity [ReferenceAliasability]
 
 ArrayDim:
-    "[" [NumberLiteral] "]" [ArrayRawness] [ArrayLayout]
-    "[" Identifier "]" [ArrayRawness] [ArrayLayout]
-
-ValueMutability:
-    "var"
-
-ValueVolatility:
-    "volatile"
+    "[" [ArrayLayout] [NumberLiteral] "]"
+    "[" [ArrayLayout] Identifier "]"
+    "[" [ArrayLayout] ArrayBareness "]"
 
 ParameterTypes:
     ThisParameter ["," FixedParameterTypes] ["," VariableArityParameterType]
@@ -202,11 +176,8 @@ Result:
     "void"
     Type
 
-Block:
-    "{" [BlockStatements] "}"
-
 StaticInitializer:
-    MemberStaticity [StringLiteral] Block
+    "static" [StringIdentifier] Block
 
 NestedEncapsulation:
     (one of)
@@ -216,21 +187,17 @@ MemberDeclaration:
     FieldDeclaration
     MethodDeclaration
 
+VariableInitializer:
+    Expression
+    ArrayInitializer
+    StructInitializer
+
 StructNestedEncapsulation:
     (one of)
     "public" "protected" "private"
 
 StructMemberDeclaration:
     [MemberStaticity] FieldDeclaration
-    [MemberStaticity] MethodDeclaration
-    ConstructorDeclaration
-    DestructorDeclaration
-
-InterfaceNestedEncapsulation:
-    "private"
-
-InterfaceMemberDeclaration:
-    FieldDeclaration
     [MemberStaticity] MethodDeclaration
 
 --
@@ -243,22 +210,30 @@ FloatingPointType:
     (one of)
     "_float" "_double"
 
+ValueMutability:
+    ["unused"] "var"
+
+ValueVolatility:
+    ["local"] "volatile"
+
+PointerWidth:
+    ["unused"] "wide"
+    "unsafe" "bare"
+
 ReferenceAliasability:
-    "aliasable"
-
-PointerSize:
-    "wide"
-
-ArrayRawness:
-    "unsafe" "raw"
+    ["local"] "aliasable"
 
 ArrayLayout:
     "packed"
 
+ArrayBareness:
+    "unsafe" "bare"
+
 ThisParameter:
-    "this" [":" ValueMutability [ValueVolatility] ["&" [ReferenceAliasability] [PointerSize]]]
-    "this" ":" ValueVolatility ["&" [ReferenceAliasability] [PointerSize]]
-    "this" ":" "&" [ReferenceAliasability] [PointerSize]
+    "this" [":" TypeName [ValueMutability] [ValueVolatility] ["&" [PointerWidth] [ReferenceAliasability]]]
+    "this" ":" ValueMutability [ValueVolatility] ["&" [PointerWidth] [ReferenceAliasability]]
+    "this" ":" ValueVolatility ["&" [PointerWidth] [ReferenceAliasability]]
+    "this" ":" "&" [PointerWidth] [ReferenceAliasability]
 
 FixedParameterTypes:
     FixedParameterType {"," FixedParameterType}
@@ -266,32 +241,38 @@ FixedParameterTypes:
 VariableArityParameterType:
     "..." ":" Type
 
-BlockStatements:
-    BlockStatement {BlockStatement}
-
-MemberStaticity:
-    "static"
+Block:
+    "{" [BlockStatements] "}"
 
 FieldDeclaration:
-    FieldMutability [ValueVolatility] Identifier [StringLiteral] ":" Type ["=" ConstantExpression] ";"
+    FieldMutability [FieldVolatility] Identifier [StringIdentifier] ":" Type ["=" VariableInitializer] ";"
 
 MethodDeclaration:
     [MethodExtensibility] [MethodOverride] "func" MethodHeader MethodBody
 
-ConstructorDeclaration:
-    ConstructorHeader Block
+ArrayInitializer:
+    "[" [VariableInitializers] "]"
 
-DestructorDeclaration:
-    DestructorHeader Block
+StructInitializer:
+    "{" [FieldInitializers] "}"
+
+MemberStaticity:
+    "static"
 
 --
 
 FixedParameterType:
     ":" Type
 
+BlockStatements:
+    BlockStatement {BlockStatement}
+
 FieldMutability:
     (one of)
     "var" "const"
+
+FieldVolatility:
+    "volatile"
 
 MethodExtensibility:
     (one of)
@@ -301,17 +282,25 @@ MethodOverride:
     "override"
 
 MethodHeader:
-    Identifier [StringLiteral] "(" [Parameters] ")" "->" Result
+    MethodDeclarator ["->" Result]
 
 MethodBody:
     Block
     ";"
 
-ConstructorHeader:
-    "init" [StringLiteral] "(" [Parameters] ")" ["->" Result]
+VariableInitializers:
+    VariableInitializer {"," VariableInitializer}
 
-DestructorHeader:
-    "deinit" [StringLiteral] "(" [Parameters] ")" ["->" Result]
+FieldInitializers:
+    FieldInitializer {"," FieldInitializer}
+
+--
+
+MethodDeclarator:
+    Identifier [StringIdentifier] [":" TypeName] "(" [Parameters] ")"
+
+FieldInitializer:
+    Identifier "=" VariableInitializer
 
 --
 
@@ -326,9 +315,9 @@ FixedParameters:
     FixedParameter {"," FixedParameter}
 
 VariableArityParameter:
-    "..." Identifier ":" Type
+    "..." Identifier [":" Type]
 
 --
 
 FixedParameter:
-    Identifier ":" Type
+    Identifier [":" Type]

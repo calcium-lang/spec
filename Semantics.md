@@ -21,7 +21,7 @@ This is a dot-separated sequence of identifiers that compose the name of the top
 ```python
 # This code snippet is part of Cesium.
 #
-# Copyright (C) 2021  Natan Junges <natanajunges@gmail.com>
+# Copyright (C) 2022  Natan Junges <natanajunges@gmail.com>
 #
 # This code snippet is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -73,10 +73,10 @@ This declaration defines a type, along with its members and subtypes. It always 
 
 ---
 
-## ExplicitImport
+## ExplicitTypeImportDeclaration
 This import allows the programmer to explicitly list all the types it needs to import from a specific source (be it a package or a type inside a package). Each imported type may be aliased to avoid name conflict. If the source is ommited, it is assumed to be the current package, making it possible to explicitly import its types for clarity.
 
-## ImportOnDemand
+## TypeImportOnDemandDeclaration
 This import allows the programmer to import needed types from a specific source (a package or a type inside a package) without having to list each one of them. None of the imported types can be aliased, which might lead to name conflicts. The source is never ommited.
 
 ## TypedefDeclaration
@@ -93,9 +93,6 @@ When the base type is also an enumeration type, the derived enumeration aliases 
 
 ## StructDeclaration
 
-## InterfaceDeclaration
-This declaration defines an interface type, which is an abstract type, since an object of such type is impossible, and only a pointer to this type can be used. This pointer must always be fat, storing the address of the actual object and its interface's implementation object. The only non-static members this type has are methods, and everything else is (implicitly) static. It supports multiple inheritance, and can only inherit from other interface types. Its implementation object is composed of pointers to its parents' implementation objects and pointers to its (non-static and non-private) methods' implementations. This object is only defined by the structs that implement this interface type.
-
 ---
 
 ## ImportNames
@@ -106,11 +103,10 @@ This is a dot-separated sequence of identifiers that compose the name of the imp
 
 ## BaseType
 
+## TypedefBody
+
 ## EnumBody
 This is the enum's body, where its constants are defined, along with optional extra declarations.
-
-## UnionRawness
-This modifier determines whether (when ommited) or not (when present) the union's memory layout will have a suffix, which indicates the type of the current value. The suffix will be of the smallest unsigned integer type that can hold the number of types the union has minus one, and the types will be identified by their order of declaration (zero-indexed and increasing). As a reinterpret cast is possible when there is no such suffix, this modifier is considered unsafe.
 
 ## UnionBody
 This is the union's body, where its types are defined, along with optional extra declarations.
@@ -124,7 +120,7 @@ This modifier determines how the struct's  own fields (not derived from a base s
 ```python
 # This code snippet is part of Cesium.
 #
-# Copyright (C) 2021  Natan Junges <natanajunges@gmail.com>
+# Copyright (C) 2022  Natan Junges <natanajunges@gmail.com>
 #
 # This code snippet is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -202,13 +198,7 @@ def FieldsToMemory(fields: list[tuple[str, int]], base: Optional[list[tuple[Opti
     return memory
 ```
 
-## BaseTypes
-
 ## StructBody
-
-## BaseInterfaces
-
-## InterfaceBody
 
 ---
 
@@ -216,17 +206,13 @@ def FieldsToMemory(fields: list[tuple[str, int]], base: Optional[list[tuple[Opti
 
 ## Type
 
-## EnumConstants
-
 ## BodyDeclarations
+
+## EnumConstants
 
 ## UnionTypes
 
-## TypeNames
-
 ## StructBodyDeclarations
-
-## InterfaceBodyDeclarations
 
 ---
 
@@ -236,23 +222,21 @@ def FieldsToMemory(fields: list[tuple[str, int]], base: Optional[list[tuple[Opti
 
 ## TypeName
 
-## VoidPointer
+## VoidPointerType
 
 ## FunctionType
 
-## TypeAtomicity
+## BodyDeclaration
 
 ## EnumConstant
-
-## BodyDeclaration
 
 ## UnionType
 
 ## StructBodyDeclaration
 
-## InterfaceBodyDeclaration
-
 ---
+
+## TypeAtomicity
 
 ## NumericType
 
@@ -260,15 +244,9 @@ def FieldsToMemory(fields: list[tuple[str, int]], base: Optional[list[tuple[Opti
 
 ## ArrayDim
 
-## ValueMutability
-
-## ValueVolatility
-
 ## ParameterTypes
 
 ## Result
-
-## Block
 
 ## StaticInitializer
 
@@ -276,13 +254,11 @@ def FieldsToMemory(fields: list[tuple[str, int]], base: Optional[list[tuple[Opti
 
 ## MemberDeclaration
 
+## VariableInitializer
+
 ## StructNestedEncapsulation
 
 ## StructMemberDeclaration
-
-## InterfaceNestedEncapsulation
-
-## InterfaceMemberDeclaration
 
 ---
 
@@ -290,13 +266,17 @@ def FieldsToMemory(fields: list[tuple[str, int]], base: Optional[list[tuple[Opti
 
 ## FloatingPointType
 
+## ValueMutability
+
+## ValueVolatility
+
+## PointerWidth
+
 ## ReferenceAliasability
 
-## PointerSize
-
-## ArrayRawness
-
 ## ArrayLayout
+
+## ArrayBareness
 
 ## ThisParameter
 
@@ -304,23 +284,27 @@ def FieldsToMemory(fields: list[tuple[str, int]], base: Optional[list[tuple[Opti
 
 ## VariableArityParameterType
 
-## BlockStatements
-
-## MemberStaticity
+## Block
 
 ## FieldDeclaration
 
 ## MethodDeclaration
 
-## ConstructorDeclaration
+## ArrayInitializer
 
-## DestructorDeclaration
+## StructInitializer
+
+## MemberStaticity
 
 ---
 
 ## FixedParameterType
 
+## BlockStatements
+
 ## FieldMutability
+
+## FieldVolatility
 
 ## MethodExtensibility
 
@@ -330,9 +314,15 @@ def FieldsToMemory(fields: list[tuple[str, int]], base: Optional[list[tuple[Opti
 
 ## MethodBody
 
-## ConstructorHeader
+## VariableInitializers
 
-## DestructorHeader
+## FieldInitializers
+
+---
+
+## MethodDeclarator
+
+## FieldInitializer
 
 ---
 
