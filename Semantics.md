@@ -1,23 +1,37 @@
 # Semantics
-## CompilationUnit
-This is the start symbol of the grammar. It is equivalent to an entire source file. It always has a single top level type declaration/definition, inside of which all other declarations/definitions are put. This type always belongs to a package, that may or may not be named. The required types from external sources are imported through import declarations, although the top level types from the same package are always imported automatically.
+## Packages
+### CompilationUnit
 
 ---
 
-## PackageDeclaration
-This declaration names the package the declared top level type belongs to. When ommited, the package is left unnamed. There can be only one unnamed package per project, and as it does not have a name, its types cannot be imported by other packages.
+### PackageDeclaration
 
-## ImportDeclarations
-This is a list of all the import declarations required for the proper function of the declared top level type and its eventual internal types. Those declarations are not separated by any symbol.
+### ImportDeclarations
 
-## TopLevelTypeDeclaration
-This declaration defines the top level type of the compilation unit. Its name must be the same as the source file's (minus the extension). The type has an encapsulation level that will determine its visibility outside the compilation unit.
+### TopLevelTypeDeclaration
 
 ---
 
-## PackageName
-This is a dot-separated sequence of identifiers that compose the name of the top level type's package. In the file system, this name is translated into a hierarchy of folders, where the source files of the package are stored. This translation is done following this procedure, written in Python for convenience:
+### ImportDeclaration
 
+### Encapsulation
+
+### TypeDeclaration
+
+---
+
+### ExplicitTypeImportDeclaration
+
+### TypeImportOnDemandDeclaration
+
+---
+
+### ImportNames
+
+### FromName
+
+## Names
+### PackageName
 ```python
 # This code snippet is part of Cesium.
 #
@@ -60,63 +74,32 @@ def PackageNameToPath(cwd: str, name: list[str]) -> str:
     return path
 ```
 
-As each package is located inside a folder, which can itself contain folders, it is possible for a package to have subpackages, that have its name as a prefix to their own name. These subpackages are completely independent from the base package though, not having any special privileges or visibility.
+### ImportName
 
-## ImportDeclaration
-This declaration imports the types required for the proper function of the declared top level type and its eventual internal types. Only the types that are visible to the compilation unit can be imported. When a type is imported, it becomes available to the entire compilation unit, being referenced by its simple name (or an alias for it). The types can be explicitly imported, or imported on demand.
+### PackageOrTypeName
 
-## TopLevelEncapsulation
-This modifier determines the top level type's visibility outside the compilation unit. When present, it will be visible to all other compilation units, inside and outside its package. When ommited, it will only be visible to the compilation units inside its package.
+## Typedefs, Enums, Unions and Structs
+### TypedefDeclaration
 
-## TypeDeclaration
-This declaration defines a type, along with its members and subtypes. It always has an encapsulation level, that will determine its visibility outside its scope, that can be another type or the compilation unit.
+### EnumDeclaration
 
----
+### UnionDeclaration
 
-## ExplicitTypeImportDeclaration
-This import allows the programmer to explicitly list all the types it needs to import from a specific source (be it a package or a type inside a package). Each imported type may be aliased to avoid name conflict. If the source is ommited, it is assumed to be the current package, making it possible to explicitly import its types for clarity.
-
-## TypeImportOnDemandDeclaration
-This import allows the programmer to import needed types from a specific source (a package or a type inside a package) without having to list each one of them. None of the imported types can be aliased, which might lead to name conflicts. The source is never ommited.
-
-## TypedefDeclaration
-This declaration defines an alias for a base type. They cannot be used interchangeably, but explicit casts are required. Casts in both directions are allowed, but casting between two aliases of the same base type is not. As the defined alias is also a type, it can itself be aliased, behaving like any other type. To enforce encapsulation, the type alias cannot have a weaker encapsulation than that of the base type.
-
-## EnumDeclaration
-This declaration defines an enumeration type. It is composed of constants, whose type is the enumeration's base type. It is implicitly casted to the base type when required, but casting the base type to the enumeration type is not allowed. To enforce encapsulation, the enumeration type cannot have a weaker encapsulation than that of the base type. Each constant must be different from all the other ones (of the same enumeration type), both in name and value. As this type is constant, only the methods from the base type that do not change its value can be invoked.
-
-If the base type's size is lesser than or equal to the simple pointer size in the target architecture, the enumeration value is the constant value. If it is greater than the pointer size, the enumeration value is a pointer to the actual constant, stored in a static location. It is done like so to ensure the enumeration value is never longer than a pointer, making comparison trivial and atomic. It is also very space efficient. But this difference in value must be mostly transparent to the programmer. The exception is when an enumeration of the second kind is referenced by a pointer and the pointer is casted to the base type, in which case the pointer value will be the address of the actual constant.
-
-When the base type is also an enumeration type, the derived enumeration aliases the base's constants, keeping the same memory layout and being even able to have fewer (never more) constants.
-
-## UnionDeclaration
-
-## StructDeclaration
+### StructDeclaration
 
 ---
 
-## ImportNames
-This is a comma-separated list of all the types it needs to import from a specific source.
+### BaseType
 
-## PackageOrTypeName
-This is a dot-separated sequence of identifiers that compose the name of the import source, that can be either a package or a type inside a package (top-level or nested).
+### TypedefBody
 
-## BaseType
+### EnumBody
 
-## TypedefBody
+### UnionBody
 
-## EnumBody
-This is the enum's body, where its constants are defined, along with optional extra declarations.
+### Extensibility
 
-## UnionBody
-This is the union's body, where its types are defined, along with optional extra declarations.
-
-## StructExtensibility
-This modifier determines whether (when present) or not (when ommited) the struct can be extended. When "open" is present, extending is allowed. When "abstract" is present, extending is mandatory for the struct to be useful, as an object of an incomplete type cannot exist (although a pointer to one can). When a base struct is extended it becomes the prefix of the derived struct, and its original field layout cannot be changed.
-
-## StructLayout
-This modifier determines how the struct's  own fields (not derived from a base struct) will be laid out in memory. When present, the fields will be laid out after the base struct's prefix (if any), in the order they were declared, with no padding to properly align them. When ommited, the fields will be sorted by size, from the largest to the smallest, making sure they are all properly aligned with little to no padding needed. Their positioning is done following this procedure, written in Python for convenience:
-
+### StructLayout
 ```python
 # This code snippet is part of Cesium.
 #
@@ -198,142 +181,143 @@ def FieldsToMemory(fields: list[tuple[str, int]], base: Optional[list[tuple[Opti
     return memory
 ```
 
-## StructBody
+### StructBody
 
 ---
 
-## ImportName
+### BodyDeclarations
 
-## Type
+### EnumConstants
 
-## BodyDeclarations
-
-## EnumConstants
-
-## UnionTypes
-
-## StructBodyDeclarations
+### UnionTypes
 
 ---
 
-## PrimitiveType
+### BodyDeclaration
 
-## PointerOrArraySuffix
+### EnumConstant
 
-## TypeName
-
-## VoidPointerType
-
-## FunctionType
-
-## BodyDeclaration
-
-## EnumConstant
-
-## UnionType
-
-## StructBodyDeclaration
+### UnionType
 
 ---
 
-## TypeAtomicity
+### StaticInitializer
 
-## NumericType
+### MemberDeclaration
 
-## PointerSuffix
-
-## ArrayDim
-
-## ParameterTypes
-
-## Result
-
-## StaticInitializer
-
-## NestedEncapsulation
-
-## MemberDeclaration
-
-## VariableInitializer
-
-## StructNestedEncapsulation
-
-## StructMemberDeclaration
+### VariableInitializer
 
 ---
 
-## IntegralType
+### MemberStaticity
 
-## FloatingPointType
+### FieldDeclaration
 
-## ValueMutability
-
-## ValueVolatility
-
-## PointerWidth
-
-## ReferenceAliasability
-
-## ArrayLayout
-
-## ArrayBareness
-
-## ThisParameter
-
-## FixedParameterTypes
-
-## VariableArityParameterType
-
-## Block
-
-## FieldDeclaration
-
-## MethodDeclaration
-
-## ArrayInitializer
-
-## StructInitializer
-
-## MemberStaticity
+### MethodDeclaration
 
 ---
 
-## FixedParameterType
+### MethodOverride
 
-## BlockStatements
+### MethodHeader
 
-## FieldMutability
-
-## FieldVolatility
-
-## MethodExtensibility
-
-## MethodOverride
-
-## MethodHeader
-
-## MethodBody
-
-## VariableInitializers
-
-## FieldInitializers
+### MethodBody
 
 ---
 
-## MethodDeclarator
-
-## FieldInitializer
+### MethodDeclarator
 
 ---
 
-## Parameters
+### Parameters
 
 ---
 
-## FixedParameters
+### FixedParameters
 
-## VariableArityParameter
+### VariableArityParameter
 
 ---
 
-## FixedParameter
+### FixedParameter
+
+## Types
+### Type
+
+---
+
+### PrimitiveType
+
+### PointerOrArraySuffix
+
+### TypeName
+
+### VoidPointerType
+
+### FunctionType
+
+---
+
+### TypeAtomicity
+
+### NumericType
+
+### PointerSuffix
+
+### ArrayDim
+
+### TypeBareness
+
+### FunctionPurity
+
+### ParameterTypes
+
+### Result
+
+---
+
+### IntegralType
+
+### FloatingPointType
+
+### ValueMutability
+
+### ValueVolatility
+
+### PointerWidth
+
+### ReferenceAliasability
+
+### ThisParameter
+
+### FixedParameterTypes
+
+### VariableArityParameterType
+
+---
+
+### FixedParameterType
+
+## Blocks and Statements
+### Block
+
+---
+
+### BlockStatements
+
+## Expressions
+
+## Array and Struct Initializers
+### ArrayInitializer
+
+### StructInitializer
+
+---
+
+### VariableInitializers
+
+### FieldInitializers
+
+---
+
+### FieldInitializer
