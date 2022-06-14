@@ -12,7 +12,7 @@ _[_[_PackageDeclaration_](#PackageDeclaration)_]_ _[_[_ImportDeclarations_](#Imp
 [_ImportDeclaration_](#ImportDeclaration) _{_[_ImportDeclaration_](#ImportDeclaration)_}_  
 
 ### [TopLevelTypeDeclaration](Semantics.md#TopLevelTypeDeclaration):
-_[_[_Encapsulation_](#Encapsulation)_]_ [_TypeDeclaration_](#TypeDeclaration)  
+_[_[_DeclarationEncapsulation_](#DeclarationEncapsulation)_]_ [_TypeDeclaration_](#TypeDeclaration)  
 
 ---
 
@@ -20,7 +20,7 @@ _[_[_Encapsulation_](#Encapsulation)_]_ [_TypeDeclaration_](#TypeDeclaration)
 [_ExplicitTypeImportDeclaration_](#ExplicitTypeImportDeclaration)  
 [_TypeImportOnDemandDeclaration_](#TypeImportOnDemandDeclaration)  
 
-### [Encapsulation](Semantics.md#Encapsulation):
+### [DeclarationEncapsulation](Semantics.md#DeclarationEncapsulation):
 _(one of)_  
 **public** **protected** **private**  
 
@@ -69,7 +69,7 @@ _Identifier_ _{_**.** _Identifier_*}*
 **union** _Identifier_ [_UnionBody_](#UnionBody)  
 
 ### [StructDeclaration](Semantics.md#StructDeclaration):
-_[_[_Extensibility_](#Extensibility)_]_ _[_[_StructLayout_](#StructLayout)_]_ **struct** _Identifier_ _[_[_BaseType_](#BaseType)_]_ [_StructBody_](#StructBody)  
+_[_[_DeclarationExtensibility_](#DeclarationExtensibility)_]_ _[_[_StructLayout_](#StructLayout)_]_ **struct** _Identifier_ _[_[_BaseType_](#BaseType)_]_ [_StructBody_](#StructBody)  
 
 ---
 
@@ -85,7 +85,7 @@ _[_[_Extensibility_](#Extensibility)_]_ _[_[_StructLayout_](#StructLayout)_]_ **
 ### [UnionBody](Semantics.md#UnionBody):
 **{** [_UnionTypes_](#UnionTypes) _[_**;** [_BodyDeclarations_](#BodyDeclarations)_]_ **}**  
 
-### [Extensibility](Semantics.md#Extensibility):
+### [DeclarationExtensibility](Semantics.md#DeclarationExtensibility):
 _(one of)_  
 **open** **abstract**  
 
@@ -111,8 +111,8 @@ _(one of)_
 
 ### [BodyDeclaration](Semantics.md#BodyDeclaration):
 [_StaticInitializer_](#StaticInitializer)  
-_[_[_Encapsulation_](#Encapsulation)_]_ [_MemberDeclaration_](#MemberDeclaration)  
-_[_[_Encapsulation_](#Encapsulation)_]_ [_TypeDeclaration_](#TypeDeclaration)  
+_[_[_DeclarationEncapsulation_](#DeclarationEncapsulation)_]_ [_MemberDeclaration_](#MemberDeclaration)  
+_[_[_DeclarationEncapsulation_](#DeclarationEncapsulation)_]_ [_TypeDeclaration_](#TypeDeclaration)  
 
 ### [EnumConstant](Semantics.md#EnumConstant):
 _Identifier_ _[_**=** [_VariableInitializer_](#VariableInitializer)_]_  
@@ -146,7 +146,7 @@ _Expression_
 [_ValueMutability_](#ValueMutability) _[_[_ValueVolatility_](#ValueVolatility)_]_ _Identifier_ *[*_StringIdentifier_*]* **:** [_Type_](#Type) _[_**=** [_VariableInitializer_](#VariableInitializer)_]_ **;**  
 
 ### [MethodDeclaration](Semantics.md#MethodDeclaration):
-_[_[_Extensibility_](#Extensibility)_]_ _[_[_MethodOverride_](#MethodOverride)_]_ _[_[_FunctionPurity_](#FunctionPurity)_]_ **func** [_MethodHeader_](#MethodHeader) [_MethodBody_](#MethodBody)  
+_[_[_DeclarationExtensibility_](#DeclarationExtensibility)_]_ _[_[_MethodOverride_](#MethodOverride)_]_ _[_[_FunctionPurity_](#FunctionPurity)_]_ **func** [_MethodHeader_](#MethodHeader) [_MethodBody_](#MethodBody)  
 
 ---
 
