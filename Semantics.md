@@ -14,7 +14,7 @@
 
 ### ImportDeclaration
 
-### Encapsulation
+### DeclarationEncapsulation
 
 ### TypeDeclaration
 
@@ -35,7 +35,7 @@
 ```python
 # This code snippet is part of Cesium.
 #
-# Copyright (C) 2022  Natan Junges <natanajunges@gmail.com>
+# Copyright (C) 2021-2022  Natan Junges <natanajunges@gmail.com>
 #
 # This code snippet is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -97,13 +97,13 @@ def PackageNameToPath(cwd: str, name: list[str]) -> str:
 
 ### UnionBody
 
-### Extensibility
+### DeclarationExtensibility
 
 ### StructLayout
 ```python
 # This code snippet is part of Cesium.
 #
-# Copyright (C) 2022  Natan Junges <natanajunges@gmail.com>
+# Copyright (C) 2021-2022  Natan Junges <natanajunges@gmail.com>
 #
 # This code snippet is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

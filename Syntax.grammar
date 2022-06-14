@@ -12,7 +12,7 @@ ImportDeclarations:
     ImportDeclaration {ImportDeclaration}
 
 TopLevelTypeDeclaration:
-    [Encapsulation] TypeDeclaration
+    [DeclarationEncapsulation] TypeDeclaration
 
 --
 
@@ -20,7 +20,7 @@ ImportDeclaration:
     ExplicitTypeImportDeclaration
     TypeImportOnDemandDeclaration
 
-Encapsulation:
+DeclarationEncapsulation:
     (one of)
     "public" "protected" "private"
 
@@ -69,7 +69,7 @@ UnionDeclaration:
     "union" Identifier UnionBody
 
 StructDeclaration:
-    [Extensibility] [StructLayout] "struct" Identifier [BaseType] StructBody
+    [DeclarationExtensibility] [StructLayout] "struct" Identifier [BaseType] StructBody
 
 --
 
@@ -85,7 +85,7 @@ EnumBody:
 UnionBody:
     "{" UnionTypes [";" BodyDeclarations] "}"
 
-Extensibility:
+DeclarationExtensibility:
     (one of)
     "open" "abstract"
 
@@ -111,8 +111,8 @@ UnionTypes:
 
 BodyDeclaration:
     StaticInitializer
-    [Encapsulation] MemberDeclaration
-    [Encapsulation] TypeDeclaration
+    [DeclarationEncapsulation] MemberDeclaration
+    [DeclarationEncapsulation] TypeDeclaration
 
 EnumConstant:
     Identifier ["=" VariableInitializer]
@@ -146,7 +146,7 @@ FieldDeclaration:
     ValueMutability [ValueVolatility] Identifier [StringIdentifier] ":" Type ["=" VariableInitializer] ";"
 
 MethodDeclaration:
-    [Extensibility] [MethodOverride] [FunctionPurity] "func" MethodHeader MethodBody
+    [DeclarationExtensibility] [MethodOverride] [FunctionPurity] "func" MethodHeader MethodBody
 
 --
 

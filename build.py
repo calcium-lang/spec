@@ -2,7 +2,7 @@
 
 # This script is part of Cesium.
 #
-# Copyright (C) 2022  Natan Junges <natanajunges@gmail.com>
+# Copyright (C) 2021-2022  Natan Junges <natanajunges@gmail.com>
 #
 # This script is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
