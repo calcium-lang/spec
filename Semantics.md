@@ -93,6 +93,8 @@ def PackageNameToPath(cwd: str, name: list[str]) -> str:
 
 ### TypedefBody
 
+### EnumLayout
+
 ### EnumBody
 
 ### UnionBody
@@ -209,6 +211,8 @@ def FieldsToMemory(fields: list[tuple[str, int]], base: Optional[list[tuple[Opti
 
 ---
 
+### NameStrictness
+
 ### MemberStaticity
 
 ### FieldDeclaration
@@ -266,7 +270,11 @@ def FieldsToMemory(fields: list[tuple[str, int]], base: Optional[list[tuple[Opti
 
 ### ArrayDim
 
+### TypeStrictness
+
 ### TypeBareness
+
+### FunctionStrictness
 
 ### FunctionPurity
 

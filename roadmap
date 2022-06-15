@@ -1,0 +1,22 @@
+Roadmap
+
+- Add strict modifier
+- Add version control annotation (@MAJOR.MINOR)
+- Add alignment annotation (alignas)
+- Add calling convention annotation
+- Especify init/deinit contract
+- Add generic metaprogramming subgrammar
+- Implement memory-safety abstractions
+- Implement thread-safety abstractions
+
+- Cesium-C transpiler + GCC
+    - Written in Python (prototype)
+    - Written in Cesium
+    - Written in C (written in Cesium and transpiled)
+- GCC Cesium front-end
+    - Written in Cesium
+    - Written in C (transpiled)
+    - Written in Cesium (compiled)
+- Compiler in Cesium
+    - Compiled by GCC front-end
+    - Compiled by compiler
