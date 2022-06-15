@@ -50,28 +50,31 @@ _(one of)_
 
 ## Names
 ### [PackageName](Semantics.md#PackageName):
-_Identifier_ _{_**.** _Identifier}_  
+_Identifier_ _[_[_Version_](#Version)_]_ _{_**.** _Identifier_ _[_[_Version_](#Version)_]}_  
 
 ### [ImportName](Semantics.md#ImportName):
-_Identifier_ _[_**as** _Identifier]_  
+_Identifier_ _[_[_Version_](#Version)_]_ _[_**as** _Identifier]_  
 
 ### [PackageOrTypeName](Semantics.md#PackageOrTypeName):
-_Identifier_ _{_**.** _Identifier}_  
+_Identifier_ _[_[_Version_](#Version)_]_ _{_**.** _Identifier_ _[_[_Version_](#Version)_]}_  
 
 ## Typedefs, Enums, Unions and Structs
 ### [TypedefDeclaration](Semantics.md#TypedefDeclaration):
-**typedef** _Identifier_ [_BaseType_](#BaseType) _[_[_TypedefBody_](#TypedefBody)_]_  
+**typedef** _Identifier_ _[_[_Version_](#Version)_]_ [_BaseType_](#BaseType) _[_[_TypedefBody_](#TypedefBody)_]_  
 
 ### [EnumDeclaration](Semantics.md#EnumDeclaration):
-_[_[_EnumLayout_](#EnumLayout)_]_ **enum** _Identifier_ _[_[_BaseType_](#BaseType)_]_ [_EnumBody_](#EnumBody)  
+_[_[_EnumLayout_](#EnumLayout)_]_ **enum** _Identifier_ _[_[_Version_](#Version)_]_ _[_[_BaseType_](#BaseType)_]_ [_EnumBody_](#EnumBody)  
 
 ### [UnionDeclaration](Semantics.md#UnionDeclaration):
-**union** _Identifier_ [_UnionBody_](#UnionBody)  
+**union** _Identifier_ _[_[_Version_](#Version)_]_ [_UnionBody_](#UnionBody)  
 
 ### [StructDeclaration](Semantics.md#StructDeclaration):
-_[_[_DeclarationExtensibility_](#DeclarationExtensibility)_]_ _[_[_StructLayout_](#StructLayout)_]_ **struct** _Identifier_ _[_[_BaseType_](#BaseType)_]_ [_StructBody_](#StructBody)  
+_[_[_DeclarationExtensibility_](#DeclarationExtensibility)_]_ _[_[_StructLayout_](#StructLayout)_]_ **struct** _Identifier_ _[_[_Version_](#Version)_]_ _[_[_BaseType_](#BaseType)_]_ [_StructBody_](#StructBody)  
 
 ---
+
+### [Version](Semantics.md#Version):
+**@** _IntegerLiteral_ **.** _IntegerLiteral_  
 
 ### [BaseType](Semantics.md#BaseType):
 **:** [_Type_](#Type)  
@@ -129,7 +132,7 @@ _Identifier_ _[_**=** [_VariableInitializer_](#VariableInitializer)_]_
 ---
 
 ### [StaticInitializer](Semantics.md#StaticInitializer):
-_[_[_NameStrictness_](#NameStrictness)_]_ **static** _[StringIdentifier]_ [_Block_](#Block)  
+_[_[_NameStrictness_](#NameStrictness)_]_ **static** _[_[_Version_](#Version)_]_ _[StringIdentifier]_ [_Block_](#Block)  
 
 ### [MemberDeclaration](Semantics.md#MemberDeclaration):
 _[_[_MemberStaticity_](#MemberStaticity)_]_ [_FieldDeclaration_](#FieldDeclaration)  
@@ -169,7 +172,7 @@ _[_[_DeclarationExtensibility_](#DeclarationExtensibility)_]_ _[_[_MethodOverrid
 ---
 
 ### [MethodDeclarator](Semantics.md#MethodDeclarator):
-_[_[_NameStrictness_](#NameStrictness)_]_ _Identifier_ _[StringIdentifier]_ _[_**:** [_TypeName_](#TypeName)_]_ **(** _[_[_Parameters_](#Parameters)_]_ **)**  
+_[_[_NameStrictness_](#NameStrictness)_]_ _Identifier_ _[_[_Version_](#Version)_]_ _[StringIdentifier]_ _[_**:** [_TypeName_](#TypeName)_]_ **(** _[_[_Parameters_](#Parameters)_]_ **)**  
 
 ---
 
@@ -211,8 +214,8 @@ _[_[_TypeAtomicity_](#TypeAtomicity)_]_ **\_char**
 [_ArrayDim_](#ArrayDim) _[PointerOrArraySuffix]_  
 
 ### [TypeName](Semantics.md#TypeName):
-_[_[_TypeStrictness_](#TypeStrictness)_]_ _Identifier_ _{_**.** _Identifier}_  
-[_TypeBareness_](#TypeBareness) _Identifier_ _{_**.** _Identifier}_  
+_[_[_TypeStrictness_](#TypeStrictness)_]_ _Identifier_ _[_[_Version_](#Version)_]_ _{_**.** _Identifier_ _[_[_Version_](#Version)_]}_  
+[_TypeBareness_](#TypeBareness) _Identifier_ _[_[_Version_](#Version)_]_ _{_**.** _Identifier_ _[_[_Version_](#Version)_]}_  
 
 ### [VoidPointerType](Semantics.md#VoidPointerType):
 **unsafe** **void** **&** _[_[_TypeAtomicity_](#TypeAtomicity)_]_  

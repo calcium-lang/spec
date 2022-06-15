@@ -50,28 +50,31 @@ FromName:
 
 ## Names
 PackageName:
-    Identifier {"." Identifier}
+    Identifier [Version] {"." Identifier [Version]}
 
 ImportName:
-    Identifier ["as" Identifier]
+    Identifier [Version] ["as" Identifier]
 
 PackageOrTypeName:
-    Identifier {"." Identifier}
+    Identifier [Version] {"." Identifier [Version]}
 
 ## Typedefs, Enums, Unions and Structs
 TypedefDeclaration:
-    "typedef" Identifier BaseType [TypedefBody]
+    "typedef" Identifier [Version] BaseType [TypedefBody]
 
 EnumDeclaration:
-    [EnumLayout] "enum" Identifier [BaseType] EnumBody
+    [EnumLayout] "enum" Identifier [Version] [BaseType] EnumBody
 
 UnionDeclaration:
-    "union" Identifier UnionBody
+    "union" Identifier [Version] UnionBody
 
 StructDeclaration:
-    [DeclarationExtensibility] [StructLayout] "struct" Identifier [BaseType] StructBody
+    [DeclarationExtensibility] [StructLayout] "struct" Identifier [Version] [BaseType] StructBody
 
 ---
+
+Version:
+    "@" IntegerLiteral "." IntegerLiteral
 
 BaseType:
     ":" Type
@@ -129,7 +132,7 @@ UnionType:
 ---
 
 StaticInitializer:
-    [NameStrictness] "static" [StringIdentifier] Block
+    [NameStrictness] "static" [Version] [StringIdentifier] Block
 
 MemberDeclaration:
     [MemberStaticity] FieldDeclaration
@@ -169,7 +172,7 @@ MethodBody:
 ---
 
 MethodDeclarator:
-    [NameStrictness] Identifier [StringIdentifier] [":" TypeName] "(" [Parameters] ")"
+    [NameStrictness] Identifier [Version] [StringIdentifier] [":" TypeName] "(" [Parameters] ")"
 
 ---
 
@@ -211,8 +214,8 @@ PointerOrArraySuffix:
     ArrayDim [PointerOrArraySuffix]
 
 TypeName:
-    [TypeStrictness] Identifier {"." Identifier}
-    TypeBareness Identifier {"." Identifier}
+    [TypeStrictness] Identifier [Version] {"." Identifier [Version]}
+    TypeBareness Identifier [Version] {"." Identifier [Version]}
 
 VoidPointerType:
     "unsafe" "void" "&" [TypeAtomicity]
