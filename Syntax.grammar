@@ -200,6 +200,7 @@ Type:
     TypeName [PointerOrArraySuffix]
     VoidPointerType [PointerOrArraySuffix]
     FunctionType
+    "(" FunctionType ")" PointerNullity
     "(" FunctionType ")" PointerOrArraySuffix
 
 ---
@@ -218,10 +219,13 @@ TypeName:
     TypeBareness Identifier [Version] {"." Identifier [Version]}
 
 VoidPointerType:
-    "unsafe" "void" "&" [TypeAtomicity]
+    "unsafe" "void" "&" [TypeAtomicity] [PointerNullity]
 
 FunctionType:
     [TypeAtomicity] [FunctionStrictness] [FunctionPurity] "(" [ParameterTypes] ")" "->" Result
+
+PointerNullity:
+    "?"
 
 ---
 
@@ -233,12 +237,12 @@ NumericType:
     FloatingPointType
 
 PointerSuffix:
-    [ValueMutability] [ValueVolatility] "&" [PointerWidth] [ReferenceAliasability]
-    [ValueMutability] [ValueVolatility] "&" TypeAtomicity [ReferenceAliasability]
+    [ValueMutability] [ValueVolatility] "&" [PointerWidth] [ReferenceAliasability] [PointerNullity]
+    [ValueMutability] [ValueVolatility] "&" TypeAtomicity [ReferenceAliasability] [PointerNullity]
 
 ArrayDim:
-    "[" [TypeStrictness] [Expression] "]"
-    "[" TypeBareness "]"
+    "[" [TypeStrictness] [Expression] "]" [PointerNullity]
+    "[" TypeBareness "]" [PointerNullity]
 
 TypeStrictness:
     "strict"

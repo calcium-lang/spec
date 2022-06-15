@@ -200,6 +200,7 @@ _Identifier_ _[_**:** [_Type_](#Type)_]_
 [_TypeName_](#TypeName) _[_[_PointerOrArraySuffix_](#PointerOrArraySuffix)_]_  
 [_VoidPointerType_](#VoidPointerType) _[_[_PointerOrArraySuffix_](#PointerOrArraySuffix)_]_  
 [_FunctionType_](#FunctionType)  
+**(** [_FunctionType_](#FunctionType) **)** [_PointerNullity_](#PointerNullity)  
 **(** [_FunctionType_](#FunctionType) **)** [_PointerOrArraySuffix_](#PointerOrArraySuffix)  
 
 ---
@@ -218,10 +219,13 @@ _[_[_TypeStrictness_](#TypeStrictness)_]_ _Identifier_ _[_[_Version_](#Version)_
 [_TypeBareness_](#TypeBareness) _Identifier_ _[_[_Version_](#Version)_]_ _{_**.** _Identifier_ _[_[_Version_](#Version)_]}_  
 
 ### [VoidPointerType](Semantics.md#VoidPointerType):
-**unsafe** **void** **&** _[_[_TypeAtomicity_](#TypeAtomicity)_]_  
+**unsafe** **void** **&** _[_[_TypeAtomicity_](#TypeAtomicity)_]_ _[_[_PointerNullity_](#PointerNullity)_]_  
 
 ### [FunctionType](Semantics.md#FunctionType):
 _[_[_TypeAtomicity_](#TypeAtomicity)_]_ _[_[_FunctionStrictness_](#FunctionStrictness)_]_ _[_[_FunctionPurity_](#FunctionPurity)_]_ **(** _[_[_ParameterTypes_](#ParameterTypes)_]_ **)** **->** [_Result_](#Result)  
+
+### [PointerNullity](Semantics.md#PointerNullity):
+**?**  
 
 ---
 
@@ -233,12 +237,12 @@ _[_[_TypeAtomicity_](#TypeAtomicity)_]_ _[_[_FunctionStrictness_](#FunctionStric
 [_FloatingPointType_](#FloatingPointType)  
 
 ### [PointerSuffix](Semantics.md#PointerSuffix):
-_[_[_ValueMutability_](#ValueMutability)_]_ _[_[_ValueVolatility_](#ValueVolatility)_]_ **&** _[_[_PointerWidth_](#PointerWidth)_]_ _[_[_ReferenceAliasability_](#ReferenceAliasability)_]_  
-_[_[_ValueMutability_](#ValueMutability)_]_ _[_[_ValueVolatility_](#ValueVolatility)_]_ **&** [_TypeAtomicity_](#TypeAtomicity) _[_[_ReferenceAliasability_](#ReferenceAliasability)_]_  
+_[_[_ValueMutability_](#ValueMutability)_]_ _[_[_ValueVolatility_](#ValueVolatility)_]_ **&** _[_[_PointerWidth_](#PointerWidth)_]_ _[_[_ReferenceAliasability_](#ReferenceAliasability)_]_ _[_[_PointerNullity_](#PointerNullity)_]_  
+_[_[_ValueMutability_](#ValueMutability)_]_ _[_[_ValueVolatility_](#ValueVolatility)_]_ **&** [_TypeAtomicity_](#TypeAtomicity) _[_[_ReferenceAliasability_](#ReferenceAliasability)_]_ _[_[_PointerNullity_](#PointerNullity)_]_  
 
 ### [ArrayDim](Semantics.md#ArrayDim):
-**[** _[_[_TypeStrictness_](#TypeStrictness)_]_ _[Expression]_ **]**  
-**[** [_TypeBareness_](#TypeBareness) **]**  
+**[** _[_[_TypeStrictness_](#TypeStrictness)_]_ _[Expression]_ **]** _[_[_PointerNullity_](#PointerNullity)_]_  
+**[** [_TypeBareness_](#TypeBareness) **]** _[_[_PointerNullity_](#PointerNullity)_]_  
 
 ### [TypeStrictness](Semantics.md#TypeStrictness):
 **strict**  
