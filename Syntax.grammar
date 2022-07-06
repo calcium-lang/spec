@@ -17,28 +17,17 @@ TopLevelTypeDeclaration:
 ---
 
 ImportDeclaration:
-    ExplicitTypeImportDeclaration
-    TypeImportOnDemandDeclaration
+    "import" ImportNames [FromName] [";"]
 
 DeclarationEncapsulation:
     (one of)
     "public" "protected" "private"
 
 TypeDeclaration:
-    TypedefDeclaration [";"]
+    TypedefDeclaration
     EnumDeclaration
     UnionDeclaration
     StructDeclaration
-
-> TypedefBody and the semicolon after TypedefDeclaration are mutually exclusive, and exactly one of them must always be found in rule 1.
-
----
-
-ExplicitTypeImportDeclaration:
-    "import" ImportNames [FromName] [";"]
-
-TypeImportOnDemandDeclaration:
-    "import" "*" FromName [";"]
 
 ---
 
@@ -50,7 +39,7 @@ FromName:
 
 ## Names
 PackageName:
-    Identifier [Version] {"." Identifier [Version]}
+    Identifier {"." Identifier} [Version]
 
 ImportName:
     Identifier [Version] ["as" Identifier]
@@ -81,6 +70,7 @@ BaseType:
 
 TypedefBody:
     "{" BodyDeclarations "}"
+    ";"
 
 EnumLayout:
     "strict"
@@ -111,7 +101,9 @@ EnumConstants:
     EnumConstant {"," EnumConstant}
 
 UnionTypes:
-    UnionType {"," UnionType}
+    TypeDeclaration {"," TypeDeclaration}
+
+> The semicolon in TypedefBody must never be found in TypedefDeclaration.
 
 ---
 
@@ -120,14 +112,11 @@ BodyDeclaration:
     [DeclarationEncapsulation] MemberDeclaration
     [DeclarationEncapsulation] TypeDeclaration
 
-EnumConstant:
-    Identifier ["=" VariableInitializer]
+> TypedefBody must always be found in TypedefDeclaration.
 
-UnionType:
-    TypedefDeclaration
-    EnumDeclaration
-    UnionDeclaration
-    StructDeclaration
+EnumConstant:
+    ["."] Identifier ["=" VariableInitializer]
+    ["."] Identifier ":" VariableInitializer
 
 ---
 
@@ -222,7 +211,8 @@ VoidPointerType:
     "unsafe" "void" "&" [TypeAtomicity] [PointerNullity]
 
 FunctionType:
-    [TypeAtomicity] [FunctionStrictness] [FunctionPurity] "(" [ParameterTypes] ")" "->" Result
+    [TypeAtomicity] [FunctionStrictness] [FunctionPurity] "func" "(" [ParameterTypes] ")" "->" Result
+    [TypeAtomicity] [FunctionStrictness] [FunctionPurity] "func" [ParameterTypes] "->" Result
 
 PointerNullity:
     "?"
@@ -286,7 +276,7 @@ ValueVolatility:
 
 PointerWidth:
     [["unsafe"] "unused"] [TypeStrictness] "wide"
-    "unsafe" "bare"
+    TypeBareness
 
 ReferenceAliasability:
     ["local"] "aliasable"
@@ -321,10 +311,10 @@ BlockStatements:
 
 ## Array and Struct Initializers
 ArrayInitializer:
-    "[" [VariableInitializers] "]"
+    [":" Type] "[" [VariableInitializers] "]"
 
 StructInitializer:
-    "{" [FieldInitializers] "}"
+    [":" TypeName] "{" [FieldInitializers] "}"
 
 ---
 
@@ -337,4 +327,5 @@ FieldInitializers:
 ---
 
 FieldInitializer:
-    Identifier "=" VariableInitializer
+    ["."] Identifier "=" VariableInitializer
+    ["."] Identifier ":" VariableInitializer
