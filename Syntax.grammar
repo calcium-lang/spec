@@ -52,13 +52,13 @@ TypedefDeclaration:
     "typedef" Identifier [Version] BaseType [TypedefBody]
 
 EnumDeclaration:
-    [EnumLayout] "enum" Identifier [Version] [BaseType] EnumBody
+    `[EnumLayout]`[^low] "enum" Identifier [Version] [BaseType] EnumBody
 
 UnionDeclaration:
     "union" Identifier [Version] UnionBody
 
 StructDeclaration:
-    [DeclarationExtensibility] [StructLayout] "struct" Identifier [Version] [BaseType] StructBody
+    [DeclarationExtensibility] `[StructLayout]`[^low] "struct" Identifier [Version] [BaseType] StructBody
 
 ---
 
@@ -73,7 +73,7 @@ TypedefBody:
     ";"
 
 EnumLayout:
-    "strict"
+    `"strict"`[^low]
 
 EnumBody:
     "{" EnumConstants [";" BodyDeclarations] "}"
@@ -87,7 +87,7 @@ DeclarationExtensibility:
 
 StructLayout:
     (one of)
-    "strict" "ordered" "packed"
+    `"strict" "ordered" "packed"`[^low]
 
 StructBody:
     "{" [BodyDeclarations] "}"
@@ -121,7 +121,7 @@ EnumConstant:
 ---
 
 StaticInitializer:
-    [NameStrictness] "static" [Version] [StringIdentifier] Block
+    `[NameStrictness]`[^low] "static" [Version] `[StringIdentifier]`[^low] Block
 
 MemberDeclaration:
     [MemberStaticity] FieldDeclaration
@@ -135,16 +135,16 @@ VariableInitializer:
 ---
 
 NameStrictness:
-    "strict"
+    `"strict"`[^low]
 
 MemberStaticity:
     "static"
 
 FieldDeclaration:
-    ValueMutability [ValueVolatility] [NameStrictness] Identifier [StringIdentifier] ":" Type ["=" VariableInitializer] ";"
+    ValueMutability `[ValueVolatility] [NameStrictness]`[^low] Identifier `[StringIdentifier]`[^low] ":" Type ["=" VariableInitializer] ";"
 
 MethodDeclaration:
-    [DeclarationExtensibility] [MethodOverride] [FunctionStrictness] [FunctionPurity] "func" MethodHeader MethodBody
+    [DeclarationExtensibility] [MethodOverride] `[FunctionStrictness]`[^low] [FunctionPurity] "func" MethodHeader MethodBody
 
 ---
 
@@ -161,7 +161,7 @@ MethodBody:
 ---
 
 MethodDeclarator:
-    [NameStrictness] Identifier [Version] [StringIdentifier] [":" TypeName] "(" [Parameters] ")"
+    `[NameStrictness]`[^low] Identifier [Version] `[StringIdentifier]`[^low] [":" TypeName] "(" [Parameters] ")"
 
 ---
 
@@ -187,7 +187,7 @@ FixedParameter:
 Type:
     PrimitiveType [PointerOrArraySuffix]
     TypeName [PointerOrArraySuffix]
-    VoidPointerType [PointerOrArraySuffix]
+    `VoidPointerType [PointerOrArraySuffix]`[^low]
     FunctionType
     "(" FunctionType ")" PointerNullity
     "(" FunctionType ")" PointerOrArraySuffix
@@ -195,24 +195,24 @@ Type:
 ---
 
 PrimitiveType:
-    [TypeAtomicity] NumericType
-    [TypeAtomicity] "bool"
-    [TypeAtomicity] "_char"
+    `[TypeAtomicity]`[^low] NumericType
+    `[TypeAtomicity]`[^low] "bool"
+    `[TypeAtomicity]`[^low] "_char"
 
 PointerOrArraySuffix:
     PointerSuffix [PointerOrArraySuffix]
     ArrayDim [PointerOrArraySuffix]
 
 TypeName:
-    [TypeStrictness] Identifier [Version] {"." Identifier [Version]}
-    TypeBareness Identifier [Version] {"." Identifier [Version]}
+    `[TypeStrictness]`[^low] Identifier [Version] {"." Identifier [Version]}
+    `TypeBareness Identifier [Version] {"." Identifier [Version]}`[^low]
 
 VoidPointerType:
-    "unsafe" "void" "&" [TypeAtomicity] [PointerNullity]
+    `"unsafe" "void" "&" [TypeAtomicity] [PointerNullity]`[^low]
 
 FunctionType:
-    [TypeAtomicity] [FunctionStrictness] [FunctionPurity] "func" "(" [ParameterTypes] ")" "->" Result
-    [TypeAtomicity] [FunctionStrictness] [FunctionPurity] "func" [ParameterTypes] "->" Result
+    `[TypeAtomicity] [FunctionStrictness]`[^low] [FunctionPurity] "func" "(" [ParameterTypes] ")" "->" Result
+    `[TypeAtomicity] [FunctionStrictness]`[^low] [FunctionPurity] "func" [ParameterTypes] "->" Result
 
 PointerNullity:
     "?"
@@ -220,28 +220,28 @@ PointerNullity:
 ---
 
 TypeAtomicity:
-    "atomic"
+    `"atomic"`[^low]
 
 NumericType:
     IntegralType
     FloatingPointType
 
 PointerSuffix:
-    [ValueMutability] [ValueVolatility] "&" [PointerWidth] [ReferenceAliasability] [PointerNullity]
-    [ValueMutability] [ValueVolatility] "&" TypeAtomicity [ReferenceAliasability] [PointerNullity]
+    [ValueMutability] `[ValueVolatility]`[^low] "&" `[PointerWidth] [ReferenceAliasability]`[^low] [PointerNullity]
+    `[ValueMutability] [ValueVolatility] "&" TypeAtomicity [ReferenceAliasability] [PointerNullity]`[^low]
 
 ArrayDim:
-    "[" [TypeStrictness] [Expression] "]" [PointerNullity]
-    "[" TypeBareness "]" [PointerNullity]
+    "[" `[TypeStrictness]`[^low] [Expression] "]" [PointerNullity]
+    `"[" TypeBareness "]" [PointerNullity]`[^low]
 
 TypeStrictness:
-    "strict"
+    `"strict"`[^low]
 
 TypeBareness:
-    "unsafe" "bare"
+    `"unsafe" "bare"`[^low]
 
 FunctionStrictness:
-    "strict"
+    `"strict"`[^low]
 
 FunctionPurity:
     ["local"] "const"
@@ -272,20 +272,20 @@ ValueMutability:
     ["local"] "const"
 
 ValueVolatility:
-    ["local"] "volatile"
+    `["local"] "volatile"`[^low]
 
 PointerWidth:
-    [["unsafe"] "unused"] [TypeStrictness] "wide"
-    TypeBareness
+    `[["unsafe"] "unused"] [TypeStrictness] "wide"`[^low]
+    `TypeBareness`[^low]
 
 ReferenceAliasability:
-    ["local"] "aliasable"
+    `["local"] "aliasable"`[^low]
 
 ThisParameter:
-    "this" [":" TypeName [ValueMutability] [ValueVolatility] ["&" [PointerWidth] [ReferenceAliasability]]]
-    "this" ":" ValueMutability [ValueVolatility] ["&" [PointerWidth] [ReferenceAliasability]]
-    "this" ":" ValueVolatility ["&" [PointerWidth] [ReferenceAliasability]]
-    "this" ":" "&" [PointerWidth] [ReferenceAliasability]
+    "this" [":" TypeName [ValueMutability] `[ValueVolatility]`[^low] ["&" `[PointerWidth] [ReferenceAliasability]`[^low]]]
+    "this" ":" ValueMutability `[ValueVolatility]`[^low] ["&" `[PointerWidth] [ReferenceAliasability]`[^low]]
+    `"this" ":" ValueVolatility ["&" [PointerWidth] [ReferenceAliasability]]`[^low]
+    "this" ":" "&" `[PointerWidth] [ReferenceAliasability]`[^low]
 
 FixedParameterTypes:
     FixedParameterType {"," FixedParameterType}
@@ -311,10 +311,10 @@ BlockStatements:
 
 ## Array and Struct Initializers
 ArrayInitializer:
-    [":" Type] "[" [VariableInitializers] "]"
+    "[" [VariableInitializers] "]" [":" Type]
 
 StructInitializer:
-    [":" TypeName] "{" [FieldInitializers] "}"
+    "{" [FieldInitializers] "}" [":" TypeName]
 
 ---
 
@@ -329,3 +329,5 @@ FieldInitializers:
 FieldInitializer:
     ["."] Identifier "=" VariableInitializer
     ["."] Identifier ":" VariableInitializer
+
+[^low]: Low level syntax.
