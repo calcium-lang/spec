@@ -204,8 +204,8 @@
 &emsp;&emsp;[_ArrayDim_](#ArrayDim) _[PointerOrArraySuffix]_  
 
 ### [TypeName](Semantics.md#TypeName):
-&emsp;&emsp;<code>_[_[_TypeStrictness_](#TypeStrictness)_]_</code>[^low] _Identifier [_[_Version_](#Version)_] {_**.** _Identifier [_[_Version_](#Version)_]}_  
-&emsp;&emsp;<code>[_TypeBareness_](#TypeBareness) _Identifier [_[_Version_](#Version)_] {_**.** _Identifier [_[_Version_](#Version)_]}_</code>[^low]  
+&emsp;&emsp;<code>_[_[_TypeStrictness_](#TypeStrictness)_]_</code>[^low] _Identifier [_[_Version_](#Version)_] {_**.** _Identifier [_[_Version_](#Version)_]} [_**(** _[_[_ParameterTypes_](#ParameterTypes)_]_ **)**_]_  
+&emsp;&emsp;<code>[_TypeBareness_](#TypeBareness) _Identifier [_[_Version_](#Version)_] {_**.** _Identifier [_[_Version_](#Version)_]} [_**(** _[_[_ParameterTypes_](#ParameterTypes)_]_ **)**_]_</code>[^low]  
 
 ### [VoidPointerType](Semantics.md#VoidPointerType):
 &emsp;&emsp;<code>**unsafe void &** _[_[_TypeAtomicity_](#TypeAtomicity)_] [_[_PointerNullity_](#PointerNullity)_]_</code>[^low]  
@@ -237,6 +237,11 @@
 ### [TypeStrictness](Semantics.md#TypeStrictness):
 &emsp;&emsp;<code>**strict**</code>[^low]  
 
+### [ParameterTypes](Semantics.md#ParameterTypes):
+&emsp;&emsp;[_ThisParameter_](#ThisParameter) _[_**,** [_FixedParameterTypes_](#FixedParameterTypes)_] [_**,** [_VariableArityParameterType_](#VariableArityParameterType)_]_  
+&emsp;&emsp;[_FixedParameterTypes_](#FixedParameterTypes) _[_**,** [_VariableArityParameterType_](#VariableArityParameterType)_]_  
+&emsp;&emsp;[_VariableArityParameterType_](#VariableArityParameterType)  
+
 ### [TypeBareness](Semantics.md#TypeBareness):
 &emsp;&emsp;<code>**unsafe bare**</code>[^low]  
 
@@ -246,11 +251,6 @@
 ### [FunctionPurity](Semantics.md#FunctionPurity):
 &emsp;&emsp;_[_**local**_]_ **const**  
 &emsp;&emsp;_[_**local**_]_ **pure**  
-
-### [ParameterTypes](Semantics.md#ParameterTypes):
-&emsp;&emsp;[_ThisParameter_](#ThisParameter) _[_**,** [_FixedParameterTypes_](#FixedParameterTypes)_] [_**,** [_VariableArityParameterType_](#VariableArityParameterType)_]_  
-&emsp;&emsp;[_FixedParameterTypes_](#FixedParameterTypes) _[_**,** [_VariableArityParameterType_](#VariableArityParameterType)_]_  
-&emsp;&emsp;[_VariableArityParameterType_](#VariableArityParameterType)  
 
 ### [Result](Semantics.md#Result):
 &emsp;&emsp;**noreturn**  

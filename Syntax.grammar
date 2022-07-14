@@ -204,8 +204,8 @@ PointerOrArraySuffix:
     ArrayDim [PointerOrArraySuffix]
 
 TypeName:
-    `[TypeStrictness]`[^low] Identifier [Version] {"." Identifier [Version]}
-    `TypeBareness Identifier [Version] {"." Identifier [Version]}`[^low]
+    `[TypeStrictness]`[^low] Identifier [Version] {"." Identifier [Version]} ["(" [ParameterTypes] ")"]
+    `TypeBareness Identifier [Version] {"." Identifier [Version]} ["(" [ParameterTypes] ")"]`[^low]
 
 VoidPointerType:
     `"unsafe" "void" "&" [TypeAtomicity] [PointerNullity]`[^low]
@@ -237,6 +237,11 @@ ArrayDim:
 TypeStrictness:
     `"strict"`[^low]
 
+ParameterTypes:
+    ThisParameter ["," FixedParameterTypes] ["," VariableArityParameterType]
+    FixedParameterTypes ["," VariableArityParameterType]
+    VariableArityParameterType
+
 TypeBareness:
     `"unsafe" "bare"`[^low]
 
@@ -246,11 +251,6 @@ FunctionStrictness:
 FunctionPurity:
     ["local"] "const"
     ["local"] "pure"
-
-ParameterTypes:
-    ThisParameter ["," FixedParameterTypes] ["," VariableArityParameterType]
-    FixedParameterTypes ["," VariableArityParameterType]
-    VariableArityParameterType
 
 Result:
     "noreturn"

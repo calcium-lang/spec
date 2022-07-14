@@ -2,7 +2,7 @@
 ## Packages
 ### CompilationUnit
 
----
+\---
 
 ### PackageDeclaration
 
@@ -10,7 +10,7 @@
 
 ### TopLevelTypeDeclaration
 
----
+\---
 
 ### ImportDeclaration
 
@@ -18,13 +18,7 @@
 
 ### TypeDeclaration
 
----
-
-### ExplicitTypeImportDeclaration
-
-### TypeImportOnDemandDeclaration
-
----
+\---
 
 ### ImportNames
 
@@ -87,7 +81,7 @@ def PackageNameToPath(cwd: str, name: list[str]) -> str:
 
 ### StructDeclaration
 
----
+\---
 
 ### Version
 
@@ -187,7 +181,7 @@ def FieldsToMemory(fields: list[tuple[str, int]], base: Optional[list[tuple[Opti
 
 ### StructBody
 
----
+\---
 
 ### BodyDeclarations
 
@@ -195,15 +189,13 @@ def FieldsToMemory(fields: list[tuple[str, int]], base: Optional[list[tuple[Opti
 
 ### UnionTypes
 
----
+\---
 
 ### BodyDeclaration
 
 ### EnumConstant
 
-### UnionType
-
----
+\---
 
 ### StaticInitializer
 
@@ -211,7 +203,7 @@ def FieldsToMemory(fields: list[tuple[str, int]], base: Optional[list[tuple[Opti
 
 ### VariableInitializer
 
----
+\---
 
 ### NameStrictness
 
@@ -221,7 +213,7 @@ def FieldsToMemory(fields: list[tuple[str, int]], base: Optional[list[tuple[Opti
 
 ### MethodDeclaration
 
----
+\---
 
 ### MethodOverride
 
@@ -229,28 +221,28 @@ def FieldsToMemory(fields: list[tuple[str, int]], base: Optional[list[tuple[Opti
 
 ### MethodBody
 
----
+\---
 
 ### MethodDeclarator
 
----
+\---
 
 ### Parameters
 
----
+\---
 
 ### FixedParameters
 
 ### VariableArityParameter
 
----
+\---
 
 ### FixedParameter
 
 ## Types
 ### Type
 
----
+\---
 
 ### PrimitiveType
 
@@ -264,7 +256,7 @@ def FieldsToMemory(fields: list[tuple[str, int]], base: Optional[list[tuple[Opti
 
 ### PointerNullity
 
----
+\---
 
 ### TypeAtomicity
 
@@ -276,17 +268,17 @@ def FieldsToMemory(fields: list[tuple[str, int]], base: Optional[list[tuple[Opti
 
 ### TypeStrictness
 
+### ParameterTypes
+
 ### TypeBareness
 
 ### FunctionStrictness
 
 ### FunctionPurity
 
-### ParameterTypes
-
 ### Result
 
----
+\---
 
 ### IntegralType
 
@@ -306,14 +298,14 @@ def FieldsToMemory(fields: list[tuple[str, int]], base: Optional[list[tuple[Opti
 
 ### VariableArityParameterType
 
----
+\---
 
 ### FixedParameterType
 
 ## Blocks and Statements
 ### Block
 
----
+\---
 
 ### BlockStatements
 
@@ -324,12 +316,12 @@ def FieldsToMemory(fields: list[tuple[str, int]], base: Optional[list[tuple[Opti
 
 ### StructInitializer
 
----
+\---
 
 ### VariableInitializers
 
 ### FieldInitializers
 
----
+\---
 
 ### FieldInitializer
