@@ -18,15 +18,13 @@
 # along with this script.  If not, see <https://www.gnu.org/licenses/>.
 
 from grammar2md.alchemist.grammar2md import Syntax
-from typing import TextIO
 
-def main() -> None:
-    input: TextIO = open("Syntax.grammar")
-    md: str = Syntax.generate(input.read(), 3, {"Identifier", "Expression", "StringIdentifier", "BlockStatement", "IntegerLiteral"}, "Semantics.md")
-    input.close()
-    output: TextIO = open("Syntax.md", "w")
-    output.write(md)
-    output.close()
+def main():
+    with open("Syntax.grammar") as input:
+        md = Syntax.generate(input.read(), 3, {"Identifier", "Expression", "StringIdentifier", "BlockStatement", "IntegerLiteral"}, "Semantics.md")
+
+    with open("Syntax.md", "w") as output:
+        output.write(md)
 
 if __name__ == "__main__":
     main()
