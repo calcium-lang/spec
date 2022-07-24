@@ -5,7 +5,18 @@ Its name is after the chemical element Cesium(Cs).
 
 It is heavily inspired by C, and tries to support all its features. It is also inspired by Java, and implements a subset of its object-orientation model, while trying to remove the space- and time-costs of such abstractions. Some of its syntax is inspired by Kotlin, Python, JavaScript/TypeScript and Rust.
 
-# Building
+## Design Principles
+In decreasing order of importance:
+1. Type-safety;
+2. Memory-safety;
+3. Thread-safety;
+4. Principle of least astonishment;
+5. C interoperability;
+6. Runtime space efficiency;
+7. Runtime time efficiency;
+8. Binary size efficiency;
+
+## Building
 To build the most recent Syntax.md file, first make sure you have the Alchemist grammar2md submodule initialized properly. You can use the `--recursive` flag when cloning the project to do this:
 
 ```shell
@@ -24,7 +35,7 @@ Once you have the most recent Alchemist grammar2md submodule, run the build scri
 ./build.py
 ```
 
-# License
+## License
 <pre>
 Copyright (c)  2021-2022  Natan Junges.
 Permission is granted to copy, distribute and/or modify this document
