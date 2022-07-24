@@ -35,4 +35,4 @@ A copy of the license is included in the section entitled "<a href="LICENSE">GNU
 Free Documentation License</a>".
 </pre>
 
-The code snippets and the build script are licensed under the [GNU GPLv3](LICENSE).
+The code snippets and the build script are licensed under the [GNU GPLv3](LICENSE.GPL).
