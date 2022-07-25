@@ -1,5 +1,5 @@
 # Cesium
-A C-like memory- and thread-safe systems programming language with zero-cost object-orientation.
+A C-like type-, memory- and thread-safe systems programming language with zero-cost object-orientation.
 
 Its name is after the chemical element Cesium(Cs).
 
@@ -10,11 +10,13 @@ In decreasing order of importance:
 1. Type-safety;
 2. Memory-safety;
 3. Thread-safety;
-4. Principle of least astonishment;
-5. C interoperability;
-6. Runtime space efficiency;
-7. Runtime time efficiency;
-8. Binary size efficiency;
+4. [Suckless philosophy](https://suckless.org/philosophy);
+5. <q>Keep it simple stupid</q>;
+6. Principle of least astonishment;
+7. C interoperability;
+8. Runtime space efficiency;
+9. Runtime time efficiency;
+10. Binary size efficiency;
 
 ## Building
 To build the most recent Syntax.md file, first make sure you have the Alchemist grammar2md submodule initialized properly. You can use the `--recursive` flag when cloning the project to do this:
