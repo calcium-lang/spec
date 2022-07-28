@@ -27,22 +27,12 @@
 ## Names
 ### PackageName
 ```python
-# This code snippet is part of Cesium.
+# This is free and unencumbered software released into the public domain.
 #
-# Copyright (C) 2021-2022  Natan Junges <natanajunges@gmail.com>
-#
-# This code snippet is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This code snippet is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this code snippet.  If not, see <https://www.gnu.org/licenses/>.
+# Anyone is free to copy, modify, publish, use, compile, sell, or
+# distribute this software, either in source code form or as a compiled
+# binary, for any purpose, commercial or non-commercial, and by any
+# means.
 
 import os
 import errno
@@ -99,22 +89,12 @@ def PackageNameToPath(cwd: str, name: list[str]) -> str:
 
 ### StructLayout
 ```python
-# This code snippet is part of Cesium.
+# This is free and unencumbered software released into the public domain.
 #
-# Copyright (C) 2021-2022  Natan Junges <natanajunges@gmail.com>
-#
-# This code snippet is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This code snippet is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this code snippet.  If not, see <https://www.gnu.org/licenses/>.
+# Anyone is free to copy, modify, publish, use, compile, sell, or
+# distribute this software, either in source code form or as a compiled
+# binary, for any purpose, commercial or non-commercial, and by any
+# means.
 
 from typing import Optional
 
