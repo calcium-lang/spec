@@ -44,8 +44,8 @@ Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
 or any later version published by the Free Software Foundation;
 with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
-A copy of the license is included in the section entitled "<a href="LICENSE">GNU
+A copy of the license is included in the section entitled "<a href="LICENSE.FDL">GNU
 Free Documentation License</a>".
 </pre>
 
-The code snippets and the build script are licensed under the [GNU GPLv3](LICENSE.GPL).
+The code snippets and the build script are licensed under the [Unlicense](UNLICENSE).
