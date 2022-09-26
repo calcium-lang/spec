@@ -39,31 +39,31 @@
 
 ## Names
 ### [PackageName](Semantics.md#PackageName):
-&emsp;&emsp;_Identifier {_**.** _Identifier} [_[_Version_](#Version)_]_  
+&emsp;&emsp;_Identifier {_**.** _Identifier}_ <code>_[_[_Version_](#Version)_]_</code>[^low]  
 
 ### [ImportName](Semantics.md#ImportName):
-&emsp;&emsp;_Identifier [_[_Version_](#Version)_] [_**as** _Identifier]_  
+&emsp;&emsp;_Identifier_ <code>_[_[_Version_](#Version)_]_</code>[^low] _[_**as** _Identifier]_  
 
 ### [PackageOrTypeName](Semantics.md#PackageOrTypeName):
-&emsp;&emsp;_Identifier [_[_Version_](#Version)_] {_**.** _Identifier [_[_Version_](#Version)_]}_  
+&emsp;&emsp;_Identifier_ <code>_[_[_Version_](#Version)_]_</code>[^low] _{_**.** _Identifier_ <code>_[_[_Version_](#Version)_]_</code>[^low]_}_  
 
 ## Typedefs, Enums, Unions and Structs
 ### [TypedefDeclaration](Semantics.md#TypedefDeclaration):
-&emsp;&emsp;**typedef** _Identifier [_[_Version_](#Version)_]_ [_BaseType_](#BaseType) _[_[_TypedefBody_](#TypedefBody)_]_  
+&emsp;&emsp;**typedef** _Identifier_ <code>_[_[_Version_](#Version)_]_</code>[^low] [_BaseType_](#BaseType) _[_[_TypedefBody_](#TypedefBody)_]_  
 
 ### [EnumDeclaration](Semantics.md#EnumDeclaration):
-&emsp;&emsp;<code>_[_[_EnumLayout_](#EnumLayout)_]_</code>[^low] **enum** _Identifier [_[_Version_](#Version)_] [_[_BaseType_](#BaseType)_]_ [_EnumBody_](#EnumBody)  
+&emsp;&emsp;<code>_[_[_EnumLayout_](#EnumLayout)_]_</code>[^low] **enum** _Identifier_ <code>_[_[_Version_](#Version)_]_</code>[^low] _[_[_BaseType_](#BaseType)_]_ [_EnumBody_](#EnumBody)  
 
 ### [UnionDeclaration](Semantics.md#UnionDeclaration):
-&emsp;&emsp;**union** _Identifier [_[_Version_](#Version)_]_ [_UnionBody_](#UnionBody)  
+&emsp;&emsp;**union** _Identifier_ <code>_[_[_Version_](#Version)_]_</code>[^low] [_UnionBody_](#UnionBody)  
 
 ### [StructDeclaration](Semantics.md#StructDeclaration):
-&emsp;&emsp;_[_[_DeclarationExtensibility_](#DeclarationExtensibility)_]_ <code>_[_[_StructLayout_](#StructLayout)_]_</code>[^low] **struct** _Identifier [_[_Version_](#Version)_] [_[_BaseType_](#BaseType)_]_ [_StructBody_](#StructBody)  
+&emsp;&emsp;_[_[_DeclarationExtensibility_](#DeclarationExtensibility)_]_ <code>_[_[_StructLayout_](#StructLayout)_]_</code>[^low] **struct** _Identifier_ <code>_[_[_Version_](#Version)_]_</code>[^low] _[_[_BaseType_](#BaseType)_]_ [_StructBody_](#StructBody)  
 
 \---
 
 ### [Version](Semantics.md#Version):
-&emsp;&emsp;**@** _IntegerLiteral_ **.** _IntegerLiteral_  
+&emsp;&emsp;<code>**@** _IntegerLiteral_ **.** _IntegerLiteral_</code>[^low]  
 
 ### [BaseType](Semantics.md#BaseType):
 &emsp;&emsp;**:** [_Type_](#Type)  
@@ -121,7 +121,7 @@
 \---
 
 ### [StaticInitializer](Semantics.md#StaticInitializer):
-&emsp;&emsp;<code>_[_[_NameStrictness_](#NameStrictness)_]_</code>[^low] **static** _[_[_Version_](#Version)_]_ <code>_[StringIdentifier]_</code>[^low] [_Block_](#Block)  
+&emsp;&emsp;<code>_[_[_NameStrictness_](#NameStrictness)_]_</code>[^low] **static** <code>_[_[_Version_](#Version)_] [StringIdentifier]_</code>[^low] [_Block_](#Block)  
 
 ### [MemberDeclaration](Semantics.md#MemberDeclaration):
 &emsp;&emsp;_[_[_MemberStaticity_](#MemberStaticity)_]_ [_FieldDeclaration_](#FieldDeclaration)  
@@ -161,7 +161,7 @@
 \---
 
 ### [MethodDeclarator](Semantics.md#MethodDeclarator):
-&emsp;&emsp;<code>_[_[_NameStrictness_](#NameStrictness)_]_</code>[^low] _Identifier [_[_Version_](#Version)_]_ <code>_[StringIdentifier]_</code>[^low] _[_**:** [_TypeName_](#TypeName)_]_ **(** _[_[_Parameters_](#Parameters)_]_ **)**  
+&emsp;&emsp;<code>_[_[_NameStrictness_](#NameStrictness)_]_</code>[^low] _Identifier_ <code>_[_[_Version_](#Version)_] [StringIdentifier]_</code>[^low] _[_**:** [_TypeName_](#TypeName)_]_ **(** _[_[_Parameters_](#Parameters)_]_ **)**  
 
 \---
 
@@ -204,7 +204,7 @@
 &emsp;&emsp;[_ArrayDim_](#ArrayDim) _[PointerOrArraySuffix]_  
 
 ### [TypeName](Semantics.md#TypeName):
-&emsp;&emsp;<code>_[_[_TypeStrictness_](#TypeStrictness)_]_</code>[^low] _Identifier [_[_Version_](#Version)_] {_**.** _Identifier [_[_Version_](#Version)_]} [_**(** _[_[_ParameterTypes_](#ParameterTypes)_]_ **)**_]_  
+&emsp;&emsp;<code>_[_[_TypeStrictness_](#TypeStrictness)_]_</code>[^low] _Identifier_ <code>_[_[_Version_](#Version)_]_</code>[^low] _{_**.** _Identifier_ <code>_[_[_Version_](#Version)_]_</code>[^low]_} [_**(** _[_[_ParameterTypes_](#ParameterTypes)_]_ **)**_]_  
 &emsp;&emsp;<code>[_TypeBareness_](#TypeBareness) _Identifier [_[_Version_](#Version)_] {_**.** _Identifier [_[_Version_](#Version)_]} [_**(** _[_[_ParameterTypes_](#ParameterTypes)_]_ **)**_]_</code>[^low]  
 
 ### [VoidPointerType](Semantics.md#VoidPointerType):
@@ -261,11 +261,11 @@
 
 ### [IntegralType](Semantics.md#IntegralType):
 &emsp;&emsp;_(one of)_  
-&emsp;&emsp;**\_ubyte \_byte \_ushort \_short \_uint \_int \_ulong \_long**  
+&emsp;&emsp;<code>**\_ubyte \_byte \_ushort \_short \_uint**</code>[^low] **\_int** <code>**\_ulong \_long**</code>[^low]  
 
 ### [FloatingPointType](Semantics.md#FloatingPointType):
 &emsp;&emsp;_(one of)_  
-&emsp;&emsp;**\_float \_double**  
+&emsp;&emsp;**\_float** <code>**\_double**</code>[^low]  
 
 ### [ValueMutability](Semantics.md#ValueMutability):
 &emsp;&emsp;_[_**unused**_]_ **var**  
