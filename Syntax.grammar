@@ -39,31 +39,31 @@ FromName:
 
 ## Names
 PackageName:
-    Identifier {"." Identifier} [Version]
+    Identifier {"." Identifier} `[Version]`[^low]
 
 ImportName:
-    Identifier [Version] ["as" Identifier]
+    Identifier `[Version]`[^low] ["as" Identifier]
 
 PackageOrTypeName:
-    Identifier [Version] {"." Identifier [Version]}
+    Identifier `[Version]`[^low] {"." Identifier `[Version]`[^low]}
 
 ## Typedefs, Enums, Unions and Structs
 TypedefDeclaration:
-    "typedef" Identifier [Version] BaseType [TypedefBody]
+    "typedef" Identifier `[Version]`[^low] BaseType [TypedefBody]
 
 EnumDeclaration:
-    `[EnumLayout]`[^low] "enum" Identifier [Version] [BaseType] EnumBody
+    `[EnumLayout]`[^low] "enum" Identifier `[Version]`[^low] [BaseType] EnumBody
 
 UnionDeclaration:
-    "union" Identifier [Version] UnionBody
+    "union" Identifier `[Version]`[^low] UnionBody
 
 StructDeclaration:
-    [DeclarationExtensibility] `[StructLayout]`[^low] "struct" Identifier [Version] [BaseType] StructBody
+    [DeclarationExtensibility] `[StructLayout]`[^low] "struct" Identifier `[Version]`[^low] [BaseType] StructBody
 
 ---
 
 Version:
-    "@" IntegerLiteral "." IntegerLiteral
+    `"@" IntegerLiteral "." IntegerLiteral`[^low]
 
 BaseType:
     ":" Type
@@ -121,7 +121,7 @@ EnumConstant:
 ---
 
 StaticInitializer:
-    `[NameStrictness]`[^low] "static" [Version] `[StringIdentifier]`[^low] Block
+    `[NameStrictness]`[^low] "static" `[Version] [StringIdentifier]`[^low] Block
 
 MemberDeclaration:
     [MemberStaticity] FieldDeclaration
@@ -161,7 +161,7 @@ MethodBody:
 ---
 
 MethodDeclarator:
-    `[NameStrictness]`[^low] Identifier [Version] `[StringIdentifier]`[^low] [":" TypeName] "(" [Parameters] ")"
+    `[NameStrictness]`[^low] Identifier `[Version] [StringIdentifier]`[^low] [":" TypeName] "(" [Parameters] ")"
 
 ---
 
@@ -204,7 +204,7 @@ PointerOrArraySuffix:
     ArrayDim [PointerOrArraySuffix]
 
 TypeName:
-    `[TypeStrictness]`[^low] Identifier [Version] {"." Identifier [Version]} ["(" [ParameterTypes] ")"]
+    `[TypeStrictness]`[^low] Identifier `[Version]`[^low] {"." Identifier `[Version]`[^low]} ["(" [ParameterTypes] ")"]
     `TypeBareness Identifier [Version] {"." Identifier [Version]} ["(" [ParameterTypes] ")"]`[^low]
 
 VoidPointerType:
@@ -261,11 +261,11 @@ Result:
 
 IntegralType:
     (one of)
-    "_ubyte" "_byte" "_ushort" "_short" "_uint" "_int" "_ulong" "_long"
+    `"_ubyte" "_byte" "_ushort" "_short" "_uint"`[^low] "_int" `"_ulong" "_long"`[^low]
 
 FloatingPointType:
     (one of)
-    "_float" "_double"
+    "_float" `"_double"`[^low]
 
 ValueMutability:
     ["unused"] "var"
