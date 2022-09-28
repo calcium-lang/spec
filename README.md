@@ -1,9 +1,9 @@
 # Calcium
 A C-like type-, memory- and thread-safe systems programming language with zero-cost object-orientation.
 
-Its name is after the chemical element Calcium(Ca), the third most abundant metal in Earth's crust and the main component of bones, the structural support of all vertebrates. It was chosen because it evokes solidity and stability, concepts that fit well with systems development.
-
 It is heavily inspired by C, and tries to support all its features. It is also inspired by Java, and implements a subset of its object-orientation model, while trying to remove the space- and time-costs of such abstractions. Some of its syntax is inspired by Kotlin, Python, JavaScript/TypeScript and Rust.
+
+Its name is after the chemical element Calcium(Ca), the third most abundant metal in Earth's crust and the main component of bones, the structural support of all vertebrates. It was chosen because it evokes solidity and stability, concepts that fit well with systems development.
 
 ## Design Principles
 In decreasing order of importance:
