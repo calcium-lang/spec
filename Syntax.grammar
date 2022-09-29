@@ -74,6 +74,7 @@ TypedefBody:
 
 EnumLayout:
     `"strict"`[^low]
+    `"unsafe" "C"`[^low]
 
 EnumBody:
     "{" EnumConstants [";" BodyDeclarations] "}"
@@ -87,7 +88,7 @@ DeclarationExtensibility:
 
 StructLayout:
     (one of)
-    `"strict" "ordered" "packed"`[^low]
+    `"strict" "C" "packed"`[^low]
 
 StructBody:
     "{" [BodyDeclarations] "}"
@@ -176,7 +177,7 @@ FixedParameters:
     FixedParameter {"," FixedParameter}
 
 VariableArityParameter:
-    "..." Identifier [":" Type]
+    "..." `[VariableArityParameterLayout]`[^low] Identifier [":" Type]
 
 ---
 
@@ -208,14 +209,14 @@ TypeName:
     `TypeBareness Identifier [Version] {"." Identifier [Version]} ["(" [ParameterTypes] ")"]`[^low]
 
 VoidPointerType:
-    `"unsafe" "void" "&" [TypeAtomicity] [PointerNullity]`[^low]
+    `"unsafe" "void" [ValueMutability] [ValueVolatility] "&" [TypeAtomicity] [ReferenceAliasability] [PointerNullity]`[^low]
 
 FunctionType:
     `[TypeAtomicity] [FunctionStrictness]`[^low] [FunctionPurity] "func" "(" [ParameterTypes] ")" "->" Result
     `[TypeAtomicity] [FunctionStrictness]`[^low] [FunctionPurity] "func" [ParameterTypes] "->" Result
 
 PointerNullity:
-    "?"
+    ["local"] "?"
 
 ---
 
@@ -268,11 +269,12 @@ FloatingPointType:
     "_float" `"_double"`[^low]
 
 ValueMutability:
-    ["unused"] "var"
+    ["unsafe"] "var"
     ["local"] "const"
 
 ValueVolatility:
     `["local"] "volatile"`[^low]
+    `["unsafe"] "stable"`[^low]
 
 PointerWidth:
     `[["unsafe"] "unused"] [TypeStrictness] "wide"`[^low]
@@ -280,6 +282,7 @@ PointerWidth:
 
 ReferenceAliasability:
     `["local"] "aliasable"`[^low]
+    `["unsafe"] "restrict"`[^low]
 
 ThisParameter:
     "this" [":" TypeName [ValueMutability] `[ValueVolatility]`[^low] ["&" `[PointerWidth] [ReferenceAliasability]`[^low]]]
@@ -291,12 +294,15 @@ FixedParameterTypes:
     FixedParameterType {"," FixedParameterType}
 
 VariableArityParameterType:
-    "..." ":" Type
+    "..." `[VariableArityParameterLayout]`[^low] ":" Type
 
 ---
 
 FixedParameterType:
     ":" Type
+
+VariableArityParameterLayout:
+    `"unsafe" "C"`[^low]
 
 ## Blocks and Statements
 Block:

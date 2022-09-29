@@ -74,6 +74,7 @@
 
 ### [EnumLayout](Semantics.md#EnumLayout):
 &emsp;&emsp;<code>**strict**</code>[^low]  
+&emsp;&emsp;<code>**unsafe C**</code>[^low]  
 
 ### [EnumBody](Semantics.md#EnumBody):
 &emsp;&emsp;**{** [_EnumConstants_](#EnumConstants) _[_**;** [_BodyDeclarations_](#BodyDeclarations)_]_ **}**  
@@ -87,7 +88,7 @@
 
 ### [StructLayout](Semantics.md#StructLayout):
 &emsp;&emsp;_(one of)_  
-&emsp;&emsp;<code>**strict ordered packed**</code>[^low]  
+&emsp;&emsp;<code>**strict C packed**</code>[^low]  
 
 ### [StructBody](Semantics.md#StructBody):
 &emsp;&emsp;**{** _[_[_BodyDeclarations_](#BodyDeclarations)_]_ **}**  
@@ -176,7 +177,7 @@
 &emsp;&emsp;[_FixedParameter_](#FixedParameter) _{_**,** [_FixedParameter_](#FixedParameter)_}_  
 
 ### [VariableArityParameter](Semantics.md#VariableArityParameter):
-&emsp;&emsp;**...** _Identifier [_**:** [_Type_](#Type)_]_  
+&emsp;&emsp;**...** <code>_[_[_VariableArityParameterLayout_](#VariableArityParameterLayout)_]_</code>[^low] _Identifier [_**:** [_Type_](#Type)_]_  
 
 \---
 
@@ -208,14 +209,14 @@
 &emsp;&emsp;<code>[_TypeBareness_](#TypeBareness) _Identifier [_[_Version_](#Version)_] {_**.** _Identifier [_[_Version_](#Version)_]} [_**(** _[_[_ParameterTypes_](#ParameterTypes)_]_ **)**_]_</code>[^low]  
 
 ### [VoidPointerType](Semantics.md#VoidPointerType):
-&emsp;&emsp;<code>**unsafe void &** _[_[_TypeAtomicity_](#TypeAtomicity)_] [_[_PointerNullity_](#PointerNullity)_]_</code>[^low]  
+&emsp;&emsp;<code>**unsafe void** _[_[_ValueMutability_](#ValueMutability)_] [_[_ValueVolatility_](#ValueVolatility)_]_ **&** _[_[_TypeAtomicity_](#TypeAtomicity)_] [_[_ReferenceAliasability_](#ReferenceAliasability)_] [_[_PointerNullity_](#PointerNullity)_]_</code>[^low]  
 
 ### [FunctionType](Semantics.md#FunctionType):
 &emsp;&emsp;<code>_[_[_TypeAtomicity_](#TypeAtomicity)_] [_[_FunctionStrictness_](#FunctionStrictness)_]_</code>[^low] _[_[_FunctionPurity_](#FunctionPurity)_]_ **func (** _[_[_ParameterTypes_](#ParameterTypes)_]_ **) ->** [_Result_](#Result)  
 &emsp;&emsp;<code>_[_[_TypeAtomicity_](#TypeAtomicity)_] [_[_FunctionStrictness_](#FunctionStrictness)_]_</code>[^low] _[_[_FunctionPurity_](#FunctionPurity)_]_ **func** _[_[_ParameterTypes_](#ParameterTypes)_]_ **->** [_Result_](#Result)  
 
 ### [PointerNullity](Semantics.md#PointerNullity):
-&emsp;&emsp;**?**  
+&emsp;&emsp;_[_**local**_]_ **?**  
 
 \---
 
@@ -268,11 +269,12 @@
 &emsp;&emsp;**\_float** <code>**\_double**</code>[^low]  
 
 ### [ValueMutability](Semantics.md#ValueMutability):
-&emsp;&emsp;_[_**unused**_]_ **var**  
+&emsp;&emsp;_[_**unsafe**_]_ **var**  
 &emsp;&emsp;_[_**local**_]_ **const**  
 
 ### [ValueVolatility](Semantics.md#ValueVolatility):
 &emsp;&emsp;<code>_[_**local**_]_ **volatile**</code>[^low]  
+&emsp;&emsp;<code>_[_**unsafe**_]_ **stable**</code>[^low]  
 
 ### [PointerWidth](Semantics.md#PointerWidth):
 &emsp;&emsp;<code>_[[_**unsafe**_]_ **unused**_] [_[_TypeStrictness_](#TypeStrictness)_]_ **wide**</code>[^low]  
@@ -280,6 +282,7 @@
 
 ### [ReferenceAliasability](Semantics.md#ReferenceAliasability):
 &emsp;&emsp;<code>_[_**local**_]_ **aliasable**</code>[^low]  
+&emsp;&emsp;<code>_[_**unsafe**_]_ **restrict**</code>[^low]  
 
 ### [ThisParameter](Semantics.md#ThisParameter):
 &emsp;&emsp;**this** _[_**:** [_TypeName_](#TypeName) _[_[_ValueMutability_](#ValueMutability)_]_ <code>_[_[_ValueVolatility_](#ValueVolatility)_]_</code>[^low] _[_**&** <code>_[_[_PointerWidth_](#PointerWidth)_] [_[_ReferenceAliasability_](#ReferenceAliasability)_]_</code>[^low]_]]_  
@@ -291,12 +294,15 @@
 &emsp;&emsp;[_FixedParameterType_](#FixedParameterType) _{_**,** [_FixedParameterType_](#FixedParameterType)_}_  
 
 ### [VariableArityParameterType](Semantics.md#VariableArityParameterType):
-&emsp;&emsp;**... :** [_Type_](#Type)  
+&emsp;&emsp;**...** <code>_[_[_VariableArityParameterLayout_](#VariableArityParameterLayout)_]_</code>[^low] **:** [_Type_](#Type)  
 
 \---
 
 ### [FixedParameterType](Semantics.md#FixedParameterType):
 &emsp;&emsp;**:** [_Type_](#Type)  
+
+### [VariableArityParameterLayout](Semantics.md#VariableArityParameterLayout):
+&emsp;&emsp;<code>**unsafe C**</code>[^low]  
 
 ## Blocks and Statements
 ### [Block](Semantics.md#Block):
