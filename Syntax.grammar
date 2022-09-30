@@ -116,8 +116,7 @@ BodyDeclaration:
 > TypedefBody must always be found in TypedefDeclaration.
 
 EnumConstant:
-    ["."] Identifier ["=" VariableInitializer]
-    ["."] Identifier ":" VariableInitializer
+    ["."] Identifier [("="|":") VariableInitializer]
 
 ---
 
@@ -205,15 +204,13 @@ PointerOrArraySuffix:
     ArrayDim [PointerOrArraySuffix]
 
 TypeName:
-    `[TypeStrictness]`[^low] Identifier `[Version]`[^low] {"." Identifier `[Version]`[^low]} ["(" [ParameterTypes] ")"]
-    `TypeBareness Identifier [Version] {"." Identifier [Version]} ["(" [ParameterTypes] ")"]`[^low]
+    `[TypeStrictness|TypeBareness]`[^low] Identifier `[Version]`[^low] {"." Identifier `[Version]`[^low]} ["(" [ParameterTypes] ")"]
 
 VoidPointerType:
     `"unsafe" "void" [ValueMutability] [ValueVolatility] "&" [TypeAtomicity] [ReferenceAliasability] [PointerNullity]`[^low]
 
 FunctionType:
     `[TypeAtomicity] [FunctionStrictness]`[^low] [FunctionPurity] "func" "(" [ParameterTypes] ")" "->" Result
-    `[TypeAtomicity] [FunctionStrictness]`[^low] [FunctionPurity] "func" [ParameterTypes] "->" Result
 
 PointerNullity:
     ["local"] "?"
@@ -228,12 +225,10 @@ NumericType:
     FloatingPointType
 
 PointerSuffix:
-    [ValueMutability] `[ValueVolatility]`[^low] "&" `[PointerWidth] [ReferenceAliasability]`[^low] [PointerNullity]
-    `[ValueMutability] [ValueVolatility] "&" TypeAtomicity [ReferenceAliasability] [PointerNullity]`[^low]
+    [ValueMutability] `[ValueVolatility]`[^low] "&" `[PointerWidth|TypeAtomicity] [ReferenceAliasability]`[^low] [PointerNullity]
 
 ArrayDim:
-    "[" `[TypeStrictness]`[^low] [Expression] "]" [PointerNullity]
-    `"[" TypeBareness "]" [PointerNullity]`[^low]
+    "[" (`[TypeStrictness]`[^low] [Expression]|`TypeBareness`[^low]) "]" [PointerNullity]
 
 TypeStrictness:
     `"strict"`[^low]
@@ -333,7 +328,6 @@ FieldInitializers:
 ---
 
 FieldInitializer:
-    ["."] Identifier "=" VariableInitializer
-    ["."] Identifier ":" VariableInitializer
+    ["."] Identifier ("="|":") VariableInitializer
 
 [^low]: Low level syntax.

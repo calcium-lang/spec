@@ -116,8 +116,7 @@
 > TypedefBody must always be found in TypedefDeclaration.
 
 ### [EnumConstant](Semantics.md#EnumConstant):
-&emsp;&emsp;_[_**.**_] Identifier [_**=** [_VariableInitializer_](#VariableInitializer)_]_  
-&emsp;&emsp;_[_**.**_] Identifier_ **:** [_VariableInitializer_](#VariableInitializer)  
+&emsp;&emsp;_[_**.**_] Identifier [(_**=**_|_**:**_)_ [_VariableInitializer_](#VariableInitializer)_]_  
 
 \---
 
@@ -205,15 +204,13 @@
 &emsp;&emsp;[_ArrayDim_](#ArrayDim) _[PointerOrArraySuffix]_  
 
 ### [TypeName](Semantics.md#TypeName):
-&emsp;&emsp;<code>_[_[_TypeStrictness_](#TypeStrictness)_]_</code>[^low] _Identifier_ <code>_[_[_Version_](#Version)_]_</code>[^low] _{_**.** _Identifier_ <code>_[_[_Version_](#Version)_]_</code>[^low]_} [_**(** _[_[_ParameterTypes_](#ParameterTypes)_]_ **)**_]_  
-&emsp;&emsp;<code>[_TypeBareness_](#TypeBareness) _Identifier [_[_Version_](#Version)_] {_**.** _Identifier [_[_Version_](#Version)_]} [_**(** _[_[_ParameterTypes_](#ParameterTypes)_]_ **)**_]_</code>[^low]  
+&emsp;&emsp;<code>_[_[_TypeStrictness_](#TypeStrictness)_|_[_TypeBareness_](#TypeBareness)_]_</code>[^low] _Identifier_ <code>_[_[_Version_](#Version)_]_</code>[^low] _{_**.** _Identifier_ <code>_[_[_Version_](#Version)_]_</code>[^low]_} [_**(** _[_[_ParameterTypes_](#ParameterTypes)_]_ **)**_]_  
 
 ### [VoidPointerType](Semantics.md#VoidPointerType):
 &emsp;&emsp;<code>**unsafe void** _[_[_ValueMutability_](#ValueMutability)_] [_[_ValueVolatility_](#ValueVolatility)_]_ **&** _[_[_TypeAtomicity_](#TypeAtomicity)_] [_[_ReferenceAliasability_](#ReferenceAliasability)_] [_[_PointerNullity_](#PointerNullity)_]_</code>[^low]  
 
 ### [FunctionType](Semantics.md#FunctionType):
 &emsp;&emsp;<code>_[_[_TypeAtomicity_](#TypeAtomicity)_] [_[_FunctionStrictness_](#FunctionStrictness)_]_</code>[^low] _[_[_FunctionPurity_](#FunctionPurity)_]_ **func (** _[_[_ParameterTypes_](#ParameterTypes)_]_ **) ->** [_Result_](#Result)  
-&emsp;&emsp;<code>_[_[_TypeAtomicity_](#TypeAtomicity)_] [_[_FunctionStrictness_](#FunctionStrictness)_]_</code>[^low] _[_[_FunctionPurity_](#FunctionPurity)_]_ **func** _[_[_ParameterTypes_](#ParameterTypes)_]_ **->** [_Result_](#Result)  
 
 ### [PointerNullity](Semantics.md#PointerNullity):
 &emsp;&emsp;_[_**local**_]_ **?**  
@@ -228,12 +225,10 @@
 &emsp;&emsp;[_FloatingPointType_](#FloatingPointType)  
 
 ### [PointerSuffix](Semantics.md#PointerSuffix):
-&emsp;&emsp;_[_[_ValueMutability_](#ValueMutability)_]_ <code>_[_[_ValueVolatility_](#ValueVolatility)_]_</code>[^low] **&** <code>_[_[_PointerWidth_](#PointerWidth)_] [_[_ReferenceAliasability_](#ReferenceAliasability)_]_</code>[^low] _[_[_PointerNullity_](#PointerNullity)_]_  
-&emsp;&emsp;<code>_[_[_ValueMutability_](#ValueMutability)_] [_[_ValueVolatility_](#ValueVolatility)_]_ **&** [_TypeAtomicity_](#TypeAtomicity) _[_[_ReferenceAliasability_](#ReferenceAliasability)_] [_[_PointerNullity_](#PointerNullity)_]_</code>[^low]  
+&emsp;&emsp;_[_[_ValueMutability_](#ValueMutability)_]_ <code>_[_[_ValueVolatility_](#ValueVolatility)_]_</code>[^low] **&** <code>_[_[_PointerWidth_](#PointerWidth)_|_[_TypeAtomicity_](#TypeAtomicity)_] [_[_ReferenceAliasability_](#ReferenceAliasability)_]_</code>[^low] _[_[_PointerNullity_](#PointerNullity)_]_  
 
 ### [ArrayDim](Semantics.md#ArrayDim):
-&emsp;&emsp;**[** <code>_[_[_TypeStrictness_](#TypeStrictness)_]_</code>[^low] _[Expression]_ **]** _[_[_PointerNullity_](#PointerNullity)_]_  
-&emsp;&emsp;<code>**[** [_TypeBareness_](#TypeBareness) **]** _[_[_PointerNullity_](#PointerNullity)_]_</code>[^low]  
+&emsp;&emsp;**[** _(_<code>_[_[_TypeStrictness_](#TypeStrictness)_]_</code>[^low] _[Expression]|_<code>[_TypeBareness_](#TypeBareness)</code>[^low]_)_ **]** _[_[_PointerNullity_](#PointerNullity)_]_  
 
 ### [TypeStrictness](Semantics.md#TypeStrictness):
 &emsp;&emsp;<code>**strict**</code>[^low]  
@@ -333,7 +328,6 @@
 \---
 
 ### [FieldInitializer](Semantics.md#FieldInitializer):
-&emsp;&emsp;_[_**.**_] Identifier_ **=** [_VariableInitializer_](#VariableInitializer)  
-&emsp;&emsp;_[_**.**_] Identifier_ **:** [_VariableInitializer_](#VariableInitializer)  
+&emsp;&emsp;_[_**.**_] Identifier (_**=**_|_**:**_)_ [_VariableInitializer_](#VariableInitializer)  
 
 [^low]: Low level syntax.
