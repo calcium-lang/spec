@@ -1,64 +1,64 @@
 # Syntax
 ## Packages
 ### [CompilationUnit](Semantics.md#CompilationUnit):
-&emsp;&emsp;_[_[_PackageDeclaration_](#PackageDeclaration)_] [_[_ImportDeclarations_](#ImportDeclarations)_]_ [_TopLevelTypeDeclaration_](#TopLevelTypeDeclaration)  
+&emsp;&emsp;_[[PackageDeclaration](#PackageDeclaration)] [[ImportDeclarations](#ImportDeclarations)] [TopLevelTypeDeclaration](#TopLevelTypeDeclaration)_  
 
 \---
 
 ### [PackageDeclaration](Semantics.md#PackageDeclaration):
-&emsp;&emsp;**package** [_PackageName_](#PackageName) _[_**;**_]_  
+&emsp;&emsp;**package** _[PackageName](#PackageName) [_**;**_]_  
 
 ### [ImportDeclarations](Semantics.md#ImportDeclarations):
-&emsp;&emsp;[_ImportDeclaration_](#ImportDeclaration) _{_[_ImportDeclaration_](#ImportDeclaration)_}_  
+&emsp;&emsp;_[ImportDeclaration](#ImportDeclaration) {[ImportDeclaration](#ImportDeclaration)}_  
 
 ### [TopLevelTypeDeclaration](Semantics.md#TopLevelTypeDeclaration):
-&emsp;&emsp;_[_[_DeclarationEncapsulation_](#DeclarationEncapsulation)_]_ [_TypeDeclaration_](#TypeDeclaration)  
+&emsp;&emsp;_[[DeclarationEncapsulation](#DeclarationEncapsulation)] [TypeDeclaration](#TypeDeclaration)_  
 
 \---
 
 ### [ImportDeclaration](Semantics.md#ImportDeclaration):
-&emsp;&emsp;**import** [_ImportNames_](#ImportNames) _[_[_FromName_](#FromName)_] [_**;**_]_  
+&emsp;&emsp;**import** _[ImportNames](#ImportNames) [[FromName](#FromName)] [_**;**_]_  
 
 ### [DeclarationEncapsulation](Semantics.md#DeclarationEncapsulation):
 &emsp;&emsp;_(one of)_  
 &emsp;&emsp;**public protected private**  
 
 ### [TypeDeclaration](Semantics.md#TypeDeclaration):
-&emsp;&emsp;[_TypedefDeclaration_](#TypedefDeclaration)  
-&emsp;&emsp;[_EnumDeclaration_](#EnumDeclaration)  
-&emsp;&emsp;[_UnionDeclaration_](#UnionDeclaration)  
-&emsp;&emsp;[_StructDeclaration_](#StructDeclaration)  
+&emsp;&emsp;_[TypedefDeclaration](#TypedefDeclaration)_  
+&emsp;&emsp;_[EnumDeclaration](#EnumDeclaration)_  
+&emsp;&emsp;_[UnionDeclaration](#UnionDeclaration)_  
+&emsp;&emsp;_[StructDeclaration](#StructDeclaration)_  
 
 \---
 
 ### [ImportNames](Semantics.md#ImportNames):
-&emsp;&emsp;[_ImportName_](#ImportName) _{_**,** [_ImportName_](#ImportName)_}_  
+&emsp;&emsp;_[ImportName](#ImportName) {_**,** _[ImportName](#ImportName)}_  
 
 ### [FromName](Semantics.md#FromName):
-&emsp;&emsp;**from** [_PackageOrTypeName_](#PackageOrTypeName)  
+&emsp;&emsp;**from** _[PackageOrTypeName](#PackageOrTypeName)_  
 
 ## Names
 ### [PackageName](Semantics.md#PackageName):
-&emsp;&emsp;_Identifier {_**.** _Identifier}_ <code>_[_[_Version_](#Version)_]_</code>[^low]  
+&emsp;&emsp;_Identifier {_**.** _Identifier}_ <code>_[[Version](#Version)]_</code>[^low]  
 
 ### [ImportName](Semantics.md#ImportName):
-&emsp;&emsp;_Identifier_ <code>_[_[_Version_](#Version)_]_</code>[^low] _[_**as** _Identifier]_  
+&emsp;&emsp;_Identifier_ <code>_[[Version](#Version)]_</code>[^low] _[_**as** _Identifier]_  
 
 ### [PackageOrTypeName](Semantics.md#PackageOrTypeName):
-&emsp;&emsp;_Identifier_ <code>_[_[_Version_](#Version)_]_</code>[^low] _{_**.** _Identifier_ <code>_[_[_Version_](#Version)_]_</code>[^low]_}_  
+&emsp;&emsp;_Identifier_ <code>_[[Version](#Version)]_</code>[^low] _{_**.** _Identifier_ <code>_[[Version](#Version)]_</code>[^low]_}_  
 
 ## Typedefs, Enums, Unions and Structs
 ### [TypedefDeclaration](Semantics.md#TypedefDeclaration):
-&emsp;&emsp;**typedef** _Identifier_ <code>_[_[_Version_](#Version)_]_</code>[^low] [_BaseType_](#BaseType) _[_[_TypedefBody_](#TypedefBody)_]_  
+&emsp;&emsp;**typedef** _Identifier_ <code>_[[Version](#Version)]_</code>[^low] _[BaseType](#BaseType) [[TypedefBody](#TypedefBody)]_  
 
 ### [EnumDeclaration](Semantics.md#EnumDeclaration):
-&emsp;&emsp;<code>_[_[_EnumLayout_](#EnumLayout)_]_</code>[^low] **enum** _Identifier_ <code>_[_[_Version_](#Version)_]_</code>[^low] _[_[_BaseType_](#BaseType)_]_ [_EnumBody_](#EnumBody)  
+&emsp;&emsp;<code>_[[EnumLayout](#EnumLayout)]_</code>[^low] **enum** _Identifier_ <code>_[[Version](#Version)]_</code>[^low] _[[BaseType](#BaseType)] [EnumBody](#EnumBody)_  
 
 ### [UnionDeclaration](Semantics.md#UnionDeclaration):
-&emsp;&emsp;**union** _Identifier_ <code>_[_[_Version_](#Version)_]_</code>[^low] [_UnionBody_](#UnionBody)  
+&emsp;&emsp;**union** _Identifier_ <code>_[[Version](#Version)]_</code>[^low] _[UnionBody](#UnionBody)_  
 
 ### [StructDeclaration](Semantics.md#StructDeclaration):
-&emsp;&emsp;_[_[_DeclarationExtensibility_](#DeclarationExtensibility)_]_ <code>_[_[_StructLayout_](#StructLayout)_]_</code>[^low] **struct** _Identifier_ <code>_[_[_Version_](#Version)_]_</code>[^low] _[_[_BaseType_](#BaseType)_]_ [_StructBody_](#StructBody)  
+&emsp;&emsp;_[[DeclarationExtensibility](#DeclarationExtensibility)]_ <code>_[[StructLayout](#StructLayout)]_</code>[^low] **struct** _Identifier_ <code>_[[Version](#Version)]_</code>[^low] _[[BaseType](#BaseType)] [StructBody](#StructBody)_  
 
 \---
 
@@ -66,10 +66,10 @@
 &emsp;&emsp;<code>**@** _IntegerLiteral_ **.** _IntegerLiteral_</code>[^low]  
 
 ### [BaseType](Semantics.md#BaseType):
-&emsp;&emsp;**:** [_Type_](#Type)  
+&emsp;&emsp;**:** _[Type](#Type)_  
 
 ### [TypedefBody](Semantics.md#TypedefBody):
-&emsp;&emsp;**{** [_BodyDeclarations_](#BodyDeclarations) **}**  
+&emsp;&emsp;**{** _[BodyDeclarations](#BodyDeclarations)_ **}**  
 &emsp;&emsp;**;**  
 
 ### [EnumLayout](Semantics.md#EnumLayout):
@@ -77,74 +77,75 @@
 &emsp;&emsp;<code>**unsafe C**</code>[^low]  
 
 ### [EnumBody](Semantics.md#EnumBody):
-&emsp;&emsp;**{** [_EnumConstants_](#EnumConstants) _[_**;** [_BodyDeclarations_](#BodyDeclarations)_]_ **}**  
+&emsp;&emsp;**{** _[EnumConstants](#EnumConstants) [_**;** _[BodyDeclarations](#BodyDeclarations)]_ **}**  
 
 ### [UnionBody](Semantics.md#UnionBody):
-&emsp;&emsp;**{** [_UnionTypes_](#UnionTypes) _[_**;** [_BodyDeclarations_](#BodyDeclarations)_]_ **}**  
+&emsp;&emsp;**{** _[UnionTypes](#UnionTypes) [_**;** _[BodyDeclarations](#BodyDeclarations)]_ **}**  
 
 ### [DeclarationExtensibility](Semantics.md#DeclarationExtensibility):
 &emsp;&emsp;_(one of)_  
-&emsp;&emsp;**open abstract**  
+&emsp;&emsp;**final abstract**  
 
 ### [StructLayout](Semantics.md#StructLayout):
 &emsp;&emsp;_(one of)_  
 &emsp;&emsp;<code>**strict C packed**</code>[^low]  
 
 ### [StructBody](Semantics.md#StructBody):
-&emsp;&emsp;**{** _[_[_BodyDeclarations_](#BodyDeclarations)_]_ **}**  
+&emsp;&emsp;**{** _[[BodyDeclarations](#BodyDeclarations)]_ **}**  
 
 \---
 
 ### [BodyDeclarations](Semantics.md#BodyDeclarations):
-&emsp;&emsp;[_BodyDeclaration_](#BodyDeclaration) _{_[_BodyDeclaration_](#BodyDeclaration)_}_  
+&emsp;&emsp;_[BodyDeclaration](#BodyDeclaration) {[BodyDeclaration](#BodyDeclaration)}_  
 
 ### [EnumConstants](Semantics.md#EnumConstants):
-&emsp;&emsp;[_EnumConstant_](#EnumConstant) _{_**,** [_EnumConstant_](#EnumConstant)_}_  
+&emsp;&emsp;_[EnumConstant](#EnumConstant) {_**,** _[EnumConstant](#EnumConstant)}_  
 
 ### [UnionTypes](Semantics.md#UnionTypes):
-&emsp;&emsp;[_TypeDeclaration_](#TypeDeclaration) _{_**,** [_TypeDeclaration_](#TypeDeclaration)_}_  
+&emsp;&emsp;_[TypeDeclaration](#TypeDeclaration) {_**,** _[TypeDeclaration](#TypeDeclaration)}_  
 
 > The semicolon in TypedefBody must never be found in TypedefDeclaration.
 
 \---
 
 ### [BodyDeclaration](Semantics.md#BodyDeclaration):
-&emsp;&emsp;[_StaticInitializer_](#StaticInitializer)  
-&emsp;&emsp;_[_[_DeclarationEncapsulation_](#DeclarationEncapsulation)_]_ [_MemberDeclaration_](#MemberDeclaration)  
-&emsp;&emsp;_[_[_DeclarationEncapsulation_](#DeclarationEncapsulation)_]_ [_TypeDeclaration_](#TypeDeclaration)  
+&emsp;&emsp;_[StaticInitializer](#StaticInitializer)_  
+&emsp;&emsp;_[[DeclarationEncapsulation](#DeclarationEncapsulation)] [MemberDeclaration](#MemberDeclaration)_  
+&emsp;&emsp;_[[DeclarationEncapsulation](#DeclarationEncapsulation)] [TypeDeclaration](#TypeDeclaration)_  
 
 > TypedefBody must always be found in TypedefDeclaration.
 
 ### [EnumConstant](Semantics.md#EnumConstant):
-&emsp;&emsp;_[_**.**_] Identifier [(_**=**_|_**:**_)_ [_VariableInitializer_](#VariableInitializer)_]_  
+&emsp;&emsp;_[_**.**_] Identifier [(_**=**_|_**:**_) [VariableInitializer](#VariableInitializer)]_  
 
 \---
 
 ### [StaticInitializer](Semantics.md#StaticInitializer):
-&emsp;&emsp;<code>_[_[_NameStrictness_](#NameStrictness)_]_</code>[^low] **static** <code>_[_[_Version_](#Version)_] [StringIdentifier]_</code>[^low] [_Block_](#Block)  
+&emsp;&emsp;<code>_[[SymbolNaming](#SymbolNaming)]_</code>[^low] **static** <code>_[[Version](#Version)] [StringIdentifier]_</code>[^low] _[Block](#Block)_  
 
 ### [MemberDeclaration](Semantics.md#MemberDeclaration):
-&emsp;&emsp;_[_[_MemberStaticity_](#MemberStaticity)_]_ [_FieldDeclaration_](#FieldDeclaration)  
-&emsp;&emsp;_[_[_MemberStaticity_](#MemberStaticity)_]_ [_MethodDeclaration_](#MethodDeclaration)  
+&emsp;&emsp;_[[MemberStaticity](#MemberStaticity)] [FieldDeclaration](#FieldDeclaration)_  
+&emsp;&emsp;_[[MemberStaticity](#MemberStaticity)] [MethodDeclaration](#MethodDeclaration)_  
 
 ### [VariableInitializer](Semantics.md#VariableInitializer):
 &emsp;&emsp;_Expression_  
-&emsp;&emsp;[_ArrayInitializer_](#ArrayInitializer)  
-&emsp;&emsp;[_StructInitializer_](#StructInitializer)  
+&emsp;&emsp;_[ArrayInitializer](#ArrayInitializer)_  
+&emsp;&emsp;_[StructInitializer](#StructInitializer)_  
 
 \---
 
-### [NameStrictness](Semantics.md#NameStrictness):
-&emsp;&emsp;<code>**strict**</code>[^low]  
+### [SymbolNaming](Semantics.md#SymbolNaming):
+&emsp;&emsp;_(one of)_  
+&emsp;&emsp;<code>**strict plain**</code>[^low]  
 
 ### [MemberStaticity](Semantics.md#MemberStaticity):
 &emsp;&emsp;**static**  
 
 ### [FieldDeclaration](Semantics.md#FieldDeclaration):
-&emsp;&emsp;[_ValueMutability_](#ValueMutability) <code>_[_[_ValueVolatility_](#ValueVolatility)_] [_[_NameStrictness_](#NameStrictness)_]_</code>[^low] _Identifier_ <code>_[StringIdentifier]_</code>[^low] **:** [_Type_](#Type) _[_**=** [_VariableInitializer_](#VariableInitializer)_]_ **;**  
+&emsp;&emsp;_[ValueMutability](#ValueMutability)_ <code>_[[ValueVolatility](#ValueVolatility)] [[SymbolNaming](#SymbolNaming)]_</code>[^low] _Identifier_ <code>_[StringIdentifier]_</code>[^low] **:** _[Type](#Type) [_**=** _[VariableInitializer](#VariableInitializer)]_ **;**  
 
 ### [MethodDeclaration](Semantics.md#MethodDeclaration):
-&emsp;&emsp;_[_[_DeclarationExtensibility_](#DeclarationExtensibility)_] [_[_MethodOverride_](#MethodOverride)_]_ <code>_[_[_FunctionStrictness_](#FunctionStrictness)_]_</code>[^low] _[_[_FunctionPurity_](#FunctionPurity)_]_ **func** [_MethodHeader_](#MethodHeader) [_MethodBody_](#MethodBody)  
+&emsp;&emsp;_[[DeclarationExtensibility](#DeclarationExtensibility)] [[MethodOverride](#MethodOverride)]_ <code>_[[FunctionStrictness](#FunctionStrictness)]_</code>[^low] _[[FunctionPurity](#FunctionPurity)]_ **func** _[MethodHeader](#MethodHeader) [MethodBody](#MethodBody)_  
 
 \---
 
@@ -152,65 +153,65 @@
 &emsp;&emsp;**override**  
 
 ### [MethodHeader](Semantics.md#MethodHeader):
-&emsp;&emsp;[_MethodDeclarator_](#MethodDeclarator) _[_**->** [_Result_](#Result)_]_  
+&emsp;&emsp;_[MethodDeclarator](#MethodDeclarator) [_**->** _[Result](#Result)]_  
 
 ### [MethodBody](Semantics.md#MethodBody):
-&emsp;&emsp;[_Block_](#Block)  
+&emsp;&emsp;_[Block](#Block)_  
 &emsp;&emsp;**;**  
 
 \---
 
 ### [MethodDeclarator](Semantics.md#MethodDeclarator):
-&emsp;&emsp;<code>_[_[_NameStrictness_](#NameStrictness)_]_</code>[^low] _Identifier_ <code>_[_[_Version_](#Version)_] [StringIdentifier]_</code>[^low] _[_**:** [_TypeName_](#TypeName)_]_ **(** _[_[_Parameters_](#Parameters)_]_ **)**  
+&emsp;&emsp;<code>_[[SymbolNaming](#SymbolNaming)]_</code>[^low] _Identifier_ <code>_[[Version](#Version)] [StringIdentifier]_</code>[^low] _[_**:** _[TypeName](#TypeName)]_ **(** _[[Parameters](#Parameters)]_ **)**  
 
 \---
 
 ### [Parameters](Semantics.md#Parameters):
-&emsp;&emsp;[_ThisParameter_](#ThisParameter) _[_**,** [_FixedParameters_](#FixedParameters)_] [_**,** [_VariableArityParameter_](#VariableArityParameter)_]_  
-&emsp;&emsp;[_FixedParameters_](#FixedParameters) _[_**,** [_VariableArityParameter_](#VariableArityParameter)_]_  
-&emsp;&emsp;[_VariableArityParameter_](#VariableArityParameter)  
+&emsp;&emsp;_[ThisParameter](#ThisParameter) [_**,** _[FixedParameters](#FixedParameters)] [_**,** _[VariableArityParameter](#VariableArityParameter)]_  
+&emsp;&emsp;_[FixedParameters](#FixedParameters) [_**,** _[VariableArityParameter](#VariableArityParameter)]_  
+&emsp;&emsp;_[VariableArityParameter](#VariableArityParameter)_  
 
 \---
 
 ### [FixedParameters](Semantics.md#FixedParameters):
-&emsp;&emsp;[_FixedParameter_](#FixedParameter) _{_**,** [_FixedParameter_](#FixedParameter)_}_  
+&emsp;&emsp;_[FixedParameter](#FixedParameter) {_**,** _[FixedParameter](#FixedParameter)}_  
 
 ### [VariableArityParameter](Semantics.md#VariableArityParameter):
-&emsp;&emsp;**...** <code>_[_[_VariableArityParameterLayout_](#VariableArityParameterLayout)_]_</code>[^low] _Identifier [_**:** [_Type_](#Type)_]_  
+&emsp;&emsp;**...** <code>_[[VariableArityParameterLayout](#VariableArityParameterLayout)]_</code>[^low] _Identifier [_**:** _[Type](#Type)]_  
 
 \---
 
 ### [FixedParameter](Semantics.md#FixedParameter):
-&emsp;&emsp;_Identifier [_**:** [_Type_](#Type)_]_  
+&emsp;&emsp;_Identifier [_**:** _[Type](#Type)]_  
 
 ## Types
 ### [Type](Semantics.md#Type):
-&emsp;&emsp;[_PrimitiveType_](#PrimitiveType) _[_[_PointerOrArraySuffix_](#PointerOrArraySuffix)_]_  
-&emsp;&emsp;[_TypeName_](#TypeName) _[_[_PointerOrArraySuffix_](#PointerOrArraySuffix)_]_  
-&emsp;&emsp;<code>[_VoidPointerType_](#VoidPointerType) _[_[_PointerOrArraySuffix_](#PointerOrArraySuffix)_]_</code>[^low]  
-&emsp;&emsp;[_FunctionType_](#FunctionType)  
-&emsp;&emsp;**(** [_FunctionType_](#FunctionType) **)** [_PointerNullity_](#PointerNullity)  
-&emsp;&emsp;**(** [_FunctionType_](#FunctionType) **)** [_PointerOrArraySuffix_](#PointerOrArraySuffix)  
+&emsp;&emsp;_[PrimitiveType](#PrimitiveType) [[PointerOrArraySuffix](#PointerOrArraySuffix)]_  
+&emsp;&emsp;_[TypeName](#TypeName) [[PointerOrArraySuffix](#PointerOrArraySuffix)]_  
+&emsp;&emsp;<code>_[VoidPointerType](#VoidPointerType) [[PointerOrArraySuffix](#PointerOrArraySuffix)]_</code>[^low]  
+&emsp;&emsp;_[FunctionType](#FunctionType)_  
+&emsp;&emsp;**(** _[FunctionType](#FunctionType)_ **)** _[PointerNullity](#PointerNullity)_  
+&emsp;&emsp;**(** _[FunctionType](#FunctionType)_ **)** _[PointerOrArraySuffix](#PointerOrArraySuffix)_  
 
 \---
 
 ### [PrimitiveType](Semantics.md#PrimitiveType):
-&emsp;&emsp;<code>_[_[_TypeAtomicity_](#TypeAtomicity)_]_</code>[^low] [_NumericType_](#NumericType)  
-&emsp;&emsp;<code>_[_[_TypeAtomicity_](#TypeAtomicity)_]_</code>[^low] **bool**  
-&emsp;&emsp;<code>_[_[_TypeAtomicity_](#TypeAtomicity)_]_</code>[^low] **\_char**  
+&emsp;&emsp;<code>_[[TypeAtomicity](#TypeAtomicity)]_</code>[^low] _[NumericType](#NumericType)_  
+&emsp;&emsp;<code>_[[TypeAtomicity](#TypeAtomicity)]_</code>[^low] **bool**  
+&emsp;&emsp;<code>_[[TypeAtomicity](#TypeAtomicity)]_</code>[^low] **\_char**  
 
 ### [PointerOrArraySuffix](Semantics.md#PointerOrArraySuffix):
-&emsp;&emsp;[_PointerSuffix_](#PointerSuffix) _[PointerOrArraySuffix]_  
-&emsp;&emsp;[_ArrayDim_](#ArrayDim) _[PointerOrArraySuffix]_  
+&emsp;&emsp;_[PointerSuffix](#PointerSuffix) [PointerOrArraySuffix]_  
+&emsp;&emsp;_[ArrayDim](#ArrayDim) [PointerOrArraySuffix]_  
 
 ### [TypeName](Semantics.md#TypeName):
-&emsp;&emsp;<code>_[_[_TypeStrictness_](#TypeStrictness)_|_[_TypeBareness_](#TypeBareness)_]_</code>[^low] _Identifier_ <code>_[_[_Version_](#Version)_]_</code>[^low] _{_**.** _Identifier_ <code>_[_[_Version_](#Version)_]_</code>[^low]_} [_**(** _[_[_ParameterTypes_](#ParameterTypes)_]_ **)**_]_  
+&emsp;&emsp;<code>_[[TypeStrictness](#TypeStrictness)|[TypeBareness](#TypeBareness)]_</code>[^low] _Identifier_ <code>_[[Version](#Version)]_</code>[^low] _{_**.** _Identifier_ <code>_[[Version](#Version)]_</code>[^low]_} [_**(** _[[ParameterTypes](#ParameterTypes)]_ **)**_]_  
 
 ### [VoidPointerType](Semantics.md#VoidPointerType):
-&emsp;&emsp;<code>**unsafe void** _[_[_ValueMutability_](#ValueMutability)_] [_[_ValueVolatility_](#ValueVolatility)_]_ **&** _[_[_TypeAtomicity_](#TypeAtomicity)_] [_[_ReferenceAliasability_](#ReferenceAliasability)_] [_[_PointerNullity_](#PointerNullity)_]_</code>[^low]  
+&emsp;&emsp;<code>**unsafe void** _[[ValueMutability](#ValueMutability)] [[ValueVolatility](#ValueVolatility)]_ **&** _[[TypeAtomicity](#TypeAtomicity)] [[ReferenceAliasability](#ReferenceAliasability)] [[PointerNullity](#PointerNullity)]_</code>[^low]  
 
 ### [FunctionType](Semantics.md#FunctionType):
-&emsp;&emsp;<code>_[_[_TypeAtomicity_](#TypeAtomicity)_] [_[_FunctionStrictness_](#FunctionStrictness)_]_</code>[^low] _[_[_FunctionPurity_](#FunctionPurity)_]_ **func (** _[_[_ParameterTypes_](#ParameterTypes)_]_ **) ->** [_Result_](#Result)  
+&emsp;&emsp;<code>_[[TypeAtomicity](#TypeAtomicity)] [[FunctionStrictness](#FunctionStrictness)]_</code>[^low] _[[FunctionPurity](#FunctionPurity)]_ **func (** _[[ParameterTypes](#ParameterTypes)]_ **) ->** _[Result](#Result)_  
 
 ### [PointerNullity](Semantics.md#PointerNullity):
 &emsp;&emsp;_[_**local**_]_ **?**  
@@ -221,22 +222,22 @@
 &emsp;&emsp;<code>**atomic**</code>[^low]  
 
 ### [NumericType](Semantics.md#NumericType):
-&emsp;&emsp;[_IntegralType_](#IntegralType)  
-&emsp;&emsp;[_FloatingPointType_](#FloatingPointType)  
+&emsp;&emsp;_[IntegralType](#IntegralType)_  
+&emsp;&emsp;_[FloatingPointType](#FloatingPointType)_  
 
 ### [PointerSuffix](Semantics.md#PointerSuffix):
-&emsp;&emsp;_[_[_ValueMutability_](#ValueMutability)_]_ <code>_[_[_ValueVolatility_](#ValueVolatility)_]_</code>[^low] **&** <code>_[_[_PointerWidth_](#PointerWidth)_|_[_TypeAtomicity_](#TypeAtomicity)_] [_[_ReferenceAliasability_](#ReferenceAliasability)_]_</code>[^low] _[_[_PointerNullity_](#PointerNullity)_]_  
+&emsp;&emsp;_[[ValueMutability](#ValueMutability)]_ <code>_[[ValueVolatility](#ValueVolatility)]_</code>[^low] **&** <code>_[[PointerWidth](#PointerWidth)|[TypeAtomicity](#TypeAtomicity)] [[ReferenceAliasability](#ReferenceAliasability)]_</code>[^low] _[[PointerNullity](#PointerNullity)]_  
 
 ### [ArrayDim](Semantics.md#ArrayDim):
-&emsp;&emsp;**[** _(_<code>_[_[_TypeStrictness_](#TypeStrictness)_]_</code>[^low] _[Expression]|_<code>[_TypeBareness_](#TypeBareness)</code>[^low]_)_ **]** _[_[_PointerNullity_](#PointerNullity)_]_  
+&emsp;&emsp;**[** _(_<code>_[[TypeStrictness](#TypeStrictness)]_</code>[^low] _[Expression]|_<code>_[TypeBareness](#TypeBareness)_</code>[^low]_)_ **]** _[[PointerNullity](#PointerNullity)]_  
 
 ### [TypeStrictness](Semantics.md#TypeStrictness):
 &emsp;&emsp;<code>**strict**</code>[^low]  
 
 ### [ParameterTypes](Semantics.md#ParameterTypes):
-&emsp;&emsp;[_ThisParameter_](#ThisParameter) _[_**,** [_FixedParameterTypes_](#FixedParameterTypes)_] [_**,** [_VariableArityParameterType_](#VariableArityParameterType)_]_  
-&emsp;&emsp;[_FixedParameterTypes_](#FixedParameterTypes) _[_**,** [_VariableArityParameterType_](#VariableArityParameterType)_]_  
-&emsp;&emsp;[_VariableArityParameterType_](#VariableArityParameterType)  
+&emsp;&emsp;_[ThisParameter](#ThisParameter) [_**,** _[FixedParameterTypes](#FixedParameterTypes)] [_**,** _[VariableArityParameterType](#VariableArityParameterType)]_  
+&emsp;&emsp;_[FixedParameterTypes](#FixedParameterTypes) [_**,** _[VariableArityParameterType](#VariableArityParameterType)]_  
+&emsp;&emsp;_[VariableArityParameterType](#VariableArityParameterType)_  
 
 ### [TypeBareness](Semantics.md#TypeBareness):
 &emsp;&emsp;<code>**unsafe bare**</code>[^low]  
@@ -251,7 +252,7 @@
 ### [Result](Semantics.md#Result):
 &emsp;&emsp;**noreturn**  
 &emsp;&emsp;**void**  
-&emsp;&emsp;[_Type_](#Type)  
+&emsp;&emsp;_[Type](#Type)_  
 
 \---
 
@@ -272,36 +273,36 @@
 &emsp;&emsp;<code>_[_**unsafe**_]_ **stable**</code>[^low]  
 
 ### [PointerWidth](Semantics.md#PointerWidth):
-&emsp;&emsp;<code>_[[_**unsafe**_]_ **unused**_] [_[_TypeStrictness_](#TypeStrictness)_]_ **wide**</code>[^low]  
-&emsp;&emsp;<code>[_TypeBareness_](#TypeBareness)</code>[^low]  
+&emsp;&emsp;<code>_[[_**unsafe**_]_ **unused**_] [[TypeStrictness](#TypeStrictness)]_ **wide**</code>[^low]  
+&emsp;&emsp;<code>_[TypeBareness](#TypeBareness)_</code>[^low]  
 
 ### [ReferenceAliasability](Semantics.md#ReferenceAliasability):
 &emsp;&emsp;<code>_[_**local**_]_ **aliasable**</code>[^low]  
 &emsp;&emsp;<code>_[_**unsafe**_]_ **restrict**</code>[^low]  
 
 ### [ThisParameter](Semantics.md#ThisParameter):
-&emsp;&emsp;**this** _[_**:** [_TypeName_](#TypeName) _[_[_ValueMutability_](#ValueMutability)_]_ <code>_[_[_ValueVolatility_](#ValueVolatility)_]_</code>[^low] _[_**&** <code>_[_[_PointerWidth_](#PointerWidth)_] [_[_ReferenceAliasability_](#ReferenceAliasability)_]_</code>[^low]_]]_  
-&emsp;&emsp;**this :** [_ValueMutability_](#ValueMutability) <code>_[_[_ValueVolatility_](#ValueVolatility)_]_</code>[^low] _[_**&** <code>_[_[_PointerWidth_](#PointerWidth)_] [_[_ReferenceAliasability_](#ReferenceAliasability)_]_</code>[^low]_]_  
-&emsp;&emsp;<code>**this :** [_ValueVolatility_](#ValueVolatility) _[_**&** _[_[_PointerWidth_](#PointerWidth)_] [_[_ReferenceAliasability_](#ReferenceAliasability)_]]_</code>[^low]  
-&emsp;&emsp;**this : &** <code>_[_[_PointerWidth_](#PointerWidth)_] [_[_ReferenceAliasability_](#ReferenceAliasability)_]_</code>[^low]  
+&emsp;&emsp;**this** _[_**:** _[TypeName](#TypeName) [[ValueMutability](#ValueMutability)]_ <code>_[[ValueVolatility](#ValueVolatility)]_</code>[^low] _[_**&** <code>_[[PointerWidth](#PointerWidth)] [[ReferenceAliasability](#ReferenceAliasability)]_</code>[^low]_]]_  
+&emsp;&emsp;**this :** _[ValueMutability](#ValueMutability)_ <code>_[[ValueVolatility](#ValueVolatility)]_</code>[^low] _[_**&** <code>_[[PointerWidth](#PointerWidth)] [[ReferenceAliasability](#ReferenceAliasability)]_</code>[^low]_]_  
+&emsp;&emsp;<code>**this :** _[ValueVolatility](#ValueVolatility) [_**&** _[[PointerWidth](#PointerWidth)] [[ReferenceAliasability](#ReferenceAliasability)]]_</code>[^low]  
+&emsp;&emsp;**this : &** <code>_[[PointerWidth](#PointerWidth)] [[ReferenceAliasability](#ReferenceAliasability)]_</code>[^low]  
 
 ### [FixedParameterTypes](Semantics.md#FixedParameterTypes):
-&emsp;&emsp;[_FixedParameterType_](#FixedParameterType) _{_**,** [_FixedParameterType_](#FixedParameterType)_}_  
+&emsp;&emsp;_[FixedParameterType](#FixedParameterType) {_**,** _[FixedParameterType](#FixedParameterType)}_  
 
 ### [VariableArityParameterType](Semantics.md#VariableArityParameterType):
-&emsp;&emsp;**...** <code>_[_[_VariableArityParameterLayout_](#VariableArityParameterLayout)_]_</code>[^low] **:** [_Type_](#Type)  
+&emsp;&emsp;**...** <code>_[[VariableArityParameterLayout](#VariableArityParameterLayout)]_</code>[^low] **:** _[Type](#Type)_  
 
 \---
 
 ### [FixedParameterType](Semantics.md#FixedParameterType):
-&emsp;&emsp;**:** [_Type_](#Type)  
+&emsp;&emsp;**:** _[Type](#Type)_  
 
 ### [VariableArityParameterLayout](Semantics.md#VariableArityParameterLayout):
 &emsp;&emsp;<code>**unsafe C**</code>[^low]  
 
 ## Blocks and Statements
 ### [Block](Semantics.md#Block):
-&emsp;&emsp;**{** _[_[_BlockStatements_](#BlockStatements)_]_ **}**  
+&emsp;&emsp;**{** _[[BlockStatements](#BlockStatements)]_ **}**  
 
 \---
 
@@ -312,22 +313,22 @@
 
 ## Array and Struct Initializers
 ### [ArrayInitializer](Semantics.md#ArrayInitializer):
-&emsp;&emsp;**[** _[_[_VariableInitializers_](#VariableInitializers)_]_ **]** _[_**:** [_Type_](#Type)_]_  
+&emsp;&emsp;**[** _[[VariableInitializers](#VariableInitializers)]_ **]** _[_**:** _[Type](#Type)]_  
 
 ### [StructInitializer](Semantics.md#StructInitializer):
-&emsp;&emsp;**{** _[_[_FieldInitializers_](#FieldInitializers)_]_ **}** _[_**:** [_TypeName_](#TypeName)_]_  
+&emsp;&emsp;**{** _[[FieldInitializers](#FieldInitializers)]_ **}** _[_**:** _[TypeName](#TypeName)]_  
 
 \---
 
 ### [VariableInitializers](Semantics.md#VariableInitializers):
-&emsp;&emsp;[_VariableInitializer_](#VariableInitializer) _{_**,** [_VariableInitializer_](#VariableInitializer)_}_  
+&emsp;&emsp;_[VariableInitializer](#VariableInitializer) {_**,** _[VariableInitializer](#VariableInitializer)}_  
 
 ### [FieldInitializers](Semantics.md#FieldInitializers):
-&emsp;&emsp;[_FieldInitializer_](#FieldInitializer) _{_**,** [_FieldInitializer_](#FieldInitializer)_}_  
+&emsp;&emsp;_[FieldInitializer](#FieldInitializer) {_**,** _[FieldInitializer](#FieldInitializer)}_  
 
 \---
 
 ### [FieldInitializer](Semantics.md#FieldInitializer):
-&emsp;&emsp;_[_**.**_] Identifier (_**=**_|_**:**_)_ [_VariableInitializer_](#VariableInitializer)  
+&emsp;&emsp;_[_**.**_] Identifier (_**=**_|_**:**_) [VariableInitializer](#VariableInitializer)_  
 
 [^low]: Low level syntax.

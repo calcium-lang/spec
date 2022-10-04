@@ -84,7 +84,7 @@ UnionBody:
 
 DeclarationExtensibility:
     (one of)
-    "open" "abstract"
+    "final" "abstract"
 
 StructLayout:
     (one of)
@@ -121,7 +121,7 @@ EnumConstant:
 ---
 
 StaticInitializer:
-    `[NameStrictness]`[^low] "static" `[Version] [StringIdentifier]`[^low] Block
+    `[SymbolNaming]`[^low] "static" `[Version] [StringIdentifier]`[^low] Block
 
 MemberDeclaration:
     [MemberStaticity] FieldDeclaration
@@ -134,14 +134,15 @@ VariableInitializer:
 
 ---
 
-NameStrictness:
-    `"strict"`[^low]
+SymbolNaming:
+    (one of)
+    `"strict" "plain"`[^low]
 
 MemberStaticity:
     "static"
 
 FieldDeclaration:
-    ValueMutability `[ValueVolatility] [NameStrictness]`[^low] Identifier `[StringIdentifier]`[^low] ":" Type ["=" VariableInitializer] ";"
+    ValueMutability `[ValueVolatility] [SymbolNaming]`[^low] Identifier `[StringIdentifier]`[^low] ":" Type ["=" VariableInitializer] ";"
 
 MethodDeclaration:
     [DeclarationExtensibility] [MethodOverride] `[FunctionStrictness]`[^low] [FunctionPurity] "func" MethodHeader MethodBody
@@ -161,7 +162,7 @@ MethodBody:
 ---
 
 MethodDeclarator:
-    `[NameStrictness]`[^low] Identifier `[Version] [StringIdentifier]`[^low] [":" TypeName] "(" [Parameters] ")"
+    `[SymbolNaming]`[^low] Identifier `[Version] [StringIdentifier]`[^low] [":" TypeName] "(" [Parameters] ")"
 
 ---
 

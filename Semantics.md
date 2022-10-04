@@ -185,7 +185,7 @@ def FieldsToMemory(fields: list[tuple[str, int]], base: Optional[list[tuple[Opti
 
 \---
 
-### NameStrictness
+### SymbolNaming
 
 ### MemberStaticity
 
