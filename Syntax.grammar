@@ -298,6 +298,7 @@ FixedParameterType:
     ":" Type
 
 VariableArityParameterLayout:
+    `"strict"`[^low]
     `"unsafe" "C"`[^low]
 
 ## Blocks and Statements

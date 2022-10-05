@@ -298,6 +298,7 @@
 &emsp;&emsp;**:** _[Type](#Type)_  
 
 ### [VariableArityParameterLayout](Semantics.md#VariableArityParameterLayout):
+&emsp;&emsp;<code>**strict**</code>[^low]  
 &emsp;&emsp;<code>**unsafe C**</code>[^low]  
 
 ## Blocks and Statements
