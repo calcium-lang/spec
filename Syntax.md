@@ -58,7 +58,7 @@
 &emsp;&emsp;**union** _Identifier_ <code>_[[Version](#Version)]_</code>[^low] _[UnionBody](#UnionBody)_  
 
 ### [StructDeclaration](Semantics.md#StructDeclaration):
-&emsp;&emsp;_[[DeclarationExtensibility](#DeclarationExtensibility)]_ <code>_[[StructLayout](#StructLayout)]_</code>[^low] **struct** _Identifier_ <code>_[[Version](#Version)]_</code>[^low] _[[BaseType](#BaseType)] [StructBody](#StructBody)_  
+&emsp;&emsp;_[[DeclarationExtensibility](#DeclarationExtensibility)] [[StructSeal](#StructSeal)]_ <code>_[[StructLayout](#StructLayout)]_</code>[^low] **struct** _Identifier_ <code>_[[Version](#Version)]_</code>[^low] _[[BaseType](#BaseType)] [StructBody](#StructBody)_  
 
 \---
 
@@ -86,6 +86,9 @@
 &emsp;&emsp;_(one of)_  
 &emsp;&emsp;**final abstract**  
 
+### [StructSeal](Semantics.md#StructSeal):
+&emsp;&emsp;**sealed** _[_**(** _[TypeNames](#TypeNames)_ **)**_]_  
+
 ### [StructLayout](Semantics.md#StructLayout):
 &emsp;&emsp;_(one of)_  
 &emsp;&emsp;<code>**strict C packed**</code>[^low]  
@@ -105,6 +108,9 @@
 &emsp;&emsp;_[TypeDeclaration](#TypeDeclaration) {_**,** _[TypeDeclaration](#TypeDeclaration)}_  
 
 > The semicolon in TypedefBody must never be found in TypedefDeclaration.
+
+### [TypeNames](Semantics.md#TypeNames):
+&emsp;&emsp;_[TypeName](#TypeName) {_**,** _[TypeName](#TypeName)}_  
 
 \---
 

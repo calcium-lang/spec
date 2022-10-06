@@ -87,6 +87,8 @@ def PackageNameToPath(cwd: str, name: list[str]) -> str:
 
 ### DeclarationExtensibility
 
+### StructSeal
+
 ### StructLayout
 ```python
 # This is free and unencumbered software released into the public domain.
@@ -168,6 +170,8 @@ def FieldsToMemory(fields: list[tuple[str, int]], base: Optional[list[tuple[Opti
 ### EnumConstants
 
 ### UnionTypes
+
+### TypeNames
 
 \---
 

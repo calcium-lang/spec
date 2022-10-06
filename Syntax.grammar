@@ -58,7 +58,7 @@ UnionDeclaration:
     "union" Identifier `[Version]`[^low] UnionBody
 
 StructDeclaration:
-    [DeclarationExtensibility] `[StructLayout]`[^low] "struct" Identifier `[Version]`[^low] [BaseType] StructBody
+    [DeclarationExtensibility] [StructSeal] `[StructLayout]`[^low] "struct" Identifier `[Version]`[^low] [BaseType] StructBody
 
 ---
 
@@ -86,6 +86,9 @@ DeclarationExtensibility:
     (one of)
     "final" "abstract"
 
+StructSeal:
+    "sealed" ["(" TypeNames ")"]
+
 StructLayout:
     (one of)
     `"strict" "C" "packed"`[^low]
@@ -105,6 +108,9 @@ UnionTypes:
     TypeDeclaration {"," TypeDeclaration}
 
 > The semicolon in TypedefBody must never be found in TypedefDeclaration.
+
+TypeNames:
+    TypeName {"," TypeName}
 
 ---
 
