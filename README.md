@@ -19,27 +19,23 @@ In decreasing order of importance:
 10. Binary size efficiency;
 
 ## Building
-To build the most recent Syntax.md file, first make sure you have the Alchemist grammar2md submodule initialized properly. You can use the `--recursive` flag when cloning the project to do this:
+To build the most recent Syntax.md file, first make sure you have Alchemist's front-end library, Calcium's front-end library and `cog` installed:
 
 ```shell
-git clone --recursive https://github.com/calcium-lang/lang-spec.git
+git clone https://github.com/alchemist-compiler/front.git alchemist-front
+git clone https://github.com/calcium-lang/impl.git calcium-impl
+pip3 install cogapp
 ```
 
-Alternatively, if you already have the project checked out, you can initialize the submodules manually:
+Once you have installed all requirements, run:
 
 ```shell
-git submodule update --init
-```
-
-Once you have the most recent Alchemist grammar2md submodule, run the build script:
-
-```shell
-./build.py
+cog -I./:./alchemist-front:./calcium-impl -r Syntax.md
 ```
 
 ## License
 <pre>
-Copyright (c)  2021-2022  Natan Junges.
+Copyright (c)  2021-2023  Natan Junges.
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
 or any later version published by the Free Software Foundation;
@@ -48,4 +44,6 @@ A copy of the license is included in the section entitled "<a href="LICENSE.FDL"
 Free Documentation License</a>".
 </pre>
 
-The code snippets and the build script are licensed under the [Unlicense](UNLICENSE).
+The syntax file is licensed under the [GNU General Public License v3](LICENSE.GPL).
+
+The code snippets are licensed under the [Unlicense](UNLICENSE).
