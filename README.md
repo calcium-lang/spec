@@ -19,18 +19,17 @@ In decreasing order of importance:
 10. Binary size efficiency;
 
 ## Building
-To build the most recent Syntax.md file, first make sure you have Alchemist's front-end library, Calcium's front-end library and `cog` installed:
+To build the most recent Syntax.md file, first make sure you have Alchemist's front-end library and `cog` installed:
 
 ```shell
 git clone https://github.com/alchemist-compiler/front.git alchemist-front
-git clone https://github.com/calcium-lang/impl.git calcium-impl
 pip3 install cogapp
 ```
 
 Once you have installed all requirements, run:
 
 ```shell
-cog -I./:./alchemist-front:./calcium-impl -r Syntax.md
+cog -I./:./alchemist-front -r Syntax.md
 ```
 
 ## License
