@@ -1,12 +1,34 @@
 <!--[[[cog
 import cog
 
-from calcium.lexer import __all__ as terminals
-import calcium.lexer as lexer
-from calcium.syntax import *
+from calcium.lexicon import (Identifier, StringIdentifier, Abstract, Aliasable, As, Atomic, Bare, Bool, C, Const, Enum, Final, From, Func, Import,
+                             Local, Noreturn, Override, Package, Packed, Plain, Private, Protected, Public, Pure, Restrict, Sealed, Stable, Static,
+                             Strict, Struct, This, Typedef, Union, Unsafe, Unused, Var, Void, Volatile, Wide, _Byte, _Char, _Double, _Float, _Int,
+                             _Long, _Short, _Ubyte, _Uint, _Ulong, _Ushort, BlockStatement, Expression, Integer, LeftSquareBracket, RightSquareBracket
+                             , LeftParenthesis, RightParenthesis, LeftCurlyBracket, RightCurlyBracket, FullStop, HyphenGreaterThan, Ampersand,
+                             Question, Colon, Semicolon, TripleFullStop, Equals, Comma, At)
+from calcium.syntax import (CompilationUnit, PackageDeclaration, ImportDeclarations, TopLevelTypeDeclaration, ImportDeclaration,
+                            DeclarationEncapsulation, TypeDeclaration, ImportNames, FromName, PackageName, ImportName, PackageOrTypeName,
+                            TypedefDeclaration, EnumDeclaration, UnionDeclaration, StructDeclaration, Version, BaseType, TypedefBody, EnumLayout,
+                            EnumBody, UnionBody, DeclarationExtensibility, StructSeal, StructLayout, StructBody, BodyDeclarations, EnumConstants,
+                            UnionTypes, TypeNames, BodyDeclaration, EnumConstant, StaticInitializer, MemberDeclaration, VariableInitializer,
+                            SymbolNaming, MemberStaticity, FieldDeclaration, MethodDeclaration, MethodOverride, MethodHeader, MethodBody,
+                            MethodDeclarator, Parameters, FixedParameters, VariableArityParameter, FixedParameter, Type, PrimitiveType,
+                            PointerOrArraySuffix, TypeName, VoidPointerType, FunctionType, PointerNullity, TypeAtomicity, NumericType, PointerSuffix,
+                            ArrayDim, TypeStrictness, ParameterTypes, TypeBareness, FunctionStrictness, FunctionPurity, Result, IntegralType,
+                            FloatingPointType, ValueMutability, ValueVolatility, PointerWidth, ReferenceAliasability, ThisParameter,
+                            FixedParameterTypes, VariableArityParameterType, FixedParameterType, VariableArityParameterLayout, Block, BlockStatements,
+                            ArrayInitializer, StructInitializer, VariableInitializers, FieldInitializers, FieldInitializer)
 
 level = 3
-terminals = {terminal: (getattr(lexer, terminal)._pattern if isinstance(getattr(lexer, terminal)._pattern, str) else None) for terminal in terminals}
+terminals = [
+    Identifier, StringIdentifier, Abstract, Aliasable, As, Atomic, Bare, Bool, C, Const, Enum, Final, From, Func, Import, Local, Noreturn, Override,
+    Package, Packed, Plain, Private, Protected, Public, Pure, Restrict, Sealed, Stable, Static, Strict, Struct, This, Typedef, Union, Unsafe, Unused,
+    Var, Void, Volatile, Wide, _Byte, _Char, _Double, _Float, _Int, _Long, _Short, _Ubyte, _Uint, _Ulong, _Ushort, BlockStatement, Expression, Integer
+    , LeftSquareBracket, RightSquareBracket, LeftParenthesis, RightParenthesis, LeftCurlyBracket, RightCurlyBracket, FullStop, HyphenGreaterThan,
+    Ampersand, Question, Colon, Semicolon, TripleFullStop, Equals, Comma, At
+]
+terminals = {terminal.__name__: (terminal._pattern if isinstance(terminal._pattern, str) else None) for terminal in terminals}
 ]]]-->
 <!--[[[end]]]-->
 
