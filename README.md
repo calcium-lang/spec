@@ -20,7 +20,7 @@ In decreasing order of importance:
 11. Binary size efficiency;
 
 ## Building
-To build the most recent Syntax.md file, first make sure you have Alchemist's front-end library and `cog` installed:
+To build the most recent Syntax.md file, first make sure you have [Alchemist's front-end library](https://github.com/alchemist-compiler/front) and [`cog`](https://pypi.org/project/cogapp) installed:
 
 ```shell
 git clone https://github.com/alchemist-compiler/front.git alchemist-front
