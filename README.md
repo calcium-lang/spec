@@ -10,17 +10,17 @@ Its name is after the chemical element Calcium(Ca), the third most abundant meta
 
 In decreasing order of importance:
 
-1. Type-safety;
-2. Memory-safety;
-3. Thread-safety;
-4. [Suckless philosophy](https://suckless.org/philosophy);
-5. [<q>Keep it simple stupid</q>](https://en.wikipedia.org/wiki/KISS_principle);
-6. [Principle of least astonishment](https://en.wikipedia.org/wiki/Principle_of_least_astonishment);
-7. [Gang of Four Design Patterns](https://en.wikipedia.org/wiki/Design_Patterns);
-8. C interoperability;
-9. Runtime space efficiency;
-10. Runtime time efficiency;
-11. Binary size efficiency;
+1. Type-safety
+2. Memory-safety
+3. Thread-safety
+4. [Suckless philosophy](https://suckless.org/philosophy)
+5. [<q>Keep it simple stupid</q>](https://en.wikipedia.org/wiki/KISS_principle)
+6. [Principle of least astonishment](https://en.wikipedia.org/wiki/Principle_of_least_astonishment)
+7. [Gang of Four Design Patterns](https://en.wikipedia.org/wiki/Design_Patterns)
+8. C interoperability
+9. Runtime space efficiency
+10. Runtime time efficiency
+11. Binary size efficiency
 
 ## Building
 
