@@ -33,6 +33,7 @@ terminals = {terminal.__name__: (terminal._pattern if isinstance(terminal._patte
 <!--[[[end]]]-->
 
 # Syntax
+
 ## [Packages](Semantics/Packages.md)
 <!--[[[cog link = "Semantics/Packages.md" ]]]-->
 <!--[[[end]]]-->

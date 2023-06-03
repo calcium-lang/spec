@@ -1,24 +1,25 @@
-## Packages
-### CompilationUnit
+# Packages
+
+## CompilationUnit
 
 \---
 
-### PackageDeclaration
+## PackageDeclaration
 
-### ImportDeclarations
+## ImportDeclarations
 
-### TopLevelTypeDeclaration
-
-\---
-
-### ImportDeclaration
-
-### DeclarationEncapsulation
-
-### TypeDeclaration
+## TopLevelTypeDeclaration
 
 \---
 
-### ImportNames
+## ImportDeclaration
 
-### FromName
+## DeclarationEncapsulation
+
+## TypeDeclaration
+
+\---
+
+## ImportNames
+
+## FromName

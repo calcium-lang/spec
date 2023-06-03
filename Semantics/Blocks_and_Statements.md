@@ -1,6 +1,7 @@
-## Blocks and Statements
-### Block
+# Blocks and Statements
+
+## Block
 
 \---
 
-### BlockStatements
+## BlockStatements

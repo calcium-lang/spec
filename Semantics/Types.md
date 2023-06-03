@@ -1,64 +1,65 @@
-## Types
-### Type
+# Types
+
+## Type
 
 \---
 
-### PrimitiveType
+## PrimitiveType
 
-### PointerOrArraySuffix
+## PointerOrArraySuffix
 
-### TypeName
+## TypeName
 
-### VoidPointerType
+## VoidPointerType
 
-### FunctionType
+## FunctionType
 
-### PointerNullity
-
-\---
-
-### TypeAtomicity
-
-### NumericType
-
-### PointerSuffix
-
-### ArrayDim
-
-### TypeStrictness
-
-### ParameterTypes
-
-### TypeBareness
-
-### FunctionStrictness
-
-### FunctionPurity
-
-### Result
+## PointerNullity
 
 \---
 
-### IntegralType
+## TypeAtomicity
 
-### FloatingPointType
+## NumericType
 
-### ValueMutability
+## PointerSuffix
 
-### ValueVolatility
+## ArrayDim
 
-### PointerWidth
+## TypeStrictness
 
-### ReferenceAliasability
+## ParameterTypes
 
-### ThisParameter
+## TypeBareness
 
-### FixedParameterTypes
+## FunctionStrictness
 
-### VariableArityParameterType
+## FunctionPurity
+
+## Result
 
 \---
 
-### FixedParameterType
+## IntegralType
 
-### VariableArityParameterLayout
+## FloatingPointType
+
+## ValueMutability
+
+## ValueVolatility
+
+## PointerWidth
+
+## ReferenceAliasability
+
+## ThisParameter
+
+## FixedParameterTypes
+
+## VariableArityParameterType
+
+\---
+
+## FixedParameterType
+
+## VariableArityParameterLayout

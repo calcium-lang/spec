@@ -1,14 +1,15 @@
-## Array and Struct Initializers
-### ArrayInitializer
+# Array and Struct Initializers
 
-### StructInitializer
+## ArrayInitializer
 
-\---
-
-### VariableInitializers
-
-### FieldInitializers
+## StructInitializer
 
 \---
 
-### FieldInitializer
+## VariableInitializers
+
+## FieldInitializers
+
+\---
+
+## FieldInitializer
