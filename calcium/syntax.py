@@ -23,8 +23,7 @@ from alchemist.front.parser.generator import Switch, repeat, oneof, ProductionTe
 class low(Switch):  # pylint: disable=invalid-name
     enabled = True
 
-## Syntax
-### Packages
+# Packages
 
 
 class CompilationUnit(ProductionTemplate):
@@ -68,7 +67,7 @@ class ImportNames(ProductionTemplate):
 class FromName(ProductionTemplate):
     _template = "From", "PackageOrTypeName"
 
-## Names
+# Names
 
 
 class PackageName(ProductionTemplate):
@@ -82,7 +81,7 @@ class ImportName(ProductionTemplate):
 class PackageOrTypeName(ProductionTemplate):
     _template = "Identifier", low(["Version"]), repeat("FullStop", "Identifier", low(["Version"]))
 
-## Typedefs, Enums, Unions and Structs
+# Typedefs, Enums, Unions and Structs
 
 
 class TypedefDeclaration(ProductionTemplate):
@@ -261,7 +260,7 @@ class VariableArityParameter(ProductionTemplate):
 class FixedParameter(ProductionTemplate):
     _template = "Identifier", ["Colon", "Type"]
 
-## Types
+# Types
 
 
 class Type(ProductionTemplate):
@@ -427,7 +426,7 @@ class VariableArityParameterLayout(ProductionTemplate):
         ("Unsafe", "C")
     )
 
-## Blocks and Statements
+# Blocks and Statements
 
 
 class Block(ProductionTemplate):
@@ -439,9 +438,9 @@ class Block(ProductionTemplate):
 class BlockStatements(ProductionTemplate):
     _template = "BlockStatement", repeat("BlockStatement")
 
-## Expressions
+# Expressions
 
-## Array and Struct Initializers
+# Array and Struct Initializers
 
 
 class ArrayInitializer(ProductionTemplate):
