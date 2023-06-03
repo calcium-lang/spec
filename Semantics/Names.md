@@ -1,5 +1,7 @@
-## Names
-### PackageName
+# Names
+
+## PackageName
+
 ```python
 # This is free and unencumbered software released into the public domain.
 #
@@ -32,6 +34,6 @@ def PackageNameToPath(cwd: str, name: list[str]) -> str:
     return path
 ```
 
-### ImportName
+## ImportName
 
-### PackageOrTypeName
+## PackageOrTypeName

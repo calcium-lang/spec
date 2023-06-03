@@ -1,31 +1,33 @@
-## Typedefs, Enums, Unions and Structs
-### TypedefDeclaration
+# Typedefs, Enums, Unions and Structs
 
-### EnumDeclaration
+## TypedefDeclaration
 
-### UnionDeclaration
+## EnumDeclaration
 
-### StructDeclaration
+## UnionDeclaration
+
+## StructDeclaration
 
 \---
 
-### Version
+## Version
 
-### BaseType
+## BaseType
 
-### TypedefBody
+## TypedefBody
 
-### EnumLayout
+## EnumLayout
 
-### EnumBody
+## EnumBody
 
-### UnionBody
+## UnionBody
 
-### DeclarationExtensibility
+## DeclarationExtensibility
 
-### StructSeal
+## StructSeal
 
-### StructLayout
+## StructLayout
+
 ```python
 # This is free and unencumbered software released into the public domain.
 #
@@ -97,64 +99,64 @@ def FieldsToMemory(fields: list[tuple[str, int]], base: Optional[list[tuple[Opti
     return memory
 ```
 
-### StructBody
+## StructBody
 
 \---
 
-### BodyDeclarations
+## BodyDeclarations
 
-### EnumConstants
+## EnumConstants
 
-### UnionTypes
+## UnionTypes
 
-### TypeNames
-
-\---
-
-### BodyDeclaration
-
-### EnumConstant
+## TypeNames
 
 \---
 
-### StaticInitializer
+## BodyDeclaration
 
-### MemberDeclaration
-
-### VariableInitializer
+## EnumConstant
 
 \---
 
-### SymbolNaming
+## StaticInitializer
 
-### MemberStaticity
+## MemberDeclaration
 
-### FieldDeclaration
-
-### MethodDeclaration
+## VariableInitializer
 
 \---
 
-### MethodOverride
+## SymbolNaming
 
-### MethodHeader
+## MemberStaticity
 
-### MethodBody
+## FieldDeclaration
 
-\---
-
-### MethodDeclarator
+## MethodDeclaration
 
 \---
 
-### Parameters
+## MethodOverride
+
+## MethodHeader
+
+## MethodBody
 
 \---
 
-### FixedParameters
-
-### VariableArityParameter
+## MethodDeclarator
 
 \---
 
-### FixedParameter
+## Parameters
+
+\---
+
+## FixedParameters
+
+## VariableArityParameter
+
+\---
+
+## FixedParameter
