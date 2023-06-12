@@ -32,6 +32,9 @@ terminals = {terminal.__name__: (terminal._pattern if isinstance(terminal._patte
 ]]]-->
 <!--[[[end]]]-->
 
+| [<Array and Struct Initializers](./Semantics/Array_and_Struct_Initializers.md) | [Index](./README.md#Index) |
+|--------------------------------------------------------------------------------|----------------------------|
+
 # Syntax
 
 ## [Packages](Semantics/Packages.md)
@@ -708,5 +711,8 @@ cog.out(FieldInitializer.generate_md(level, terminals, link))
 ### [FieldInitializer](Semantics/Array_and_Struct_Initializers.md#FieldInitializer):
 &emsp;&emsp;_[_**.**_] Identifier (_**=** _|_ **:**_) [VariableInitializer](#VariableInitializer)_  
 <!--[[[end]]]-->
+
+| [<Array and Struct Initializers](./Semantics/Array_and_Struct_Initializers.md) | [Index](./README.md#Index) |
+|--------------------------------------------------------------------------------|----------------------------|
 
 [^low]: Low level syntax.

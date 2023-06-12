@@ -1,3 +1,6 @@
+| [Index](../README.md#Index) | [Names>](./Names.md) |
+|-----------------------------|----------------------|
+
 # Packages
 
 ## CompilationUnit
@@ -23,3 +26,6 @@
 ## ImportNames
 
 ## FromName
+
+| [Index](../README.md#Index) | [Names>](./Names.md) |
+|-----------------------------|----------------------|

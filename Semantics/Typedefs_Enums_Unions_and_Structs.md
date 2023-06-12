@@ -1,3 +1,6 @@
+| [<Names](./Names.md) | [Index](../README.md#Index) | [Types>](./Types.md) |
+|----------------------|-----------------------------|----------------------|
+
 # Typedefs, Enums, Unions and Structs
 
 ## TypedefDeclaration
@@ -160,3 +163,6 @@ def FieldsToMemory(fields: list[tuple[str, int]], base: Optional[list[tuple[Opti
 \---
 
 ## FixedParameter
+
+| [<Names](./Names.md) | [Index](../README.md#Index) | [Types>](./Types.md) |
+|----------------------|-----------------------------|----------------------|

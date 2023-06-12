@@ -1,3 +1,6 @@
+| [<Typedefs, Enums, Unions and Structs](./Typedefs_Enums_Unions_and_Structs.md) | [Index](../README.md#Index) | [Blocks and Statements>](./Blocks_and_Statements.md) |
+|--------------------------------------------------------------------------------|-----------------------------|------------------------------------------------------|
+
 # Types
 
 ## Type
@@ -63,3 +66,6 @@
 ## FixedParameterType
 
 ## VariableArityParameterLayout
+
+| [<Typedefs, Enums, Unions and Structs](./Typedefs_Enums_Unions_and_Structs.md) | [Index](../README.md#Index) | [Blocks and Statements>](./Blocks_and_Statements.md) |
+|--------------------------------------------------------------------------------|-----------------------------|------------------------------------------------------|
