@@ -1,3 +1,6 @@
+| [<Packages](./Packages.md) | [Index](../README.md#Index) | [Typedefs, Enums, Unions and Structs>](./Typedefs_Enums_Unions_and_Structs.md) |
+|----------------------------|-----------------------------|--------------------------------------------------------------------------------|
+
 # Names
 
 ## PackageName
@@ -37,3 +40,6 @@ def PackageNameToPath(cwd: str, name: list[str]) -> str:
 ## ImportName
 
 ## PackageOrTypeName
+
+| [<Packages](./Packages.md) | [Index](../README.md#Index) | [Typedefs, Enums, Unions and Structs>](./Typedefs_Enums_Unions_and_Structs.md) |
+|----------------------------|-----------------------------|--------------------------------------------------------------------------------|
