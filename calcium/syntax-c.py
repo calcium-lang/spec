@@ -1,13 +1,10 @@
-from alchemist.front.parser.generator import oneof, ProductionTemplate
+from alchemist.front.parser.generator import repeat, oneof, ProductionTemplate
 
 # External definitions
 
 
 class TranslationUnit(ProductionTemplate):
-    _template = oneof(
-        "ExternalDeclaration",
-        ("TranslationUnit", "ExternalDeclaration")
-    )
+    _template = "ExternalDeclaration", repeat("ExternalDeclaration")
 
 ###
 
@@ -25,10 +22,7 @@ class FunctionDefinition(ProductionTemplate):
 
 
 class DeclarationList(ProductionTemplate):
-    _template = oneof(
-        "Declaration",
-        ("DeclarationList", "Declaration")
-    )
+    _template = "Declaration", repeat("Declaration")
 
 # Declarations
 
@@ -43,20 +37,11 @@ class Declaration(ProductionTemplate):
 
 
 class DeclarationSpecifiers(ProductionTemplate):
-    _template = oneof(
-        ("StorageClassSpecifier", ["DeclarationSpecifiers"]),
-        ("TypeSpecifier", ["DeclarationSpecifiers"]),
-        ("TypeQualifier", ["DeclarationSpecifiers"]),
-        ("FunctionSpecifier", ["DeclarationSpecifiers"]),
-        ("AlignmentSpecifier", ["DeclarationSpecifiers"])
-    )
+    _template = oneof("StorageClassSpecifier", "TypeSpecifier", "TypeQualifier", "FunctionSpecifier", "AlignmentSpecifier"), ["DeclarationSpecifiers"]
 
 
 class InitDeclaratorList(ProductionTemplate):
-    _template = oneof(
-        "InitDeclarator",
-        ("InitDeclaratorList", "Comma", "InitDeclarator")
-    )
+    _template = "InitDeclarator", repeat("Comma", "InitDeclarator")
 
 
 class Static_AssertDeclaration(ProductionTemplate):
@@ -82,17 +67,11 @@ class FunctionSpecifier(ProductionTemplate):
 
 
 class AlignmentSpecifier(ProductionTemplate):
-    _template = oneof(
-        ("_Alignas", "LeftParenthesis", "TypeName", "RightParenthesis"),
-        ("_Alignas", "LeftParenthesis", "ConstantExpression", "RightParenthesis")
-    )
+    _template = "_Alignas", "LeftParenthesis", oneof("TypeName", "ConstantExpression"), "RightParenthesis"
 
 
 class InitDeclarator(ProductionTemplate):
-    _template = oneof(
-        "Declarator",
-        ("Declarator", "Equals", "Initializer")
-    )
+    _template = "Declarator", ["Equals", "Initializer"]
 
 ###
 
@@ -103,16 +82,15 @@ class AtomicTypeSpecifier(ProductionTemplate):
 
 class StructOrUnionSpecifier(ProductionTemplate):
     _template = oneof(
-        ("StructOrUnion", ["Identifier"], "LeftCurlyBracket", "StructDeclarationList", "RightCurlyBracket"),
-        ("StructOrUnion", "Identifier")
+        ("StructOrUnion", "Identifier", ["LeftCurlyBracket", "StructDeclarationList", "RightCurlyBracket"]),
+        ("StructOrUnion", "LeftCurlyBracket", "StructDeclarationList", "RightCurlyBracket")
     )
 
 
 class EnumSpecifier(ProductionTemplate):
     _template = oneof(
-        ("Enum", ["Identifier"], "LeftCurlyBracket", "EnumeratorList", "RightCurlyBracket"),
-        ("Enum", ["Identifier"], "LeftCurlyBracket", "EnumeratorList", "Comma", "RightCurlyBracket"),
-        ("Enum", "Identifier")
+        ("Enum", "Identifier", ["LeftCurlyBracket", "EnumeratorList", ["Comma"], "RightCurlyBracket"]),
+        ("Enum", "LeftCurlyBracket", "EnumeratorList", ["Comma"], "RightCurlyBracket")
     )
 
 
@@ -131,8 +109,7 @@ class Declarator(ProductionTemplate):
 class Initializer(ProductionTemplate):
     _template = oneof(
         "AssignmentExpression",
-        ("LeftCurlyBracket", "InitializerList", "RightCurlyBracket"),
-        ("LeftCurlyBracket", "InitializerList", "Comma", "RightCurlyBracket")
+        ("LeftCurlyBracket", "InitializerList", ["Comma"], "RightCurlyBracket")
     )
 
 ###
@@ -143,39 +120,26 @@ class StructOrUnion(ProductionTemplate):
 
 
 class StructDeclarationList(ProductionTemplate):
-    _template = oneof(
-        "StructDeclaration",
-        ("StructDeclarationList", "StructDeclaration")
-    )
+    _template = "StructDeclaration", repeat("StructDeclaration")
 
 
 class EnumeratorList(ProductionTemplate):
-    _template = oneof(
-        "Enumerator",
-        ("EnumeratorList", "Comma", "Enumerator")
-    )
+    _template = "Enumerator", repeat("Comma", "Enumerator")
 
 
 class SpecifierQualifierList(ProductionTemplate):
-    _template = oneof(
-        ("TypeSpecifier", ["SpecifierQualifierList"]),
-        ("TypeQualifier", ["SpecifierQualifierList"]),
-        ("AlignmentSpecifier", ["SpecifierQualifierList"])
-    )
+    _template = oneof("TypeSpecifier", "TypeQualifier", "AlignmentSpecifier"), ["SpecifierQualifierList"]
 
 
 class AbstractDeclarator(ProductionTemplate):
     _template = oneof(
-        "Pointer",
-        (["Pointer"], "DirectAbstractDeclarator")
+        ("Pointer", ["DirectAbstractDeclarator"]),
+        "DirectAbstractDeclarator"
     )
 
 
 class Pointer(ProductionTemplate):
-    _template = oneof(
-        ("Asterisk", ["TypeQualifierList"]),
-        ("Asterisk", ["TypeQualifierList"], "Pointer")
-    )
+    _template = "Asterisk", ["TypeQualifierList"], ["Pointer"]
 
 
 class DirectDeclarator(ProductionTemplate):
@@ -192,10 +156,7 @@ class DirectDeclarator(ProductionTemplate):
 
 
 class InitializerList(ProductionTemplate):
-    _template = oneof(
-        (["Designation"], "Initializer"),
-        ("InitializerList", "Comma", ["Designation"], "Initializer")
-    )
+    _template = ["Designation"], "Initializer", repeat("Comma", ["Designation"], "Initializer")
 
 ###
 
@@ -208,10 +169,7 @@ class StructDeclaration(ProductionTemplate):
 
 
 class Enumerator(ProductionTemplate):
-    _template = oneof(
-        "EnumerationConstant",
-        ("EnumerationConstant", "Equals", "ConstantExpression")
-    )
+    _template = "EnumerationConstant", ["Equals", "ConstantExpression"]
 
 
 class DirectAbstractDeclarator(ProductionTemplate):
@@ -226,24 +184,15 @@ class DirectAbstractDeclarator(ProductionTemplate):
 
 
 class TypeQualifierList(ProductionTemplate):
-    _template = oneof(
-        "TypeQualifier",
-        ("TypeQualifierList", "TypeQualifier")
-    )
+    _template = "TypeQualifier", repeat("TypeQualifier")
 
 
 class ParameterTypeList(ProductionTemplate):
-    _template = oneof(
-        "ParameterList",
-        ("ParameterList", "Comma", "TripleFullStop")
-    )
+    _template = "ParameterList", ["Comma", "TripleFullStop"]
 
 
 class IdentifierList(ProductionTemplate):
-    _template = oneof(
-        "Identifier",
-        ("IdentifierList", "Comma", "Identifier")
-    )
+    _template = "Identifier", repeat("Comma", "Identifier")
 
 
 class Designation(ProductionTemplate):
@@ -253,40 +202,28 @@ class Designation(ProductionTemplate):
 
 
 class StructDeclaratorList(ProductionTemplate):
-    _template = oneof(
-        "StructDeclarator",
-        ("StructDeclaratorList", "Comma", "StructDeclarator")
-    )
+    _template = "StructDeclarator", repeat("Comma", "StructDeclarator")
 
 
 class ParameterList(ProductionTemplate):
-    _template = oneof(
-        "ParameterDeclaration",
-        ("ParameterList", "Comma", "ParameterDeclaration")
-    )
+    _template = "ParameterDeclaration", repeat("Comma", "ParameterDeclaration")
 
 
 class DesignatorList(ProductionTemplate):
-    _template = oneof(
-        "Designator",
-        ("DesignatorList", "Designator")
-    )
+    _template = "Designator", repeat("Designator")
 
 ###
 
 
 class StructDeclarator(ProductionTemplate):
     _template = oneof(
-        "Declarator",
-        (["Declarator"], "Colon", "ConstantExpression")
+        ("Declarator", ["Colon", "ConstantExpression"]),
+        ("Colon", "ConstantExpression")
     )
 
 
 class ParameterDeclaration(ProductionTemplate):
-    _template = oneof(
-        ("DeclarationSpecifiers", "Declarator"),
-        ("DeclarationSpecifiers", ["AbstractDeclarator"])
-    )
+    _template = "DeclarationSpecifiers", [oneof("Declarator", "AbstractDeclarator")]
 
 
 class Designator(ProductionTemplate):
@@ -306,11 +243,7 @@ class Statement(ProductionTemplate):
 
 
 class LabeledStatement(ProductionTemplate):
-    _template = oneof(
-        ("Identifier", "Colon", "Statement"),
-        ("Case", "ConstantExpression", "Colon", "Statement"),
-        ("Default", "Colon", "Statement")
-    )
+    _template = oneof("Identifier", ("Case", "ConstantExpression"), "Default"), "Colon", "Statement"
 
 
 class CompoundStatement(ProductionTemplate):
@@ -323,8 +256,7 @@ class ExpressionStatement(ProductionTemplate):
 
 class SelectionStatement(ProductionTemplate):
     _template = oneof(
-        ("If", "LeftParenthesis", "Expression", "RightParenthesis", "Statement"),
-        ("If", "LeftParenthesis", "Expression", "RightParenthesis", "Statement", "Else", "Statement"),
+        ("If", "LeftParenthesis", "Expression", "RightParenthesis", "Statement", ["Else", "Statement"]),
         ("Switch", "LeftParenthesis", "Expression", "RightParenthesis", "Statement")
     )
 
@@ -333,27 +265,18 @@ class IterationStatement(ProductionTemplate):
     _template = oneof(
         ("While", "LeftParenthesis", "Expression", "RightParenthesis", "Statement"),
         ("Do", "Statement", "While", "LeftParenthesis", "Expression", "RightParenthesis", "Semicolon"),
-        ("For", "LeftParenthesis", ["Expression"], "Semicolon", ["Expression"], "Semicolon", ["Expression"], "RightParenthesis", "Statement"),
-        ("For", "LeftParenthesis", "Declaration", ["Expression"], "Semicolon", ["Expression"], "RightParenthesis", "Statement")
+        ("For", "LeftParenthesis", oneof((["Expression"], "Semicolon"), "Declaration"), ["Expression"], "Semicolon", ["Expression"], "RightParenthesis", "Statement")
     )
 
 
 class JumpStatement(ProductionTemplate):
-    _template = oneof(
-        ("Goto", "Identifier", "Semicolon"),
-        ("Continue", "Semicolon"),
-        ("Break", "Semicolon"),
-        ("Return", ["Expression"], "Semicolon")
-    )
+    _template = oneof(("Goto", "Identifier"), "Continue", "Break", ("Return", ["Expression"])), "Semicolon"
 
 ###
 
 
 class BlockItemList(ProductionTemplate):
-    _template = oneof(
-        "BlockItem",
-        ("BlockItemList", "BlockItem")
-    )
+    _template = "BlockItem", repeat("BlockItem")
 
 ###
 
@@ -366,10 +289,7 @@ class BlockItem(ProductionTemplate):
 
 
 class Expression(ProductionTemplate):
-    _template = oneof(
-        "AssignmentExpression",
-        ("Expression", "Comma", "AssignmentExpression")
-    )
+    _template = "AssignmentExpression", repeat("Comma", "AssignmentExpression")
 
 
 class ConstantExpression(ProductionTemplate):
@@ -386,10 +306,7 @@ class AssignmentExpression(ProductionTemplate):
 
 
 class ConditionalExpression(ProductionTemplate):
-    _template = oneof(
-        "LogicalOrExpression",
-        ("LogicalOrExpression", "Question", "Expression", "Colon", "ConditionalExpression")
-    )
+    _template = "LogicalOrExpression", ["Question", "Expression", "Colon", "ConditionalExpression"]
 
 ###
 
@@ -397,12 +314,9 @@ class ConditionalExpression(ProductionTemplate):
 class UnaryExpression(ProductionTemplate):
     _template = oneof(
         "PostfixExpression",
-        ("DoublePlus", "UnaryExpression"),
-        ("DoubleMinus", "UnaryExpression"),
+        (oneof("DoublePlus", "DoubleMinus", "Sizeof"), "UnaryExpression"),
         ("UnaryOperator", "CastExpression"),
-        ("Sizeof", "UnaryExpression"),
-        ("Sizeof", "LeftParenthesis", "TypeName", "RightParenthesis"),
-        ("_Alignof", "LeftParenthesis", "TypeName", "RightParenthesis")
+        (oneof("Sizeof", "_Alignof"), "LeftParenthesis", "TypeName", "RightParenthesis")
     )
 
 
@@ -411,10 +325,7 @@ class AssignmentOperator(ProductionTemplate):
 
 
 class LogicalOrExpression(ProductionTemplate):
-    _template = oneof(
-        "LogicalAndExpression",
-        ("LogicalOrExpression", "DoubleVerticalBar", "LogicalAndExpression")
-    )
+    _template = "LogicalAndExpression", repeat("DoubleVerticalBar", "LogicalAndExpression")
 
 ###
 
@@ -428,8 +339,7 @@ class PostfixExpression(ProductionTemplate):
         ("PostfixExpression", "HyphenGreaterThan", "Identifier"),
         ("PostfixExpression", "DoublePlus"),
         ("PostfixExpression", "DoubleMinus"),
-        ("LeftParenthesis", "TypeName", "RightParenthesis", "LeftCurlyBracket", "InitializerList", "RightCurlyBracket"),
-        ("LeftParenthesis", "TypeName", "RightParenthesis", "LeftCurlyBracket", "InitializerList", "Comma", "RightCurlyBracket")
+        ("LeftParenthesis", "TypeName", "RightParenthesis", "LeftCurlyBracket", "InitializerList", ["Comma"], "RightCurlyBracket")
     )
 
 
@@ -445,10 +355,7 @@ class CastExpression(ProductionTemplate):
 
 
 class LogicalAndExpression(ProductionTemplate):
-    _template = oneof(
-        "InclusiveOrExpression",
-        ("LogicalAndExpression", "DoubleAmpersand", "InclusiveOrExpression")
-    )
+    _template = "InclusiveOrExpression", repeat("DoubleAmpersand", "InclusiveOrExpression")
 
 ###
 
@@ -464,17 +371,11 @@ class PrimaryExpression(ProductionTemplate):
 
 
 class ArgumentExpressionList(ProductionTemplate):
-    _template = oneof(
-        "AssignmentExpression",
-        ("ArgumentExpressionList", "Comma", "AssignmentExpression")
-    )
+    _template = "AssignmentExpression", repeat("Comma", "AssignmentExpression")
 
 
 class InclusiveOrExpression(ProductionTemplate):
-    _template = oneof(
-        "ExclusiveOrExpression",
-        ("InclusiveOrExpression", "VerticalBar", "ExclusiveOrExpression")
-    )
+    _template = "ExclusiveOrExpression", repeat("VerticalBar", "ExclusiveOrExpression")
 
 ###
 
@@ -484,83 +385,48 @@ class GenericSelection(ProductionTemplate):
 
 
 class ExclusiveOrExpression(ProductionTemplate):
-    _template = oneof(
-        "AndExpression",
-        ("ExclusiveOrExpression", "Caret", "AndExpression")
-    )
+    _template = "AndExpression", repeat("Caret", "AndExpression")
 
 ###
 
 
 class GenericAssocList(ProductionTemplate):
-    _template = oneof(
-        "GenericAssociation",
-        ("GenericAssocList", "Comma", "GenericAssociation")
-    )
+    _template = "GenericAssociation", repeat("Comma", "GenericAssociation")
 
 
 class AndExpression(ProductionTemplate):
-    _template = oneof(
-        "EqualityExpression",
-        ("AndExpression", "Ampersand", "EqualityExpression")
-    )
+    _template = "EqualityExpression", repeat("Ampersand", "EqualityExpression")
 
 ###
 
 
 class GenericAssociation(ProductionTemplate):
-    _template = oneof(
-        ("TypeName", "Colon", "AssignmentExpression"),
-        ("Default", "Colon", "AssignmentExpression")
-    )
+    _template = oneof("TypeName", "Default"), "Colon", "AssignmentExpression"
 
 
 class EqualityExpression(ProductionTemplate):
-    _template = oneof(
-        "RelationalExpression",
-        ("EqualityExpression", "DoubleEquals", "RelationalExpression"),
-        ("EqualityExpression", "ExclamationEquals", "RelationalExpression")
-    )
+    _template = "RelationalExpression", repeat(oneof("DoubleEquals", "ExclamationEquals"), "RelationalExpression")
 
 ###
 
 
 class RelationalExpression(ProductionTemplate):
-    _template = oneof(
-        "ShiftExpression",
-        ("RelationalExpression", "LesserThan", "ShiftExpression"),
-        ("RelationalExpression", "GreaterThan", "ShiftExpression"),
-        ("RelationalExpression", "LesserThanEquals", "ShiftExpression"),
-        ("RelationalExpression", "GreaterThanEquals", "ShiftExpression")
-    )
+    _template = "ShiftExpression", repeat(oneof("LesserThan", "GreaterThan", "LesserThanEquals", "GreaterThanEquals"), "ShiftExpression")
 
 ###
 
 
 class ShiftExpression(ProductionTemplate):
-    _template = oneof(
-        "AdditiveExpression",
-        ("ShiftExpression", "DoubleLesserThan", "AdditiveExpression"),
-        ("ShiftExpression", "DoubleGreaterThan", "AdditiveExpression")
-    )
+    _template = "AdditiveExpression", repeat(oneof("DoubleLesserThan", "DoubleGreaterThan"), "AdditiveExpression")
 
 ###
 
 
 class AdditiveExpression(ProductionTemplate):
-    _template = oneof(
-        "MultiplicativeExpression",
-        ("AdditiveExpression", "Plus", "MultiplicativeExpression"),
-        ("AdditiveExpression", "Minus", "MultiplicativeExpression")
-    )
+    _template = "MultiplicativeExpression", repeat(oneof("Plus", "Minus"), "MultiplicativeExpression")
 
 ###
 
 
 class MultiplicativeExpression(ProductionTemplate):
-    _template = oneof(
-        "CastExpression",
-        ("MultiplicativeExpression", "Asterisk", "CastExpression"),
-        ("MultiplicativeExpression", "Slash", "CastExpression"),
-        ("MultiplicativeExpression", "Percent", "CastExpression")
-    )
+    _template = "CastExpression", repeat(oneof("Asterisk", "Slash", "Percent"), "CastExpression")
