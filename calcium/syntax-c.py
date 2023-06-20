@@ -281,7 +281,7 @@ class IterationStatement(ProductionTemplate):
     _template = oneof(
         ("While", "LeftParenthesis", "Expression", "RightParenthesis", "Statement"),
         ("Do", "Statement", "While", "LeftParenthesis", "Expression", "RightParenthesis", "Semicolon"),
-        ("For", "LeftParenthesis", ["Expression"], "Semicolon", ["Expression"], "Semicolon", ["Expression"], "RightParenthesis", "Statement")
+        ("For", "LeftParenthesis", ["Expression"], "Semicolon", ["Expression"], "Semicolon", ["Expression"], "RightParenthesis", "Statement"),
         ("For", "LeftParenthesis", "Declaration", ["Expression"], "Semicolon", ["Expression"], "RightParenthesis", "Statement")
     )
 
