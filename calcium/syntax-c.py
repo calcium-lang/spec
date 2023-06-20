@@ -354,7 +354,7 @@ class GenericSelection(ProductionTemplate):
 class GenericAssocList(ProductionTemplate):
     _template = oneof(
         "GenericAssociation",
-        ("GenericAssocList", ",", "GenericAssociation")
+        ("GenericAssocList", "Comma", "GenericAssociation")
     )
 
 
