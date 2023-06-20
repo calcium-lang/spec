@@ -55,7 +55,23 @@ class StorageClassSpecifier(ProductionTemplate):
 
 
 class TypeSpecifier(ProductionTemplate):
-    _template = oneof("Void", "Char", "Short", "Int", "Long", "Float", "Double", "Signed", "Unsigned", "_Bool", "_Complex", "AtomicTypeSpecifier", "StructOrUnionSpecifier", "EnumSpecifier", "TypedefName")
+    _template = oneof(
+        "Void",
+        "Char",
+        "Short",
+        "Int",
+        "Long",
+        "Float",
+        "Double",
+        "Signed",
+        "Unsigned",
+        "_Bool",
+        "_Complex",
+        "AtomicTypeSpecifier",
+        "StructOrUnionSpecifier",
+        "EnumSpecifier",
+        "TypedefName"
+    )
 
 
 class TypeQualifier(ProductionTemplate):
@@ -265,7 +281,8 @@ class IterationStatement(ProductionTemplate):
     _template = oneof(
         ("While", "LeftParenthesis", "Expression", "RightParenthesis", "Statement"),
         ("Do", "Statement", "While", "LeftParenthesis", "Expression", "RightParenthesis", "Semicolon"),
-        ("For", "LeftParenthesis", oneof((["Expression"], "Semicolon"), "Declaration"), ["Expression"], "Semicolon", ["Expression"], "RightParenthesis", "Statement")
+        ("For", "LeftParenthesis", ["Expression"], "Semicolon", ["Expression"], "Semicolon", ["Expression"], "RightParenthesis", "Statement")
+        ("For", "LeftParenthesis", "Declaration", ["Expression"], "Semicolon", ["Expression"], "RightParenthesis", "Statement")
     )
 
 
@@ -321,7 +338,19 @@ class UnaryExpression(ProductionTemplate):
 
 
 class AssignmentOperator(ProductionTemplate):
-    _template = oneof("Equals", "AsteriskEquals", "SlashEquals", "PercentEquals", "PlusEquals", "MinusEquals", "DoubleLesserThanEquals", "DoubleGreaterThanEquals", "AmpersandEquals", "CaretEquals", "VerticalBarEquals")
+    _template = oneof(
+        "Equals",
+        "AsteriskEquals",
+        "SlashEquals",
+        "PercentEquals",
+        "PlusEquals",
+        "MinusEquals",
+        "DoubleLesserThanEquals",
+        "DoubleGreaterThanEquals",
+        "AmpersandEquals",
+        "CaretEquals",
+        "VerticalBarEquals"
+    )
 
 
 class LogicalOrExpression(ProductionTemplate):
