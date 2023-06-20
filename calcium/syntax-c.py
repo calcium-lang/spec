@@ -373,7 +373,7 @@ class PostfixExpression(ProductionTemplate):
         ("PostfixExpression", "FullStop", "Identifier"),
         ("PostfixExpression", "HyphenGreaterThan", "Identifier"),
         ("PostfixExpression", "DoublePlus"),
-        ("PostfixExpression", "Minus"),
+        ("PostfixExpression", "DoubleMinus"),
         ("LeftParenthesis", "TypeName", "RightParenthesis", "LeftCurlyBracket", "InitializerList", "RightCurlyBracket"),
         ("LeftParenthesis", "TypeName", "RightParenthesis", "LeftCurlyBracket", "InitializerList", "Comma", "RightCurlyBracket")
     )
@@ -390,7 +390,7 @@ class UnaryExpression(ProductionTemplate):
     _template = oneof(
         "PostfixExpression",
         ("DoublePlus", "UnaryExpression"),
-        ("Minus", "UnaryExpression"),
+        ("DoubleMinus", "UnaryExpression"),
         ("UnaryOperator", "CastExpression"),
         ("Sizeof", "UnaryExpression"),
         ("Sizeof", "LeftParenthesis", "TypeName", "RightParenthesis"),
