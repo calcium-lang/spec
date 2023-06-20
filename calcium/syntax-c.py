@@ -231,7 +231,7 @@ class DirectAbstractDeclarator(ProductionTemplate):
         (["DirectAbstractDeclarator"], "LeftSquareBracket", "Static", ["TypeQualifierList"], "AssignmentExpression", "RightSquareBracket"),
         (["DirectAbstractDeclarator"], "LeftSquareBracket", "TypeQualifierList", "Static", "AssignmentExpression", "RightSquareBracket"),
         (["DirectAbstractDeclarator"], "LeftSquareBracket", "Asterisk", "RightSquareBracket"),
-        (["DirectAbstractDeclarator"], "LeftSquareBracket", ["ParameterTypeList"], "RightSquareBracket")
+        (["DirectAbstractDeclarator"], "LeftParenthesis", ["ParameterTypeList"], "RightParenthesis")
     )
 
 
