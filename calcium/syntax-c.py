@@ -1,5 +1,8 @@
 from alchemist.front.parser.generator import repeat, oneof, ProductionTemplate
 
+# pylint: disable=missing-class-docstring
+# mypy: disable-error-code="assignment, arg-type"
+
 # External definitions
 
 
@@ -44,7 +47,7 @@ class InitDeclaratorList(ProductionTemplate):
     _template = "InitDeclarator", repeat("Comma", "InitDeclarator")
 
 
-class Static_AssertDeclaration(ProductionTemplate):
+class Static_AssertDeclaration(ProductionTemplate):  # pylint: disable=invalid-name
     _template = "_Static_Assert", "LeftParenthesis", "ConstantExpression", "Comma", "StringLiteral", "RightParenthesis", "Semicolon"
 
 ###
